@@ -1,0 +1,125 @@
+# Numerical phenomenology of the Weil positivity criterion
+
+Independent numerical exploration of the truncated Weil quadratic form — the object
+behind the recent Connes–Consani(–Moscovici), Connes–van Suijlekom, Suzuki and Groskin
+line of work on the Riemann Hypothesis. Everything here is **measurement**, not proof:
+the point is to treat the semi-local Weil form as an experimental system and report
+reproducible laws, with the same care about artifacts as in a physics lab.
+
+Companion lab notebook (full narrative, French, 1400+ lines): [`report/le-milieu-des-premiers-v2.md`](report/le-milieu-des-premiers-v2.md).
+
+## Main results
+
+**1. First numerical test of the *function-level* convergence in Suzuki's conjecture (1.2)**
+(arXiv:2606.09096), and identification of its normalization constant.
+
+Let v_a be the L²-normalized ground state of the semi-local Weil form on the window
+[−a, a] = [−L/2, L/2], built from primes only (Connes–Consani ζ-cycles basis,
+arXiv:2106.01715). Then, numerically:
+
+- **v_a converges in L² to Φ/‖Φ‖**, where Φ is the inverse Fourier transform of
+  ξ(1/2+iz) — the classical Riemann theta kernel. Overlap 0.99964 at µ = e^L = 11;
+  L² deficit ≈ (sup-residual)²/2 at every µ tested (quadratic law).
+- Hence the normalization constant of (1.2) is **c_∞ = ‖Φ‖_{L²(ℝ)} = 1.130932026...**
+  (with ξ(s) = s(s−1)π^{−s/2}Γ(s/2)ζ(s), Suzuki's convention).
+- The **uniform (sup-norm) convergence is much slower**: max relative residual
+  ≈ e^{−L}/3, concentrated in the zero-free infrared band [0, γ₁) — while the *zeros*
+  of the ground-state transform converge superexponentially (Connes, Groskin).
+  The conjecture thus splits: L²-version fast (quadratic), uniform version slow,
+  bottlenecked by the Γ-bulge below the first zero.
+
+**2. The same identification holds across the Dirichlet family, parameter-free.**
+For the five real primitive characters mod 3, 4, 5, 7, 8 (no pole term in the form):
+c_∞(χ) = ‖Φ_χ‖ with the exact theta kernels
+Φ_χ(u) = 2e^{u/2}·Σχ(n)e^{−πn²e^{2u}/q} (even χ) and 2e^{3u/2}·Σχ(n)·n·e^{−πn²e^{2u}/q} (odd χ).
+Projection estimates agree to ≤ 4×10⁻⁴ at µ = 16, six for six, with the predicted
+quadratic approach to the exact norms (12 digits, closed form).
+
+**3. A linear depth law for the quasi-radical ladder of Dirichlet forms.**
+−ln λ_min = s(χ)·µ, strikingly linear and basis-converged:
+
+| χ | q | parity | γ₁ | s(χ) | shape constant C |
+|---|---|--------|------|--------|------|
+| χ₈ | 8 | even | 4.90 | 1.47 ± 0.05 | ≈ 0.53 |
+| χ₇ | 7 | odd  | 4.48 | 1.58 ± 0.05 | ≈ 0.43 |
+| χ₅ | 5 | even | 6.65 | 2.41 ± 0.04 | ≈ 0.50 |
+| χ₄ | 4 | odd  | 6.02 | 2.93 ± 0.04 | ≈ 0.39 |
+| χ₃ | 3 | odd  | 8.04 | 4.00 ± 0.07 | ≈ 0.41 |
+| ζ  | 1 | (pole) | 14.13 | ≈ 10, non-linear at our range | ≈ 0.33 |
+
+The depth s grows with the width γ₁ of the zero-free infrared desert (ζ's pole pushes
+γ₁ to 14.13, hence its abyssal ~10µ ladder), with a clear **parity signature**: odd
+characters dive faster than even ones at comparable γ₁ (two concordant inversions),
+and even characters carry the larger shape constant C (C ≈ 0.50–0.53 even,
+0.39–0.43 odd, 0.33 for ζ; residual law R ≈ C·e^{−L} throughout). The exact form of
+s(γ₁, parity) is open; the naive candidate γ₁²/(2πe) is falsified by χ₄. This
+baseline is the prerequisite for a "Landau–Siegel seismograph": an exceptional zero
+would make a ladder anomalously deep for its (γ₁, parity).
+
+Additional measurements (see report §9): the three positivity regimes of the
+band-limited form (generic closure at ≈ 0.41 per degree of freedom, Slepian plunge
+near the rank wall at up to ≈ 3/dim, measured down to 2.2×10⁻³⁶ in multiprecision),
+and the "whiteness protection" reading: GUE-decorrelated zeros make the kernel
+near-identity against generic test directions — only arithmetic-shaped directions
+threaten positivity.
+
+## Reproduce
+
+```bash
+pip install -r requirements.txt
+cd code
+
+# zeta zeros cache (~45 s; pickles are provided, so optional)
+python3 zeros_cache.py
+
+# regime matching & Slepian plunge (§9)                     ~1 min each
+python3 raccord.py
+python3 plunge.py
+
+# Suzuki shape test for zeta:  mu  N_basis  dps  GL_degree  (§10)
+python3 shape7.py 5.5 20 55 14        # ~5 s
+python3 shape7.py 11 46 85 16         # ~70 s ; lambda_min = 3.58e-48 (cf. CC's 2.389e-48)
+python3 shape8.py 11 46 85 16         # + theta-kernel overlap 0.99964  (§12)
+
+# conventions & c_inf identification (§12)                  ~10 s
+python3 denouage_A.py
+python3 phi_exact.py                  # exact ||Phi_chi|| , 12 digits (§13.4)
+
+# Dirichlet scan (§13): mu = 5.5 and 11 per character       ~1 min each
+python3 dirichlet_step1.py            # Frullani validation + L(chi3) zeros (~3 min)
+python3 dscan.py chi3
+python3 dscan.py chi4
+python3 dscan.py chi5
+python3 dscan.py chi7
+python3 dscan.py chi8
+# third ladder point, e.g.:
+python3 -c "import dscan, mpmath as mp; dscan.run('chi4', mp.mpf('16'), 46, 60)"
+```
+
+Every pipeline is validated against independent anchors: closed-form identities
+(pole term, digamma/Frullani vs the spectral Q_∞, the 2.00963 coefficient of
+Connes–Consani Fig. 4), the zero side of the explicit formula (280 ζ zeros, 40–70
+zeros per L(s,χ)), and the published λ_min = 2.389×10⁻⁴⁸ at µ = 11.
+
+## Artifact taxonomy (hard-won, please reuse)
+
+1. float64 eigenvalues below ~10⁻¹⁵·‖K‖ produce **fake RH violations** (negative λ).
+2. Sieve truncation creates off-line pseudo-zeros beyond U ≈ 0.65·log N.
+3. Finite archimedean cutoff T (Groskin's diagnosis — structurally absent here:
+   all archimedean integrals are closed on [0, L]).
+4. Quadrature nodes imported in float64 floor the whole matrix at 10⁻¹⁶
+   (Newton-refine Gauss–Legendre nodes in multiprecision).
+5. Splitting a smooth integrand into two near-divergent halves destroys composite
+   Gauss–Legendre accuracy.
+6. Two-limit protocol: shape residuals converge **from below** in basis size
+   (small bases flatter the test) — extrapolate in N before fitting in µ.
+
+## Epistemic status
+
+Measured laws with stated error bars; no theorems. The shape law rests on six µ
+points (two basis-extrapolated); ladder slopes on three µ points each; the c_∞
+identification on closed-form norms plus overlap/deficit consistency. All claims
+are falsifiable by extending the series with this code. References: Connes–Consani
+arXiv:2106.01715; Connes–Consani–Moscovici arXiv:2511.22755; Connes–van Suijlekom
+arXiv:2511.23257; Connes arXiv:2602.04022; Suzuki arXiv:2606.09096; Groskin
+arXiv:2605.20224.
