@@ -40,12 +40,19 @@ quadratic approach to the exact norms (12 digits, closed form).
 
 | χ | q | parity | γ₁ | s(χ) | shape constant C |
 |---|---|--------|------|--------|------|
-| χ₈ | 8 | even | 4.90 | 1.47 ± 0.05 | ≈ 0.53 |
-| χ₇ | 7 | odd  | 4.48 | 1.58 ± 0.05 | ≈ 0.43 |
-| χ₅ | 5 | even | 6.65 | 2.41 ± 0.04 | ≈ 0.50 |
-| χ₄ | 4 | odd  | 6.02 | 2.93 ± 0.04 | ≈ 0.39 |
-| χ₃ | 3 | odd  | 8.04 | 4.00 ± 0.07 | ≈ 0.41 |
-| ζ  | 1 | (pole) | 14.13 | ≈ 10, non-linear at our range | ≈ 0.33 |
+| χ₈ | 8 | even | 4.90 | 1.53 ± 0.02 | ≈ 0.53 |
+| χ₇ | 7 | odd  | 4.48 | 1.70 ± 0.05 | ≈ 0.43 |
+| χ₅ | 5 | even | 6.65 | 2.47 ± 0.02 | ≈ 0.50 |
+| χ₄ | 4 | odd  | 6.02 | 3.04 ± 0.02 | ≈ 0.39 |
+| χ₃ | 3 | odd  | 8.04 | 4.00 ± 0.10 | ≈ 0.41 |
+| ζ  | 1 | (pole) | 14.13 | ≈ 10 (apparent bend is likely a basis artifact) | ≈ 0.33 |
+
+(Slopes uniformized at µ = 30–38 with matched bases; the map now spans twelve
+characters of conductor ≤ 24 — see report §13.5–13.9 — with the consolidated
+three-variable law s ≈ 0.29·γ₁^1.28·e^(−0.20·D)·1.31^[odd] (D = removed prime
+mass Σ_{p|q} log p/(√p−1)), accurate to ~10% with 12% leave-one-out error.
+The out-of-sample test (χ₁₉) and the twin pair mod 24 both *strengthened* the
+arithmetic-density and parity effects.)
 
 The depth s grows with the width γ₁ of the zero-free infrared desert (ζ's pole pushes
 γ₁ to 14.13, hence its abyssal ~10µ ladder), with a clear **parity signature**: odd
@@ -113,6 +120,10 @@ zeros per L(s,χ)), and the published λ_min = 2.389×10⁻⁴⁸ at µ = 11.
    Gauss–Legendre accuracy.
 6. Two-limit protocol: shape residuals converge **from below** in basis size
    (small bases flatter the test) — extrapolate in N before fitting in µ.
+7. Basis demand grows with ladder depth: an under-sized Galerkin basis inflates
+   λ_min by orders of magnitude and fakes a *downward bend* of deep ladders
+   (χ₃ at µ = 38: slope 3.35 → 4.02 when N goes 63 → 75); ζ's apparent
+   non-linearity is suspect for the same reason.
 
 ## Epistemic status
 
