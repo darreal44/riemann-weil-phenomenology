@@ -1,9 +1,11 @@
 # Certification Arb generalisee du quorum : zeta ou chi3, mu et base parametres.
 # Usage : python3 quorum_general.py <mu> <NB> <dps> <zeta|chi3>
-import numpy as np, sys, time, itertools
+import numpy as np, sys, time, itertools, os
+BASE = os.path.dirname(os.path.abspath(__file__))
 from flint import arb, acb, ctx
 
 def run(mu, NB, dps, kind, mode='freeze'):
+    assert mu <= 22, 'liste de premiers codee jusque 19 : etendre primes[] pour mu > 22'
     t0 = time.time(); ctx.dps = dps
     NP = NB + 1
     Larb = arb(mu).log()
@@ -50,7 +52,7 @@ def run(mu, NB, dps, kind, mode='freeze'):
     loaded = None
     if mode == 'verify':
         import json
-        loaded = {tuple(e['S']): e['w'] for e in json.load(open(f"witnesses_{kind}_mu{mu}.json"))['witnesses']}
+        loaded = {tuple(e['S']): e['w'] for e in json.load(open(os.path.join(BASE, f"witnesses_{kind}_mu{mu}.json")))['witnesses']}
     for r in range(len(primes)+1):
         for sub in itertools.combinations(primes, r):
             if loaded is not None and tuple(sorted(sub)) in loaded:
@@ -79,14 +81,14 @@ def run(mu, NB, dps, kind, mode='freeze'):
     print(f"  pire (le plus proche de 0) : S={worst[0]} borne {worst[1]:+.4f} ; plus violent : S={best[0]} borne {best[1]:+.4f}")
     full = [x for x in res if x[0] == set(primes)][0]
     print(f"  complet : borne sup {full[1]:+.6f} (non certifiable attendu)")
-    with open(f"quorum_cert_{kind}_mu{mu}.txt", "w") as f:
+    with open(os.path.join(BASE, f"quorum_cert_{kind}_mu{mu}.txt"), "w") as f:
         f.write(f"# {kind}, mu={mu}, NB={NB}, ctx.dps={dps} ; rayon max des entrees certifiees = {radmax:.3e} ; rayon max des quotients = {qradmax:.3e}\n")
         f.write(f"# borne = mid + rad du quotient de Rayleigh certifie (Arb) ; temoins : witnesses_{kind}_mu{mu}.json (dyadiques exacts)\n")
         for s, u, rr in res: f.write(f"{sorted(s)} : {u:+.6f}  (rayon {rr:.2e})\n")
     if mode == 'freeze':
         import json
         for e, (s, u, rr) in zip(frozen, res): e['certified_upper'] = u; e['radius'] = rr
-        json.dump({'kind': kind, 'mu': mu, 'NB': NB, 'witnesses': frozen}, open(f"witnesses_{kind}_mu{mu}.json", "w"))
+        json.dump({'kind': kind, 'mu': mu, 'NB': NB, 'witnesses': frozen}, open(os.path.join(BASE, f"witnesses_{kind}_mu{mu}.json"), "w"))
         print(f"  temoins geles : witnesses_{kind}_mu{mu}.json")
     print(f"  table complete : quorum_cert_{kind}_mu{mu}.txt ; total {time.time()-t0:.0f}s")
 

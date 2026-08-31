@@ -10,7 +10,8 @@ def run(mu, NB, NPANEL, DEG):
     om = [2*mp.pi*n/L for n in range(NB+1)]
 
     # ---- quadrature composite Gauss-Legendre precalculee sur [0,L] ----
-    # noeuds GL : graine numpy raffinee par Newton en multiprecision ci-dessous
+    xs, ws = mp.polyroots([mp.legendre(DEG, mp.mpf(0)).__class__ and 0] ) if False else (None,None)
+    # noeuds GL de reference via mpmath
     ref = mp.taylor(lambda x: mp.legendre(DEG, x), 0, DEG)
     import numpy.polynomial.legendre as NL
     xr0, _ = NL.leggauss(DEG)
@@ -125,32 +126,8 @@ def run(mu, NB, NPANEL, DEG):
     print(f"  prep {tprep:.0f}s, matrice {tmat:.0f}s")
     print(f"  ratios premiers/zeros (3 entrees) : {[f'{r:.4f}' for r in rats]}")
     print(f"  vp les plus basses : {[mp.nstr(l,3) for l in lam[:6]]}")
-    print(f"  c_a = {mp.nstr(ca,5)}")
-    print(f"  |c_a v^ - Xi| / max|Xi| : infrarouge[0,13) max={float(max(infra)/Xmax):.2e} ; entre-zeros(15,30) max={float(max(milieu)/Xmax):.2e}")
-    print(f"  au zero gamma_1=14.13 : c_a v^ = {mp.nstr(vg[i1],3)}   Xi = {mp.nstr(xg[i1],3)}")
-
-    # ---- recouvrement avec le noyau theta Phi_S = 4*Phi_c ----
-    def PhiC(u):
-        u = abs(u); s = mp.mpf(0)
-        for nn in range(1, 9):
-            s += (2*mp.pi**2*nn**4*mp.e**(mp.mpf(9)*u/2) - 3*mp.pi*nn**2*mp.e**(mp.mpf(5)*u/2))*mp.e**(-mp.pi*nn*nn*mp.e**(2*u))
-        return s
-    import numpy.polynomial.legendre as NL2
-    xq0, wq0 = NL2.leggauss(60)
-    half = L/2
-    xq = [half*(mp.mpf(float(t))+1)/2 for t in xq0]; wq = [half*mp.mpf(float(w))/2 for w in wq0]
-    def vx(x):
-        s = c[0]/mp.sqrt(L)
-        for nn in range(1, NB+1):
-            s += c[nn]*(-1)**nn*mp.sqrt(2/L)*mp.cos(om[nn]*x)
-        return s
-    ovl  = 2*mp.fsum(wq[k]*vx(xq[k])*4*PhiC(xq[k]) for k in range(len(xq)))
-    nPhi = mp.sqrt(2*mp.fsum(wq[k]*(4*PhiC(xq[k]))**2 for k in range(len(xq))))
-    print(f"  ||Phi_S|_fenetre|| = {mp.nstr(nPhi,8)} ; <v,Phi_S> = {mp.nstr(ovl,8)}")
-    print(f"  recouvrement <v,Phi>/||Phi|| = {mp.nstr(ovl/nPhi,8)}  (1 = convergence L2 parfaite)")
-    print(f"  c_pred = ||Phi_S||/recouvrement = {mp.nstr(nPhi*nPhi/ovl,8)}   vs c_a mesure = {mp.nstr(ca,6)}")
-    print(f"  total {time.time()-t0:.0f}s\n")
-    return zg, vg, xg
+    print(f"  (echelle seule, {time.time()-t0:.0f}s)")
+    return
 
 if __name__ == '__main__':
     mu = mp.mpf(sys.argv[1]); NB = int(sys.argv[2])

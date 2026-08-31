@@ -1,0 +1,384 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem*{remark}{Remark}
+
+\title{\bfseries Proper sub-Euler products violate Weil positivity\\ on a fixed window: certified witnesses}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland}
+\date{August 31, 2026 --- v2; Appendix A verified, certification artifacts ship with the repository}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+Let $L=\log 11$ and let $V$ be the $47$-dimensional space of even test
+functions spanned by the shifted cosine basis on $[-L/2,L/2]$. We define,
+by explicit closed formulas, the pole, archimedean and prime-tower
+components of the truncated Weil quadratic form on $V$, and prove, by
+certified ball arithmetic (Arb), that \emph{for every proper subset}
+$S\subsetneq\{2,3,5,7\}$ of the primes interior to the window, the partial
+form $Q_S$ (pole $+$ archimedean $-$ towers of $S$) admits an explicit
+negative witness: $Q_S(w_S)\le -0.51$ in all fifteen cases, with certified
+enclosure radii below $10^{-8}$. The complete form $Q_{\{2,3,5,7\}}$, by
+contrast, is numerically positive with smallest eigenvalue
+$\approx 3.6\times10^{-48}$ (not certified, and not claimed): removing any
+single prime tower flips the form from razor-edge positivity to $O(1)$
+violation. Positivity of the truncated Weil form is thus, at this scale, a
+\emph{quorum} of the full Euler product --- no proper sub-product achieves
+it. The same engine certifies the quorum exhaustively at $\mu=16$
+($63/63$ proper subsets violated) and $\mu=22$ ($255/255$), and for the
+Dirichlet character $\chi_3$ at $\mu=11$ ($7/7$) --- the phenomenon does
+not depend on the pole. In total: $340$ certified violations, no
+exception. The result is unconditional and elementary in nature; it proves
+nothing about the Riemann hypothesis, but isolates, in certified form, the
+collective character of Weil positivity.
+\end{abstract}
+
+\section{Setting and statement}
+
+Fix $\mu=11$, $L=\log\mu$, and the interval $I_L=[-L/2,L/2]$. Let
+$\omega_k=2\pi k/L$ and define the orthonormal \emph{shifted cosine basis}
+of even-window test functions,
+\[
+\eta_0=\tfrac1{\sqrt L}\,\mathbf 1_{I_L},\qquad
+\eta_k(u)=\sqrt{\tfrac2L}\,\cos\!\big(\omega_k(u+\tfrac L2)\big)\,
+\mathbf 1_{I_L}(u)\quad(1\le k\le 46),
+\]
+and $V=\mathrm{span}(\eta_0,\dots,\eta_{46})$. For $f,g\in V$ and $x\ge0$
+set the symmetrized cross-correlation
+\[
+\Theta_{f,g}(x)\;=\;\int f(u)\,g(u+x)\,du\;+\;\int f(u)\,g(u-x)\,du .
+\]
+On basis pairs, $\Theta_{nm}(x):=\Theta_{\eta_n,\eta_m}(x)$ has the closed
+forms of Lemma~\ref{lem:table} (Appendix~A). Define on $V$ the quadratic
+forms
+\begin{align*}
+P(f)&=\int_0^L \Theta_{f,f}(y)\,\big(e^{y/2}+e^{-y/2}\big)\,dy
+&&\text{(pole)},\\
+A(f)&=-\Big[\tfrac{\Theta_{f,f}(0)}2\,C_L
++\int_0^L\frac{e^{y/2}\Theta_{f,f}(y)-\Theta_{f,f}(0)}{e^{y}-e^{-y}}\,dy
+\Big],
+\quad C_L=\gamma+\log\!\frac{4\pi(e^L-1)}{e^L+1}
+&&\text{(archimedean)},\\
+T_p(f)&=\sum_{k\ge1,\;p^k\le\mu}\frac{\log p}{p^{k/2}}\,
+\Theta_{f,f}(k\log p)
+&&\text{(prime tower)}.
+\end{align*}
+Since $\log 11=L$ exactly and $\Theta_{f,f}(L)=0$ identically (empty
+overlap), the tower $T_{11}$ vanishes on $V$: the primes interior to the
+window are exactly $\{2,3,5,7\}$. For $S\subseteq\{2,3,5,7\}$ put
+\[
+Q_S \;=\; P + A - \sum_{p\in S} T_p .
+\]
+$Q_{\{2,3,5,7\}}$ is the truncated Weil form of $\zeta$ on the window (up
+to overall normalization; see the Remark below); the $Q_S$ are its partial
+Euler sub-products.
+
+\begin{theorem}[Quorum at $\mu=11$]\label{thm}
+For every proper subset $S\subsetneq\{2,3,5,7\}$ there is an explicit
+witness $w_S\in V$, given by $47$ dyadic-rational coefficients (ancillary
+file), such that
+\[
+Q_S(w_S)\;<\;0 .
+\]
+Certified upper bounds (ball arithmetic, enclosure radii $<10^{-8}$):
+\begin{center}\small
+\begin{tabular}{llll}
+\toprule
+$S$ & bound & $S$ & bound\\
+\midrule
+$\emptyset$ & $-0.7745$ & $\{2,3\}$ & $-0.6537$\\
+$\{2\}$ & $-0.7713$ & $\{2,5\}$ & $-0.8420$\\
+$\{3\}$ & $-0.9076$ & $\{2,7\}$ & $-0.9083$\\
+$\{5\}$ & $-0.9268$ & $\{3,5\}$ & $-0.7822$\\
+$\{7\}$ & $-1.0514$ & $\{3,7\}$ & $-1.0041$\\
+$\{2,3,5\}$ & $-0.5168$ & $\{5,7\}$ & $-1.1524$\\
+$\{2,3,7\}$ & $-0.7101$ & $\{3,5,7\}$ & $-0.5421$\\
+$\{2,5,7\}$ & $-0.6804$ & &\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{theorem}
+
+\begin{remark}
+(i) The forms above are \emph{defined} by the displayed formulas; the
+theorem is unconditional for these objects. Their identification with
+Weil's pairing is exact and derived in Appendix~B: for $f\in V$ with
+$g=f\star\tilde f$ and $\hat g=|\hat f|^2$,
+$Q_{\{2,3,5,7\}}(f)=\sum_\gamma|\hat f(\gamma)|^2$, the sum over the
+nontrivial zeros of $\zeta$ --- with no normalization factor. In
+particular the $Q_S$ are precisely the partial Euler sub-products of the
+Weil form.
+(ii) Nothing is claimed about $Q_{\{2,3,5,7\}}$: numerically its smallest
+eigenvalue is $\approx+3.58\times10^{-48}$, far below certification at
+working precision --- appropriately so, since its positivity at all scales
+is equivalent to a window-by-window form of RH. The theorem's content is
+the \emph{quorum}: every proper sub-product fails by $O(1)$, while the
+complete product lands within $10^{-48}$ of zero on the positive side.
+(iii) Monotonicity fails: $\lambda_{\min}$ is not monotone in $S$
+(e.g.\ $\{5,7\}$ is worse than $\emptyset$); a prime without its
+predecessors aggravates the violation.
+\end{remark}
+
+\subsection*{Generalization}
+The certification engine is parametric in the scale and the $L$-function.
+Running it at $\mu=16$ (interior primes $\{2,\dots,13\}$, $63$ proper
+subsets) and $\mu=22$ ($\{2,\dots,19\}$, $255$ subsets) --- same
+construction, with the cosine basis enlarged ($\dim V=53$, resp.\ $57$)
+to hold the conditioning, so these certified spaces are \emph{not}
+nested subspaces of the $47$-dimensional $V$ of Theorem~1 ---, and for the odd
+character $\chi_3$ at $\mu=11$ (no pole term; supported interior primes
+$\{2,5,7\}$, the archimedean part in its Dirichlet normalization) yields
+certified violation in \emph{every} case: worst bounds $-0.360$, $-0.331$
+and $-0.107$ respectively, complete forms non-certifiable at $+0.000000$
+throughout. Two regularities emerge, consistent with the recruitment
+structure of the quasi-radical: the mildest violation is always the
+deletion of the \emph{last-recruited} prime, and its magnitude decreases
+with $\mu$ ($-0.52$, $-0.36$, $-0.33$); the most violent subsets consist
+of late primes deprived of their predecessors (e.g.\ $\{11,13,17,19\}$
+at $\mu=22$: $-1.86$).
+
+\section{Certification}
+
+All matrix entries $P_{nm},A_{nm},(T_p)_{nm}$ ($0\le n\le m\le46$) are
+enclosed in balls using Arb (via \texttt{python-flint 0.9}): tower entries
+are finite closed-form expressions in $\sin,\cos,\exp,\log$ evaluated in
+ball arithmetic; pole entries are rigorous integrals of entire integrands
+on $[0,L]$; archimedean entries are rigorous integrals on
+$[\varepsilon,L]$, $\varepsilon=10^{-15}$, plus the tail bound of
+Lemma~\ref{lem:tail}. The maximal enclosure radius over all $1128\times7$
+entries is $9.4\times10^{-11}$. The witnesses $w_S$ are the bottom
+eigenvectors of the double-precision midpoint matrices (their accuracy is
+immaterial: only the certified sign of the Rayleigh quotient matters);
+frozen as exact dyadic vectors, each quotient $Q_S(w_S)$ is a certified
+ball whose upper end is the bound in Theorem~\ref{thm}. Total computation: $7$--$16$ seconds per scale with the parametric engine
+\texttt{quorum\_general.py}, whose \texttt{verify} mode replays the
+frozen witnesses with no eigensolver dependence; the single-scale script
+\texttt{theoreme\_quorum.py} reproduces the $\mu=11$ table as a
+self-contained shortcut.
+
+\begin{lemma}[Tail bound]\label{lem:tail}
+For $0\le n\le m\le 46$ and $h_{nm}(y)=\dfrac{e^{y/2}\Theta_{nm}(y)-
+\Theta_{nm}(0)}{e^{y}-e^{-y}}$ one has, on $[0,10^{-15}]$,
+$|h_{nm}(y)|\le 250$, hence
+$\big|\int_0^{10^{-15}}h_{nm}\big|\le 1000\,(n+m+2)\cdot10^{-15}$.
+\end{lemma}
+\begin{proof}
+From the closed forms, $|\Theta_{nm}|\le2$ and
+$|\Theta_{nm}'|\le 2(\omega_n+\omega_m)+4/L\le485$ on $[0,L]$. Hence
+$|\frac{d}{dy}(e^{y/2}\Theta_{nm})|\le e^{y/2}(|\Theta'|+|\Theta|/2)
+\le487$ on $[0,10^{-15}]$, so
+$|e^{y/2}\Theta_{nm}(y)-\Theta_{nm}(0)|\le487\,y$, while
+$e^{y}-e^{-y}\ge2y$. Thus $|h_{nm}|\le244$, and the stated (deliberately
+lossy) bound follows.
+\end{proof}
+
+\section{Interpretation}
+
+The theorem gives the first certified instance of a phenomenon we call the
+\emph{quorum}: truncated Weil positivity is a collective property of the
+complete Euler product within the window --- each prime is individually
+indispensable, and partial products are not merely less positive but
+$O(1)$-violating. Mechanically (lab notebook \cite{LabNB},
+file \texttt{report/le-milieu-des-premiers-v2.md}, \S15), the
+violation is carried by the quasi-radical of the complete form: the tower
+of a removed prime $p$, restricted to that radical, has positive diagonal
+(the recruitment structure) but off-diagonal couplings of order $0.4$
+between rungs where $p$ is diagonally silent and rungs where it is loud;
+a $2\times2$ minor then certifies a negative eigenvalue --- \emph{a prime
+cannot be silent on one rung while speaking to it from another without
+creating a negative direction}. The residual negatives of partial products
+are the radical-side face of the off-line pseudo-zeros of truncated Euler
+products. The complete form whose sub-products are certified here is the same
+object studied in the companion note \cite{Snote}: its $L^2$-normalized
+ground state converges to $\Phi/\lVert\Phi\rVert$, identifying the
+normalization constant of Suzuki's Conjecture~1.2 \cite{S26} as
+$\lVert\Phi\rVert_{L^2}$ --- the quorum describes what holds that
+ground state up, one prime per rung. We conjecture the quorum at every
+scale $\mu$ and for every Dirichlet $L$-function; the general statement reduces (loc.\ cit.) to two
+harmonic-analysis assertions about the radical (diagonal silence before
+recruitment; survival of the coupling), neither of which mentions the
+Riemann hypothesis.
+
+\section*{Reproducibility}
+
+Code, witnesses, certified-run script ($7$\,s) and the full lab notebook:
+\begin{center}
+\url{https://github.com/darreal44/riemann-weil-phenomenology}
+\end{center}
+
+\subsection*{Verification record}
+(1) Appendix~A verified by the author (and cross-checked at $10^{-30}$
+against direct quadrature). (2) Appendix~B derived in full for both the
+$\zeta$ and Dirichlet normalizations, with the public numerical
+cross-check \texttt{weil\_normalization\_check.py}. (3) The $340$
+witness vectors are frozen as exact dyadic rationals in
+\texttt{witnesses\_*.json}; the certification runs in \texttt{verify}
+mode from the frozen files, and the certificate tables carry the
+enclosure radii line by line. (4) Remaining: independent rerun of
+\texttt{quorum\_general.py <mu> <NB> 22 <zeta|chi3> verify} on a second
+machine at publication time.
+
+\subsection*{Acknowledgments}
+Computations and analysis were carried out with the assistance of Claude
+(Anthropic). All claims, and all remaining errors, are the author's.
+
+\appendix
+\section{The correlation table}\label{app:table}
+
+\begin{lemma}\label{lem:table}
+For $0\le n,m\le46$ and $0\le x\le L$, with the shifted basis above,
+\[
+\Theta_{00}(x)=\frac{2(L-x)}{L},\qquad
+\Theta_{0m}(x)=-\frac{2\sin(\omega_m x)}{\sqrt2\,\pi m}\;(m\ge1),
+\]
+\[
+\Theta_{nn}(x)=2\Big[\frac{(L-x)\cos(\omega_n x)}{L}
+-\frac{\sin(\omega_n x)}{2\pi n}\Big],\qquad
+\Theta_{nm}(x)=\frac{2\big(n\sin(\omega_n x)-m\sin(\omega_m x)\big)}
+{\pi(m^2-n^2)}\;(n\ne m,\;n,m\ge1).
+\]
+\end{lemma}
+\begin{proof}
+Substituting $v=u+L/2$ and $w=v-x$ in the two shift integrals gives
+$\Theta_{nm}(x)=\int_0^{L-x}\big[c_n(v)c_m(v+x)+c_n(v+x)c_m(v)\big]dv$
+with $c_k(v)=\sqrt{2/L}\cos(\omega_k v)$ ($c_0=1/\sqrt L$); note
+$\omega_k(L-x)+\omega_k x=2\pi k$, so all boundary sines evaluate through
+$\sin(2\pi k-\phi)=-\sin\phi$. \emph{Case $n=m=0$}: the integrand is
+$2/L$, giving $2(L-x)/L$. \emph{Case $n=m\ge1$}: product-to-sum,
+$\int_0^{L-x}\cos(2\omega_nv+\omega_nx)dv=-\sin(\omega_nx)/\omega_n$,
+whence $\Theta_{nn}=\tfrac2L\big[(L-x)\cos\omega_nx-
+\tfrac{L}{2\pi n}\sin\omega_nx\big]$. \emph{Case $n=0<m$}: both
+integrals equal $-\sin(\omega_mx)/\omega_m$; the prefactor
+$\sqrt2/L$ gives $-2\sin(\omega_mx)/(\sqrt2\,\pi m)$.
+\emph{Case $1\le n\ne m$}: with $\Omega_\mp=\omega_n\mp\omega_m$,
+the two product-to-sum pairs contribute
+$2[\sin\omega_mx-\sin\omega_nx]/\Omega_-
+-2[\sin\omega_nx+\sin\omega_mx]/\Omega_+$ (times $\tfrac2L\cdot\tfrac12$);
+over the common denominator $\Omega_-\Omega_+=\omega_n^2-\omega_m^2$ the
+numerator collapses to $2\omega_m\sin\omega_mx-2\omega_n\sin\omega_nx$,
+giving the stated formula. In the shifted basis no parity sign appears
+(the centered basis $\cos(\omega_ku)$ yields the same table multiplied by
+$(-1)^{n+m}$). All four formulas were verified against direct quadrature
+to $30$ digits.
+\end{proof}
+
+\section{Normalization: $Q$ is exactly Weil's form}\label{app:norm}
+
+\begin{lemma}
+For $f\in V$, put $g=f\star\tilde f$ (so $g$ is even, supported in
+$[-L,L]$, $\Theta_{f,f}(x)=2g(x)$ for $x\ge0$, and
+$\hat g(t)=|\hat f(t)|^2$ with $\hat f(t)=\int f(u)e^{itu}du$). Then
+\[
+P(f)=\hat g(\tfrac i2)+\hat g(-\tfrac i2),\qquad
+\sum_{p\le\mu}T_p(f)=2\sum_{n\ge2}\frac{\Lambda(n)}{\sqrt n}\,g(\log n),
+\]
+\[
+A(f)=\frac1{2\pi}\int_{\R}\hat g(t)\,\mathrm{Re}\,
+\psi(\tfrac14+\tfrac{it}2)\,dt\;-\;g(0)\log\pi,
+\]
+hence, by the Weil explicit formula,
+$Q_{\{2,3,5,7\}}(f)=\sum_\gamma|\hat f(\gamma)|^2$ over the nontrivial
+zeros $\tfrac12+i\gamma$ of $\zeta$.
+\end{lemma}
+\begin{proof}
+The pole identity is immediate:
+$\int_0^L\Theta(y)(e^{y/2}+e^{-y/2})dy
+=\int_{-L}^{L}g(y)(e^{y/2}+e^{-y/2})dy=\hat g(i/2)+\hat g(-i/2)$
+(verified to $12$ digits). The prime identity is the definition of the
+towers. For the archimedean part, insert
+$\psi(z)=-\gamma+\sum_{k\ge0}\big[\tfrac1{k+1}-\tfrac1{k+z}\big]$
+at $z=\tfrac14+\tfrac{it}2$ and use the Fourier pair
+$\tfrac1{2\pi}\int e^{itx}\,\mathrm{Re}\tfrac1{a+it/2}\,dt=e^{-2a|x|}$
+($a=k+\tfrac14$): each term becomes
+$g(0)/(k+1)-\int g(x)e^{-(2k+\frac12)|x|}dx$. Writing
+$\tfrac1{k+1}=\int_0^\infty 2e^{-2(k+1)y}dy$ and summing the geometric
+series,
+\[
+\frac1{2\pi}\int\hat g\,\mathrm{Re}\,\psi
+=-\gamma\,g(0)+\int_0^\infty
+\frac{2g(0)e^{-2y}-\Theta(y)e^{-y/2}}{1-e^{-2y}}\,dy .
+\]
+Two exact reductions bring this to the implemented form: replacing
+$e^{-2y}$ by $e^{-y}$ in the $g(0)$-term (whose coefficient is
+$2g(0)$) costs
+$2g(0)\int_0^\infty\frac{e^{-y}-e^{-2y}}{1-e^{-2y}}dy=2g(0)\log2
+=g(0)\log4$, and
+truncating at $L$ (licit for $\Theta$, which vanishes there) leaves the
+$g(0)$-tail
+$g(0)\int_L^\infty\frac{dy}{\sinh y}=-g(0)\log\tanh(L/2)$.
+Collecting constants,
+\[
+\frac1{2\pi}\int\hat g\,\mathrm{Re}\,\psi
+=-\frac{\Theta(0)}2\big[\gamma+\log(4\tanh\tfrac L2)\big]
+-\int_0^L\frac{e^{y/2}\Theta(y)-\Theta(0)}{e^{y}-e^{-y}}\,dy
+\;=\;A(f)+g(0)\log\pi,
+\]
+since $C_L=\gamma+\log(4\pi\tanh\tfrac L2)$ absorbs exactly the
+$-g(0)\log\pi$ of the explicit formula. (Numerical cross-check, public
+script \texttt{weil\_normalization\_check.py}: the pole identity holds
+to $12$ digits; the archimedean identity to $3\times10^{-6}$ at control
+height $T=400$ and $2\times10^{-7}$ at $T=1600$, the residual being the
+control integral's own $O(1/T)$ tail.)
+\end{proof}
+
+\begin{lemma}[Dirichlet case]
+For $\chi_3$ (odd, conductor $3$), with $s_0=\tfrac34$ and the completed
+$L$-function $(3/\pi)^{(s+1)/2}\Gamma(\tfrac{s+1}2)L(s,\chi_3)$, the
+implemented archimedean form
+\[
+A_{\chi}(f)=\frac{\Theta(0)}2\,C^{(3)}
++\int_0^L e^{-2s_0y}\,
+\frac{\Theta(0)e^{-(2-2s_0)y}-\Theta(y)}{1-e^{-2y}}\,dy,
+\qquad C^{(3)}=\log\tfrac3\pi-\gamma-\log(1-e^{-2L}),
+\]
+equals $\frac1{2\pi}\int\hat g(t)\big[\mathrm{Re}\,
+\psi(s_0+\tfrac{it}2)+\log\tfrac3\pi\big]dt$ exactly.
+\end{lemma}
+\begin{proof}
+As before, the $\psi$-series and the Fourier pair (now $a=k+s_0$) give
+\[
+\frac1{2\pi}\!\int\!\hat g\,\mathrm{Re}\,\psi(s_0+\tfrac{it}2)
+=-\gamma g(0)+\sum_{k\ge0}\Big[\frac{g(0)}{k+1}
+-\int g(x)e^{-2(k+s_0)|x|}dx\Big]
+=-\gamma g(0)+\int_0^\infty
+\frac{\Theta(0)e^{-2y}-\Theta(y)e^{-2s_0y}}{1-e^{-2y}}\,dy,
+\]
+using $\tfrac1{k+1}=\int_0^\infty2e^{-2(k+1)y}dy$ and two geometric
+sums. Here no $e^{-2y}\!\to\!e^{-y}$ substitution is made, so no
+$\log2$ appears; truncating at $L$ (licit: $\Theta$ vanishes there)
+leaves only the $\Theta(0)$-tail
+$\Theta(0)\int_L^\infty\frac{e^{-2y}}{1-e^{-2y}}dy
+=-\tfrac{\Theta(0)}2\log(1-e^{-2L})$. Adding the conductor term
+$g(0)\log\tfrac3\pi$ reconstitutes $C^{(3)}$ and the integrand
+$e^{-2s_0y}(\Theta(0)e^{-(2-2s_0)y}-\Theta(y))/(1-e^{-2y})$
+exactly as implemented (note $e^{-2s_0y}e^{-(2-2s_0)y}=e^{-2y}$). The
+even case ($s_0=\tfrac14$) is identical. In particular the truncation
+constant $-\log(1-e^{-2L})$, like $\log\tanh(L/2)$ in the $\zeta$
+case, is not a convention but the exact tail of the window.
+\end{proof}
+
+\begin{thebibliography}{9}\small
+\bibitem{W} A.~Weil, \emph{Sur les ``formules explicites'' de la th\'eorie
+des nombres premiers}, Comm.\ S\'em.\ Math.\ Lund (1952).
+\bibitem{B} E.~Bombieri, \emph{Remarks on Weil's quadratic functional in
+the theory of prime numbers}, Rend.\ Mat.\ Acc.\ Lincei (2000).
+\bibitem{CC} A.~Connes, C.~Consani, \emph{Spectral triples and
+$\zeta$-cycles}, L'Enseign.\ Math.\ 69 (2023).
+\bibitem{Arb} F.~Johansson, \emph{Arb: efficient arbitrary-precision
+midpoint-radius interval arithmetic}, IEEE Trans.\ Comput.\ 66 (2017).
+\bibitem{S26} M.~Suzuki, \emph{Weil's quadratic form via the screw
+function}, arXiv:2606.09096 (2026).
+\bibitem{Snote} D.~Joubert, \emph{A numerical study of the
+function-level convergence in Suzuki's conjecture on Weil's quadratic
+form}, companion note, same repository (2026).
+\bibitem{LabNB} D.~Joubert, \emph{Le milieu des nombres premiers}, lab
+notebook, same repository (2026).
+\end{thebibliography}
+\end{document}

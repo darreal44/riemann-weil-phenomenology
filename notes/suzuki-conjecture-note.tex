@@ -1,0 +1,293 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+
+\title{\bfseries A numerical study of the function-level convergence in Suzuki's
+conjecture on Weil's quadratic form:\\ the normalization constant is $\lVert\Phi\rVert_{L^2}$}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland}
+\date{August 30, 2026}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\norm}[1]{\lVert #1\rVert}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+We report a numerical study of Conjecture~1.2 of Suzuki
+(\emph{Weil's quadratic form via the screw function}, arXiv:2606.09096),
+carried out in the semi-local framework of Connes--Consani. The
+$L^2$-normalized ground state $v_a$ of the truncated Weil form on
+$[-a,a]$, computed from primes alone, converges in $L^2$ to
+$\Phi/\norm{\Phi}$, where $\Phi$ is the inverse Fourier transform of
+$\xi(1/2+iz)$: the overlap is $0.99964$ at $\mu:=e^{2a}=11$, with
+$L^2$ deficit $\approx(\text{sup-norm residual})^2/2$ at every scale
+tested. This identifies the normalization constant of the conjecture:
+$c_a\to\norm{\Phi}_{L^2(\R)}=1.130932026\ldots$ Uniform convergence ---
+the statement of Conjecture~1.2 \emph{as written} --- is much slower and
+is still at the few-percent level at these scales: the maximum relative
+residual follows $\approx\frac{1}{3}e^{-2a}$ and concentrates in the
+zero-free band $[0,\gamma_1)$, while the \emph{zeros} of
+$\widehat{v_a}$ converge superexponentially (Connes; Groskin). The identification extends
+parameter-free to the five real primitive Dirichlet characters of
+conductor $\le 8$, with exact theta kernels, to $\le 4\times10^{-4}$.
+For these pole-free forms we also find a strikingly linear depth law
+$-\ln\lambda_{\min}=s(\chi)\cdot\mu$, with $s$ increasing with
+$\gamma_1$ and a clear parity signature. These are measurements with
+stated error bars, not theorems; all code and a full lab notebook are
+public.
+\end{abstract}
+
+\section{Setting and conventions}
+
+We follow Suzuki's normalization $\xi(s)=s(s-1)\pi^{-s/2}\Gamma(s/2)\zeta(s)$
+and write $\Xi(z)=\xi(\tfrac12+iz)$, so that $\Xi$ is real, even, with
+$\Xi(0)\approx0.9943$. Test functions live on the window $[-a,a]$,
+$L:=2a$, $\mu:=e^{L}$; the semi-local Weil quadratic form $Q_W$ contains
+the pole, archimedean and prime terms with primes $p^k\le\mu$
+(Connes--Consani, arXiv:2106.01715, \S2). Matrices are assembled in the
+even real Fourier basis of that paper, using its closed convolution
+table (Lemma~2.6) and the $\psi^{\#}$ decomposition; an overall factor
+$\tfrac12$ in our $\sigma=\tfrac12 Q_W$ is irrelevant for eigenvectors.
+Quadratic forms are diagonalized in multiprecision (\texttt{mpmath},
+40--130 digits) with composite Gauss--Legendre quadrature whose nodes
+are Newton-refined in multiprecision. The ground state $v_a$ is the
+$L^2(dx)$-normalized eigenvector of the smallest eigenvalue
+$\lambda_{\min}$; its transform is $\widehat{v_a}(z)=\int v_a(x)e^{izx}dx$.
+Following the conjecture we form $c_a:=\Xi(0)/\widehat{v_a}(0)$ and
+compare $c_a\widehat{v_a}$ with $\Xi$.
+
+\section{Result 1: two-speed convergence and the constant ($\zeta$)}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{cccccc}
+\toprule
+$\mu$ & $\lambda_{\min}$ & sup-residual (IR, $N$-extrap.) & $c_a$ ($z{=}0$) \\
+\midrule
+3.5 & $3.3\times10^{-10}$ & $\approx11.3\%$ & 1.2173 \\
+5.5 & $4.8\times10^{-20}$ & $\approx6.6\%$  & 1.180 \\
+7.5 & $9.3\times10^{-30}$ & $\approx4.7\%$  & 1.1648 \\
+9.5 & $4.1\times10^{-38}$ & $\approx3.4\%$  & 1.1553 \\
+11  & $3.6\times10^{-48}$ & $3.0\%$         & 1.1533 \\
+16  & $8.0\times10^{-68}$ & $\approx2.2\pm0.4\%$ & $\approx1.147$ \\
+\bottomrule
+\end{tabular}
+\caption{\small Ground state of the $\zeta$ form. Sup-residual
+$=\max_{z<13}|c_a\widehat{v_a}-\Xi|/\max|\Xi|$, extrapolated in basis
+size $N$ (residuals converge \emph{from below} in $N$; small bases
+flatter the test). At $\mu=11$, $N=47$, our
+$\lambda_{\min}=3.58\times10^{-48}$ approaches the published
+Connes--Consani value $2.389\times10^{-48}$ from above, as Galerkin
+must.}
+\end{table}
+
+\noindent\textbf{(a) Uniform convergence is slow and infrared-limited.}
+The $N$-extrapolated sup-norm residual obeys
+\[
+R(\mu)\;\approx\;\tfrac13\,\mu^{-1}\;=\;\tfrac13\,e^{-L}
+\qquad(0.33/5.5=6.0\%,\ 0.33/11=3.0\%,\ 0.33/16=2.1\%),
+\]
+and at every $\mu$ it concentrates in the zero-free band $[0,\gamma_1)$:
+the residual there is $30$--$40\times$ larger than between zeros. The
+$\Gamma$-bulge of $\Xi$ below $\gamma_1=14.13$ is the slowest-learned
+feature --- the spectral measure lives on the zeros, and off its support
+the constraint is soft. By contrast the \emph{zeros} of
+$\widehat{v_a}$ converge superexponentially at the same cutoffs
+(Connes arXiv:2602.04022 \S6; Groskin arXiv:2605.20224).
+
+\medskip
+\noindent\textbf{(b) $L^2$ convergence is fast and identifies the constant.}
+Let $\Phi_c(u)=\sum_{n\ge1}(2\pi^2n^4e^{9u/2}-3\pi n^2e^{5u/2})
+e^{-\pi n^2e^{2u}}$ be the classical Riemann theta kernel. We verify
+numerically $\int_\R \Phi_c(u)e^{izu}du=\tfrac12\,\xi_{\mathrm{cl}}
+(\tfrac12+iz)$ (ratio $0.500$ flat in $z$), so in Suzuki's convention
+$\Xi(z)=\int\Phi\,e^{izu}du$ with $\Phi=4\Phi_c$ and
+\[
+\norm{\Phi}_{L^2(\R)}=1.130932026\ldots
+\]
+The measured overlap $\langle v_a,\Phi\rangle/\norm{\Phi}$ is
+$0.99964$ at $\mu=11$: no mass escapes to high frequencies, i.e.\
+$v_a\to\Phi/\norm{\Phi}$ in $L^2$, hence $c_a\to\norm{\Phi}$. The
+$L^2$ deficit matches $(\text{sup-residual})^2/2$
+($3.6\times10^{-4}$ vs.\ $4.5\times10^{-4}$ at $\mu=11$). The
+pointwise estimator $c_a=\Xi(0)/\widehat{v_a}(0)$ inherits the local
+infrared error ($1.131\times1.02\approx1.153$ at $\mu=11$, and its
+drift fits $c_\infty+0.32/\mu$ --- the same $e^{-L}$ law), while the
+projection estimator $\norm{\Phi}^2/\langle v_a,\Phi\rangle$ converges
+quadratically: $1.13134$ already at $\mu=11$, within $4\times10^{-4}$
+of $\norm{\Phi}$ and $3\times10^{-3}$ away from the numerological
+candidate $2/\sqrt{\pi}=1.12838$, which is thereby excluded.
+
+\medskip
+Conjecture~1.2 thus splits numerically into a fast $L^2$ statement ---
+our reformulation, verified to $4\times10^{-4}$ at $\mu=11$ with its
+constant identified --- and the uniform statement \emph{as the
+conjecture is written}, which at these scales still carries a
+few-percent residual governed by the infrared bulge at rate $e^{-L}/3$.
+We stress the distinction: nothing here verifies (1.2) at
+$4\times10^{-4}$; that figure belongs to the $L^2$ version only, and
+the infrared bulge will not yield before much larger $\mu$ (a $0.1\%$
+uniform residual would require $\mu\approx330$).
+
+\section{Result 2: the identification holds across the Dirichlet family}
+
+For a real primitive character $\chi$ mod $q$ the (pole-free) form is
+built the same way, with the archimedean term evaluated through a
+Frullani representation of $\mathrm{Re}\,\psi(\tfrac14+\tfrac{\mathfrak a}2
++\tfrac{it}2)$ closed on $[0,L]$ (validated against the $\zeta$
+pipeline to ten digits; the finite-$T$ archimedean artifact of the
+literature is structurally absent). The exact theta kernels
+\[
+\Phi_\chi(u)=2e^{u/2}\!\!\sum_{n\ge1}\chi(n)e^{-\pi n^2e^{2u}/q}
+\ \ (\chi\ \text{even}),\qquad
+\Phi_\chi(u)=2e^{3u/2}\!\!\sum_{n\ge1}\chi(n)\,n\,e^{-\pi n^2e^{2u}/q}
+\ \ (\chi\ \text{odd})
+\]
+satisfy $\int\Phi_\chi e^{izu}du=\Lambda(\tfrac12+iz,\chi)$ with ratio
+$1.000$ flat in $z$. Projection estimates of $c(\chi)$ at $\mu=16$:
+
+\begin{table}[h]\centering\small
+\begin{tabular}{ccccccc}
+\toprule
+$\chi$ & $q$ & parity & $\gamma_1$ & $c_{\mathrm{proj}}(\mu{=}16)$ &
+$\norm{\Phi_\chi}$ (exact) & difference \\
+\midrule
+$\chi_3$ & 3 & odd  & 8.04 & 0.51558$^{*}$ & 0.515314044 & $2.7\times10^{-4}$ \\
+$\chi_4$ & 4 & odd  & 6.02 & 0.815977 & 0.815799088 & $1.8\times10^{-4}$ \\
+$\chi_5$ & 5 & even & 6.65 & 0.787253 & 0.786984626 & $2.7\times10^{-4}$ \\
+$\chi_7$ & 7 & odd  & 4.48 & 1.876290 & 1.875696997 & $3.2\times10^{-4}$ \\
+$\chi_8$ & 8 & even & 4.90 & 1.283030 & 1.282526197 & $4.0\times10^{-4}$ \\
+\bottomrule
+\end{tabular}
+\caption{\small Parameter-free confirmation of $c_\infty(\chi)=
+\norm{\Phi_\chi}$ ($^{*}$: at $\mu=11$). The residual differences are
+the finite-$\mu$ deficit and shrink quadratically: for $\chi_4$,
+$4.05\times10^{-4}\to1.78\times10^{-4}$ from $\mu=11$ to $16$, ratio
+$2.28$ vs.\ $(16/11)^2=2.12$.}
+\end{table}
+
+\section{Result 3: a linear depth law with a parity signature}
+
+For the pole-free forms, $-\ln\lambda_{\min}=s(\chi)\cdot\mu$ with
+striking linearity (segments $5.5\!\to\!11\!\to\!16$; basis-converged,
+$\lambda_{\min}$ shifts $\le2.4\%$ under matched bases):
+
+\begin{center}\small
+\begin{tabular}{lcccccc}
+\toprule
+ & $\chi_8$ & $\chi_7$ & $\chi_5$ & $\chi_4$ & $\chi_3$ & $\zeta$ \\
+\midrule
+$\gamma_1$ & 4.90 & 4.48 & 6.65 & 6.02 & 8.04 & 14.13 \\
+$s$ & $1.47\pm.05$ & $1.58\pm.05$ & $2.41\pm.04$ & $2.93\pm.04$ &
+$4.00\pm.07$ & $\approx10$ (nonlinear) \\
+shape const.\ $C$ & 0.53 & 0.43 & 0.50 & 0.39 & 0.41 & 0.33 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\smallskip\noindent
+The depth $s$ grows with the width $\gamma_1$ of the zero-free
+infrared desert: the quasi-radical digs where a test function can
+concentrate its spectrum unconstrained, and the pole of $\zeta$ acts by
+pushing $\gamma_1$ to $14.13$ (its ladder, $\approx10\mu$ but nonlinear
+over our range with matched bases, is consistent with the
+Connes--Consani asymptotics). Parity marks both observables in opposite
+directions: odd characters dive faster than even ones at comparable
+$\gamma_1$ ($\chi_4>\chi_5$ and $\chi_7>\chi_8$, two concordant
+inversions), while even characters carry the larger constant $C$ of the
+shape law $R\approx C\,e^{-L}$ ($C\approx0.50$--$0.53$ even,
+$0.39$--$0.43$ odd, $0.33$ for $\zeta$). The naive candidate
+$s=\gamma_1^2/(2\pi e)$ is falsified by $\chi_4$ ($2.93$ measured vs.\
+$2.12$; robust across three cutoffs). The exact form of
+$s(\gamma_1,\text{parity})$ is open. We note that this baseline is the
+prerequisite for a ``Landau--Siegel seismograph'': an exceptional zero
+contributes a real, pole-like term to the explicit formula, so a real
+even character whose ladder is anomalously deep \emph{for its
+$(\gamma_1,\text{parity})$} would be flagged.
+
+\section{Methods, validation anchors, artifact taxonomy}
+
+Every pipeline is validated against independent anchors: the pole term
+against the closed form $32\sinh^2(L/4)/L$; the archimedean term
+against its spectral definition $Q_\infty=\int|\hat f|^2\,
+\frac{2\theta'(t)}{2\pi}dt$ and against the coefficient $2.00963$ of
+Connes--Consani (their Fig.~4 value at $L=\log2$); full matrices
+against the zero side of the explicit formula ($280$ zeros of $\zeta$,
+$40$--$70$ zeros per $L(s,\chi)$, computed independently; $\Lambda$
+real on the critical line to $10^{-31}$); and
+$\lambda_{\min}(\mu{=}11)$ against the published
+$2.389\times10^{-48}$. Six artifact families were identified and
+neutralized along the way, and are documented in the repository:
+float64 eigenvalues producing fake positivity violations below
+$10^{-15}\norm{K}$; sieve truncation creating off-line pseudo-zeros;
+the finite archimedean cutoff $T$ (Groskin's diagnosis; absent here by
+construction); float64 quadrature \emph{nodes} flooring entire matrices
+at $10^{-16}$; splitting smooth integrands into near-divergent halves;
+and the two-limit protocol (shape residuals converge from below in
+basis size, so one must extrapolate in $N$ before fitting in $\mu$).
+
+\section{Discussion}
+
+The contrast between superexponential zero convergence and
+$e^{-L}$ shape convergence is, we believe, the informative fact: the
+quadratic form pins its ground state on the zeros with prolate-scale
+violence, but learns the shape of $\Xi$ between them only at one
+$e$-fold per unit of window --- and slowest of all in the zero-free
+infrared. Open questions we would value expert views on: (i) is the
+$L^2$ formulation $v_a\to\Phi/\norm{\Phi}$, with constant
+$\norm{\Phi}$, already known or provable by current methods? (ii) what
+is $s(\gamma_1,\text{parity})$? (iii) does the generic pre-plunge
+closure rate of the band-limited form ($\approx0.41$ per degree of
+freedom, measured robustly) have a prolate-theoretic derivation?
+
+\subsection*{Verification status}
+
+Two tiers should be distinguished. \emph{Re-derivable directly by the
+reader} (one-line quadratures of the explicit theta kernels, no pipeline
+needed): the Fourier identity $\widehat{\Phi_c}=\tfrac12\xi_{\mathrm{cl}}
+(\tfrac12+iz)$ (ratio $0.500$, flat in $z$), the factor
+$\Phi=4\Phi_c$, the norm $\norm{\Phi}_{L^2}=1.130932026\ldots$, the
+five Dirichlet norms $\norm{\Phi_\chi}$ of Table~1, and the internal
+consistency of the conventions once $\xi_{\mathrm{cl}}$ is fixed.
+\emph{Author's measurements} (public pipeline, multiprecision, replayable
+from the repository but not re-derivable by hand): the overlap
+$0.99964$, the projection estimators $c_{\mathrm{proj}}$ of Table~1,
+and the depth slopes $s(\chi)$. Independent replay of the second tier
+is invited and takes minutes per entry.
+
+\subsection*{Reproducibility}
+
+All code (\texttt{mpmath}/\texttt{numpy} only), zero caches, the full
+lab notebook, and per-figure commands with runtimes:
+\begin{center}
+\url{https://github.com/darreal44/riemann-weil-phenomenology}
+\end{center}
+
+\subsection*{Acknowledgments}
+
+Computations and analysis were carried out with the assistance of
+Claude (Anthropic). All claims, and all remaining errors, are the
+author's.
+
+\begin{thebibliography}{9}\small
+\bibitem{S26} M.~Suzuki, \emph{Weil's quadratic form via the screw
+function}, arXiv:2606.09096 (2026).
+\bibitem{CC21} A.~Connes, C.~Consani, \emph{Spectral triples and
+$\zeta$-cycles}, L'Enseign.\ Math.\ 69 (2023); arXiv:2106.01715.
+\bibitem{CCM25} A.~Connes, C.~Consani, H.~Moscovici, \emph{Zeta
+spectral triples}, arXiv:2511.22755 (2025).
+\bibitem{CvS25} A.~Connes, W.~van Suijlekom, \emph{Quadratic forms,
+real zeros and echoes of the spectral action}, arXiv:2511.23257 (2025).
+\bibitem{C26} A.~Connes, \emph{The Riemann hypothesis: past, present
+and a letter through time}, arXiv:2602.04022 (2026).
+\bibitem{G26} A.~Groskin, \emph{High-precision approximation of
+Riemann zeros via the truncated Weil form}, arXiv:2605.20224 (2026).
+\bibitem{SP61} D.~Slepian, H.~Pollak, \emph{Prolate spheroidal wave
+functions...}, Bell Syst.\ Tech.\ J.\ 40 (1961).
+\end{thebibliography}
+
+\end{document}

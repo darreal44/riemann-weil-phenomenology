@@ -1,3 +1,5 @@
+import os as _os
+BASE = _os.path.dirname(_os.path.abspath(__file__))
 import mpmath as mp, pickle, time, sys, os
 import numpy as np
 import numpy.polynomial.legendre as NL

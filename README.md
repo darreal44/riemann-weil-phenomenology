@@ -1,6 +1,14 @@
 # Numerical phenomenology of the Weil positivity criterion
 
 
+## Tests
+
+```
+python3 tests/test_theta_endpoints.py   # identites de la table de correlation (App. A)
+python3 tests/test_cert_mu11.py         # coherence tables de certificats <-> temoins JSON
+python3 code/quorum_general.py 11 46 22 zeta verify   # rejeu certifie complet (python-flint requis)
+```
+
 ## Documents
 
 - `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil
@@ -117,6 +125,8 @@ ladder — a razor's-edge landing at every µ. Depth is not decomposable into
 per-prime contributions; ladder *architecture* (which prime sits on which rung)
 and ladder *existence* (the quorum) are distinct questions, and the second one
 carries the content of RH.
+
+*(Status split: everything in points 1-4 is measurement with stated error bars, not theorems; point 5 is a theorem --- about the explicitly defined forms Q_S, machine-certified --- and asserts nothing about RH.)*
 
 **5. A certified theorem (draft).** Using ball arithmetic (Arb via
 python-flint), the quorum is now *certified*: every proper sub-Euler product

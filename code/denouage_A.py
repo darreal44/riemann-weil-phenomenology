@@ -24,7 +24,7 @@ for t in [0, 3, 7, 12]:
     xc = xi_classique(t)
     print(f"  t={t:2d} : int Phi_c e^(itu) du = {mp.nstr(I,8)}   xi_cl(1/2+it) = {mp.nstr(xc,8)}   ratio = {mp.nstr(I/xc,6)}")
 
-# 2) norme L2 du noyau correspondant a la convention Suzuki (Xi_S = 2 Xi_cl -> Phi_S = 2 Phi_c)
+# 2) norme L2 du noyau en convention Suzuki : Xi_S = 2 Xi_cl ET Xi(z) = int Phi e^{izu} du => Phi = 4 Phi_c (facteur epingle, rapport §12)
 n2 = 2*mp.quad(lambda u: (2*Phi_c(u))**2, [0, 0.5, 1, 1.6])
 print(f"\n||Phi_S||_L2(R) = {mp.nstr(mp.sqrt(n2),8)}    (prediction naive pour c_infini si v_a -> Phi/||Phi|| en L2)")
 
