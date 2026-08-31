@@ -1,5 +1,21 @@
 # Numerical phenomenology of the Weil positivity criterion
 
+
+## Documents
+
+- `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil
+  positivity on a fixed window: certified witnesses* (5 pp.). The certified
+  quorum theorem: statement, ball-arithmetic certification, full derivations
+  of the correlation table (App. A) and of the exact Weil–Bombieri
+  normalization for ζ and Dirichlet (App. B). Its 340 witnesses, certificate
+  tables and engines live in `code/`.
+- `notes/suzuki-conjecture-note.pdf` — companion note (4 pp.): the numerical
+  study of Suzuki's Conjecture 1.2, identification of the constant as
+  ‖Φ‖_{L²}, the L²/uniform split, and the Dirichlet extension.
+- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1600+
+  lines, 75 journal steps): every measurement, every artifact caught, every
+  hypothesis executed.
+
 Independent numerical exploration of the truncated Weil quadratic form — the object
 behind the recent Connes–Consani(–Moscovici), Connes–van Suijlekom, Suzuki and Groskin
 line of work on the Riemann Hypothesis. Everything here is **measurement**, not proof:
