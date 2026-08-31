@@ -78,8 +78,16 @@ be the signature of the integer lattice (continuum mechanisms cap at log µ).
 Surgical experiments (removing prime 2, or the pole, from ζ's form) reveal that
 explicit-formula consistency is load-bearing: prime removal collapses positivity
 by O(1) in six directions; pole removal collapses exactly one direction by
-−6.49 ≈ −32sinh²(L/4)/L (match to 0.3%) — motivating a "radical spectroscopy"
-program.
+−6.49 ≈ −32sinh²(L/4)/L (match to 0.3%). Radical *spectroscopy* — projecting
+each component form (pole, archimedean, one tower per prime) onto the bottom
+eigenstates — then yields the microscopic law: **rung k of the quasi-null ladder
+recruits the (k+1)-th χ-supported prime**, in order, with the next prime
+whispering one rung before its turn and tower signs modulated by χ(p) (for χ₃,
+where χ(2) = −1, the 2-tower *supports* the ground state). The 2-tower is O(1)
+on every rung — explaining the six-direction collapse — and µ-linearity of the
+depth is reframed as the prime number theorem seen from the radical: each new
+prime power p^k ≤ µ reinforces the rungs that recruited p, and the Λ-weighted
+count of prime powers is ψ(µ) ≈ µ.
 
 ## Reproduce
 
