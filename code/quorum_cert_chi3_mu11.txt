@@ -1,0 +1,10 @@
+# chi3, mu=11, NB=40, ctx.dps=22 ; rayon max des entrees certifiees = 8.200e-11 ; rayon max des quotients = 3.676e-11
+# borne = mid + rad du quotient de Rayleigh certifie (Arb) ; temoins : witnesses_chi3_mu11.json (dyadiques exacts)
+[] : -0.705728  (rayon 9.59e-12)
+[2] : -0.393462  (rayon 1.93e-11)
+[5] : -0.522237  (rayon 8.11e-12)
+[7] : -0.916736  (rayon 1.15e-11)
+[2, 5] : -0.106499  (rayon 3.68e-11)
+[2, 7] : -0.677285  (rayon 2.62e-11)
+[5, 7] : -0.544476  (rayon 1.02e-11)
+[2, 5, 7] : +0.000000  (rayon 8.71e-12)

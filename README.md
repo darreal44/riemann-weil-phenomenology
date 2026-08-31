@@ -102,6 +102,24 @@ per-prime contributions; ladder *architecture* (which prime sits on which rung)
 and ladder *existence* (the quorum) are distinct questions, and the second one
 carries the content of RH.
 
+**5. A certified theorem (draft).** Using ball arithmetic (Arb via
+python-flint), the quorum is now *certified*: every proper sub-Euler product
+of the windowed Weil form admits an explicit negative witness — exhaustively
+at µ = 11 (15/15 proper subsets), µ = 16 (63/63), µ = 22 (255/255), and for
+χ₃ at µ = 11 (7/7, no pole: the phenomenon belongs to the Euler product, not
+to ζ's pole). 340 certified violations, zero exceptions; the complete forms
+remain non-certifiable at +0.000000, as they must (their positivity is
+RH-adjacent and is not claimed). Engine: `code/quorum_general.py` (8–14 s per
+scale, `verify` mode replays the frozen dyadic witnesses in
+`code/witnesses_*.json`); certificate tables with per-line certified radii:
+`code/quorum_cert_*.txt`; the identification of the certified forms with the
+Weil–Bombieri pairing is independently checkable via
+`code/weil_normalization_check.py` (pole identity exact to 12 digits,
+archimedean identity against the direct ψ-integral); draft note:
+"Proper sub-Euler products violate Weil positivity on a fixed window:
+certified witnesses" (pending the author's hand-verification of the
+correlation-table appendix).
+
 ## Reproduce
 
 ```bash
