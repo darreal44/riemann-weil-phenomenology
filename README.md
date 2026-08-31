@@ -87,7 +87,15 @@ where χ(2) = −1, the 2-tower *supports* the ground state). The 2-tower is O(1
 on every rung — explaining the six-direction collapse — and µ-linearity of the
 depth is reframed as the prime number theorem seen from the radical: each new
 prime power p^k ≤ µ reinforces the rungs that recruited p, and the Λ-weighted
-count of prime powers is ψ(µ) ≈ µ.
+count of prime powers is ψ(µ) ≈ µ. Finally, a cumulative-sum experiment shows
+that **positivity is a quorum**: every partial Euler product inside the window
+has a *negative* smallest eigenvalue (the residual negatives being the exact
+echo of the off-line pseudo-zeros of sieve truncation), and adding the last
+interior prime makes the form land instantly on the complete 48-digit-deep
+ladder — a razor's-edge landing at every µ. Depth is not decomposable into
+per-prime contributions; ladder *architecture* (which prime sits on which rung)
+and ladder *existence* (the quorum) are distinct questions, and the second one
+carries the content of RH.
 
 ## Reproduce
 
