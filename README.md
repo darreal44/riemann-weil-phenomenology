@@ -1,5 +1,7 @@
 # Numerical phenomenology of the Weil positivity criterion
 
+[![DOI](https://zenodo.org/badge/1351526407.svg)](https://doi.org/10.5281/zenodo.22215278)
+
 
 ## Tests
 
