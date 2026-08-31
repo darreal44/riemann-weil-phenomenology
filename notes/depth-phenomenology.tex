@@ -1,0 +1,294 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\title{\bfseries Depth phenomenology of truncated Weil quadratic forms:\\ fifteen $L$-functions, one ladder}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland}
+\date{August 31, 2026 --- v2}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+For the semi-local Weil quadratic form on the window $[-\log\sqrt\mu,\log\sqrt\mu]$ (Connes--Consani framework), we measure the smallest
+eigenvalue $\lambda_{\min}(\mu)$ for $\zeta$ and fourteen of the seventeen real
+primitive Dirichlet characters of conductor $q\le24$, with matched,
+depth-adequate Galerkin bases up to $\mu=38$. Four structural facts
+emerge. (i) The depth obeys an \emph{affine law}
+$-\ln\lambda_{\min}=s\,\mu+b$ for the entire family, $\zeta$ included
+($s_\zeta=11.7\pm0.2$; the previously apparent bend was a basis
+artifact); linearity in $\mu$ is the signature of the integer lattice ---
+any continuum mechanism caps at $O(\log\mu)$. (ii) The drilling speeds
+$s$, spanning $0.46$ to $11.7$, are described at $\sim\!6\%$ by an
+empirical four-variable map in $(\gamma_1,\gamma_2-\gamma_1,D,
+\text{parity})$; the map survived two adversarial preregistered tests and
+failed a third ($\chi_{17}$, small first gap $\gamma_2-\gamma_1$), so it is presented as a
+map, not a law. Counting-type functionals are ruled out wholesale: the
+zero-counting deficit of the desert is quasi-universal
+($\approx0.5$ missing zero for every character), so \emph{depth is
+a bandwidth phenomenon in absolute frequencies, not a counting one}.
+(iii) The quasi-null ladders of all fifteen $L$-functions share one
+architecture: rung spacings collapse onto a single spacing-vs-level
+profile $\Delta(\ell)$ ($\pm12\%$, $\zeta$ indistinguishable from the
+characters at equal level); a dilated-Slepian reading of this profile was
+proposed and then dissolved by its own precision campaign. Radical
+spectroscopy reveals the microscopic organization: \emph{rung $k$
+recruits the $(k{+}1)$-th $\chi$-supported prime}, in order, with tower
+signs modulated by $\chi(p)$. (iv) Positivity itself is a \emph{quorum}
+of the Euler product: every proper sub-product violates it by $O(1)$
+while the complete product lands on the razor's edge ($\zeta$ at
+$\mu=11$: $3.58\times10^{-48}$ in our basis) --- certified
+computationally at fixed windows ($\mu=11,16,22$, and $\chi_3$ at
+$\mu=11$) in the companion paper, which also reduces the all-scales
+statement to two harmonic-analysis assertions. All claims here are
+measurements with stated error bars; every code path, zero cache and
+artifact is public.
+\end{abstract}
+
+\section{Setting}
+
+For $\mu=e^L$ and a real primitive character $\chi$ mod $q$ (or $\zeta$,
+$q=1$, with its pole term), the semi-local Weil form $Q_\chi$ acts on
+even test functions supported in $[-L/2,L/2]$: archimedean term in a
+closed Frullani representation on $[0,L]$ (so the finite-$T$ archimedean
+artifact of the literature is structurally absent), minus the
+$\chi$-signed prime sum over $p^k\le\mu$, plus, for $\zeta$, the pole
+term. The family was assembled incrementally during the campaign; the three
+odd characters of discriminant $-8,-20,-23$ were not computed and are
+the natural next out-of-sample tests (\S6). Matrices are assembled in
+the shifted-cosine basis with the exact
+correlation table (derived and certified in the companion paper
+\cite{Quorum}, App.~A--B: the form is \emph{exactly} Weil's pairing,
+$Q(f)=\sum_\gamma|\hat f(\gamma)|^2$, no normalization factor), and
+diagonalized in multiprecision (45--110 digits). Every matrix is
+validated against the zero side of the explicit formula (40--280 zeros
+per $L$-function, computed independently).
+
+Two systematic effects are
+controlled throughout, both documented in the lab notebook
+\cite{LabNB}: \emph{transients} (narrow-desert characters approach their
+asymptotic slope slowly, from below, so slopes at small cutoffs are
+lower bounds --- corrections up to $+18\%$), and \emph{basis depth
+demand} (an under-sized basis inflates $\lambda_{\min}$ by orders of
+magnitude and fakes a downward bend of deep ladders; $\zeta$'s apparent
+non-linearity was exactly this artifact, and its ladder is linear,
+$s_\zeta=11.7\pm0.2$, intercept $\approx-20$ --- reconciling the
+Connes--Consani $\sim\!10\mu$ heuristic, which is this affine law read at
+$\mu=11$).
+
+\section{The map}
+
+\begin{table}[h]\centering\small
+\begin{tabular}{lcccccc}
+\toprule
+$\chi$ & $q$ & parity & $\gamma_1$ & $\gamma_2-\gamma_1$ & $D$ & $s$ \\
+\midrule
+$\chi_{24}^{\mathrm{o}}$ & 24 & odd  & 1.977 & 2.746 & 3.174 & $0.46\pm0.02$ \\
+$\chi_{24}^{\mathrm{e}}$ & 24 & even & 2.689 & 2.604 & 3.174 & $0.50\pm0.03$ \\
+$\chi_{19}$ & 19 & odd  & 1.516 & 3.961 & 0.876 & $0.58\pm0.03$ \\
+$\chi_{21}$ & 21 & even & 2.315 & 3.465 & 2.683 & $0.58\pm0.03$ \\
+$\chi_{17}$ & 17 & even & 3.728 & 1.907 & 0.907 & $0.71\pm0.05$ \\
+$\chi_{15}^{\,\dagger}$ & 15 & odd  & 3.057 & 2.286 & 2.802 & $\ge0.82$ (rising) \\
+$\chi_{13}$ & 13 & even & 3.119 & 4.112 & 0.984 & $0.95\pm0.04$ \\
+$\chi_{12}$ & 12 & even & 3.805 & 2.888 & 3.174 & $1.01\pm0.02$ \\
+$\chi_{11}$ & 11 & odd  & 2.477 & 4.323 & 1.035 & $1.07\pm0.04$ \\
+$\chi_{8}$  & 8  & even & 4.900 & 2.728 & 1.673 & $1.53\pm0.02$ \\
+$\chi_{7}$  & 7  & odd  & 4.476 & 2.370 & 1.183 & $1.70\pm0.05$ \\
+$\chi_{5}$  & 5  & even & 6.648 & 3.183 & 1.302 & $2.47\pm0.02$ \\
+$\chi_{4}$  & 4  & odd  & 6.021 & 4.223 & 1.673 & $3.04\pm0.02$ \\
+$\chi_{3}$  & 3  & odd  & 8.040 & 3.209 & 1.501 & $4.00\pm0.10$ \\
+$\zeta$     & 1  & (pole) & 14.135 & 6.887 & 0 & $11.7\pm0.2$ \\
+\bottomrule
+\end{tabular}
+\caption{\small Asymptotic slopes of $-\ln\lambda_{\min}=s\mu+b$,
+uniformized at $\mu=30$--$38$: $s$ is the secant slope over the two
+segments ending at $\mu\approx30$ and $\mu\approx38$, whose agreement
+($\pm2\%$ typical) is the stationarity criterion.
+$D=\sum_{p\mid q}\log p/(\sqrt p-1)$ is the prime mass removed from
+the window by the conductor. Intercepts $b$ are not yet uniformized
+across the family ($b_\zeta\approx-20$) and are omitted.
+$\dagger$~$\chi_{15}$ is still transient at $\mu=38$: its lower bound
+is excluded from the asymptotic slopes and from the fit, and its
+settling scale is not yet bracketed.}
+\end{table}
+
+The empirical description. \emph{Protocol}: the training set is the
+twelve characters of Table~1 minus the two final preregistered tests
+($\chi_{21}$, $\chi_{17}$); $\chi_{19}$ was itself a preregistered
+test of an earlier round, then absorbed; $\chi_{15}$ enters with its
+transient-corrected estimate; $\zeta$ is outside the map (pole;
+anomaly ratio $\rho\approx1.3$ against the even baseline). On these
+twelve points,
+\[
+\ln s \;=\; 1.32\,\ln\gamma_1 \;+\; 0.45\,\ln(\gamma_2-\gamma_1)
+\;-\;0.13\,D\;+\;0.28\,[\text{odd}]\;-\;1.95,
+\]
+RMS $6.1\%$, leave-one-out median $4.8\%$. Its stress record, all
+preregistered: $\gamma_1$ alone and ``prime conductors stay high'' were
+\emph{killed} by $\chi_{19}$ ($\gamma_1=1.516$, the narrowest desert,
+predicted $0.28$ resp.\ $\approx0.9$, measured $0.58$); the twin pair
+mod $24$ (equal removed primes, opposite parities) established the
+arithmetic-density variable against $\gamma_1$ (decisive pair
+$\chi_{11}$ vs $\chi_{24}^{\mathrm e}$: nearly equal $\gamma_1$, slopes
+$1.07$ vs $0.50$) --- and the anti-transient campaign designed to test
+this contrast \emph{widened} it; $\chi_{21}$ landed at $+9\%$ of its
+preregistered prediction; $\chi_{17}$ missed by $-26\%$, exactly where
+the gap variable extrapolates below its fitted range
+($\gamma_2-\gamma_1=1.91$), and the refit on fourteen points moves the
+exponents ($0.45\to0.68$) --- parameter instability. Honest status:
+\emph{a map accurate to $\sim\!10\%$ with charted failure modes, not a
+closed law}.
+
+\section{Bandwidth, not counting}
+
+Every counting-type candidate for the ``single variable'' died, and the
+autopsy is the finding. The desert normalized by local zero spacing
+fails the decisive pair; the Laplace count $L(\tau)=\sum e^{-\gamma_k/\tau}$
+conflates density with landscape ($\zeta$ predicted at $39.6$ against
+$11.7$); and the \emph{vacancy} $V(\tau)=\int(\bar N_\chi-N_\chi)
+e^{-t/\tau}dt$ --- built from the exact $\Gamma$-phase smooth counting,
+whose calibration reproduced $c\approx0$ for all fourteen characters and
+$c=1.006$ for $\zeta$, the classical $+1$ --- turns out to be
+\emph{quasi-universal}: $V\in[-0.10,+0.05]$ across a family whose $s$
+spans a factor $25$. In counting units every desert holds the same
+$\approx\tfrac12$ missing zero, because the first zero sits where the
+smooth count reaches $\tfrac12$; there is nothing to read. The only
+non-trivial vacancy in the family is $\zeta$'s ($V=+0.401$: the pole's
+push, visible at last in a counting observable, yet useless to the
+model). Meanwhile the variables that work ($\gamma_1$,
+$\gamma_2-\gamma_1$) are \emph{absolute frequencies}: the ladder measures
+the room, in hertz, where a test function can hide its spectrum --- a
+Slepian time-bandwidth phenomenon, not a statistics of zeros.
+
+\section{One ladder, drilled at fifteen speeds}
+
+\paragraph{Linearity is the lattice.} Since the depth grows like
+$s\mu$, the effective concentration budget grows \emph{linearly} in
+$\mu$; but any mechanism carried by the continuum window --- prolates
+against a fixed band --- caps at $O(\gamma L)=O(\log\mu)$, and so does
+the Landau count of the desert over the multiplicative lattice. Linear
+depth requires each \emph{integer} of the window to contribute a bounded
+increment: the drilling is a discrete-lattice phenomenon (the
+Connes--Consani map $E$ is its embodiment), invisible to continuum
+analysis alone. A zeroth-order lattice estimate,
+$c_{\mathrm{eff}}\approx\gamma_1 N_\chi(\mu)/2\pi$, holds to a factor
+$1.9\pm0.9$ across the factor-$25$ family (an order-of-magnitude
+estimate, not a fit) --- right scale, wrong details; band and lattice do not factorize (the recurring $\chi_{17}$
+anomaly marks the coupling).
+
+\paragraph{The universal rung profile.} Across $33$ rungs of the fifteen
+quasi-null ladders, the spacing of a rung (in $-\ln\lambda$ units)
+depends only on its depth level $\ell$, not on the character: by level
+bands, $10.9\pm1.5$ on $[0,15)$, $13.5\pm1.5$ on $[15,40)$,
+$16.0\pm1.6$ on $[40,80)$, $16.0\pm2.1$ on $[80,150)$ --- $\zeta$'s
+rungs interleave indistinguishably with $\chi_3$'s and $\chi_4$'s at
+equal level; fitted profile $\Delta(\ell)\approx9.8+0.65\sqrt\ell$ (RMS
+$1.8$). A ``dilated Slepian'' reading, $\lambda_k\approx
+(1-\lambda_k^{\mathrm{Slepian}})^\kappa$ with $\kappa=2.85\pm0.26$, was
+proposed and then \emph{dissolved by its own precision campaign}:
+ten-rung ladders fit the Fuchs form beautifully per ladder, but the
+fitted exponent does not transfer ($3.5$--$5.4$ with $c$ free) --- the
+model has no well-defined $\kappa$, and ``$e$ or $3$?'' was ill-posed.
+What survives, model-free, is the $\Delta(\ell)$ collapse itself: the
+problem factorizes into a universal architecture (a harmonic-analysis
+target, blind to arithmetic) times one number per $L$-function, the
+drilling speed $s(\chi)$.
+
+\paragraph{The recruitment law.} Radical spectroscopy --- projecting each
+component form (pole, archimedean, one tower per prime) onto the bottom
+eigenstates --- reveals the organization: \emph{rung $k$ recruits the
+$(k{+}1)$-th $\chi$-supported prime, in order}, the next prime whispering
+at the $10^{-2}$ level one rung before its turn. For $\zeta$ the ground
+state is a pole/archimedean interferometer ($+1.502/-1.443$) trimmed by
+the $2$-tower alone ($-0.058$), all other primes dead to three decimals;
+for $\chi_3$ the same staircase runs $2,5,7,11,\dots$ ($3$ skipped,
+$\chi_3(3)=0$) with tower signs modulated by $\chi(p)$ --- where
+$\chi_3(2)=-1$, the $2$-tower \emph{supports} the ground state
+($+0.345$ against an archimedean $-0.347$): $\zeta$'s roles reversed.
+Since each new prime power $p^k\le\mu$ reinforces the rungs that
+recruited $p$, and the $\Lambda$-weighted count of prime powers is
+$\psi(\mu)\approx\mu$, the linearity of the drilling is the prime number
+theorem seen from the radical.
+
+\section{Positivity is a quorum}
+
+Recruitment describes the \emph{organization} of the completed form's
+ladder; its \emph{existence} is a different and sharper fact. Every
+partial Euler product inside the window has a negative smallest
+eigenvalue of order $1$ --- at $\mu=11$: $\lambda_{\min}$ from $-0.52$ to
+$-1.15$ over all $2^4-1$ proper subsets of $\{2,3,5,7\}$, the residual
+negatives being the radical-side face of the off-line pseudo-zeros of
+truncated Euler products --- and the moment the last interior prime
+joins, the form lands on the complete $48$-digit-deep ladder: a
+razor's-edge landing at every scale, with depth \emph{not decomposable}
+into per-prime contributions. This is now a certified theorem at fixed windows
+(\cite{Quorum}: $340$ proper sub-products violated, exhaustively at
+$\mu=11,16,22$ and for $\chi_3$ without pole, ball-arithmetic witnesses
+frozen in the repository; the all-scales quorum remains a conjecture), whose mechanism --- a prime cannot be
+diagonally silent on a rung while coupling to it from another without
+creating a negative direction --- reduces the general quorum to two
+harmonic-analysis assertions (diagonal silence before recruitment;
+survival of the coupling), neither mentioning RH. One consequence
+deserves emphasis: since the complete form sits at $e^{-s\mu}$ of zero,
+\emph{no inequality with slack can prove Weil positivity at these
+scales}; only an identity --- exhibiting the truncated form as the sum
+of squares it secretly is --- can. Measured, this is the sharpest
+explanation we know of why generic analytic approaches to RH fail: the
+margin they would need does not exist.
+
+\section{Open problems}
+
+Derive the universal profile $\Delta(\ell)$ (the surviving lemma
+candidate; pure harmonic analysis). Derive $s(\chi)$ (the coupling of
+window arithmetic to the drill; zeroth order $\gamma_1N_\chi/2\pi$,
+structure open). Prove the quorum at every scale via the
+silence/coupling reduction. And, for the seismograph program: with a
+$\sim\!10\%$ map, the anomaly statistic $\rho(\chi)=
+s_{\mathrm{meas}}/s_{\mathrm{map}}$ is calibrated ($\zeta$, the one
+member with a pole, registers $\rho\approx1.3$ against the even
+baseline); scanning real even characters at growing conductor is
+mechanical, the cost growing with the kernel width
+$\tfrac12\log(3q/\pi)$. (A Siegel zero is a \emph{real} zero, not a
+small $\gamma_1$: the statistic $\rho$, calibrated on the critical-line
+desert, would register an exceptional modulus through the map's failure,
+not as a narrow desert per se.) The three uncomputed odd characters
+($d=-8,-20,-23$) are the cheapest next tests; $\chi_{-23}$, odd with
+small $\gamma_1$ at nearly the cost of $\chi_{19}$, is worth more than
+any refinement of exponents.
+
+\section*{Reproducibility}
+Code, zero caches, certified artifacts, and the full lab notebook
+(seventy-eight journal steps, eight artifact families documented,
+fifteen preregistered hypothesis executions); repository state as of
+commit \texttt{9785235} (a tagged release will freeze the exact state):
+\begin{center}
+\url{https://github.com/darreal44/riemann-weil-phenomenology}
+\end{center}
+
+\subsection*{Acknowledgments}
+Computations and analysis were carried out with the assistance of Claude
+(Anthropic). All claims, and all remaining errors, are the author's.
+
+\begin{thebibliography}{9}\small
+\bibitem{S26} M.~Suzuki, \emph{Weil's quadratic form via the screw
+function}, arXiv:2606.09096 (2026).
+\bibitem{CC21} A.~Connes, C.~Consani, \emph{Spectral triples and
+$\zeta$-cycles}, L'Enseign.\ Math.\ 69 (2023).
+\bibitem{C26} A.~Connes, \emph{The Riemann hypothesis: past, present and
+a letter through time}, arXiv:2602.04022 (2026).
+\bibitem{G26} A.~Groskin, \emph{High-precision approximation of Riemann
+zeros via the truncated Weil form}, arXiv:2605.20224 (2026).
+\bibitem{Snote} D.~Joubert, \emph{A numerical study of the function-level
+convergence in Suzuki's conjecture on Weil's quadratic form}, companion
+note, same repository (2026).
+\bibitem{Quorum} D.~Joubert, \emph{Proper sub-Euler products violate
+Weil positivity on a fixed window: certified witnesses}, companion
+paper, same repository (2026).
+\bibitem{LabNB} D.~Joubert, \emph{Le milieu des nombres premiers}, lab
+notebook, same repository (2026).
+\end{thebibliography}
+\end{document}

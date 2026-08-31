@@ -20,6 +20,11 @@ python3 code/quorum_general.py 11 46 22 zeta verify   # rejeu certifie complet (
 - `notes/suzuki-conjecture-note.pdf` — companion note (4 pp.): the numerical
   study of Suzuki's Conjecture 1.2, identification of the constant as
   ‖Φ‖_{L²}, the L²/uniform split, and the Dirichlet extension.
+- `notes/depth-phenomenology.pdf` — *Depth phenomenology of truncated Weil
+  quadratic forms: fifteen L-functions, one ladder* (4 pp.): the affine depth
+  law and its map (with the full preregistered stress record), bandwidth vs
+  counting, the universal rung profile, the recruitment law, and the quorum
+  as phenomenon.
 - `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1600+
   lines, 75 journal steps): every measurement, every artifact caught, every
   hypothesis executed.
@@ -80,8 +85,7 @@ hypotheses; the twin pair mod 24 established the arithmetic-density variable;
 χ₂₁ landed at +9%; χ₁₇ missed by −26% exactly where the gap variable
 extrapolates below its fitted range, and the 14-point refit moves the exponents
 (0.45 → 0.68). Honest status: **a map at ~10% with charted failure modes, not a
-closed law** — details and protocol in notes/ (depth-phenomenology note, in
-preparation) and report §13–14.)
+closed law** — details and protocol in `notes/depth-phenomenology.pdf` and report §13–14.)
 
 The depth s grows with the width γ₁ of the zero-free infrared desert (ζ's pole pushes
 γ₁ to 14.13, hence its abyssal ~11.7µ ladder), with a clear **parity signature**: odd
