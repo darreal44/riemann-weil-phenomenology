@@ -14,6 +14,9 @@ CHARS = {
  'chi15': dict(q=15, tab=[0,1,1,0,1,0,0,-1,1,0,0,-1,0,-1,-1], a=1),
  'chi24o': dict(q=24, tab=[0,1,0,0,0,1,0,1,0,0,0,1,0,-1,0,0,0,-1,0,-1,0,0,0,-1], a=1),
  'chi19': dict(q=19, tab=[0,1,-1,-1,1,1,1,1,-1,1,-1,1,-1,-1,-1,-1,1,1,-1], a=1),
+ 'chi17': dict(q=17, tab=[0, 1, 1, -1, 1, -1, -1, -1, 1, 1, -1, -1, -1, 1, -1, 1, 1], a=0),
+ 'chi21': dict(q=21, tab=[0, 1, -1, 0, 1, 1, 0, 0, -1, 0, -1, -1, 0, -1, 0, 0, 1, 1, 0, -1, 1], a=0),
+ 'chi20': dict(q=20, tab=[0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, -1, 0, -1, 0, 0, 0, -1, 0, -1], a=1),
  'chi24e': dict(q=24, tab=[0,1,0,0,0,1,0,-1,0,0,0,-1,0,-1,0,0,0,-1,0,1,0,0,0,1], a=0),
 }
 
@@ -117,7 +120,7 @@ def run(name, mu, NB, dps, DEG=14):
         rats.append(float(S[a2,b2])/sum(np.trapezoid(th*np.cos(g*yg), yg) for g in zs))
 
     E, V = mp.eigsy(S)
-    lam = [E[i] for i in range(min(5, NB+1))]
+    lam = [E[i] for i in range(min(10, NB+1))]
     c = [V[i,0] for i in range(NB+1)]
     if c[0] < 0: c = [-u for u in c]
     def vhat(z):
@@ -156,7 +159,7 @@ def run(name, mu, NB, dps, DEG=14):
     nPhi = mp.sqrt(2*mp.fsum(wq[k]*P3[k]**2 for k in range(len(xq))))
     par = 'pair' if a==0 else 'impair'
     print(f"[{name} q={q} {par}] mu={float(mu)} : gamma_1={g1:.3f} | ratios {rats[0]:.3f},{rats[1]:.3f} | "
-          f"lam_min={mp.nstr(lam[0],3)} (echelle {[mp.nstr(l,2) for l in lam[1:4]]})")
+          f"lam_min={mp.nstr(lam[0],3)} (echelle {[mp.nstr(l,2) for l in lam[1:10]]})")
     print(f"    residu infra={float(infra/Xmax):.3f} mid={float(mil/Xmax):.4f} | c_z0={mp.nstr(ca,5)} "
           f"c_proj={mp.nstr(nPhi*nPhi/ovl,6)} ||Phi||={mp.nstr(nPhi,6)} ovl={mp.nstr(ovl/nPhi,6)} | {time.time()-t0:.0f}s", flush=True)
 

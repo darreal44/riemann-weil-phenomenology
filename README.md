@@ -70,10 +70,15 @@ four decades — with the Slepian plunge onset at J* = U·γ_max/2π + 1 (predic
 24.9, measured 26). Synthetic tests show the regime is arithmetic-blind (uniform
 grid ≡ true zeros) while Poisson frequencies are *more dangerous*: GUE rigidity
 maximizes the margin. The quasi-null ladders of all 15 L-functions share one
-architecture: rung spacings collapse onto a Slepian-shaped profile with a
-universal dilation κ = 2.85 ± 0.26 (e and 3 both candidates); the naive
-identification (1−λ_k)^κ at a single c fails its internal-consistency test, so
-the exact operator remains to be built. Linearity of −ln λ_min in µ is shown to
+architecture: rung spacings collapse onto a single spacing-vs-level profile
+Δ(ℓ) (±12%, ζ indistinguishable from the characters at equal level). A
+"dilated-Slepian" reading of that profile — (1−λ_k)^κ with κ ≈ 2.85 — was
+proposed and then dissolved by its own precision campaign: extended 10-rung
+ladders fit the Fuchs form beautifully per ladder, but the fitted exponent
+does not transfer (3.5–5.4 with c free), so the model has no well-defined κ
+and the "e or 3?" question was ill-posed. What survives, model-free, is the
+universal Δ(ℓ) collapse itself — the surviving lemma candidate for a pure
+harmonic-analysis proof. Linearity of −ln λ_min in µ is shown to
 be the signature of the integer lattice (continuum mechanisms cap at log µ).
 Surgical experiments (removing prime 2, or the pole, from ζ's form) reveal that
 explicit-formula consistency is load-bearing: prime removal collapses positivity
