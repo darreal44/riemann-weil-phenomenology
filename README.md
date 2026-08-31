@@ -69,17 +69,22 @@ quadratic approach to the exact norms (12 digits, closed form).
 | χ₅ | 5 | even | 6.65 | 2.47 ± 0.02 | ≈ 0.50 |
 | χ₄ | 4 | odd  | 6.02 | 3.04 ± 0.02 | ≈ 0.39 |
 | χ₃ | 3 | odd  | 8.04 | 4.00 ± 0.10 | ≈ 0.41 |
-| ζ  | 1 | (pole) | 14.13 | ≈ 10 (apparent bend is likely a basis artifact) | ≈ 0.33 |
+| ζ  | 1 | (pole) | 14.13 | 11.7 ± 0.2 (the apparent bend *was* a basis artifact; the ladder is linear, intercept ≈ −20) | ≈ 0.33 |
 
-(Slopes uniformized at µ = 30–38 with matched bases; the map now spans twelve
-characters of conductor ≤ 24 — see report §13.5–13.9 — with the consolidated
-three-variable law s ≈ 0.29·γ₁^1.28·e^(−0.20·D)·1.31^[odd] (D = removed prime
-mass Σ_{p|q} log p/(√p−1)), accurate to ~10% with 12% leave-one-out error.
-The out-of-sample test (χ₁₉) and the twin pair mod 24 both *strengthened* the
-arithmetic-density and parity effects.)
+(Slopes uniformized at µ = 30–38 with matched, depth-adequate bases; see report
+§13–14. Final state of the empirical map, four variables on the twelve-character
+training set: ln s = 1.32·ln γ₁ + 0.45·ln(γ₂−γ₁) − 0.13·D + 0.28·[odd] − 1.95
+(D = removed prime mass Σ_{p|q} log p/(√p−1)), RMS 6.1%, leave-one-out 4.8%.
+Preregistered stress record: χ₁₉ killed the γ₁-only and prime-conductor
+hypotheses; the twin pair mod 24 established the arithmetic-density variable;
+χ₂₁ landed at +9%; χ₁₇ missed by −26% exactly where the gap variable
+extrapolates below its fitted range, and the 14-point refit moves the exponents
+(0.45 → 0.68). Honest status: **a map at ~10% with charted failure modes, not a
+closed law** — details and protocol in notes/ (depth-phenomenology note, in
+preparation) and report §13–14.)
 
 The depth s grows with the width γ₁ of the zero-free infrared desert (ζ's pole pushes
-γ₁ to 14.13, hence its abyssal ~10µ ladder), with a clear **parity signature**: odd
+γ₁ to 14.13, hence its abyssal ~11.7µ ladder), with a clear **parity signature**: odd
 characters dive faster than even ones at comparable γ₁ (two concordant inversions),
 and even characters carry the larger shape constant C (C ≈ 0.50–0.53 even,
 0.39–0.43 odd, 0.33 for ζ; residual law R ≈ C·e^{−L} throughout). The exact form of
