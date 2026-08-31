@@ -63,12 +63,23 @@ s(γ₁, parity) is open; the naive candidate γ₁²/(2πe) is falsified by χ�
 baseline is the prerequisite for a "Landau–Siegel seismograph": an exceptional zero
 would make a ladder anomalously deep for its (γ₁, parity).
 
-Additional measurements (see report §9): the three positivity regimes of the
-band-limited form (generic closure at ≈ 0.41 per degree of freedom, Slepian plunge
-near the rank wall at up to ≈ 3/dim, measured down to 2.2×10⁻³⁶ in multiprecision),
-and the "whiteness protection" reading: GUE-decorrelated zeros make the kernel
-near-identity against generic test directions — only arithmetic-shaped directions
-threaten positivity.
+**4. A theory of the generic regime, and the ladder architecture** (report §14).
+The generic closure rate ("0.41/dim") is explained parameter-free by a
+*harvest-front* model — margin ≈ e^(−s²γ²_front), rate s²γ/ρ(γ), confirmed over
+four decades — with the Slepian plunge onset at J* = U·γ_max/2π + 1 (predicted
+24.9, measured 26). Synthetic tests show the regime is arithmetic-blind (uniform
+grid ≡ true zeros) while Poisson frequencies are *more dangerous*: GUE rigidity
+maximizes the margin. The quasi-null ladders of all 15 L-functions share one
+architecture: rung spacings collapse onto a Slepian-shaped profile with a
+universal dilation κ = 2.85 ± 0.26 (e and 3 both candidates); the naive
+identification (1−λ_k)^κ at a single c fails its internal-consistency test, so
+the exact operator remains to be built. Linearity of −ln λ_min in µ is shown to
+be the signature of the integer lattice (continuum mechanisms cap at log µ).
+Surgical experiments (removing prime 2, or the pole, from ζ's form) reveal that
+explicit-formula consistency is load-bearing: prime removal collapses positivity
+by O(1) in six directions; pole removal collapses exactly one direction by
+−6.49 ≈ −32sinh²(L/4)/L (match to 0.3%) — motivating a "radical spectroscopy"
+program.
 
 ## Reproduce
 
