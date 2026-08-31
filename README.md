@@ -117,8 +117,8 @@ Weil–Bombieri pairing is independently checkable via
 `code/weil_normalization_check.py` (pole identity exact to 12 digits,
 archimedean identity against the direct ψ-integral); draft note:
 "Proper sub-Euler products violate Weil positivity on a fixed window:
-certified witnesses" (pending the author's hand-verification of the
-correlation-table appendix).
+certified witnesses" (Appendix A verified; the pole/archimedean normalization is derived in
+Appendix B and independently checkable via `code/weil_normalization_check.py`).
 
 ## Reproduce
 

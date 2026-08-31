@@ -1,6 +1,6 @@
 # Certification Arb du quorum a mu=11 : 15 temoins de Rayleigh certifies negatifs.
 # Usage : python3 theoreme_quorum.py   (7 s ; requiert python-flint)
-# Statut : preuve calculee, redaction (phase 3) en attente — table theta a deriver en appendice.
+# Statut : raccourci mono-echelle (mu=11) ; le moteur de reference est quorum_general.py (mode verify, temoins geles).
 import numpy as np, time, itertools
 from flint import arb, acb, ctx
 ctx.dps = 22
