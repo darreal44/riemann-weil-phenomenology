@@ -87,136 +87,80 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 
 ## Main results
 
-**1. First numerical test of the *function-level* convergence in Suzuki's conjecture (1.2)**
-(arXiv:2606.09096), and identification of its normalization constant.
+Ordered as the living corpus in *Documents*: theorem first, then what the radical knows, then the floor and the mechanism, then the campaigns, then the other thread. Points 1–3 are theorems or certified computations about the explicitly defined forms (the conditional part is marked); points 4–5 are measurements. None of it bears on RH.
 
-Let v_a be the L²-normalized ground state of the semi-local Weil form on the window
-[−a, a] = [−L/2, L/2], built from primes only (Connes–Consani ζ-cycles basis,
-arXiv:2106.01715). Then, numerically:
+**1. The quorum theorem, both halves certified.** Using ball arithmetic (Arb via
+python-flint), every proper sub-Euler product of the windowed Weil form admits an
+explicit negative witness — exhaustively at µ = 11 (15/15 proper subsets), µ = 16
+(63/63), µ = 22 (255/255), and for χ₃ at µ = 11 (7/7, no pole: the phenomenon belongs
+to the Euler product, not to ζ's pole). 340 certified violations, zero exceptions
+(`code/quorum_general.py`, frozen dyadic witnesses `code/witnesses_*.json`, certificate
+tables `code/quorum_cert_*.txt`; the identification with the Weil–Bombieri pairing is
+independently checkable via `code/weil_normalization_check.py`). The other half: the
+*complete* form at µ = 11 is certified positive definite (`code/positivite_certifiee.py`:
+eigen-congruence + Gershgorin + Sylvester through condition number ~10⁴⁸; the critical
+row is the razor itself, λ_min = 3.58317×10⁻⁴⁸ ± 3×10⁻⁵⁴). Notes:
+`notes/quorum-theorem.pdf`, `notes/zeros-from-the-radical.pdf`. A finite-window
+certificate, not a claim about RH.
 
-- **v_a converges in L² to Φ/‖Φ‖**, where Φ is the inverse Fourier transform of
-  ξ(1/2+iz) — the classical Riemann theta kernel. Overlap 0.99964 at µ = e^L = 11;
-  L² deficit ≈ (sup-residual)²/2 at every µ tested (quadratic law).
-- Hence the normalization constant of (1.2) is **c_∞ = ‖Φ‖_{L²(ℝ)} = 1.130932026...**
-  (with ξ(s) = s(s−1)π^{−s/2}Γ(s/2)ζ(s), Suzuki's convention).
-- The **uniform (sup-norm) convergence is much slower**: max relative residual
-  ≈ e^{−L}/3, concentrated in the zero-free infrared band [0, γ₁) — while the *zeros*
-  of the ground-state transform converge superexponentially (Connes, Groskin).
-  The conjecture thus splits: L²-version fast (quadratic), uniform version slow,
-  bottlenecked by the Γ-bulge below the first zero.
+**2. What the radical knows: MUSIC, the Gram duality, the precision law.** If Q(v) = λ
+then |v̂(γ)| ≤ √(λ/2) at every zero: the low end of the spectrum is a rigorous MUSIC
+noise subspace, and `code/music_zeros.py` recovers the zeros of ζ to 10⁻¹⁹ from a 47×47
+matrix built from five primes, and γ₁(χ₃) to 4×10⁻⁵⁸ at µ = 38 (checked against a
+60-digit Hurwitz computation; the localization mechanism err = |v̂|/|v̂′| closes to three
+digits). Proposition A: the transforms of the bottom vector at the zeros are the bottom
+eigenvector of the zero Gram — the radical and the quasi-kernel of the zero Gram are the
+same object. Precision law err(γ₁) ≈ e^(−s(χ)µ), full depth — *the drilling speed is the
+per-digit cost of reading the first zero* — rooted in the endpoint law |v̂₀(γ₁)| ≈ C_γ λ₀
+(C_γ ∈ [7, 28] in the configurations measured): the radical's residual mass is expelled to
+the band edge (leakage spectrum |v̂₀(γ)| ≈ e^(−τ(ω_max−γ)), τ ≈ sµ/(2ω_max) to 6% on ζ).
+Note: `notes/zeros-from-the-radical.pdf`.
 
-**2. The same identification holds across the Dirichlet family, parameter-free.**
-For the five real primitive characters mod 3, 4, 5, 7, 8 (no pole term in the form):
-c_∞(χ) = ‖Φ_χ‖ with the exact theta kernels
-Φ_χ(u) = 2e^{u/2}·Σχ(n)e^{−πn²e^{2u}/q} (even χ) and 2e^{3u/2}·Σχ(n)·n·e^{−πn²e^{2u}/q} (odd χ).
-Projection estimates agree to ≤ 4×10⁻⁴ at µ = 16, six for six, with the predicted
-quadratic approach to the exact norms (12 digits, closed form).
+**3. The floor and the mechanism.** *(Under RH)* the infimum c_L of the truncated form
+over the whole window space is strictly positive — it is a sampling constant of the zero
+set for PW_{L/2}, positive by Beurling — and λ_min(N) decreases to it: saturation is
+visible at µ = 3 (c_log3 ≈ 5.55×10⁻⁸ from N = 9…61), a decelerating trend at µ = 11
+(3.59 → 1.86 → 1.54×10⁻⁴⁸ for N = 47, 57, 67). The depth law −ln c_L = s(χ)µ + b is
+thereby a *geometric* property of the zeros: −ln c_L ≈ 1.69·L(γ₁−2π/L)₊ +
+0.82·L·Σ(gap−2π/L)₊, the two coefficients fitted on four scales of ζ alone, predicts s(χ)
+out of sample with median ratio 0.89 (10 of 14 characters within 20%, no parameter per
+character); the desert alone (Slepian's constant) accounts for 75% / 28% / 21% of the depth
+at µ = 3 / 11 / 16. *(No zeros)* the quorum has a mechanism: an unconditional 2×2
+interlacing lemma — Q_S = Q + T_M is indefinite as soon as (ε + vᵀT_Mv)·d < κ², depth ×
+coupling — whose three quantities are certified at µ = 11 (all 15 proper sub-products
+re-proved indefinite on the *same* bottom vector, `code/quorum_2x2.py`) and measured at
+µ = 8, 11, 16 (14/14, 14/14, 62/62; silence δ_p ~ e^(−7p), coupling κ_p ~ e^(−4p): the
+coupling decays at half the rate of the silence, which is what makes the determinant
+negative). Notes: `notes/depth-geometry-quorum-mechanism.pdf`, `notes/sampling-floor.pdf`.
 
-**3. A linear depth law for the quasi-radical ladder of Dirichlet forms.**
-−ln λ_min = s(χ)·µ, strikingly linear and basis-converged:
+**4. The depth campaign (measurements; the maps it produced are dead).** Fifteen
+L-functions were drilled with matched, depth-adequate bases at µ = 30–38. What survives
+as measurement: the quasi-null ladders are linear in µ (the signature of the integer
+lattice; continuum mechanisms cap at log µ); the *recruitment law* — rung k of the ladder
+recruits the (k+1)-th χ-supported prime, in order, tower signs modulated by χ(p) — read
+by radical spectroscopy; the *harvest-front* model of the generic regime (margin ≈
+e^(−s²γ²_front), Slepian plunge onset predicted 24.9 / measured 26); surgical removals
+(prime 2 collapses positivity in six directions; the pole collapses one, by exactly
+−32sinh²(L/4)/L); and positivity as a *quorum* observed before it was certified. What is
+dead: the per-character linear map s(γ₁, gap, D, parity) (RMS 6% in training, −29% on
+χ₋₂₃ out of sample — 20th preregistered execution; the two-variable successor −97%; the
+three-variable successor −24%), and the universal rung profile Δ(ℓ) beyond the ramp
+9–14 (two clusters at depth, not 2πe, not split by parity). The measured s(χ) table
+(χ₈ 1.47, χ₇ 1.58, χ₅ 2.41, χ₄ 2.93, χ₃ 4.00, ζ 11.7, …) is the *target* of the geometric
+law of point 3, not a law itself. Notes: `notes/depth-phenomenology.pdf` (read as a dated
+campaign), the `lemma-*` and map notes (execution record).
 
-| χ | q | parity | γ₁ | s(χ) | shape constant C |
-|---|---|--------|------|--------|------|
-| χ₈ | 8 | even | 4.90 | 1.53 ± 0.02 | ≈ 0.53 |
-| χ₇ | 7 | odd  | 4.48 | 1.70 ± 0.05 | ≈ 0.43 |
-| χ₅ | 5 | even | 6.65 | 2.47 ± 0.02 | ≈ 0.50 |
-| χ₄ | 4 | odd  | 6.02 | 3.04 ± 0.02 | ≈ 0.39 |
-| χ₃ | 3 | odd  | 8.04 | 4.00 ± 0.10 | ≈ 0.41 |
-| ζ  | 1 | (pole) | 14.13 | 11.7 ± 0.2 (the apparent bend *was* a basis artifact; the ladder is linear, intercept ≈ −20) | ≈ 0.33 |
-
-(Slopes uniformized at µ = 30–38 with matched, depth-adequate bases; see report
-§13–14. Final state of the empirical map, four variables on the twelve-character
-training set: ln s = 1.32·ln γ₁ + 0.45·ln(γ₂−γ₁) − 0.13·D + 0.28·[odd] − 1.95
-(D = removed prime mass Σ_{p|q} log p/(√p−1)), RMS 6.1%, leave-one-out 4.8%.
-Preregistered stress record: χ₁₉ killed the γ₁-only and prime-conductor
-hypotheses; the twin pair mod 24 established the arithmetic-density variable;
-χ₂₁ landed at +9%; χ₁₇ missed by −26% exactly where the gap variable
-extrapolates below its fitted range, and the 14-point refit moves the exponents
-(0.45 → 0.68). Honest status: **a map at ~10% with charted failure modes, not a
-closed law** — details and protocol in `notes/depth-phenomenology.pdf` and report §13–14.)
-
-The depth s grows with the width γ₁ of the zero-free infrared desert (ζ's pole pushes
-γ₁ to 14.13, hence its abyssal ~11.7µ ladder), with a clear **parity signature**: odd
-characters dive faster than even ones at comparable γ₁ (two concordant inversions),
-and even characters carry the larger shape constant C (C ≈ 0.50–0.53 even,
-0.39–0.43 odd, 0.33 for ζ; residual law R ≈ C·e^{−L} throughout). The exact form of
-s(γ₁, parity) is open; the naive candidate γ₁²/(2πe) is falsified by χ₄. This
-baseline is the prerequisite for a "Landau–Siegel seismograph": an exceptional zero
-would make a ladder anomalously deep for its (γ₁, parity).
-
-**4. A theory of the generic regime, and the ladder architecture** (report §14).
-The generic closure rate ("0.41/dim") is explained parameter-free by a
-*harvest-front* model — margin ≈ e^(−s²γ²_front), rate s²γ/ρ(γ), confirmed over
-four decades — with the Slepian plunge onset at J* = U·γ_max/2π + 1 (predicted
-24.9, measured 26). Synthetic tests show the regime is arithmetic-blind (uniform
-grid ≡ true zeros) while Poisson frequencies are *more dangerous*: GUE rigidity
-maximizes the margin. The quasi-null ladders of all 15 L-functions share one
-architecture: rung spacings collapse onto a single spacing-vs-level profile
-Δ(ℓ) (±12%, ζ indistinguishable from the characters at equal level). A
-"dilated-Slepian" reading of that profile — (1−λ_k)^κ with κ ≈ 2.85 — was
-proposed and then dissolved by its own precision campaign: extended 10-rung
-ladders fit the Fuchs form beautifully per ladder, but the fitted exponent
-does not transfer (3.5–5.4 with c free), so the model has no well-defined κ
-and the "e or 3?" question was ill-posed. What survives, model-free, is the
-universal Δ(ℓ) collapse itself — the surviving lemma candidate for a pure
-harmonic-analysis proof. Linearity of −ln λ_min in µ is shown to
-be the signature of the integer lattice (continuum mechanisms cap at log µ).
-Surgical experiments (removing prime 2, or the pole, from ζ's form) reveal that
-explicit-formula consistency is load-bearing: prime removal collapses positivity
-by O(1) in six directions; pole removal collapses exactly one direction by
-−6.49 ≈ −32sinh²(L/4)/L (match to 0.3%). Radical *spectroscopy* — projecting
-each component form (pole, archimedean, one tower per prime) onto the bottom
-eigenstates — then yields the microscopic law: **rung k of the quasi-null ladder
-recruits the (k+1)-th χ-supported prime**, in order, with the next prime
-whispering one rung before its turn and tower signs modulated by χ(p) (for χ₃,
-where χ(2) = −1, the 2-tower *supports* the ground state). The 2-tower is O(1)
-on every rung — explaining the six-direction collapse — and µ-linearity of the
-depth is reframed as the prime number theorem seen from the radical: each new
-prime power p^k ≤ µ reinforces the rungs that recruited p, and the Λ-weighted
-count of prime powers is ψ(µ) ≈ µ. Finally, a cumulative-sum experiment shows
-that **positivity is a quorum**: every partial Euler product inside the window
-has a *negative* smallest eigenvalue (the residual negatives being the exact
-echo of the off-line pseudo-zeros of sieve truncation), and adding the last
-interior prime makes the form land instantly on the complete 48-digit-deep
-ladder — a razor's-edge landing at every µ. Depth is not decomposable into
-per-prime contributions; ladder *architecture* (which prime sits on which rung)
-and ladder *existence* (the quorum) are distinct questions, and the second one
-carries the content of RH.
-
-*(Status split: points 1–4 and 6 are measurements with stated error bars, not theorems; point 5 is a theorem about the explicitly defined forms Q_S, machine-certified, and asserts nothing about RH.)*
-
-**5. A certified theorem.** Using ball arithmetic (Arb via
-python-flint), the quorum is now *certified*: every proper sub-Euler product
-of the windowed Weil form admits an explicit negative witness — exhaustively
-at µ = 11 (15/15 proper subsets), µ = 16 (63/63), µ = 22 (255/255), and for
-χ₃ at µ = 11 (7/7, no pole: the phenomenon belongs to the Euler product, not
-to ζ's pole). 340 certified violations, zero exceptions. Engine:
-`code/quorum_general.py` (8–14 s per scale, `verify` mode replays the frozen
-dyadic witnesses in `code/witnesses_*.json`); certificate tables with
-per-line certified radii: `code/quorum_cert_*.txt`; the identification of
-the certified forms with the Weil–Bombieri pairing is independently
-checkable via `code/weil_normalization_check.py` (pole identity exact to
-12 digits, archimedean identity against the direct ψ-integral). Note:
-`notes/quorum-theorem.pdf`.
-
-**6. Lock-picking.** The complete form at µ = 11 is now *certified
-positive definite* (`code/positivite_certifiee.py`: eigen-congruence +
-Gershgorin + Sylvester through condition number ~10⁴⁸; the critical row is
-the razor itself, 3.58317×10⁻⁴⁸ ± 3×10⁻⁵⁴) — both halves of the quorum
-exist at µ = 11: every proper Q_S is certified negative, the complete Q is
-certified positive. The radical is a rigorous MUSIC noise subspace
-(Q(v)=λ ⇒ |v̂(γ)| ≤ √(λ/2)): `code/music_zeros.py` recovers the zeros of
-ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸ (at µ=38) from prime-built matrices.
-Measured precision law: error ≈ e^(−s(χ)µ) — *the drilling speed is the
-per-digit cost of reading the first zero* — via a new structural fact,
-hyper-nullity: the radical's residual mass is expelled to the band
-frontier. The leakage spectrum obeys |v̂₀(γ)| ≈ e^(−τ(ω_max−γ)); D2 (µ-independence
-of τ) died at the 85-digit zeros. The single measured root of hyper-nullity,
-the precision law and the profile is the endpoint law
-|v̂₀(γ₁)| ≈ C·λ₀ with C ∈ [7, 25] over sixty orders, equivalent to
-τ ≈ sµ/(2ω_max) to 6% on ζ (notebook §15.6–16.7). The complete
-form's positivity at µ = 11 is a finite-window certificate, not a claim
-about RH.
+**5. Other thread: Suzuki's conjecture (1.2) and its Dirichlet extension.** Let v_a be
+the L²-normalized ground state of the semi-local Weil form on [−a, a], built from primes
+only. Numerically, v_a converges in L² to Φ/‖Φ‖, Φ the inverse Fourier transform of
+ξ(1/2+iz) (overlap 0.99964 at µ = 11; L² deficit ≈ (sup-residual)²/2 at every µ tested),
+hence the normalization constant of (1.2) is c_∞ = ‖Φ‖_{L²(ℝ)} = 1.130932026…; the
+uniform convergence is much slower (max relative residual ≈ e^(−L)/3, concentrated in the
+zero-free band [0, γ₁)), so the conjecture splits into a fast L² version and a slow uniform
+one. The identification holds across the Dirichlet family, parameter-free: for the five real
+primitive characters mod 3, 4, 5, 7, 8, c_∞(χ) = ‖Φ_χ‖ with the exact theta kernels,
+projection estimates agreeing to ≤ 4×10⁻⁴ at µ = 16, six for six. Note:
+`notes/suzuki-conjecture-note.pdf`. Independent of the quorum thread.
 
 ## Reproduce
 
@@ -275,7 +219,7 @@ zeros per L(s,χ)), and the published λ_min = 2.389×10⁻⁴⁸ at µ = 11.
 
 ## Epistemic status
 
-Points 1–4 and 6 are measured laws with stated error bars. Point 5 is a
+Point 1 is a theorem about the explicitly defined forms Q_S (340 ball-arithmetic witnesses, plus the certified positive definiteness of the complete form at µ = 11) and asserts nothing about RH. Point 2 contains two proved statements (the admission bound, Proposition A) and measured laws. Point 3 contains one theorem under RH (the floor, Beurling) and one unconditional lemma (2×2), with a certified instance; its geometric law is a two-coefficient fit on ζ tested out of sample. Points 4–5 are measurements with stated error bars.
 theorem about the explicitly defined forms Q_S (340 ball-arithmetic witnesses,
 zero exceptions) and asserts nothing about RH. The shape law rests on six µ
 points (two basis-extrapolated); ladder slopes on three µ points each; the c_∞
