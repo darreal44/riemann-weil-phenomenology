@@ -29,8 +29,24 @@ python3 code/music_zeros.py zeta 11 46 50 6   # MUSIC depuis le radical
   law and its map (with the full preregistered stress record), bandwidth vs
   counting, the universal rung profile, the recruitment law, and the quorum
   as phenomenon.
-- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1600+
-  lines, 75 journal steps): every measurement, every artifact caught, every
+- `notes/lemma-delta-profile.pdf` — lemma candidate for the universal rung
+  profile Δ(ℓ): ramp-then-plateau reading, the 2π-comb control (off-profile:
+  universality is a property of the Weil family, not of arbitrary spectra),
+  and the L-variation at fixed χ₋₈ (spacing tracks the level, not the window).
+- `notes/lemma-speed-s.pdf` — lemma candidate for the drilling speed:
+  s(χ) = κ_win·Λ(χ), with S1 (linearity = PNT on the radical) and S2
+  (s as the per-digit cost of reading γ₁ — the measured precision law).
+- `notes/lemma-quorum-scales.pdf` — B1/B2: the every-scale quorum reduction
+  (diagonal silence + surviving coupling ⇒ every proper sub-product indefinite).
+- `notes/squares47.pdf` — the prime-side/zero-side identity on V: 47 squares,
+  500-zero reconstruction, residual 4.1% with an explicit O(1/G) tail envelope.
+- `notes/missing-characters.pdf` — χ₋₈, χ₋₂₀, χ₋₂₃ instantiated: Kronecker
+  tables, harvested zeros (independently cross-checked), preregistered map
+  predictions — **outcome: χ₋₈ passes; χ₋₂₃ kills the map as written (−29%,
+  20th preregistered execution); χ₋₂₀ likely kills it from above** — both
+  failures landing exactly on the two documented fragility axes.
+- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1690
+  lines, 90 journal steps): every measurement, every artifact caught, every
   hypothesis executed.
 
 Independent numerical exploration of the truncated Weil quadratic form — the object
