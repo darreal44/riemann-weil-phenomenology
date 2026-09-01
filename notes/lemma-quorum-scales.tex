@@ -154,4 +154,30 @@ campaign at $\mu=16$ still needs the complete eigenspace, which is not
 an artifact. B1+B2 remain lemmas; the cheap lock that would promote
 them is ``assemble $Q$ at $\mu=16$, project $T_p$ on the first eight
 eigenvectors, certify one minor per interior prime.''
+
+\section*{Addendum --- B1+B2 at a second scale, 1 September}
+
+\texttt{code/lemma\_B\_chi.py} on $\chi_{-8}$ at $\mu=16$ ($N=29$,
+depth-adequate: $\ell=(16.27,4.56)$). Interior primes $\{3,5,7,11,13\}$.
+Every tower, restricted to the first eight eigenvectors of the complete
+form, has a negative $2\times2$ minor:
+
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$p$ & silent $j$ & pair & $\det_2$ & B1+B2 \\
+\midrule
+3  & 6 & (6,7) & $-0.191$ & yes \\
+5  & 3 & (0,1) & $-0.217$ & yes \\
+7  & 0 & (0,1) & $-0.081$ & yes \\
+11 & 0 & (2,3) & $-0.045$ & yes \\
+13 & 0 & (1,5) & $-0.032$ & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+Five for five. The same pattern as $\zeta$ at $\mu=11$, on a different
+$L$-function, at a different window. B1+B2 are no longer a $\mu=11$
+anecdote. The $\varepsilon(\mu)$ reduction for $\zeta$ at $\mu=16$ still
+wants a depth-adequate basis ($N\sim71$), which this lock does not
+replace.
 \end{document}
