@@ -1,0 +1,66 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{lemma}{Lemma}\newtheorem{conjecture}[lemma]{Conjecture}
+\title{Depth as sampling geometry, and the quorum as a $2\times2$ mechanism}
+\author{D. Joubert (with the assistance of two language models)}
+\date{1 September 2026 --- consolidates notebook \S66--71 of \texttt{riemann-weil-phenomenology}}
+\begin{document}\maketitle
+\begin{abstract}
+Two results replace two earlier readings. (1) The depth law $-\ln\lambda_{\min}=s(\chi)\mu+b$ of the truncated Weil forms, previously described by a four-variable regression on fourteen Dirichlet characters that failed out of sample, is a \emph{geometric} property of the zero set: the floor $c_L$ of the form is the sampling constant of the zeros for the Paley--Wiener space of type $L/2$, made exponentially small by the desert $(-\gamma_1,\gamma_1)$ and by the gaps longer than the Nyquist step $2\pi/L$. A two-coefficient law fitted on $\zeta$ alone predicts $s(\chi)$ out of sample with median ratio $0.89$ (10 of 14 characters within $20\%$), with no character-specific parameter. (2) The quorum theorem (every proper sub-Euler product violates positivity) has a mechanism: an unconditional $2\times2$ interlacing lemma, \emph{depth $\times$ coupling}, whose three quantities we certify at $\mu=11$ and measure at three scales; the coupling of the bottom vector to a missing prime decays in $p$ at half the rate of its silence, which is what makes the determinant negative. Both are statements about explicitly defined forms; nothing bears on RH.
+\end{abstract}
+
+\section{Depth is a sampling constant}
+Under RH, $Q_L(f)=\sum_\gamma\hat f(\gamma)^2$ with $\hat f\in PW_{L/2}$, so $c_L=\inf Q_L/\|f\|^2$ is a sampling constant of the zero set, positive by Beurling (note \emph{sampling-floor}, Theorem~1). The finite-basis minima saturate: at $\mu=3$, $\lambda_{\min}(N)=1.026,0.775,0.641,0.591,0.571,0.562\times10^{-7}$ for $N=9\ldots61$, converging geometrically to $c_{\log3}\approx5.55\times10^{-8}$; at $\mu=11$, $3.59,1.86,1.54\times10^{-48}$ for $N=47,57,67$.
+
+\paragraph{Synthetic controls (zero-side Gram, $\mu=3$).} $Q_z=\sum_\gamma2\hat c(\gamma)\hat c(\gamma)^{\!\top}$ reproduces the prime-side floor (ratio $0.93$, the truncation tail). Three fictitious zeros placed in the desert raise $\lambda_{\min}$ by $9\times10^6$; a comb with the same $\gamma_1$ and density changes it by $0.23$ only; shifting the whole spectrum changes $-\ln\lambda_{\min}$ linearly in the desert width with slope $1.45$ against $L=1.10$ for Slepian's single hole. The desert is the cause; the arithmetic fine structure touches only the prefactor.
+
+\paragraph{The geometric law.} With $\nu=2\pi/L$ the Nyquist step,
+\[
+-\ln c_L\;\approx\;a\,L\,(\gamma_1-\nu)_+\;+\;b\,L\sum_k(\gamma_{k+1}-\gamma_k-\nu)_+,\qquad a=1.69,\;b=0.82,
+\]
+the two coefficients fitted on the $\mu$-series of $\zeta$ only ($\mu=3,8,11,16$, within $8\%$; Slepian's naive values would be $2,1$). Linearity in $\mu$ follows: the sub-Nyquist region extends to $\gamma^*\approx2\pi\mu$ and the excess sum grows like $\mu$.
+
+\paragraph{Out of sample (coefficients frozen).} Predicted $s$ = slope of the law between $\mu=11$ and $22$, against the measured $s$ of the depth note:
+\begin{center}\small
+\begin{tabular}{lcccccccc}\toprule
+$\chi$ & $\zeta$ & $\chi_3$ & $\chi_4$ & $\chi_5$ & $\chi_7$ & $\chi_8$ & $\chi_{11}$ & $\chi_{12}$\\
+ratio & 1.22 & 0.82 & 0.82 & 0.87 & 1.08 & 1.00 & 1.17 & 0.88\\\midrule
+$\chi$ & $\chi_{13}$ & $\chi_{15}$ & $\chi_{19}$ & $\chi_{21}$ & $\chi_{24}^e$ & $\chi_{24}^o$ & $\chi_{-23}$ & \\
+ratio & 1.35 & 1.02 & 0.96 & 0.65 & 1.04 & 0.38 & 0.89 & \\\bottomrule
+\end{tabular}
+\end{center}
+Median $0.89$; ten of fourteen within $20\%$; no parameter per character. The downward bias is mechanical (zero caches end near $\gamma\approx85<\gamma^*(22)=138$). The two failures have $\gamma_1<\nu$: the linearized desert term switches off too abruptly, where Slepian's $1-\lambda_0(c)$ does not. Where the four-variable map (trained on these characters) died out of sample ($\chi_{-23}$: $-29\%$), the geometric law predicts $\chi_{-23}$ to $0.89$.
+
+\paragraph{What the desert alone explains.} Computing the Slepian constant to arbitrary precision: $1-\lambda_0(\tau\gamma_1)=3.35\times10^{-6},\,5.42\times10^{-14},\,2.93\times10^{-16}$ at $\mu=3,11,16$, i.e.\ $75\%$, $28\%$, $21\%$ of the measured depth. The union of all sub-Nyquist gaps gives $74$ of $110$ nats at $\mu=11$ but is not a bound in either direction. The sharp constant is $c_L$ itself.
+
+\begin{conjecture}
+The law holds with absolute $a,b$ depending only on the window class, with the desert term replaced by $-\ln(1-\lambda_0(\tfrac L2\gamma_1))$.
+\end{conjecture}
+
+\section{The quorum as a mechanism}
+Write $Q_S=Q+T_M$, $T_M$ the towers of the missing primes $M$.
+\begin{lemma}[unconditional]
+Let $v$ be a unit vector, $w=T_Mv$, $\kappa=\|w-(v^{\!\top}w)v\|$, $u=(w-(v^{\!\top}w)v)/\kappa$, and $a=v^{\!\top}Qv+v^{\!\top}T_Mv$, $d=u^{\!\top}Q_Su$. If $a\,d<\kappa^2$ then $Q_S$ is indefinite.
+\end{lemma}
+\begin{proof} The $2\times2$ principal minor of $Q_S$ on $\{v,u\}$ is $\begin{pmatrix}a&\kappa\\\kappa&d\end{pmatrix}$ with negative determinant, hence a negative eigenvalue; Cauchy interlacing. \end{proof}
+No eigenvector exactness and no hypothesis on zeros is used. Taking $v$ the bottom vector of $Q$: $a\approx\varepsilon+\sum_{p\in M}\delta_p$ with $\varepsilon=\lambda_{\min}$ and $\delta_p=v^{\!\top}T_pv$ the \emph{silence} of $v$ to $p$; $\kappa$ is its \emph{coupling}. Depth $\times$ coupling: this is the content of the lemmas B1/B2 of the note \emph{lemma-quorum-scales}, in the form in which they are provable.
+
+\paragraph{Certified instance, $\mu=11$} (\texttt{code/quorum\_2x2.py}, $Q$ and $T_p$ in Arb balls). $\varepsilon=3.5832\times10^{-48}\pm3\times10^{-53}$. $T_{11}\equiv0$ ($\Theta(L)=0$ at the window edge), so the voting primes are $\{2,3,5,7\}$ --- the $2^4-1$ of the certified theorem. All fifteen proper sub-products are certified indefinite by $2\times2$ certificates built on the \emph{same} $v$; worst margin $M=\{7\}$: $\kappa^2=3.8\times10^{-9}$ against $a\,d=1.4\times10^{-16}$. This re-proves the $\mu=11$ theorem independently of its 340 witnesses.
+
+\paragraph{The $\mu$-content.} High-precision measurement at three scales, criterion checked on every proper subset:
+\begin{center}\small
+\begin{tabular}{lccccc}\toprule
+$\mu$ & $\varepsilon$ & $\delta_p$ ($p=2,3,5,7,\ldots$) & $\kappa_p$ & subsets & rel.\ margin\\\midrule
+8 & $7.5\times10^{-33}$ & $0.052,\,3.1\text{e-}4,\,1.3\text{e-}10,\,9.4\text{e-}21$ & $0.70,\,0.53,\,3.6\text{e-}3,\,8.8\text{e-}9$ & 14/14 & 0.90\\
+11 & $3.6\times10^{-48}$ & $0.058,\,4.8\text{e-}4,\,1.2\text{e-}9,\,7.4\text{e-}17$ & $0.74,\,0.77,\,0.051,\,6.2\text{e-}5$ & 14/14 & 0.85\\
+16 & $1.9\times10^{-73}$ & $0.064,\,6.6\text{e-}4,\,4.9\text{e-}9,\,4.0\text{e-}15,\,2.0\text{e-}30,\,1.2\text{e-}40$ & $0.80,\,0.88,\,0.28,\,6.7\text{e-}3,\,1.5\text{e-}9,\,2.5\text{e-}15$ & 62/62 & 0.83\\\bottomrule
+\end{tabular}
+\end{center}
+Two laws in $p$ at fixed $\mu$: $-\ln\delta_p\approx7p-12$ and $-\ln\kappa_p\approx4p$ ($p\ge5$). \emph{The coupling decays at half the rate of the silence}; $\kappa_p^2/\delta_p\ge9$ everywhere and grows with $\mu$ (for $p=7$: $8\times10^3\to5\times10^7\to10^{10}$). The worst case always contains $2$ ($a\approx\delta_2\approx0.06$ against $\kappa^2\approx0.5$--$0.9$); two preregistered guesses died (the silence grows mildly with $\mu$; the worst case is not the largest isolated prime).
+
+\paragraph{What remains for every scale.} Three unconditional analytic statements about the bottom vector: $\varepsilon(\mu)\le e^{-s\mu+b}$ (the desert, Section~1), $\delta_p(\mu)\le e^{-7p+c}$, $\kappa_p(\mu)\ge e^{-4p-c'}$. The first is the depth law; the other two are new, concern the autocorrelation of an explicit eigenvector at the points $\log p$, and are where an analyst can enter.
+
+\section*{Status}
+Lemma proved; $\mu=11$ instance certified; everything else measured with stated numbers. Neither section moves RH: the first describes how small the positive floor is, the second why removing a prime destroys it.
+\end{document}
