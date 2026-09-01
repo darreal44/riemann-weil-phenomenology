@@ -1,0 +1,84 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{\bfseries Two variables after the kill:\\
+$s(\gamma_1,\mathrm{parity})$ dies on $\chi_{-23}$}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- after notebook 18}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+The published four-variable map is dead on $\chi_{-23}$ ($-29\%$).
+The candidate that remains after dropping the gap and $D$ is
+$s=c\,\gamma_1^\alpha\,\rho^{[\mathrm{odd}]}$. Fitted on the thirteen
+stationary rows of the depth-note table it predicts $\hat s(\chi_{-23})=1.06$
+against $0.54$ measured: $+97\%$. The two-variable map dies harder
+than the four-variable one. The guilty axis is parity: $\chi_{-23}$ is
+odd and drills like even. A refit $\gamma_1+\mathrm{gap}+D$
+\emph{without} parity lands at $0.45$ against $0.54$ ($-16\%$). That
+is not a new map --- it is the diagnosis of the kill.
+\end{abstract}
+
+\section{The candidate}
+
+After notebook 18 the four-variable law
+\[
+\hat s \approx 0.14\,\gamma_1^{1.32}(\gamma_2-\gamma_1)^{0.45}
+e^{-0.13 D}\,1.32^{[\mathrm{odd}]}
+\]
+is dead on its documented fragility axes. The leftover proposal was
+S2 stripped to two variables: desert and parity, the two inversions
+already in the depth note ($\chi_4>\chi_5$, $\chi_7>\chi_8$).
+
+Engine \texttt{code/map2.py}, training set = the thirteen stationary
+rows of~\cite{Depth} (uniformized at $\mu=30$--$38$; $\chi_{15}$
+dropped as rising; $\zeta$ kept out as a pole). Least squares in
+$\log s$:
+\[
+s \;=\; 0.171\,\gamma_1^{1.327}\,1.54^{[\mathrm{odd}]}.
+\]
+Training rms $21\%$, against $6\%$ for the four-variable law.
+
+\section{The hold-out}
+
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$\chi$ & $s$ (unif.) & $\hat s_{2}$ & err & $\hat s_{4}$ \\
+\midrule
+$\chi_{-8}$  & $1.30$ & $1.42$ & $+10\%$ & $1.47$ \\
+$\chi_{-20}$ & $0.68^\dagger$ & $0.82$ & $+21\%$ & $0.57$ \\
+$\chi_{-23}$ & $0.54$ & $1.06$ & $\mathbf{+97\%}$ & $0.76$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$^\dagger$ still rising at $\mu=38$. $\chi_{-23}$ is stationary
+($0.49\to0.53$). The two-variable map fails the same kill, worse.
+
+\section{Parity is the axis}
+
+$\chi_{-23}$ is odd, $\gamma_1=2.87$. Even characters at that desert:
+$\chi_{24}^{\mathrm{e}}$ ($\gamma_1=2.69$, $s=0.50$), $\chi_{21}$
+($2.32$, $0.58$). Odd characters at that desert: $\chi_{11}$
+($2.48$, $1.07$). Measured $s(\chi_{-23})=0.54$ sits on the
+\emph{even} locus. The factor $1.54^{[\mathrm{odd}]}$ is what
+inflates $1.06$.
+
+A three-variable refit with no parity,
+$\log s = a + b\log\gamma_1 + c\log(\mathrm{gap}) + d\log D$,
+gives $\hat s(\chi_{-23})=0.45$ against $0.54$ ($-16\%$, inside the
+old $20\%$ kill). Training rms $17\%$. This is a diagnosis, not a
+successor map: it was read on the same hold-out that killed the
+predecessor. The next map, if there is one, has to be
+preregistered before the next character.
+
+\section{Status}
+
+$s=s(\gamma_1,\mathrm{parity})$ is false. S2 remains: $s$ is
+$-d\log|\hat v_0(\gamma_1)|/d\mu$. The arithmetic of that Lyapunov
+exponent is not parity-times-desert. $\chi_{-23}$ is the witness.
+\end{document}
