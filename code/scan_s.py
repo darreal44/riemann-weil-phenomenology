@@ -13,6 +13,8 @@ CHARS = {
     'chim8': dict(q=8,  d=-8,  a=1),
     'chi20': dict(q=20, d=-20, a=1),
     'chi23': dict(q=23, d=-23, a=1),
+    'chi5':  dict(q=5,  d=5,   a=0),
+    'chi8':  dict(q=8,  d=8,   a=0),
 }
 
 def assemble(name, mu, NB, dps, DEG=12):
