@@ -1,0 +1,135 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{lemma}{Lemma}
+\title{\bfseries The drilling speed $s(\chi)$:\\
+a lemma candidate}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- lemma campaign, item 2}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+The affine law $-\ln\lambda_{\min}=s(\chi)\mu+b(\chi)$ factorizes the
+depth problem into a window-invariant staircase $\Delta(\ell)$ and one
+arithmetic speed $s(\chi)$. The measured four-variable map for $s$ on
+the Dirichlet family is recorded, the $\zeta$-outlier is isolated as
+the pole, and two assertions a derivation must supply are stated:
+(S1)~linearity in $\mu$ is the prime-number theorem read on the
+radical; (S2)~the prefactor $s(\chi)$ is the Lyapunov exponent of
+windowed Fourier restriction into the desert, equal to the per-digit
+cost of reading $\gamma_1$ (precision law). Three preregistered
+predictions for the missing characters $\chi_{-8},\chi_{-20},\chi_{-23}$
+are attached. Nothing is claimed about RH.
+\end{abstract}
+
+\section{What is already measured}
+
+On fourteen real primitive characters of conductor $\le24$, at three
+windows each~\cite{Depth},
+\[
+-\ln\lambda_{\min}(Q_{\chi,\mu})\;=\;s(\chi)\,\mu+b(\chi),
+\]
+affine, with $s$ ranging from $0.46$ ($\chi_{24}^{\mathrm{odd}}$) to
+$4.00$ ($\chi_3$). $\zeta$ at a depth-adequate basis gives
+$s_\zeta=11.7$, off the Dirichlet family by a factor three at the
+boundary of the map. The precision campaign~\cite{LabNB} \S16.3 then
+identified $s$ a second time: the MUSIC error on $\gamma_1$ falls as
+$e^{-s\mu}$, not $e^{-s\mu/2}$. So $s(\chi)$ is the per-digit cost of
+reading the first zero from the primes.
+
+The four-variable map on the Dirichlet family (leave-one-out $4.8\%$,
+RMS $6.1\%$; $\zeta$ excluded) is
+\[
+\hat s \;\approx\;
+0.14\cdot\gamma_1^{1.32}\,(\gamma_2-\gamma_1)^{0.45}\,
+e^{-0.13 D}\cdot 1.32^{[\mathrm{odd}]},
+\]
+with $D=\sum_{p\mid q}\log p/(\sqrt p-1)$ the arithmetical mass
+removed. Residuals of $\chi_{12}$ ($+14\%$) and $\chi_{13}$ ($-10\%$)
+remain open.
+
+\section{The lemma candidate}
+
+\begin{conjecture}[Drilling speed]\label{conj:s}
+There is a functional $s$ of the pair $(\chi,\text{window construction})$
+such that $\ell_0(\chi,\mu)=s(\chi)\mu+b(\chi)+o(1)$ as $\mu$ grows
+through depth-adequate bases. The functional factorizes as
+\[
+s(\chi)\;=\;\kappa_{\mathrm{win}}\cdot \Lambda(\chi),
+\]
+where $\kappa_{\mathrm{win}}$ is a window invariant (the same for every
+$\chi$) and $\Lambda(\chi)$ is an arithmetic coupling of the desert
+$(\gamma_1,\gamma_2-\gamma_1)$, the conductor mass $D$, and the parity.
+\end{conjecture}
+
+Together with the universality conjecture for $\Delta(\ell)$ this
+reproduces the whole quasi-null ladder from two arithmetic scalars and
+one window profile.
+
+\section{What a derivation must supply}
+
+\paragraph{S1. Linearity is the prime-number theorem on the radical.}
+Each new prime power $p^k\le\mu$ reinforces the rungs that already
+recruited $p$, and $\psi(\mu)\sim\mu$ counts those powers. Hence
+$d\ell_0/d\mu$ is $O(1)$, not $O(1/\mu)$ (continuum / Paley--Wiener)
+and not $O(\log\mu/\mu)$ (Landau count on $\{\log n\}$). Continuum
+analysis of the window cannot produce $s\mu$. The lattice is mandatory.
+
+\paragraph{S2. $s$ is the Lyapunov exponent of the desert.}
+Hyper-nullity says $|\hat v_0(\gamma_1)|\ll\sqrt{\lambda_0}$: interior
+zeros are cancelled far past the $L^2$ budget, and the residual mass
+sits at the band frontier. Differentiating the implicit relation
+$Q(v_0)=\lambda_0$ along $\mu$ then yields
+\[
+s \;=\; -\frac{d}{d\mu}\log\bigl|\hat v_0(\gamma_1)\bigr|
+\;+\; o(1),
+\]
+which is the precision law already measured. Deriving the four-variable
+map is then deriving how $(\gamma_1,\text{gap},D,\text{parity})$ set
+that logarithmic derivative. The map is the phenomenological shadow of
+S2, not a substitute for it.
+
+The $\zeta$-outlier is S1+S2 with an extra rank-one pole. Removing the
+pole collapses exactly one direction and leaves the rest of the ladder
+intact~\cite{LabNB} \S14.5; $s_\zeta$ is therefore not the Dirichlet
+map evaluated at $\gamma_1(\zeta)=14.13$.
+
+\section{Preregistered predictions}
+
+Zeros harvested 1 September 2026 (completed $\Lambda$-function,
+bisected; caches $\mathtt{zeros\_chim8.pkl}$,
+$\mathtt{zeros\_chi20.pkl}$, $\mathtt{zeros\_chi23.pkl}$). The map
+gives
+\begin{center}\small
+\begin{tabular}{lccccc}
+\toprule
+$\chi$ & $q$ & $\gamma_1$ & $\gamma_2-\gamma_1$ & $D$ & $\hat s$ \\
+\midrule
+$\chi_{-8}$  & 8  & 3.576 & 3.858 & 1.673 & $1.47$ \\
+$\chi_{-20}$ & 20 & 2.359 & 2.317 & 2.975 & $0.57$ \\
+$\chi_{-23}$ & 23 & 2.871 & 1.344 & 0.826 & $0.76$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+A measured $s$ off $\hat s$ by more than $20\%$ on any of the three
+kills the four-variable map as stated. $\chi_{-23}$ remains the sharpest
+test: small gap, low $D$, odd, class number $3$.
+
+\section{Status}
+
+Conjecture~\ref{conj:s} is the lemma candidate. S1 and S2 are the
+proof obligations. The four-variable map is a measurement, not the
+lemma. The three predictions above are the cheapest falsifiers.
+
+\begin{thebibliography}{4}\small
+\bibitem{Depth} D.~Joubert, \emph{Depth phenomenology of truncated Weil
+quadratic forms}, same repository (2026).
+\bibitem{LabNB} D.~Joubert, \emph{Le milieu des nombres premiers}, lab
+notebook, same repository (2026).
+\end{thebibliography}
+\end{document}
