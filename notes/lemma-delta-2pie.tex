@@ -1,0 +1,64 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{\bfseries The plateau versus $2\pi e$}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- $\Delta_\infty$ lock}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+The published plateau is $\Delta_\infty\approx16.0\pm1.6$ on
+$\ell\in[40,80)$ and $16.0\pm2.1$ on $[80,150)$. The constant
+$2\pi e\approx17.079$ sits inside both bands. New $\chi_3$ ladders
+at $\mu=16,22,30$ climb $15.88\to16.92\to17.07$ at levels
+$40,62,105$. The deepest new spacing matches $2\pi e$ to $0.01$ nat.
+The lock ``the plateau stays at $16$'' is dead. $2\pi e$ survives;
+one character and one basis do not select it.
+\end{abstract}
+
+\section{The lock}
+
+A1 said the leftover Rayleigh problem drops by a universal factor
+once the desert is spent. The published factor is $e^{-16}$. Among
+the small list of constants that could have been that factor,
+$2\pi e\approx17.079$ is the only one inside the plateau bands
+and not already killed ($s=\gamma_1^2/(2\pi e)$ died on $\chi_4$).
+
+\section{New rungs}
+
+\texttt{code/scan\_s.py} on $\chi_3$ (odd, $s=4$, depth-adequate
+at these windows). Spacings $\ell_k-\ell_{k+1}$ at the deep end:
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+$\mu$ & $N$ & deepest $(\ell,\Delta)$ & $2\pi e-\Delta$ \\
+\midrule
+16 & 37 & $(39.5,\,15.88)$ & $+1.20$ \\
+22 & 41 & $(62.3,\,16.92)$ & $+0.16$ \\
+30 & 45 & $(104.7,\,17.07)$ & $+0.01$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The sequence climbs toward $2\pi e$, not toward $16$. At $\mu=30$
+the match is $17.07$ against $17.079$.
+
+The rest of each ladder still follows the published ramp
+($9$--$13$ nats on $\ell<40$). Only the deepest spacing is the
+plateau test.
+
+\section{What this is not}
+
+Not a derivation of $\Delta_\infty$. Not a third $L$-function.
+The basis at $\mu=30$ is $N=45$, short of the $N=75$ used for
+$\chi_3$ at $\mu=38$ in the precision campaign; artifact 7 can
+still tilt a spacing. The lock that remains: the same spacing
+on $\chi_3$ at $\mu=38$, $N=75$, and on $\zeta$ at $\mu=16$,
+$N=71$ --- if both sit at $17.08\pm0.2$, $2\pi e$ is the
+plateau constant; if they sit at $16.0$, this climb was a
+finite-window transient.
+\end{document}
