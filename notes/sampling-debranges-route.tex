@@ -1,0 +1,174 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{Sampling, de~Branges, and the windowed Weil form\\
+\large Where positivity lives; what the contrapositive does and does not say}
+\author{D.\ Joubert (exploration branch \texttt{sampling-debranges})}
+\date{1 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+Windowed Weil positivity is a sampling inequality for the zeros of $\zeta$
+in the Paley--Wiener space $PW_{L/2}$. Under RH this is a theorem
+(\emph{sampling-floor}, Theorem~1: Beurling through the explicit formula).
+Unconditionally the same quadratic form is Weil's pairing, not a Gram of
+real samples: the contrapositive of \emph{global} positivity is RH, but
+positivity on a single window $W_L$ does not force every zero onto the
+line. An off-line zero produces a negative direction once the window is
+large enough to see it; below that scale the form can stay positive.
+The route does not prove RH. It says, in the language of Beurling density
+and de~Branges spaces, where the positivity of $Q_L$ lives, and which
+tools of that theory can enter.
+\end{abstract}
+
+\section{The sampling reading, already a theorem}
+Fix $L>0$, $\tau=L/2$. Even $f\in L^2([-L/2,L/2])$ have Fourier transforms
+$F\in PW_\tau$. Under RH the explicit formula on this window is
+\[
+Q_L(f)=\sum_{\gamma}F(\gamma)^2,
+\]
+so
+\[
+c_L=\inf_{f\ne0}\frac{Q_L(f)}{\|f\|^2}
+\]
+is $2\pi$ times the lower sampling constant of $\Gamma=\{\pm\gamma\}$ for
+$PW_\tau$. Beurling--Landau: a separated subset $\Lambda\subset\Gamma$ of
+lower uniform density $D^-(\Lambda)>\tau/\pi$ is a sampling set. The zeros
+have $N(T+1)-N(T)\to\infty$, so such a $\Lambda$ exists for every $\tau$.
+Hence $c_L>0$ and $\lambda_{\min}(V_N)\downarrow c_L$
+(\emph{sampling-floor}, Theorem~1). Nothing further is claimed here.
+
+The size of $c_L$ is not a density statement. Density only gives $c_L>0$.
+The desert $(-\gamma_1,\gamma_1)$ and the gaps longer than the Nyquist
+step $2\pi/L$ fix the \emph{exponential} smallness
+(\emph{sampling-floor} Prop.~2, geometric law of
+\emph{depth-geometry-quorum-mechanism}). Beurling's $D^->$ is too coarse
+to see $e^{-L\gamma_1}$.
+
+\section{Unconditional identity: Weil, not a real Gram}
+Without RH the left side $Q_L$ is still the prime-side pairing (pole $+$
+archimedean $-$ towers $n\le e^L$). The right side is
+\[
+Q_L(f)=\sum_{\rho}\hat g_f(\rho),
+\]
+sum over \emph{all} nontrivial zeros $\rho$, with $\hat g_f$ the entire
+function attached to $f$ by the explicit formula (Weil--Bombieri
+normalization of the repository, App.~B of \emph{quorum-theorem}).
+On the line, $\rho=\tfrac12+i\gamma$ and $\hat g_f(\rho)=F(\gamma)^2$
+(even convention of the window). Off the line,
+$\rho=\tfrac12+\sigma+i\gamma$ with $\sigma\ne0$, the term is not a
+square of a real sample. The form is no longer a Gram of evaluators on
+$\mathbb{R}$.
+
+\begin{remark}
+Global Weil positivity --- $Q(h)\ge0$ for every admissible $h$ on
+$\mathbb{R}$, not just on one $W_L$ --- is equivalent to RH. That is
+Weil's theorem. Restricting the test class to $W_L$ loses the
+equivalence: a form that is positive on every compact window is a
+stronger statement than positivity on one window, and is again RH.
+\end{remark}
+
+\section{Visibility of an off-line zero}
+Let $\rho=\tfrac12+\sigma+i\gamma$ with $\sigma\ne0$. The contribution of
+the pair $(\rho,1-\rho)$ to $Q_L$ is $2\mathrm{Re}\,\hat g_f(\rho)$.
+A test function whose spectral mass sits at $\rho$ can make this term
+dominate and negative.
+
+\begin{lemma}[visibility, schematic]
+If $F\in PW_\tau$ can be chosen with $|F(\sigma+i\gamma)|\ge c\|F\|$ and
+$\sum_{t\in\mathbb{R}}|F(t)|^2$ small compared with that, then $Q_L$
+takes a negative value as soon as the off-line term is included.
+Such an $F$ exists in $PW_\tau$ once $\tau$ exceeds a constant times
+$|\sigma|+1$ and the distance from $\gamma$ to the real sampling nodes
+is not large compared with $\tau^{-1}$.
+\end{lemma}
+This is Paley--Wiener, not arithmetic: an entire function of type $\tau$
+cannot peak far off the real axis unless $\tau$ is large enough
+(Phragm\'en--Lindel\"of / Bernstein). Consequence for the repository:
+positivity of $Q_L$ at $\mu=e^L=11$ is compatible with an off-line zero
+at height $10^6$. It is not compatible with an off-line zero inside the
+band of $V_N$ once $N$ resolves that height. A single certified window
+does not force RH; a uniform statement over $L\to\infty$ would.
+
+A schematic measurement on $V_5$ at $\mu=11$ (continuation of the
+square: $Q_{\mathrm{line}}+2\mathrm{Re}\,F(\sigma+i\gamma_1)^2$,
+forty real zeros already in $Q_{\mathrm{line}}$). This is \emph{not}
+the Weil--Bombieri term; it is the analytic continuation of the RH Gram.
+
+\begin{center}\small
+\begin{tabular}{lc}\toprule
+$\sigma$ & $\lambda_{\min}$\\
+\midrule
+$0$ (double-count $\gamma_1$) & $+8.7\times10^{-13}$\\
+$0.05$ & $-9.9\times10^{6}$\\
+$0.10$ & $-4.0\times10^{7}$\\
+$0.50$ & $-2.4\times10^{9}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Already at $\sigma=0.05$, height $\gamma_1$, the schematic form on $V_5$
+is wildly indefinite. An off-line zero \emph{inside the band} is
+visible on this window. An off-line zero at height $10^6$ is not
+represented in the sum and is not a frequency $V_5$ can peak at.
+The measurement confirms visibility at the first zero; it does not
+replace Weil's theorem.
+
+\section{What de~Branges supplies, and what it does not}
+A de~Branges space $\mathcal{H}(E)$ is a Hilbert space of entire
+functions with a reproducing kernel built from a Hermite--Biehler
+function $E$. Paley--Wiener $PW_\tau$ is the model case
+$E(z)=e^{-i\tau z}$. Sampling and interpolation in $\mathcal{H}(E)$ are
+completely described (de~Branges, Beurling--Malliavin for the
+PW case): a set is sampling when its density exceeds the type, with a
+structure condition on the gaps.
+
+Two precise contacts with $Q_L$.
+
+\paragraph{PW as $\mathcal{H}(E)$.}
+Theorem~1 is the PW-special case of ``the zeros sample $\mathcal{H}(E)$''.
+The desert bound is the reproducing-kernel mass of the hole
+$(-\gamma_1,\gamma_1)$ in that space --- Slepian is the first
+eigenfunction of the projection onto the hole. Sub-Nyquist gaps are
+the same statement for a union of holes. The geometric law is a
+conjecture about the bottom eigenvalue of a Gram of reproducing
+kernels at the zeros. de~Branges gives the language; it does not
+give $a=1.69$, $b=0.82$.
+
+\paragraph{The de~Branges approach to $\xi$.}
+There is a different $E$, built from $\xi$, whose space $\mathcal{H}(E)$
+has the zeros of $\xi$ as a distinguished set. RH is equivalent to
+axioms on that $E$ (de~Branges 1986 and later variants). That $E$ is
+\emph{not} $e^{-i\tau z}$. Importing a theorem about $PW_\tau$ into the
+$\xi$-space is the usual gap in the programme. The windowed form
+$Q_L$ lives in PW. The $\xi$-space lives on the critical strip. They
+share a philosophy (positivity $\Leftrightarrow$ sampling on a line)
+and not a kernel.
+
+\section{What this route can still do in the repository}
+\begin{enumerate}
+\item State Theorem~1 as the definition of the floor, not as a
+  numerical finding. Already done in \emph{sampling-floor}.
+\item Replace ``hyper-nullity'' language by ``the sampling constant
+  of a set with a hole of width $\gamma_1$ and type $\tau$''. Same
+  numbers, right theory.
+\item Prove a quantitative visibility lemma: an explicit $L(\sigma,\gamma)$
+  beyond which an off-line pair at $\tfrac12+\sigma+i\gamma$ forces
+  $\lambda_{\min}(Q_L)<0$. This is analysis, not flint.
+\item Compute, on $V_N$, the Gram with one complex pair added, and
+  record the $L$ at which $\lambda_{\min}$ crosses. A measurement of
+  the schematic lemma. Not RH.
+\item Do \emph{not} claim that $c_L>0$ for all $L$ unconditionally.
+  That statement is RH.
+\end{enumerate}
+
+\section*{Status}
+Theorem~1 (under RH) is already in the living corpus. The present note
+adds the unconditional reading, the visibility obstruction, and the
+boundary between PW-de~Branges and $\xi$-de~Branges. No new theorem.
+No movement of RH.
+\end{document}
