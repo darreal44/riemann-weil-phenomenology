@@ -7,7 +7,7 @@ import scan_s
 
 def test_sieve_contains_window_38_primes():
     src = inspect.getsource(scan_s.assemble)
-    for p in (29, 31, 37, 59):
+    for p in (29, 31, 37, 59, 73):
         assert str(p) in src, f'sieve missing {p} — accidental quorum'
 
 
