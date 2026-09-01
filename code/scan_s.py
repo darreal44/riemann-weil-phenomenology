@@ -68,7 +68,7 @@ def assemble(name, mu, NB, dps, DEG=12):
     ppts = []
     x = 2
     cap = int(float(mp.e**L) + 1e-9)
-    small = [2,3,5,7,11,13,17,19,23,29,31]
+    small = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53]
     while x <= cap:
         y2, p = x, None
         for qq in small:
@@ -87,8 +87,9 @@ def assemble(name, mu, NB, dps, DEG=12):
             arch = F0/2*CST + mp.mpf('0.5')*mp.fsum(D2[k]*(F0*EC[k]-th[k]) for k in range(K))
             v = arch - mp.fsum(w*th_at(n,m,lg) for lg,w in ppts)
             S[n,m] = v; S[m,n] = v
-    E = mp.eigsy(S, eigvals_only=True)
-    lam = [E[i] for i in range(min(8, NB+1))]
+    E, V = mp.eigsy(S)
+    order = sorted(range(NB+1), key=lambda i: float(E[i]))
+    lam = [E[i] for i in order[:8]]
     ell = [float(-mp.log(abs(l))) if l != 0 else float('inf') for l in lam]
     print(f"[{name} mu={mu} N={NB+1} dps={dps}] lam0={mp.nstr(lam[0],4)}  "
           f"ell={[round(x,2) for x in ell[:6]]}  {time.time()-t0:.0f}s", flush=True)

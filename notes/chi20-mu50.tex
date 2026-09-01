@@ -1,0 +1,47 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{\bfseries $\chi_{-20}$ at $\mu=50$: the rise does not fire the kill}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+Notebook 18 called $\chi_{-20}$ a likely kill from above: secants
+still rising at $\mu=38$, already $+19\%$ over $\hat s=0.57$.
+Five windows of \texttt{scan\_s.py} through $\mu=50$ give secants
+$0.534\to0.547\to0.564\to0.590$. The last one is $+4\%$ over the
+four-variable prediction. The $20\%$ kill is not fired. $\chi_{-23}$
+remains the only clean out-of-sample death of the map.
+\end{abstract}
+
+\section{Windows}
+Even window, sieve extended through $53$. Secant $s=(\ell_2-\ell_1)/(\mu_2-\mu_1)$.
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$\mu$ & $N$ & $\ell_0$ & segment & $s$ \\
+\midrule
+16 & 33 & 3.44 & & \\
+22 & 37 & 6.65 & $16\to22$ & $0.534$ \\
+32 & 41 & 12.12 & $22\to32$ & $0.547$ \\
+38 & 45 & 15.50 & $32\to38$ & $0.564$ \\
+50 & 49 & 22.59 & $38\to50$ & $0.590$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$\hat s_4(\chi_{-20})=0.57$. Last secant $+4\%$. The rise is real
+and slow ($\approx0.02$ per decade of $\mu$). A linear extrapolation
+reaches the $20\%$ line only around $\mu\sim90$, which is not a
+measurement.
+
+\section{Status}
+$\chi_{-20}$ is compatible with the dead map at the windows we can
+run. That does not revive the map: $\chi_{-23}$ already killed it
+at $-29\%$, stationary. It does retract the ``likely kill from
+above'' as a second independent death. One kill stands.
+\end{document}
