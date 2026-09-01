@@ -86,10 +86,31 @@ before the slope is compared to $\hat s$ at the advertised
 $\pm0.05$--$0.1$ budget. Nothing in this commit claims that
 measurement.
 
+
+\section{Measured slopes}
+
+Engine: \texttt{code/scan\_s.py}, validated on $\chi_3$ at $\mu=11$
+($\lambda_{\min}=5\cdot10^{-16}$, $\ell_0=35.2$). Last-segment slopes:
+
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$\chi$ & segment & $s_{\mathrm{meas}}$ & $\hat s$ & err \\
+\midrule
+$\chi_{-8}$  & $16\to22$ & $1.46$ & $1.47$ & $-0.5\%$ \\
+$\chi_{-20}$ & $22\to32$ & $0.55$ & $0.57$ & $-3.7\%$ \\
+$\chi_{-23}$ & $22\to32$ & $0.47$ & $0.76$ & $-38\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$\chi_{-8}$ and $\chi_{-20}$ confirm the map. $\chi_{-23}$ does not:
+the slope stabilized ($0.47$ on both $16\to22$ and $22\to32$). The map
+over-weights the gap $1.34$. A larger basis can only raise $s$
+(artifact 7); it will not close a $38\%$ hole by itself.
+
 \section{Status}
 
-Zeros and predictions are in. Slopes are not. The map is exposed to
-three falsifiers it has not seen.
+Zeros and predictions are in. Slopes are in. Two confirmations, one kill ($\chi_{-23}$).
 
 \begin{thebibliography}{1}\small
 \bibitem{Depth} D.~Joubert, \emph{Depth phenomenology of truncated Weil
