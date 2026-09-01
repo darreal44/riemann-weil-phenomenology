@@ -149,7 +149,11 @@ zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸ (at µ=38) from pri
 matrices. Measured precision law: error ≈ e^(−s(χ)µ) — *the drilling
 speed is the per-digit cost of reading the first zero* — via a new
 structural fact, hyper-nullity: the radical's residual mass is expelled to
-the band frontier (notebook §15.6–16.3).
+the band frontier. The leakage spectrum itself obeys a measured law,
+|v̂₀(γ)| ≈ e^(−τ(ω_max−γ)) with τ intrinsic (basis- and µ-independent)
+but arithmetic-dependent (τ ≈ γ₁/30 to ±20% across ζ, χ₃, χ₄; exact law
+open) — so the difficulty of truncated positivity is *localized* in an
+O(1/τ) neighborhood of the band edge (notebook §15.6–16.5).
 
 **5. A certified theorem (draft).** Using ball arithmetic (Arb via
 python-flint), the quorum is now *certified*: every proper sub-Euler product
