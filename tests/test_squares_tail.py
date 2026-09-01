@@ -25,3 +25,14 @@ def test_squares47_arb_exists():
     src = open(path).read()
     assert 'acb.integral' in src
     assert 'tail' in src.lower()
+
+
+def signed_tail(G, L=math.log(11.0)):
+    avg = 1.0 / G
+    osc = abs(math.sin(L * G) / (L * G))
+    return (4.0 / L) * (avg + osc)
+
+
+def test_signed_tighter_than_unsigned_at_g811():
+    assert signed_tail(811.2) < 0.003
+    assert tail_diag(811.2) / signed_tail(811.2) > 10

@@ -9,13 +9,15 @@ def test_required_scripts_exist():
         'kronecker.py', 'scan_s.py', 'map2.py', 'lemma_B_mu16.py',
         'squares47.py', 'squares47_arb.py', 'music_zeros.py',
         'positivite_certifiee.py', 'quorum_general.py',
+        'high_directions.py', 'match_squares.py', 'endpoint_order.py',
+        'squares_tail.py', 'lemma_B_chi.py',
     ):
         assert os.path.exists(os.path.join(CODE, name)), name
 
 
 def test_scan_s_knows_the_three_heldouts():
     src = open(os.path.join(CODE, 'scan_s.py')).read()
-    for key in ("'chim8'", "'chi20'", "'chi23'"):
+    for key in ("'chim8'", "'chi20'", "'chi23'", "'chi5'", "'chi7'", "'chi8'"):
         assert key in src, key
 
 
