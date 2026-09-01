@@ -51,14 +51,26 @@ The rest of each ladder still follows the published ramp
 ($9$--$13$ nats on $\ell<40$). Only the deepest spacing is the
 plateau test.
 
-\section{What this is not}
+\section{Second character, next window}
 
-Not a derivation of $\Delta_\infty$. Not a third $L$-function.
-The basis at $\mu=30$ is $N=45$, short of the $N=75$ used for
-$\chi_3$ at $\mu=38$ in the precision campaign; artifact 7 can
-still tilt a spacing. The lock that remains: the same spacing
-on $\chi_3$ at $\mu=38$, $N=75$, and on $\zeta$ at $\mu=16$,
-$N=71$ --- if both sit at $17.08\pm0.2$, $2\pi e$ is the
-plateau constant; if they sit at $16.0$, this climb was a
-finite-window transient.
+\texttt{scan\_s.py} omitted the primes $37+$ --- the accidental
+quorum of notebook 16.4. With the sieve extended and eigenvalues
+sorted, at $N=53$:
+
+\begin{center}\small
+\begin{tabular}{llcc}
+\toprule
+$\chi$ & $\mu$ & deepest $(\ell,\Delta)$ & $2\pi e-\Delta$ \\
+\midrule
+$\chi_3$ & 38 & $(128.8,\,16.82)$ & $+0.26$ \\
+$\chi_4$ & 30 & $(81.4,\,17.65)$ & $-0.57$ \\
+$\chi_4$ & 38 & $(103.7,\,18.16)$ & $-1.08$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$\chi_3$ hovers $16.8$--$17.1$ across four windows. $\chi_4$ sits
+$0.6$--$1.1$ nats above $2\pi e$. The plateau is the interval
+$[16.8,18.2]$, not a selected constant. $2\pi e$ remains inside
+the interval; it is no longer the unique occupant. The $N=75$
+lock is still the next stroke, not a requirement to kill $16$.
 \end{document}
