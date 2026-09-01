@@ -39,14 +39,14 @@ python3 code/music_zeros.py zeta 11 46 50 6   # MUSIC depuis le radical
 - `notes/lemma-quorum-scales.pdf` — B1/B2: the every-scale quorum reduction
   (diagonal silence + surviving coupling ⇒ every proper sub-product indefinite).
 - `notes/squares47.pdf` — the prime-side/zero-side identity on V: 47 squares,
-  500-zero reconstruction, residual 4.1% with an explicit O(1/G) tail envelope.
+  500-zero reconstruction, residual 4.1% with an explicit O(1/G) tail envelope; Arb 5×5 block: 15/15 difference balls contain 0, certified upper bound 3.6×10⁻².
 - `notes/missing-characters.pdf` — χ₋₈, χ₋₂₀, χ₋₂₃ instantiated: Kronecker
   tables, harvested zeros (independently cross-checked), preregistered map
   predictions — **outcome: χ₋₈ passes; χ₋₂₃ kills the map as written (−29%,
   20th preregistered execution); χ₋₂₀ likely kills it from above** — both
   failures landing exactly on the two documented fragility axes.
-- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1690
-  lines, 90 journal steps): every measurement, every artifact caught, every
+- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1695
+  lines, 92 journal steps): every measurement, every artifact caught, every
   hypothesis executed.
 
 Independent numerical exploration of the truncated Weil quadratic form — the object

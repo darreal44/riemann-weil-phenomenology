@@ -151,4 +151,17 @@ This is a remainder, not an Arb certificate of equality. The identity
 on $V$ is measured at four percent plus an explicit $O(1/G)$ tail.
 Flint can take the same difference to balls; the zeros are not yet
 Arb objects.
+
+\section*{Addendum --- Arb $5\times5$, 1 September morning}
+
+\texttt{code/squares47\_arb.py}, $N_0=4$, flint dps $50$. Prime-side
+entries certified with radii $10^{-24}$. Zero-side: $45$ zeros at
+$85$ digits (radius $10^{-80}$) plus the $\gamma\le811$ tail at
+float64 (radius $10^{-12}$), plus the unsigned envelope
+$3.18\times10^{-2}$ as an extra radius. Every one of the fifteen
+differences $Q^{\mathrm{pr}}_{nm}-Q^{\mathrm{z}}_{nm}$ is a ball
+containing $0$. The certified upper bound on each entry is
+$3.61\times10^{-2}$, of which $3.18\times10^{-2}$ is the envelope.
+The identity on the $5\times5$ block is therefore an Arb enclosure,
+bottlenecked by the unsigned tail, not by $Q^{\mathrm{pr}}$.
 \end{document}
