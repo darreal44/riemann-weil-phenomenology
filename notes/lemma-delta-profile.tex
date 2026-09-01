@@ -1,0 +1,308 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem*{remark}{Remark}
+
+\title{\bfseries The universal rung profile $\Delta(\ell)$:\\
+a lemma candidate}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- lemma campaign}
+
+\newcommand{\R}{\mathbb{R}}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+The quasi-null ladders of the fifteen truncated Weil forms share a spacing
+profile $\Delta(\ell)$ to $\pm12\%$. The dilated-Slepian model for that
+profile has no well-defined exponent and is not the lemma. What the
+thirty-three rungs actually say is sharper and weaker: after a short
+rise, spacings \emph{saturate} at $\Delta_\infty\approx16$ nats,
+independently of the $L$-function. The $\sqrt{\ell}$ fit is a two-parameter
+compromise with a ramp-then-plateau, not an asymptotic. We state the
+universality statement as a lemma candidate in pure harmonic analysis
+(approximation numbers of windowed Fourier restriction, after scaling out
+$\lambda_0$), record the factorization into one arithmetic speed $s(\chi)$
+times one window-invariant profile, and isolate the two assertions a
+proof must supply: (i) scale invariance of the deflated problem past the
+infrared turning point; (ii) character-blindness of the leftover
+operator. No claim is made that the lemma is proved.
+\end{abstract}
+
+\section{The object}
+
+Fix $\mu=e^L$ and a real primitive character $\chi$ (or $\zeta$). Let
+$Q_{\chi,\mu}$ be the semi-local Weil form on even test functions
+supported in $I_L=[-L/2,L/2]$, assembled as in~\cite{Quorum}. Write
+$0<\lambda_0\le\lambda_1\le\cdots$ for its eigenvalues and
+\[
+\ell_k \;=\; -\ln\lambda_k,\qquad
+\Delta_k \;=\; \ell_{k+1}-\ell_k \;=\; \ln\frac{\lambda_k}{\lambda_{k+1}}.
+\]
+Call $\ell_k$ the \emph{depth} of rung $k$ and $\Delta_k$ its
+\emph{spacing} (nats). The ground-state law
+$\ell_0=s(\chi)\,\mu+b(\chi)$ is \emph{not} part of this note: $s(\chi)$
+is arithmetic. The question here is the internal architecture of one
+spectrum, at fixed window.
+
+Across $33$ rungs of fifteen $L$-functions (characters at $\mu=38$,
+$\zeta$ at $\mu=16$ in a depth-adequate basis) the spacings collapse by
+level bands~\cite{Depth,LabNB}:
+\begin{center}\small
+\begin{tabular}{lcc}
+\toprule
+level band $\ell$ & $\Delta$ & sample \\
+\midrule
+$[0,15)$  & $10.9\pm1.5$ & eight rungs, eight characters \\
+$[15,40)$ & $13.5\pm1.5$ & \\
+$[40,80)$ & $16.0\pm1.6$ & $\zeta$ interleaves with $\chi_3,\chi_4$ \\
+$[80,150)$& $16.0\pm2.1$ & \\
+\bottomrule
+\end{tabular}
+\end{center}
+A two-parameter fit $\Delta(\ell)\approx9.8+0.65\sqrt{\ell}$ has RMS
+$1.8$ and inter-character scatter $\sim12\%$. A dilated-Slepian reading
+$\lambda_k\approx(1-\lambda_k^{\mathrm{Slepian}})^\kappa$ produced
+$\kappa=2.85\pm0.26$ at constrained $c$, then $3.46$ / $4.48$ / $5.37$
+on ten-rung ladders at free $c$~\cite{LabNB}: the model has no
+well-defined exponent.
+
+\section{What the bands say}
+
+The four bands are not a slow square-root climb. They are a
+\emph{ramp of $\sim40$ nats} followed by a \emph{plateau}:
+\[
+\Delta(\ell) \;\longrightarrow\; \Delta_\infty \;\approx\; 16
+\qquad(\ell\gtrsim40).
+\]
+On the plateau each successive eigenvalue is larger than the previous
+one by a constant factor $e^{16}\approx9\times10^6$. That is a geometric
+tail, not a Slepian tail and not a $\sqrt{\ell}$ tail.
+
+The $\sqrt{\ell}$ fit is what a two-parameter curve does when it is
+asked to interpolate a step of height $5$ over a run of length $40$.
+It is a useful mnemonic. It is not the lemma.
+
+\begin{remark}
+A geometric tail $\ell_k=\ell_0+k\Delta_\infty$ is the generic
+signature of a \emph{scale-invariant leftover problem}: after the
+infrared desert and the turning-point region have been spent on the
+first rungs, each new orthogonality constraint multiplies the Rayleigh
+quotient by a constant. The constant is an invariant of the window,
+not of the zero set.
+\end{remark}
+
+\section{The lemma candidate}
+
+\begin{definition}[Windowed restriction]
+Let $V_L$ be the space of even real functions supported in $I_L$,
+with the $L^2$ inner product. For a discrete even set
+$\Gamma\subset\R$ write
+$Q_\Gamma(f)=\sum_{\gamma\in\Gamma}|\hat f(\gamma)|^2$.
+When $\Gamma$ is the nontrivial zeros of $L(s,\chi)$ (and the pole
+term, for $\zeta$), $Q_\Gamma$ on $V_L$ \emph{is} the truncated Weil
+form, by the exact pairing of~\cite{Quorum}.
+\end{definition}
+
+\begin{conjecture}[Universality of spacings]\label{conj:univ}
+There exists a function $\Delta_\infty:[0,\infty)\to(0,\infty)$,
+depending on the window construction $(V_L,\widehat{\,\cdot\,})$ and
+not on $\chi$, such that for every real primitive $\chi$ and every
+depth-adequate cutoff $\mu$,
+\[
+\Delta_k(\chi,\mu)
+\;=\;
+\Delta_\infty(\ell_k(\chi,\mu)) \;+\; \varepsilon_{k,\chi,\mu},
+\]
+with $\mathrm{rms}(\varepsilon)/\Delta \lesssim 12\%$ on the thirty-three
+rungs already measured, and $\Delta_\infty(\ell)\to\Delta_\infty\approx16$
+as $\ell\to\infty$.
+\end{conjecture}
+
+This is the surviving content of~\cite{Depth} \S4, stripped of the
+dissolved $\kappa$-model. It is a statement in harmonic analysis:
+approximation numbers of a Fourier restriction to a discrete set,
+\emph{after the first eigenvalue has been scaled out}. The arithmetic
+of $\chi$ is allowed to set $\lambda_0$. It is not allowed to set the
+ratios $\lambda_k/\lambda_{k+1}$ once depth is given.
+
+\begin{lemma}[Factorization --- formal consequence]\label{lem:fact}
+Assume Conjecture~\ref{conj:univ} and the affine ground-state law
+$\ell_0=s(\chi)\mu+b(\chi)$. Then the whole quasi-null ladder is
+determined by two arithmetic scalars $(s,b)$ and one window-invariant
+profile $\Delta_\infty$:
+\[
+\ell_0=s\mu+b,\qquad
+\ell_{k+1}=\ell_k+\Delta_\infty(\ell_k).
+\]
+Equivalently: $\chi$ chooses a starting depth; the window chooses the
+staircase.
+\end{lemma}
+
+Lemma~\ref{lem:fact} is not an additional claim. It is the
+factorization already measured: architecture $\times$ speed. The
+content that still needs a proof is Conjecture~\ref{conj:univ}.
+
+\section{What a proof must supply}
+
+Two harmonic-analysis assertions, neither mentioning RH.
+
+\paragraph{A1. Scale invariance past the turning point.}
+Let $R_k$ be the Rayleigh problem for $Q_\Gamma$ on the orthogonal of
+the first $k$ eigenfunctions in $V_L$. For $\ell_k\gtrsim40$, $R_k$ is
+equivalent, up to a scalar, to $R_{k+1}$ after a universal
+renormalization of $V_L$. In particular the minimax value drops by a
+factor $e^{-\Delta_\infty}$ independent of $k$ and of $\Gamma$.
+
+Heuristic: the first rungs spend the infrared desert (a Slepian /
+Airy / Landau--Widom turning point, character-dependent through
+$\gamma_1$). What remains is a problem on the \emph{window} ---
+time-limited functions, Fourier mass expelled to the band frontier
+(hyper-nullity~\cite{LabNB} \S16.3) --- whose next mode costs a
+constant factor. The plateau $\Delta_\infty\approx16$ is that factor
+in nats.
+
+\paragraph{A2. Character-blindness of the leftover.}
+Once $\lambda_0$ is scaled out, the leftover operator on
+$v_0^\perp\subset V_L$ depends on $\Gamma$ only through quantities
+already absorbed in $\lambda_0$. Distinct zero sets with the same
+window produce the same ratios $\lambda_k/\lambda_{k+1}$ at equal
+depth.
+
+Heuristic: hyper-nullity says the residual mass of a deep rung does
+not live on the interior zeros. If the leak is a frontier phenomenon,
+the interior arithmetic of $\Gamma$ cannot set the next ratio.
+
+A1 + A2 $\Rightarrow$ Conjecture~\ref{conj:univ}. Recruitment (rung
+$k$ seats the $(k{+}1)$-st $\chi$-supported prime) is a statement
+about \emph{organization}, not about \emph{spacing}, and is not
+needed for the lemma. Mixing the two was the $\kappa$-trap.
+
+\section{What the lemma is not}
+
+\begin{itemize}
+\item \emph{Not} $\lambda_k=(1-\lambda_k^{\mathrm{Slepian}})^\kappa$.
+Classical prolate spacings in $-\ln(1-\lambda)$ units are $3$--$5$;
+Weil spacings are $11$--$19$. A free $\kappa$ fits any one ladder and
+does not transfer~\cite{LabNB} \S14.8.
+\item \emph{Not} Landau--Widom for $\lambda_{\min}(L)$ as the window
+grows~\cite{Chuk}. That law lives on the other axis (depth of the
+ground state versus $L$). The $s\mu$ law already occupies that axis
+and is linear in $\mu=e^L$, i.e.\ exponential in the window width ---
+the lattice signature. $\Delta(\ell)$ is the internal mesh of one
+matrix.
+\item \emph{Not} a function of the prime gaps. Log-gaps of primes
+shrink; $\Delta$ saturates. Recruitment assigns primes to rungs;
+spacings are not those gaps.
+\item \emph{Not} a counting functional of the zeros. Vacancy is
+quasi-universal~\cite{Depth}; depth is a bandwidth phenomenon. The
+lemma lives on that side.
+\end{itemize}
+
+\section{A numerical lock for $\Delta_\infty$}
+
+The plateau rests on two bands and a handful of deep rungs ($\zeta$,
+$\chi_3$, $\chi_4$). Three cheap checks would freeze or kill it.
+
+\begin{enumerate}
+\item Ten-rung ladders at one more deep character already computed
+($\chi_5$ at $\mu=38$): if the last four spacings sit at $16\pm2$,
+the plateau is a family fact, not a $\zeta$--$\chi_3$ coincidence.
+\item A synthetic $Q_\Gamma$ with $\Gamma$ a rigid unfolding of
+spacing $2\pi$ (no arithmetic, no desert variation): the same
+$\Delta_\infty$ would confirm A2 directly.
+\item Dependence on $L$ at fixed $\chi$. If $\Delta_\infty$ is a
+window invariant it must be stable when $\mu$ changes and only
+$s\mu$ slides the starting depth. A counter-variation with $L$
+would mean $\Delta_\infty$ still carries a piece of $s(\chi)$.
+\end{enumerate}
+
+Until (1)--(3) are run, $\Delta_\infty\approx16$ is a reading of four
+bins, not a constant.
+
+\section{Status}
+
+Conjecture~\ref{conj:univ} is the lemma candidate. Lemma~\ref{lem:fact}
+is bookkeeping. A1 and A2 are the proof obligations. The $\sqrt{\ell}$
+fit and the $\kappa$-model are retired as statements; they remain
+useful as the history of a failed identification.
+
+Nothing here is claimed about RH. The lemma, if true, says that once
+the ground state has been drilled to depth $s\mu$, the rest of the
+quasi-null ladder is a property of the window.
+
+\begin{thebibliography}{9}\small
+\bibitem{Depth} D.~Joubert, \emph{Depth phenomenology of truncated Weil
+quadratic forms: fifteen $L$-functions, one ladder}, same repository
+(2026).
+\bibitem{Quorum} D.~Joubert, \emph{Proper sub-Euler products violate
+Weil positivity on a fixed window: certified witnesses}, same
+repository (2026).
+\bibitem{LabNB} D.~Joubert, \emph{Le milieu des nombres premiers}, lab
+notebook, same repository (2026), \S14.2--14.8 and \S16.3.
+\bibitem{Chuk} M.~Chuk, \emph{Weil positivity in compact windows:
+certified two-sided bounds and a Landau--Widom decay law},
+arXiv:2608.24827 (2026).
+\end{thebibliography}
+
+\section*{Addendum --- leakage profile, 1 September afternoon}
+
+Notebook \S16.4--16.7. Rungs 0--2 share one leakage shape, scaled by
+depth: evidence for A1 on the zero side. D2 (a $\mu$-independent
+$\tau$) died at the 85-digit zeros; A1 is scale invariance of the
+\emph{deflated} problem, not constancy of $\tau$. The leftover still
+carries arithmetic through $s(\chi)$ via the endpoint law
+$|\hat v_0(\gamma_1)|\approx C\lambda_0$. A2 remains open.
+
+\section*{Addendum --- cheap locks, 1 September}
+
+Two of the three proposed locks, run.
+
+\paragraph{A character already in hand.} $\chi_{-8}$ at $\mu=22$ has
+rungs $\ell=(25.12,\,11.50)$, spacing $13.6$ at level $11.5$ --- inside
+the $[0,15)$ band $10.9\pm1.5$ of the thirty-three-rung collapse. One
+more $L$-function on the same profile, not a new architecture.
+
+\paragraph{Synthetic rigid $\Gamma$.}
+\texttt{code/delta\_synthetic.py}: $Q_\Gamma$ on a $2\pi$-unfolding
+(no desert, no $\chi$) at $\mu=11$ produces spacings $7$--$9$ nats,
+not $11$--$16$. Universality across the fifteen $L$-functions is
+\emph{not} blindness to the spacing law of $\Gamma$. A2 as written
+(``any discrete set, same $\Delta$'') fails this test. The lemma
+stays: one profile for the Weil forms of the family, not for every
+restriction to a discrete set.
+
+The $L$-variation at fixed $\chi$ is the lock that still needs a
+depth-adequate pair of windows on a slow character (now available:
+$\chi_{-20}$ at $\mu=22$ and $\mu=32$).
+
+\section*{Addendum --- $L$-variation at fixed $\chi$, 1 September}
+
+$\chi_{-8}$, same engine, three windows:
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+$\mu$ & rungs $\ell$ & spacing $\Delta$ & band of the profile \\
+\midrule
+11 & $(9.56,\,0.41)$ & $9.15$ & $[0,15):\ 10.9\pm1.5$ \\
+16 & $(16.34,\,4.59)$ & $11.75$ & $[0,15)$ on the shallow rung \\
+22 & $(25.12,\,11.50)$ & $13.62$ & $[15,40):\ 13.5\pm1.5$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+The spacing tracks the \emph{level}, not the window width. That is A1
+measured at fixed arithmetic. Combined with the $2\pi$-comb (which
+produces $\Delta\approx7$--$9$, off the profile) the two cheap locks
+split: A1 holds, A2 as ``any $\Gamma$'' fails, A2 as ``any Weil form
+in the family'' still stands.
+\end{document}
