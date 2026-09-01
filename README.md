@@ -1,4 +1,4 @@
-# Numerical phenomenology of the Weil positivity criterion
+# The truncated Weil form: two theorems on explicit forms, and their phenomenology
 
 [![DOI](https://zenodo.org/badge/1351526407.svg)](https://doi.org/10.5281/zenodo.22215278)
 
@@ -112,7 +112,7 @@ digits). Proposition A: the transforms of the bottom vector at the zeros are the
 eigenvector of the zero Gram — the radical and the quasi-kernel of the zero Gram are the
 same object. Precision law err(γ₁) ≈ e^(−s(χ)µ), full depth — *the drilling speed is the
 per-digit cost of reading the first zero* — rooted in the endpoint law |v̂₀(γ₁)| ≈ C_γ λ₀
-(C_γ ∈ [7, 28] in the configurations measured): the radical's residual mass is expelled to
+(C_γ ∈ [7, 28] in the configurations measured; C_γ itself moves with N, notebook §51): the radical's residual mass is expelled to
 the band edge (leakage spectrum |v̂₀(γ)| ≈ e^(−τ(ω_max−γ)), τ ≈ sµ/(2ω_max) to 6% on ζ).
 Note: `notes/zeros-from-the-radical.pdf`.
 
