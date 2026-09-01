@@ -9,6 +9,8 @@
 python3 tests/test_theta_endpoints.py   # identites de la table de correlation (App. A)
 python3 tests/test_cert_mu11.py         # coherence tables de certificats <-> temoins JSON
 python3 code/quorum_general.py 11 46 22 zeta verify   # rejeu certifie complet (python-flint requis)
+python3 code/positivite_certifiee.py    # Q>0 certifie a mu=11 (~150 s, python-flint)
+python3 code/music_zeros.py zeta 11 46 50 6   # MUSIC depuis le radical
 ```
 
 ## Documents
@@ -137,41 +139,40 @@ per-prime contributions; ladder *architecture* (which prime sits on which rung)
 and ladder *existence* (the quorum) are distinct questions, and the second one
 carries the content of RH.
 
-*(Status split: everything in points 1-4 is measurement with stated error bars, not theorems; point 5 is a theorem --- about the explicitly defined forms Q_S, machine-certified --- and asserts nothing about RH.)*
+*(Status split: points 1–4 and 6 are measurements with stated error bars, not theorems; point 5 is a theorem about the explicitly defined forms Q_S, machine-certified, and asserts nothing about RH.)*
 
-**6. Lock-picking (new).** The complete form at µ = 11 is now *certified
-positive definite* (`code/positivite_certifiee.py`: eigen-congruence +
-Gershgorin + Sylvester through condition number ~10⁴⁸; the critical row is
-the razor itself, 3.58317×10⁻⁴⁸ ± 3×10⁻⁵⁴) — both halves of the quorum
-theorem exist at µ = 11. And the radical is a rigorous MUSIC noise
-subspace (Q(v)=λ ⇒ |v̂(γ)| ≤ √(λ/2)): `code/music_zeros.py` recovers the
-zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸ (at µ=38) from prime-built
-matrices. Measured precision law: error ≈ e^(−s(χ)µ) — *the drilling
-speed is the per-digit cost of reading the first zero* — via a new
-structural fact, hyper-nullity: the radical's residual mass is expelled to
-the band frontier. The leakage spectrum itself obeys a measured law,
-|v̂₀(γ)| ≈ e^(−τ(ω_max−γ)) with τ intrinsic (basis- and µ-independent)
-but arithmetic-dependent (τ ≈ γ₁/30 to ±20% across ζ, χ₃, χ₄; exact law
-open) — so the difficulty of truncated positivity is *localized* in an
-O(1/τ) neighborhood of the band edge (notebook §15.6–16.5).
-
-**5. A certified theorem (draft).** Using ball arithmetic (Arb via
+**5. A certified theorem.** Using ball arithmetic (Arb via
 python-flint), the quorum is now *certified*: every proper sub-Euler product
 of the windowed Weil form admits an explicit negative witness — exhaustively
 at µ = 11 (15/15 proper subsets), µ = 16 (63/63), µ = 22 (255/255), and for
 χ₃ at µ = 11 (7/7, no pole: the phenomenon belongs to the Euler product, not
-to ζ's pole). 340 certified violations, zero exceptions; the complete forms
-remain non-certifiable at +0.000000, as they must (their positivity is
-RH-adjacent and is not claimed). Engine: `code/quorum_general.py` (8–14 s per
-scale, `verify` mode replays the frozen dyadic witnesses in
-`code/witnesses_*.json`); certificate tables with per-line certified radii:
-`code/quorum_cert_*.txt`; the identification of the certified forms with the
-Weil–Bombieri pairing is independently checkable via
-`code/weil_normalization_check.py` (pole identity exact to 12 digits,
-archimedean identity against the direct ψ-integral); draft note:
-"Proper sub-Euler products violate Weil positivity on a fixed window:
-certified witnesses" (Appendix A verified; the pole/archimedean normalization is derived in
-Appendix B and independently checkable via `code/weil_normalization_check.py`).
+to ζ's pole). 340 certified violations, zero exceptions. Engine:
+`code/quorum_general.py` (8–14 s per scale, `verify` mode replays the frozen
+dyadic witnesses in `code/witnesses_*.json`); certificate tables with
+per-line certified radii: `code/quorum_cert_*.txt`; the identification of
+the certified forms with the Weil–Bombieri pairing is independently
+checkable via `code/weil_normalization_check.py` (pole identity exact to
+12 digits, archimedean identity against the direct ψ-integral). Note:
+`notes/quorum-theorem.pdf`.
+
+**6. Lock-picking.** The complete form at µ = 11 is now *certified
+positive definite* (`code/positivite_certifiee.py`: eigen-congruence +
+Gershgorin + Sylvester through condition number ~10⁴⁸; the critical row is
+the razor itself, 3.58317×10⁻⁴⁸ ± 3×10⁻⁵⁴) — both halves of the quorum
+exist at µ = 11: every proper Q_S is certified negative, the complete Q is
+certified positive. The radical is a rigorous MUSIC noise subspace
+(Q(v)=λ ⇒ |v̂(γ)| ≤ √(λ/2)): `code/music_zeros.py` recovers the zeros of
+ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸ (at µ=38) from prime-built matrices.
+Measured precision law: error ≈ e^(−s(χ)µ) — *the drilling speed is the
+per-digit cost of reading the first zero* — via a new structural fact,
+hyper-nullity: the radical's residual mass is expelled to the band
+frontier. The leakage spectrum obeys |v̂₀(γ)| ≈ e^(−τ(ω_max−γ)); D2 (µ-independence
+of τ) died at the 85-digit zeros. The single measured root of hyper-nullity,
+the precision law and the profile is the endpoint law
+|v̂₀(γ₁)| ≈ C·λ₀ with C ∈ [7, 25] over sixty orders, equivalent to
+τ ≈ sµ/(2ω_max) to 6% on ζ (notebook §15.6–16.7). The complete
+form's positivity at µ = 11 is a finite-window certificate, not a claim
+about RH.
 
 ## Reproduce
 
@@ -230,10 +231,12 @@ zeros per L(s,χ)), and the published λ_min = 2.389×10⁻⁴⁸ at µ = 11.
 
 ## Epistemic status
 
-Measured laws with stated error bars; no theorems. The shape law rests on six µ
+Points 1–4 and 6 are measured laws with stated error bars. Point 5 is a
+theorem about the explicitly defined forms Q_S (340 ball-arithmetic witnesses,
+zero exceptions) and asserts nothing about RH. The shape law rests on six µ
 points (two basis-extrapolated); ladder slopes on three µ points each; the c_∞
-identification on closed-form norms plus overlap/deficit consistency. All claims
-are falsifiable by extending the series with this code. References: Connes–Consani
-arXiv:2106.01715; Connes–Consani–Moscovici arXiv:2511.22755; Connes–van Suijlekom
-arXiv:2511.23257; Connes arXiv:2602.04022; Suzuki arXiv:2606.09096; Groskin
-arXiv:2605.20224.
+identification on closed-form norms plus overlap/deficit consistency. All
+measurement claims are falsifiable by extending the series with this code.
+References: Connes–Consani arXiv:2106.01715; Connes–Consani–Moscovici
+arXiv:2511.22755; Connes–van Suijlekom arXiv:2511.23257; Connes
+arXiv:2602.04022; Suzuki arXiv:2606.09096; Groskin arXiv:2605.20224.
