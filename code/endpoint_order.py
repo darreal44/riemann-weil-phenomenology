@@ -7,6 +7,9 @@ import numpy as np
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 kind = sys.argv[1] if len(sys.argv) > 1 else 'chi3'
+mu_cli = float(sys.argv[2]) if len(sys.argv) > 2 else None
+NB_cli = int(sys.argv[3]) if len(sys.argv) > 3 else None
+dps_cli = int(sys.argv[4]) if len(sys.argv) > 4 else None
 
 
 def assemble_chi3(mu=16.0, NB=36, dps=48):
@@ -118,4 +121,8 @@ if __name__ == '__main__':
     if kind == 'zeta':
         report('zeta', assemble_zeta())
     else:
-        report('chi3', assemble_chi3())
+        kw={}
+        if mu_cli is not None: kw['mu']=mu_cli
+        if NB_cli is not None: kw['NB']=NB_cli
+        if dps_cli is not None: kw['dps']=dps_cli
+        report('chi3', assemble_chi3(**kw))

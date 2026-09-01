@@ -25,12 +25,24 @@ def tail_diag(G):
     integ = (lg + 1)/(2*math.pi) / G + 1.0/G
     return 2 * (c**2) * integ
 
+def signed_tail(G):
+    """Oscillatory remainder: hat ~ (2 sqrt(2/L)/g) sin(g L/2),
+    2 hat hat ~ (4/L) (1-cos(g L))/g^2.
+    int_G^inf (1-cos(Lg))/g^2 = 1/G - Re int e^{i L g}/g^2
+    = 1/G + O(sin(LG)/(L G))."""
+    if G <= 2 * wmax:
+        return float('inf')
+    avg = 1.0 / G
+    osc = abs(math.sin(L * G) / (L * G))
+    return (4.0 / L) * (avg + osc)
+
 td = tail_diag(Gcut)
+sd = signed_tail(Gcut)
 print(f'N0={N0} wmax={wmax:.1f} Gcut={Gcut:.1f}')
 print(f'uniform |hat| bound c/g with c={c:.3f}')
-print(f'tail bound on each |Qz_nm| remainder: {td:.4e}')
-print(f'compare to measured |Qpr-Qz_cut| ~ 6e-3 at N0=4; '
-      f'certificate needs |Qpr-Qz_cut| + tail < target')
-# also a tighter G=2000 hypothetical
-for G in (280, 513.7, 800, 2000):
-    print(f'  G={G:<8} tail<={tail_diag(G):.4e}')
+print(f'unsigned tail (density envelope): {td:.4e}')
+print(f'signed tail   (1-cos oscillation): {sd:.4e}')
+print(f'ratio unsigned/signed = {td/sd:.1f}')
+print(f'compare to measured mid |Qpr-Qz_cut| ~ 2e-3-4e-3 at N0=4')
+for G in (280, 513.7, 811.2, 2000):
+    print(f'  G={G:<8} unsigned={tail_diag(G):.4e}  signed={signed_tail(G):.4e}')
