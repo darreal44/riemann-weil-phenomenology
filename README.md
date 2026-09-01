@@ -19,71 +19,71 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 
 ## Documents
 
-- `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil
-  positivity on a fixed window: certified witnesses* (5 pp.). The certified
-  quorum theorem: statement, ball-arithmetic certification, full derivations
-  of the correlation table (App. A) and of the exact Weil–Bombieri
-  normalization for ζ and Dirichlet (App. B). Its 340 witnesses, certificate
-  tables and engines live in `code/`.
-- `notes/suzuki-conjecture-note.pdf` — companion note (4 pp.): the numerical
-  study of Suzuki's Conjecture 1.2, identification of the constant as
-  ‖Φ‖_{L²}, the L²/uniform split, and the Dirichlet extension.
-- `notes/depth-phenomenology.pdf` — *Depth phenomenology of truncated Weil
-  quadratic forms: fifteen L-functions, one ladder* (4 pp.): the affine depth
-  law and its map (with the full preregistered stress record), bandwidth vs
-  counting, the universal rung profile, the recruitment law, and the quorum
-  as phenomenon.
-- `notes/lemma-delta-profile.pdf` — lemma candidate for the universal rung
-  profile Δ(ℓ): ramp-then-plateau reading, the 2π-comb control (off-profile:
-  universality is a property of the Weil family, not of arbitrary spectra),
-  and the L-variation at fixed χ₋₈ (spacing tracks the level, not the window).
-- `notes/lemma-speed-s.pdf` — lemma candidate for the drilling speed:
-  s(χ) = κ_win·Λ(χ), with S1 (linearity = PNT on the radical) and S2
-  (s as the per-digit cost of reading γ₁ — the measured precision law).
-- `notes/lemma-quorum-scales.pdf` — B1/B2: the every-scale quorum reduction
-  (diagonal silence + surviving coupling ⇒ every proper sub-product indefinite).
-- `notes/squares47.pdf` — the prime-side/zero-side identity on V: 47 squares,
-  500-zero reconstruction; the identity closes to O(1/G²) on the 5×5 block once the
-  truncated zero sum is completed by the density tail and the boundary term C_G/G,
-  C_G = 2Λ(µ)/(πL√µ) (notebook §42–50); on the full 47×47 the difference is an Arb
-  enclosure with 0 in every entry, certified bound 6×10⁻³ set by the tail budget (§65).
-- `notes/missing-characters.pdf` — χ₋₈, χ₋₂₀, χ₋₂₃ instantiated: Kronecker
-  tables, harvested zeros (independently cross-checked), preregistered map
-  predictions — **outcome: χ₋₈ passes; χ₋₂₃ kills the map as written (−29%,
-  20th preregistered execution); χ₋₂₀ does not — its secants climb to s_∞ ∈ [0.58, 0.62]
-  at µ ≤ 74, within 10% of the prediction (the early "kill from above" was a short-sieve
-  artifact, notebook §18 erratum, §23, §37–39)** — the one clean failure lands on a
-  documented fragility axis (small gap).
-- `notes/lemma-map2.pdf` — two-variable candidate $s=c\gamma_1^\alpha\rho^{[odd]}$ dies on $\chi_{-23}$ (+97%); parity is the killing axis.
-- `notes/lemma-delta-2pie.pdf` — plateau vs $2\pi e$: $\chi_3$ hovers 16.8--17.1, $\chi_4$ sits above; interval $[16.8,18.2]$.
-- `notes/chi20-mu50.pdf` — $\chi_{-20}$ at $\mu=50$: last secant 0.59 vs 0.57 (+4%); the 20% kill from above is not fired.
-- `notes/zeros-from-the-radical.pdf` — *Zeros from the radical: MUSIC on the
-  truncated Weil form, hyper-nullity, and the precision law*: the admission bound
-  |v̂(γ)| ≤ √(λ/2), Proposition A (Gram duality), zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to
-  4×10⁻⁵⁸ from prime-built matrices, err ≈ e^(−sµ), endpoint law |v̂₀(γ₁)| ≈ Cλ₀,
-  leakage spectrum, and the certified positive definiteness of the complete form at
-  µ=11 (second half of the quorum theorem).
-- `notes/depth-geometry-quorum-mechanism.pdf` — *Depth as sampling geometry, and
-  the quorum as a 2×2 mechanism*: the geometric law replacing the depth map (fitted
-  on ζ, median out-of-sample ratio 0.89), the Slepian share of the depth, the
-  unconditional 2×2 lemma (depth × coupling), its certified µ=11 instance (15/15 on
-  one vector), the µ-content at three scales, and the laws δ_p ~ e^(−7p), κ_p ~ e^(−4p).
-- `notes/sampling-floor.pdf` — *The floor of the truncated Weil form is a
-  sampling constant*: Theorem 1 (under RH, c_L > 0 and λ_min(N) ↓ c_L — Beurling
-  through the explicit formula), the desert quantified by the Slepian constant
-  (75% of the depth at µ=3, 28% at µ=11), why Duffin–Schaeffer/Bernstein cannot
-  give a quantitative lower bound, and the geometric-law conjecture.
-- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1710
-  lines, 97 journal steps): every measurement, every artifact caught, every
-  hypothesis executed.
+Sixteen notes, one lab notebook. They are not of equal standing; read them by tier.
 
-Independent numerical exploration of the truncated Weil quadratic form — the object
-behind the recent Connes–Consani(–Moscovici), Connes–van Suijlekom, Suzuki and Groskin
-line of work on the Riemann Hypothesis. Most of what is here is **measurement**; two items are theorems about the explicitly defined forms (the certified quorum, point 5; the 2×2 mechanism lemma and the conditional floor theorem, `notes/depth-geometry-quorum-mechanism.pdf`, `notes/sampling-floor.pdf`), and none of it bears on RH:
-the point is to treat the semi-local Weil form as an experimental system and report
-reproducible laws, with the same care about artifacts as in a physics lab.
+**Living corpus — four notes, publishable as they stand.**
 
-Companion lab notebook (full narrative, French, 2200+ lines, 65 sections): [`report/le-milieu-des-premiers-v2.md`](report/le-milieu-des-premiers-v2.md).
+- `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil positivity on a fixed
+  window: certified witnesses* (5 pp.). The theorem of the repository: 340 ball-arithmetic
+  witnesses (exhaustively at µ = 11, 16, 22 for ζ; χ₃ at µ = 11), with the full derivations
+  of the correlation table (App. A) and of the Weil–Bombieri normalization (App. B). Its
+  missing half — the complete form is positive definite at µ = 11 — is certified in the
+  next note. Engines, frozen dyadic witnesses and certificate tables live in `code/`.
+- `notes/zeros-from-the-radical.pdf` (v3) — MUSIC on the truncated Weil form: the admission
+  bound |v̂(γ)| ≤ √(λ/2), Proposition A (the transforms of the bottom vector at the zeros
+  are the bottom eigenvector of the zero Gram), zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸
+  from prime-built matrices, err ≈ e^(−sµ), the endpoint law |v̂₀(γ₁)| ≈ C_γ λ₀ and the
+  leakage spectrum, and the certified positive definiteness of the complete form at µ = 11.
+- `notes/depth-geometry-quorum-mechanism.pdf` (v2) — §1 (under RH): the depth law as a
+  sampling constant of the zero set; the geometric law −ln c_L ≈ a L(γ₁−ν)₊ + b L Σ(gap−ν)₊
+  with (a, b) fitted on four scales of ζ, predicting s(χ) out of sample (median 0.89, 10/14
+  within 20%); the Slepian share of the depth. §2 (no zeros): the unconditional 2×2
+  interlacing lemma — depth × coupling — its certified µ = 11 instance (15/15 sub-products
+  on one vector), the µ-content at three scales, δ_p ~ e^(−7p), κ_p ~ e^(−4p).
+- `notes/sampling-floor.pdf` — Theorem 1 (under RH): c_L > 0 and λ_min(N) ↓ c_L, Beurling
+  read through the explicit formula; the desert quantified by Slepian's constant; why
+  Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
+  Beurling.
+
+**Campaign notes — useful measurement, titles to be read as dated records.**
+
+- `notes/depth-phenomenology.pdf` — *superseded as a result, kept as a campaign.* "Fifteen
+  L-functions, one ladder" holds on the ramp (rungs 9–14) only; the four-variable map it
+  presents is dead out of sample (χ₋₂₃, −29%, 20th preregistered execution) and replaced
+  by the geometric law above. The preregistered stress record, the bandwidth-vs-counting
+  test, the recruitment law and the quorum-as-phenomenon remain valid measurements.
+- `notes/lemma-speed-s.pdf` — *superseded.* s = κ_win·Λ(χ) is a dead map; its S2
+  (err ≈ e^(−sµ)) lives in zeros-from-the-radical.
+- `notes/lemma-delta-profile.pdf` — Δ(ℓ) universal on the ramp 9–14 only; the 2π-comb
+  control (off-profile) and the L-variation at fixed χ₋₈ remain good controls.
+- `notes/lemma-delta-2pie.pdf`, `notes/lemma-delta-inf.pdf` — negative findings: two
+  clusters ([16.8, 17.1] and [17.9, 18.2]), not 2πe, not split by parity.
+- `notes/lemma-quorum-scales.pdf` — *superseded as master text.* B1/B2 are now the 2×2
+  lemma of depth-geometry-quorum-mechanism; this note is the pointer to their origin.
+- `notes/lemma-map2.pdf`, `notes/missing-characters.pdf`, `notes/chi20-mu50.pdf` — the
+  execution record of the maps, dated: χ₋₈, χ₋₂₀, χ₋₂₃ instantiated with independently
+  cross-checked zeros; the four-variable map killed by χ₋₂₃; the two-variable successor
+  killed harder (+97%); χ₋₂₀ does not kill — its secants climb to s_∞ ∈ [0.58, 0.62] at
+  µ ≤ 74 (the early "kill from above" was a short-sieve artifact, notebook §18 erratum).
+- `notes/lemma-C.pdf` — C = κ as an identity of form only; κ is unreadable on the same Q.
+- `notes/squares47.pdf` — the prime-side/zero-side identity on V: on the 5×5 block the
+  residual is O(1/G²) once the truncated zero sum is completed by the density tail and the
+  boundary term C_G/G, C_G = 2Λ(µ)/(πL√µ) (notebook §42–50); on the full 47×47 the
+  difference is an Arb enclosure with 0 in every entry, bound 6×10⁻³ set by the tail
+  budget (§65).
+
+**Other thread.**
+
+- `notes/suzuki-conjecture-note.pdf` — the numerical study of Suzuki's Conjecture 1.2:
+  identification of the constant as ‖Φ‖_{L²}, the L²/uniform split, the Dirichlet
+  extension. Independent of the quorum thread; not to be mixed with it.
+
+**The laboratory.**
+
+- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (French): every
+  measurement, every artifact caught (eleven families), every hypothesis executed
+  (twenty-three), in the order things were understood. Its Annexe H is the single status
+  page of the project; Annexes C and G are historical.
 
 ## Main results
 
