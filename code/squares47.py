@@ -7,7 +7,7 @@ import numpy as np
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 N0 = int(sys.argv[1]) if len(sys.argv) > 1 else 6
-mp.mp.dps = 40
+mp.mp.dps = 40  # dps BEFORE zeros (artifact family 9)
 t0 = time.time()
 L = mp.log(11)
 NP = N0 + 1
@@ -50,14 +50,21 @@ def hat(n, g):
         return 2 * mp.sin(g * L / 2) / (g * mp.sqrt(L)) if g else mp.sqrt(L)
     return 2 * mp.sqrt(2 / L) * g * mp.sin(g * L / 2) / (g * g - om[n] * om[n])
 
-zs = pickle.load(open(os.path.join(BASE, 'zeros280.pkl'), 'rb'))
+hp = os.path.join(BASE, 'zeros_zeta_90_hp.pkl')
+long = pickle.load(open(os.path.join(BASE, 'zeros280.pkl'), 'rb'))
+if os.path.exists(hp):
+    zs = [mp.mpf(z) for z in pickle.load(open(hp, 'rb'))]
+    last = float(zs[-1])
+    zs += [mp.mpf(z) for z in long if float(z) > last + 1e-6]
+else:
+    zs = [mp.mpf(z) for z in long]
 Qz = mp.matrix(NP)
 for n in range(NP):
     for m in range(n, NP):
         # even window: each positive gamma is paired with -gamma, same hats
         Qz[n, m] = 2 * mp.fsum(hat(n, mp.mpf(g)) * hat(m, mp.mpf(g)) for g in zs)
         Qz[m, n] = Qz[n, m]
-print(f'[{time.time()-t0:.0f}s] Qz assembled from {len(zs)} zeros, gamma_last={zs[-1]:.1f}')
+print(f'[{time.time()-t0:.0f}s] Qz assembled from {len(zs)} zeros, gamma_last={float(zs[-1]):.1f}')
 
 absdiff = max(abs(float(Qpr[n, m] - Qz[n, m])) for n in range(NP) for m in range(n, NP))
 reldiag = max(abs(float((Qpr[n, n] - Qz[n, n]) / Qpr[n, n])) for n in range(NP) if Qpr[n, n] != 0)

@@ -123,4 +123,14 @@ ground state is $C^2\lambda_0^2$, not $\lambda_0$ --- a certificate of
 the $47$ squares must resolve that $\lambda^2$ slot, which at $\mu=16$
 sits at $10^{-144}$. Use \texttt{zeros\_zeta\_90\_hp.pkl} and load it
 after setting $dps$.
+
+\section*{Addendum --- replay, 1 September}
+
+\texttt{code/squares47.py} now loads \texttt{zeros\_zeta\_90\_hp.pkl}
+after setting $dps$, then appends the $\gamma>133$ tail from
+\texttt{zeros280.pkl}. At $N_0=4$ (5-dimensional block):
+$\max|Q^{\mathrm{pr}}-Q^{\mathrm{z}}|=6.3\times10^{-3}$,
+max relative diagonal residual $6.1\%$. The residual is the
+$\gamma>280$ tail, not a $dps$ artifact. Flint certification of the
+same difference is still the missing stroke.
 \end{document}
