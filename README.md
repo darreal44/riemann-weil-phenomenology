@@ -139,6 +139,18 @@ carries the content of RH.
 
 *(Status split: everything in points 1-4 is measurement with stated error bars, not theorems; point 5 is a theorem --- about the explicitly defined forms Q_S, machine-certified --- and asserts nothing about RH.)*
 
+**6. Lock-picking (new).** The complete form at µ = 11 is now *certified
+positive definite* (`code/positivite_certifiee.py`: eigen-congruence +
+Gershgorin + Sylvester through condition number ~10⁴⁸; the critical row is
+the razor itself, 3.58317×10⁻⁴⁸ ± 3×10⁻⁵⁴) — both halves of the quorum
+theorem exist at µ = 11. And the radical is a rigorous MUSIC noise
+subspace (Q(v)=λ ⇒ |v̂(γ)| ≤ √(λ/2)): `code/music_zeros.py` recovers the
+zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸ (at µ=38) from prime-built
+matrices. Measured precision law: error ≈ e^(−s(χ)µ) — *the drilling
+speed is the per-digit cost of reading the first zero* — via a new
+structural fact, hyper-nullity: the radical's residual mass is expelled to
+the band frontier (notebook §15.6–16.3).
+
 **5. A certified theorem (draft).** Using ball arithmetic (Arb via
 python-flint), the quorum is now *certified*: every proper sub-Euler product
 of the windowed Weil form admits an explicit negative witness — exhaustively
