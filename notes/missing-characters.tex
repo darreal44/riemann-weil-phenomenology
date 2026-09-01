@@ -1,0 +1,119 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{\bfseries The three missing characters:\\
+$\chi_{-8}$, $\chi_{-20}$, $\chi_{-23}$}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- lemma campaign, item 5}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+The depth map was trained on fourteen of the seventeen real primitive
+characters of conductor $\le24$. The three held out --- $\chi_{-8}$,
+$\chi_{-20}$, $\chi_{-23}$ --- are now instantiated: Kronecker tables,
+completed $\Lambda$-functions, first zeros harvested, and drilling
+speeds predicted from the four-variable map. Measured $s$ is not
+computed in this commit; the predictions are preregistered.
+\end{abstract}
+
+\section{Why these three}
+
+Real primitive characters are Kronecker characters $\chi_d$ of
+fundamental discriminants. Conductor $\le24$ gives seventeen of them.
+The working family kept fourteen and dropped the three odd characters
+$\chi_{-8}$, $\chi_{-20}$, $\chi_{-23}$ (the even $\chi_{+8}$ is
+already in the map). $\chi_{-23}$ was flagged as the best next test:
+class number $3$, small gap, low conductor mass.
+
+\section{Tables and zeros}
+
+Kronecker symbol implemented in $\mathtt{code/kronecker.py}$ and
+checked against the existing $\chi_{-20}$ table in
+$\mathtt{dscan.py}$ and against $\chi_{-8}(-1)=-1$. First zeros of the
+completed $\Lambda$-function, bisected at $dps=22$:
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$\chi$ & $q$ & $\gamma_1$ & $\gamma_2$ & $\gamma_3$ \\
+\midrule
+$\chi_{-8}$  & 8  & 3.576155 & 7.434473 & 9.503202 \\
+$\chi_{-20}$ & 20 & 2.358935 & 4.675508 & 7.429110 \\
+$\chi_{-23}$ & 23 & 2.871340 & 4.215190 & 6.731189 \\
+\bottomrule
+\end{tabular}
+\end{center}
+Caches: $\mathtt{code/zeros\_chim8.pkl}$,
+$\mathtt{zeros\_chi20.pkl}$, $\mathtt{zeros\_chi23.pkl}$.
+
+Conductor masses $D=\sum_{p\mid q}\log p/(\sqrt p-1)$:
+$D_{-8}=1.673$, $D_{-20}=2.975$, $D_{-23}=0.826$. All three are odd.
+
+\section{Preregistered speeds}
+
+The map of~\cite{Depth},
+$\hat s\approx0.14\,\gamma_1^{1.32}(\gamma_2-\gamma_1)^{0.45}
+e^{-0.13 D}\,1.32^{[\mathrm{odd}]}$, gives
+\[
+\hat s(\chi_{-8})=1.47,\qquad
+\hat s(\chi_{-20})=0.57,\qquad
+\hat s(\chi_{-23})=0.76.
+\]
+A measured slope off its prediction by more than $20\%$ on any of the
+three is a kill of the map as written. $\chi_{-8}$ is the internal
+control: its even twin $\chi_{+8}$ already sits at $s=1.47\pm0.05$,
+and the map sends the odd twin to the same number --- parity and the
+larger gap of $\chi_{-8}$ cancel. $\chi_{-20}$ is a high-$D$ small-$\gamma_1$
+point, the regime where $\chi_{12}$ already pulls $+14\%$.
+$\chi_{-23}$ is the genuine out-of-sample: small gap, low $D$, class
+number $3$.
+
+\section{How to measure $s$}
+
+The three characters are registered in $\mathtt{code/dscan.py}$ as
+\texttt{chim8}, \texttt{chi20}, \texttt{chi23}. Replay:
+\begin{verbatim}
+python3 dscan.py chim8
+python3 dscan.py chi20
+python3 dscan.py chi23
+\end{verbatim}
+Each call runs $\mu=5.5$ ($N=25$) then $\mu=11$ ($N=41$). Two windows
+give a two-point slope; a third window ($\mu=16$ or $22$) is needed
+before the slope is compared to $\hat s$ at the advertised
+$\pm0.05$--$0.1$ budget. Nothing in this commit claims that
+measurement.
+
+
+\section{Measured slopes}
+
+Engine: \texttt{code/scan\_s.py}, validated on $\chi_3$ at $\mu=11$
+($\lambda_{\min}=5\cdot10^{-16}$, $\ell_0=35.2$). Last-segment slopes:
+
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$\chi$ & segment & $s_{\mathrm{meas}}$ & $\hat s$ & err \\
+\midrule
+$\chi_{-8}$  & $16\to22$ & $1.46$ & $1.47$ & $-0.5\%$ \\
+$\chi_{-20}$ & $22\to32$ & $0.55$ & $0.57$ & $-3.7\%$ \\
+$\chi_{-23}$ & $22\to32$ & $0.47$ & $0.76$ & $-38\%$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+$\chi_{-8}$ and $\chi_{-20}$ confirm the map. $\chi_{-23}$ does not:
+the slope stabilized ($0.47$ on both $16\to22$ and $22\to32$). The map
+over-weights the gap $1.34$. A larger basis can only raise $s$
+(artifact 7); it will not close a $38\%$ hole by itself.
+
+\section{Status}
+
+Zeros and predictions are in. Slopes are in. Two confirmations, one kill ($\chi_{-23}$).
+
+\begin{thebibliography}{1}\small
+\bibitem{Depth} D.~Joubert, \emph{Depth phenomenology of truncated Weil
+quadratic forms}, same repository (2026).
+\end{thebibliography}
+\end{document}
