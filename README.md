@@ -45,8 +45,11 @@ python3 code/music_zeros.py zeta 11 46 50 6   # MUSIC depuis le radical
   predictions — **outcome: χ₋₈ passes; χ₋₂₃ kills the map as written (−29%,
   20th preregistered execution); χ₋₂₀ likely kills it from above** — both
   failures landing exactly on the two documented fragility axes.
-- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1695
-  lines, 92 journal steps): every measurement, every artifact caught, every
+- `notes/lemma-map2.pdf` — two-variable candidate $s=c\gamma_1^\alpha\rho^{[odd]}$ dies on $\chi_{-23}$ (+97%); parity is the killing axis.
+- `notes/lemma-delta-2pie.pdf` — plateau vs $2\pi e$: $\chi_3$ hovers 16.8--17.1, $\chi_4$ sits above; interval $[16.8,18.2]$.
+- `notes/chi20-mu50.pdf` — $\chi_{-20}$ at $\mu=50$: last secant 0.59 vs 0.57 (+4%); the 20% kill from above is not fired.
+- `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1710
+  lines, 97 journal steps): every measurement, every artifact caught, every
   hypothesis executed.
 
 Independent numerical exploration of the truncated Weil quadratic form — the object
