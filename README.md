@@ -62,7 +62,7 @@ line of work on the Riemann Hypothesis. Everything here is **measurement**, not 
 the point is to treat the semi-local Weil form as an experimental system and report
 reproducible laws, with the same care about artifacts as in a physics lab.
 
-Companion lab notebook (full narrative, French, 1400+ lines): [`report/le-milieu-des-premiers-v2.md`](report/le-milieu-des-premiers-v2.md).
+Companion lab notebook (full narrative, French, 2200+ lines, 65 sections): [`report/le-milieu-des-premiers-v2.md`](report/le-milieu-des-premiers-v2.md).
 
 ## Main results
 
