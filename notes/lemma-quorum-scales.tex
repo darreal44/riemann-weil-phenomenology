@@ -1,0 +1,183 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{lemma}{Lemma}
+\newtheorem{conjecture}{Conjecture}
+\title{\bfseries Quorum at every scale:\\
+diagonal silence and surviving coupling}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- lemma campaign, item 3}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+The certified quorum theorem is a statement at three fixed windows
+($340$ witnesses). What remains is the statement at every scale: every
+proper sub-Euler product of the windowed Weil form is indefinite, for
+every $\mu$. The reduction already measured at $\mu=11$ cuts this to
+two harmonic-analysis lemmas on the radical --- (B1)~diagonal silence
+before recruitment, (B2)~a surviving off-diagonal coupling --- plus
+the observation that the radical dimension grows like the ladder.
+Neither lemma mentions RH. We state both, record what is certified,
+and isolate the one estimate that still scales.
+\end{abstract}
+
+\section{What is already a theorem}
+
+On the $47$-dimensional even window $V$ at $\mu=11$, and on the
+analogous windows at $\mu=16$ and $\mu=22$ (and for $\chi_3$ at
+$\mu=11$), every proper partial form $Q_S$ admits an explicit negative
+witness, ball-certified~\cite{Quorum}. That is $340$ cases, no
+exception. It is a theorem about explicitly defined matrices. It is
+not a theorem about every $\mu$.
+
+At $\mu=11$ a further reduction is measured exact~\cite{LabNB} \S15:
+the violator of $Q_{\setminus p}$ lives $99.4\%$ in the quasi-radical
+of the complete $Q$, and
+\[
+\lambda_{\min}(Q_{\setminus p})
+\;=\;
+\lambda_{\min}(M_p)+O(10^{-4}),
+\]
+where $M_p$ is the tower of $p$ restricted to the radical. Each $M_p$
+has a certified negative $2\times2$ minor (margins $0.10$--$0.19$
+against quadrature $<10^{-8}$). The pattern of those minors is the
+content:
+a \emph{silent} rung (diagonal $\approx0$: $p$ not yet recruited)
+paired with a \emph{speaking} rung, off-diagonal of size $\sim0.4$.
+A matrix $\bigl(\begin{smallmatrix}\varepsilon&b\\b&a\end{smallmatrix}\bigr)$
+is indefinite as soon as $b^2>\varepsilon a$, which is automatic when
+$\varepsilon\approx0$.
+
+\section{The two lemmas}
+
+Let $v_0,v_1,\dots$ be the quasi-null eigenfunctions of the complete
+form $Q$ at a window $\mu=e^L$, and write
+$k(p)$ for the first rung that recruits $p$ (so $k(p)=n-1$ when $p$
+is the $n$-th $\chi$-supported prime, empirically). Write
+$(f\star g)(x)=\Theta_{f,g}(x)$ for the symmetrized correlation.
+
+\begin{lemma}[B1, diagonal silence]\label{lem:B1}
+For every interior prime $p$ and every rung $j<k(p)$,
+\[
+(v_j\star v_j)(\log p)\;=\;o_p(1).
+\]
+Equivalently the diagonal entry of $M_p$ on a pre-recruitment rung
+vanishes.
+\end{lemma}
+
+\begin{lemma}[B2, surviving coupling]\label{lem:B2}
+For every interior prime $p$ there is at least one speaking rung $k$
+such that
+\[
+(v_j\star v_k)(\log p)\;\ne\;0
+\qquad\text{for some silent }j<k(p).
+\]
+The coupling is $O(1)$, not $o(1)$: it does not shrink with $\mu$.
+\end{lemma}
+
+\begin{conjecture}[Quorum at every scale]
+B1 $+$ B2 $+$ the radical reduction $\Rightarrow$ $Q_S$ is indefinite
+for every proper $S\subsetneq P(\mu)$ and every $\mu$ large enough
+that $V$ is depth-adequate. No appeal to RH.
+\end{conjecture}
+
+Lemma~A of~\cite{Quorum} (every single tower is indefinite on $V$) is
+elementary and already proved; it does not locate the negative
+directions. B1 and B2 do.
+
+\section{What scales, what does not}
+
+The $2\times2$ certificate is dimension-free: once a silent/speaking
+pair exists, indefiniteness of $M_p$ does not care how large the
+radical is. The radical dimension itself grows --- $\ell_0=s\mu$
+produces $\sim s\mu/\Delta_\infty$ rungs --- so B1 and B2 have to be
+checked against a growing flag, not a fixed $8\times8$ block.
+
+The estimate that still scales is the reduction
+$\lambda_{\min}(Q_{\setminus p})=\lambda_{\min}(M_p)+O(\varepsilon(\mu))$.
+At $\mu=11$, $\varepsilon\sim10^{-4}$ against
+$\lambda_{\min}(M_p)\sim-0.5$. As $\mu$ grows the complete form sits
+deeper ($\lambda_{\min}(Q)\sim e^{-s\mu}$) and the bulk gap above the
+ladder stays $O(1)$. A perturbation argument on that gap gives
+$\varepsilon(\mu)\to0$, which is the friendly direction. Writing the
+$\varepsilon(\mu)$ bound in ball arithmetic at one more window
+($\mu=16$, radical already computed by the quorum engine) would
+promote the reduction from ``measured exact at $11$'' to ``certified
+in a range''.
+
+B1 is the microscopic content of the recruitment law. A proof of B1
+is a proof that $v_j\star v_j$ is supported, at leading order, on the
+logs of the primes already recruited by rung $j$. That is a statement
+about the correlation of windowed eigenfunctions at a discrete set of
+lags --- harmonic analysis on the window, plus the seating of primes,
+not RH.
+
+B2 is the assertion that silence is \emph{diagonal only}. The
+off-diagonal $(v_j\star v_k)(\log p)$ is an oscillatory overlap with
+no symmetry that forces a zero. One non-vanishing pair per $p$
+suffices.
+
+\section{A finite check that would change the status}
+
+At $\mu=16$ the quorum engine already built every $Q_S$. Restricting
+the four simple-deletion violators to the quasi-radical of the
+complete form and certifying one $2\times2$ minor per prime would
+repeat the $\mu=11$ lemma-B campaign at a second scale. If the silent
+/ speaking pattern recurs, B1+B2 stop being a $\mu=11$ anecdote.
+
+\section{Status}
+
+The quorum at three windows is a theorem. B1 and B2 are the lemmas
+for every scale. The reduction $\varepsilon(\mu)$ is the one analytic
+estimate left. None of the three mentions RH.
+
+\begin{thebibliography}{3}\small
+\bibitem{Quorum} D.~Joubert, \emph{Proper sub-Euler products violate
+Weil positivity on a fixed window: certified witnesses}, same
+repository (2026).
+\bibitem{LabNB} D.~Joubert, \emph{Le milieu des nombres premiers}, lab
+notebook, same repository (2026), \S14.7--15.2.
+\end{thebibliography}
+
+\section*{Addendum --- $\mu=16$ witnesses, 1 September}
+
+The shipped file \texttt{witnesses\_zeta\_mu16.json} already certifies
+every proper $Q_S$ negative at this window (theorem). Overlap of each
+simple-deletion violator with the complete-form ground state alone is
+$0.04$--$0.40$ --- not $0.99$ as at $\mu=11$ against the six-dimensional
+radical. That is expected: the radical has grown. The $2\times2$ minor
+campaign at $\mu=16$ still needs the complete eigenspace, which is not
+an artifact. B1+B2 remain lemmas; the cheap lock that would promote
+them is ``assemble $Q$ at $\mu=16$, project $T_p$ on the first eight
+eigenvectors, certify one minor per interior prime.''
+
+\section*{Addendum --- B1+B2 at a second scale, 1 September}
+
+\texttt{code/lemma\_B\_chi.py} on $\chi_{-8}$ at $\mu=16$ ($N=29$,
+depth-adequate: $\ell=(16.27,4.56)$). Interior primes $\{3,5,7,11,13\}$.
+Every tower, restricted to the first eight eigenvectors of the complete
+form, has a negative $2\times2$ minor:
+
+\begin{center}\small
+\begin{tabular}{lcccc}
+\toprule
+$p$ & silent $j$ & pair & $\det_2$ & B1+B2 \\
+\midrule
+3  & 6 & (6,7) & $-0.191$ & yes \\
+5  & 3 & (0,1) & $-0.217$ & yes \\
+7  & 0 & (0,1) & $-0.081$ & yes \\
+11 & 0 & (2,3) & $-0.045$ & yes \\
+13 & 0 & (1,5) & $-0.032$ & yes \\
+\bottomrule
+\end{tabular}
+\end{center}
+Five for five. The same pattern as $\zeta$ at $\mu=11$, on a different
+$L$-function, at a different window. B1+B2 are no longer a $\mu=11$
+anecdote. The $\varepsilon(\mu)$ reduction for $\zeta$ at $\mu=16$ still
+wants a depth-adequate basis ($N\sim71$), which this lock does not
+replace.
+\end{document}
