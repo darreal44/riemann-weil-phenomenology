@@ -6,7 +6,7 @@ CODE = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'code')
 
 def test_required_scripts_exist():
     for name in (
-        'kronecker.py', 'scan_s.py', 'map2.py', 'lemma_B_mu16.py',
+        'kronecker.py', 'scan_s.py', 'map2.py', 'map3.py', 'lemma_B_mu16.py',
         'squares47.py', 'squares47_arb.py', 'music_zeros.py',
         'positivite_certifiee.py', 'quorum_general.py',
         'high_directions.py', 'match_squares.py', 'endpoint_order.py',
