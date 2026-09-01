@@ -43,12 +43,17 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 - `notes/lemma-quorum-scales.pdf` — B1/B2: the every-scale quorum reduction
   (diagonal silence + surviving coupling ⇒ every proper sub-product indefinite).
 - `notes/squares47.pdf` — the prime-side/zero-side identity on V: 47 squares,
-  500-zero reconstruction, residual 4.1% with an explicit O(1/G) tail envelope; Arb 5×5 block: 15/15 difference balls contain 0, certified upper bound 3.6×10⁻².
+  500-zero reconstruction; the identity closes to O(1/G²) on the 5×5 block once the
+  truncated zero sum is completed by the density tail and the boundary term C_G/G,
+  C_G = 2Λ(µ)/(πL√µ) (notebook §42–50); on the full 47×47 the difference is an Arb
+  enclosure with 0 in every entry, certified bound 6×10⁻³ set by the tail budget (§65).
 - `notes/missing-characters.pdf` — χ₋₈, χ₋₂₀, χ₋₂₃ instantiated: Kronecker
   tables, harvested zeros (independently cross-checked), preregistered map
   predictions — **outcome: χ₋₈ passes; χ₋₂₃ kills the map as written (−29%,
-  20th preregistered execution); χ₋₂₀ likely kills it from above** — both
-  failures landing exactly on the two documented fragility axes.
+  20th preregistered execution); χ₋₂₀ does not — its secants climb to s_∞ ∈ [0.58, 0.62]
+  at µ ≤ 74, within 10% of the prediction (the early "kill from above" was a short-sieve
+  artifact, notebook §18 erratum, §23, §37–39)** — the one clean failure lands on a
+  documented fragility axis (small gap).
 - `notes/lemma-map2.pdf` — two-variable candidate $s=c\gamma_1^\alpha\rho^{[odd]}$ dies on $\chi_{-23}$ (+97%); parity is the killing axis.
 - `notes/lemma-delta-2pie.pdf` — plateau vs $2\pi e$: $\chi_3$ hovers 16.8--17.1, $\chi_4$ sits above; interval $[16.8,18.2]$.
 - `notes/chi20-mu50.pdf` — $\chi_{-20}$ at $\mu=50$: last secant 0.59 vs 0.57 (+4%); the 20% kill from above is not fired.
@@ -74,7 +79,7 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 
 Independent numerical exploration of the truncated Weil quadratic form — the object
 behind the recent Connes–Consani(–Moscovici), Connes–van Suijlekom, Suzuki and Groskin
-line of work on the Riemann Hypothesis. Everything here is **measurement**, not proof:
+line of work on the Riemann Hypothesis. Most of what is here is **measurement**; two items are theorems about the explicitly defined forms (the certified quorum, point 5; the 2×2 mechanism lemma and the conditional floor theorem, `notes/depth-geometry-quorum-mechanism.pdf`, `notes/sampling-floor.pdf`), and none of it bears on RH:
 the point is to treat the semi-local Weil form as an experimental system and report
 reproducible laws, with the same care about artifacts as in a physics lab.
 
