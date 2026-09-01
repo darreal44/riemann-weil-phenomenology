@@ -52,6 +52,17 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 - `notes/lemma-map2.pdf` — two-variable candidate $s=c\gamma_1^\alpha\rho^{[odd]}$ dies on $\chi_{-23}$ (+97%); parity is the killing axis.
 - `notes/lemma-delta-2pie.pdf` — plateau vs $2\pi e$: $\chi_3$ hovers 16.8--17.1, $\chi_4$ sits above; interval $[16.8,18.2]$.
 - `notes/chi20-mu50.pdf` — $\chi_{-20}$ at $\mu=50$: last secant 0.59 vs 0.57 (+4%); the 20% kill from above is not fired.
+- `notes/zeros-from-the-radical.pdf` — *Zeros from the radical: MUSIC on the
+  truncated Weil form, hyper-nullity, and the precision law*: the admission bound
+  |v̂(γ)| ≤ √(λ/2), Proposition A (Gram duality), zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to
+  4×10⁻⁵⁸ from prime-built matrices, err ≈ e^(−sµ), endpoint law |v̂₀(γ₁)| ≈ Cλ₀,
+  leakage spectrum, and the certified positive definiteness of the complete form at
+  µ=11 (second half of the quorum theorem).
+- `notes/depth-geometry-quorum-mechanism.pdf` — *Depth as sampling geometry, and
+  the quorum as a 2×2 mechanism*: the geometric law replacing the depth map (fitted
+  on ζ, median out-of-sample ratio 0.89), the Slepian share of the depth, the
+  unconditional 2×2 lemma (depth × coupling), its certified µ=11 instance (15/15 on
+  one vector), the µ-content at three scales, and the laws δ_p ~ e^(−7p), κ_p ~ e^(−4p).
 - `notes/sampling-floor.pdf` — *The floor of the truncated Weil form is a
   sampling constant*: Theorem 1 (under RH, c_L > 0 and λ_min(N) ↓ c_L — Beurling
   through the explicit formula), the desert quantified by the Slepian constant

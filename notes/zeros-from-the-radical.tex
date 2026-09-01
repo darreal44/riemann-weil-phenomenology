@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{proposition}{Proposition}\newtheorem{theorem}[proposition]{Theorem}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{Zeros from the radical:\\ \large MUSIC on the truncated Weil form, hyper-nullity, and the precision law}
+\author{D. Joubert (with the assistance of two language models)}
+\date{1 September 2026 --- consolidates notebook \S15.6--17 of \texttt{riemann-weil-phenomenology}}
+\begin{document}\maketitle
+\begin{abstract}
+Let $Q$ be the truncated Weil quadratic form of $\zeta$ (or of a Dirichlet $L$-function) on the $N$-dimensional even window space at $L=\log\mu$, assembled from the pole, the archimedean term and the primes $\le\mu$ --- no zeros are used. We show that the low end of its spectrum (the \emph{radical}) is a rigorous noise subspace in the sense of MUSIC: if $Q(v)=\lambda$ then $|\hat v(\gamma)|\le\sqrt{\lambda/2}$ at every zero $\gamma$. Locating the minima of $\|P_{\mathrm{rad}}\hat c(\gamma)\|$ recovers the zeros of $\zeta$ to $10^{-19}$ from a $47\times47$ matrix built from five primes, and $\gamma_1(\chi_3)$ to $4\times10^{-58}$ at $\mu=38$. We prove that the sequence of transforms of the bottom vector at the zeros is itself the bottom eigenvector of the zero Gram (Proposition~A), measure the precision law $\mathrm{err}(\gamma_1)\approx e^{-s(\chi)\mu}$ --- the drilling speed is the per-digit cost of reading the first zero --- and trace it to an endpoint law $|\hat v_0(\gamma_1)|\approx C\lambda_0$, $C\in[7,28]$ over sixty orders of magnitude, whose mechanism (the radical's mass is expelled to the band edge) we quantify. We also record the certified positive definiteness of the complete form at $\mu=11$, which gives the quorum theorem its second half. Everything is a statement about the explicitly defined forms; nothing bears on RH.
+\end{abstract}
+
+\section{Setting and the identity}
+$V_N=\mathrm{span}(\eta_0,\dots,\eta_{N-1})$, $\eta_n(x)=\sqrt{2/L}\cos(\omega_n(x+L/2))$ on $[-L/2,L/2]$, $\omega_n=2\pi n/L$ ($\eta_0=1/\sqrt L$). $Q$ is the prime-side matrix $Q_{nm}=P_{nm}+A_{nm}-\sum_{p^k\le\mu}\frac{\log p}{p^{k/2}}\Theta_{nm}(k\log p)$ (notebook \S15, note \emph{quorum-theorem} App.~B). The zero evaluator is $\hat c(\gamma)_n=\hat\eta_n(\gamma)$, in closed form
+\[
+\hat\eta_0(\gamma)=\frac{2\sin(\gamma L/2)}{\gamma\sqrt L},\qquad
+\hat\eta_n(\gamma)=\sqrt{\tfrac2L}\,\sin(\gamma L/2)\,\frac{2\gamma}{\gamma^2-\omega_n^2}\quad(n\ge1),
+\]
+a Dirichlet kernel. Under RH the explicit formula reads $Q=\sum_{\gamma>0}2\,\hat c(\gamma)\hat c(\gamma)^{\!\top}$; we verified it as a matrix identity (residual $8.9\%$ after the $40$ zeros below the band edge $\omega_{\max}=120.5$ at $\mu=11$, then an algebraic $1/G$ tail; closed to $O(1/G^2)$ on $V$ in the note \emph{squares47}).
+
+\section{The radical is a noise subspace}
+\begin{proposition}[admission bound]
+If $Q(v)=\lambda$ and $\|v\|=1$ then $|\hat v(\gamma)|\le\sqrt{\lambda/2}$ for every zero $\gamma$ (under RH; unconditionally for the zeros on the line up to the verified height, with the usual tail).
+\end{proposition}
+\begin{proof} $\lambda=\sum_\gamma 2\hat v(\gamma)^2\ge 2\hat v(\gamma_k)^2$. \end{proof}
+Hence the $d$ deepest eigenvectors span a subspace on which every zero evaluator is small, and the MUSIC pseudo-spectrum $\|\hat c(\gamma)\|^2/\|P_{\mathrm{rad}}\hat c(\gamma)\|^2$ peaks at the zeros. The bound is the \emph{admission criterion}: a vector with $\lambda=0.12$ admitted into the noise subspace shifts every peak by $+8$ (notebook \S16.2); with $\lambda\le5.6\times10^{-10}$ the same character's zeros come out to $10^{-9}$.
+
+\begin{center}\small
+\begin{tabular}{lcccc}\toprule
+form & $\mu$ & noise rungs $\lambda$ & zeros recovered & precision on $\gamma_1$\\\midrule
+$\zeta$ & 11 & 3 rungs $\le2\times10^{-34}$ & first 12; 30/40 in band & $9\times10^{-20}$\\
+$L(\cdot,\chi_3)$ & 11 & 2 rungs $\le5.6\times10^{-10}$ & 11/48 in band & $2.5\times10^{-9}$\\
+$L(\cdot,\chi_3)$ & 38 & 1 rung $7.3\times10^{-61}$ & --- & $4.16\times10^{-58}$\\\bottomrule
+\end{tabular}
+\end{center}
+The $\mu=38$ value is checked against an independent 60-digit Hurwitz computation of $\gamma_1(\chi_3)=8.0397371556814666817136232141729658027930102673860614272709\ldots$; the localization mechanism closes exactly: $\mathrm{err}=|\hat v_0(\gamma_1)|/|\hat v_0'(\gamma_1)|=6.4\times10^{-60}/0.0154=4.16\times10^{-58}$.
+
+\section{The Gram duality}
+\begin{proposition}[A]
+Let $Qv_0=\lambda_0v_0$ and $\hat v=(\hat v_0(\gamma_k))_k$. Then $G\hat v=(\lambda_0/2)\hat v$, where $G_{jk}=\langle\hat c(\gamma_j),\hat c(\gamma_k)\rangle$ is the (infinite) Gram matrix of the zero evaluators.
+\end{proposition}
+\begin{proof} From $Qv_0=\lambda_0v_0$ and $Q=\sum_k2\hat c_k\hat c_k^{\!\top}$: $v_0=(2/\lambda_0)\sum_k\hat v_k\hat c_k$; pair with $\hat c_j$. \end{proof}
+The radical in function space and the quasi-kernel of the zero Gram are the same object. The identity cannot be checked by truncation: on 45 zeros $[G\hat v]_1\approx10^{-28}$ against a target $(\lambda_0/2)\hat v_1\approx10^{-94}$ --- the zeros beyond the 45th cancel the in-band Gram action to 66 digits (98 at $\mu=16$). It is established indirectly by the eigen-residual $\|Qv_0-\lambda_0v_0\|=10^{-61}$.
+
+\section{Envelope versus individuals}
+At $N=47$ the zero evaluators live entirely in the complement of the radical (mass $1.000000$ for every in-band zero), but no top eigenvector is an individual zero: overlaps $0.50$--$0.93$ with near-equal seconds, driven by the coherence of neighbouring Dirichlet kernels (spacing $\approx2.3$ against width $\approx2.6$). At small $N$ ($13$--$21$, few zeros in band) the top directions \emph{are} individual evaluators (cosines $0.90,0.84,0.84$; one-to-one matching up to $K=6$, breaking at the last in-band zero, notebook \S25, \S31, \S53). Individuality lives on the band core and in the noise subspace, not in the signal squares at large $N$.
+
+\section{Precision law, endpoint law, leakage}
+\textbf{Precision.} Between $\mu=11$ and $38$ for $\chi_3$, $-\ln\mathrm{err}(\gamma_1)$ grows from $19.8$ to $132.1$: slope $4.16\approx s(\chi_3)=4.00$. The error follows $e^{-s\mu}$, full depth, not $e^{-s\mu/2}$: \emph{the drilling speed is the per-digit cost of reading the first zero.}
+
+\textbf{Endpoint law.} $|\hat v_0(\gamma_1)|\approx C\lambda_0$ with $C=22$ ($\zeta,\mu=11$), $24$ ($\zeta,\mu=16$), $27.8$ ($\zeta$, $N=21$), $8.8$ ($\chi_3,\mu=38$), $7$ ($\chi_3,\mu=11$): proportional to $\lambda_0$, not to the admission bound $\sqrt{\lambda_0/2}$ --- at $\mu=38$, $|\hat v_0(\gamma_1)|=6.4\times10^{-60}$ against a bound $6\times10^{-31}$. This \emph{hyper-nullity} is the single root of the precision law (err $=|\hat v|/|\hat v'|\sim\lambda$) and of the leakage profile below.
+
+\textbf{Leakage spectrum.} $|\hat v_0(\gamma_k)|$ measured on 45 zeros of $\zeta$ at 85 digits rises from $7.8\times10^{-47}$ at $\gamma_1$ to a peak $5.3\times10^{-25}$ at $\gamma=124.3$, just past the band edge $120.5$; the 55 first zeros carry only $42\%$ of $\lambda_0$, the rest is an algebraic out-of-band tail. Inside the band $\ln|\hat v_0(\gamma)|\approx-\tau(\omega_{\max}-\gamma)$ with a mildly decreasing local rate ($0.64\to0.49$ at $\mu=16$); $\tau$ is basis-independent, grows mildly with $\mu$, depends on the $L$-function ($0.48$ for $\zeta$, $0.27$ for $\chi_3$ at $\mu=11$), and satisfies $\tau\approx s\mu/(2\omega_{\max})$ to $6\%$ on $\zeta$: the profile interpolates from $\sim\lambda_0$ at $\gamma_1$ to $\sim\sqrt{\lambda_0}$ at the edge. \emph{The difficulty of truncated positivity is localized in an $O(1/\tau)$ neighbourhood of the band edge.} Two artifacts caught along the way are recorded in the notebook (zeros converted before setting the precision --- a floor at slope$\times10^{-16}$ identical across configurations; a fourth ``noise'' vector with $\lambda=0.12$).
+
+\section{The other half of the quorum theorem}
+The note \emph{quorum-theorem} certifies that every proper sub-Euler product violates positivity at $\mu=11$. The complete form is now certified positive definite there: direct Cholesky in balls dies at pivot 14 (condition number $\sim10^{48}$), but $M=V^{\!\top}QV$ with $V$ a \emph{floating} eigenbasis (its accuracy is irrelevant to rigour), $Q$ in Arb balls with radii $\le10^{-55}$, is certified strictly diagonally dominant: critical row $M_{00}=3.58317\times10^{-48}\pm3\times10^{-54}$ against off-diagonal sum $\le8.5\times10^{-54}$; hence $M\succ0$, $V$ invertible, $Q\succ0$ (Sylvester). 152~s, \texttt{code/positivite\_certifiee.py}. Both halves of the theorem exist at $\mu=11$: every proper sub-product violates, the complete product is positive definite, landing at $3.58\times10^{-48}$ from zero with certified error bars.
+
+\section*{Status and reproducibility}
+Propositions 1 and A are proved; the certification is a computation with rigorous error bounds; everything else is measurement with stated numbers. Scripts: \texttt{code/music\_zeros.py}, \texttt{code/positivite\_certifiee.py}, zero caches \texttt{code/zeros\_zeta\_90\_hp.pkl}, \texttt{zeros\_chi3\_hp.pkl}. The recovery of zeros from the truncated form is Groskin's superexponential convergence phenomenon; our contribution is the lens --- the admission bound, the subspace formulation, the Gram duality, and the laws that tie precision to depth.
+\end{document}
