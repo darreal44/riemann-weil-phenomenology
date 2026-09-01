@@ -1,0 +1,154 @@
+\documentclass[10pt]{article}
+\usepackage[margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage[hidelinks]{hyperref}
+\title{\bfseries Forty-seven squares:\\
+the prime-side / zero-side identity on $V$}
+\author{Denis Joubert\\ \small Independent researcher, Switzerland
+\and Grok\\ \small draft for the author, 1 September 2026}
+\date{September 1, 2026 --- lemma campaign, item 4}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+Journal step 81 named the next lock-picking stroke: certify that the
+$47\times47$ matrix of the truncated Weil form at $\mu=11$, assembled
+from primes, agrees with the Gram matrix of the zero-evaluators
+$\eta\mapsto\hat\eta(\gamma)$. MUSIC already saw the identity as a
+fact of subspaces. This note records the exact pairing, ships a
+replay script against $\mathtt{zeros280.pkl}$, and states what ball
+arithmetic still owes.
+\end{abstract}
+
+\section{The identity}
+
+On $V=\mathrm{span}(\eta_0,\dots,\eta_{46})$ at $L=\log11$, the
+explicit formula says that the truncated Weil form assembled from the
+pole, the archimedean place and the prime towers equals, term by term,
+\[
+Q(\eta_n,\eta_m)
+\;=\;
+\sum_{\gamma}| \widehat{\eta_n}(\gamma)|\,|\widehat{\eta_m}(\gamma)|
+\cdot\mathrm{sign}_{nm}(\gamma)
+\;=\;
+\sum_{\gamma}\widehat{\eta_n}(\gamma)\,\widehat{\eta_m}(\gamma),
+\]
+the $\gamma$ running over the nontrivial zeros of $\zeta$ (even
+window: $\gamma$ and $-\gamma$ identified). The Fourier transforms of
+the shifted-cosine basis are closed form:
+\[
+\widehat{\eta_0}(\gamma)
+=\frac{2\sin(\gamma L/2)}{\gamma\sqrt L},\qquad
+\widehat{\eta_k}(\gamma)
+=\sqrt{\frac2L}\,\frac{2\gamma\sin(\gamma L/2)}{\gamma^2-\omega_k^2}
+\quad(k\ge1).
+\]
+Call $Q^{\mathrm{pr}}$ the matrix built from $P+A-\sum_p T_p$ and
+$Q^{\mathrm{z}}$ the matrix with entries
+$\sum_{\gamma}\widehat{\eta_n}(\gamma)\widehat{\eta_m}(\gamma)$.
+The $47$ squares are the diagonal of $Q^{\mathrm{z}}$; the theorem
+wanted is $Q^{\mathrm{pr}}=Q^{\mathrm{z}}$ as matrices on $V$, with
+certified enclosures.
+
+This is not RH. It is the explicit formula restricted to a
+finite-dimensional even window, with the usual archimedean
+normalization already checked on $\eta_0$ by
+$\mathtt{weil\_normalization\_check.py}$.
+
+\section{What is already seen}
+
+MUSIC~\cite{LabNB} \S16.1 confirmed the identity as a subspace fact:
+the prime-assembled matrix and the zero-assembled matrix share the
+same radical, recover $\gamma_1$ to $10^{-19}$, and drop at the band
+frontier $\omega_{\max}\approx120.5$. That is a measurement of
+$Q^{\mathrm{pr}}\approx Q^{\mathrm{z}}$ on the quasi-null flag. It
+does not enclose every entry.
+
+The public normalization check certifies two scalar identities
+(pole exact, archimedean against a $\psi$-integral to the $1/T$ tail)
+on the single vector $\eta_0$. Forty-six more diagonal squares, and
+the off-diagonal Gram, remain.
+
+\section{The script}
+
+$\mathtt{code/squares47.py}$ rebuilds $Q^{\mathrm{pr}}$ (mpmath,
+same closed $\Theta$ as the quorum engine) and $Q^{\mathrm{z}}$ from
+$\mathtt{zeros280.pkl}$, and prints
+\[
+\max_{n,m\le N_0}\bigl|Q^{\mathrm{pr}}_{nm}-Q^{\mathrm{z}}_{nm}\bigr|
+\quad\text{and the relative residual on the diagonal}.
+\]
+Default $N_0=6$ (cheap). $N_0=46$ is the full $47$ squares and takes
+longer. The script does not use flint; promoting the same difference
+to Arb balls is the certification stroke, identical in kind to
+$\mathtt{positivite\_certifiee.py}$.
+
+\section{What certification must enclose}
+
+Three errors, all explicit:
+\begin{enumerate}
+\item quadrature / closed-form evaluation of $P$, $A$, $T_p$
+(already ball-controlled in the positivity script, radii
+$\le10^{-55}$);
+\item tail of $\sum_{\gamma>\gamma_{\mathrm{cut}}}\widehat{\eta_n}(\gamma)\widehat{\eta_m}(\gamma)$,
+algebraic $O(1/\gamma)$ as measured by MUSIC, hence a bound
+$O(\gamma_{\mathrm{cut}}^{-1})$ after summing;
+\item conversion of the known zeros to Arb (mpmath $\mathtt{zetazero}$
+at working $dps$, or a frozen dyadic file).
+\end{enumerate}
+Item 2 is the only new estimate. A cut at $\gamma=280$ (the shipped
+cache) is enough for a $10^{-6}$ residual on the bulk of $V$ and
+should be enough to see the razor $3.58\times10^{-48}$ on the ground
+state only after the tail is budgeted, not ignored.
+
+\section{Status}
+
+The identity is the explicit formula on $V$. MUSIC plus the
+$\eta_0$ normalization check make it a measurement. The $47$
+certified squares are the same identity with radii. The script is the
+replay; flint is the certificate.
+
+\begin{thebibliography}{2}\small
+\bibitem{LabNB} D.~Joubert, \emph{Le milieu des nombres premiers},
+\S15.6--16.3.
+\end{thebibliography}
+
+\section*{Addendum --- the tail and the endpoint, 1 September afternoon}
+
+Notebook \S16.4, \S16.7. In-band zeros carry $42\%$ of $\lambda_0$; the
+rest is the out-of-band trail. The endpoint law
+$|\hat v_0(\gamma_1)|\approx C\lambda_0$ says the first square on the
+ground state is $C^2\lambda_0^2$, not $\lambda_0$ --- a certificate of
+the $47$ squares must resolve that $\lambda^2$ slot, which at $\mu=16$
+sits at $10^{-144}$. Use \texttt{zeros\_zeta\_90\_hp.pkl} and load it
+after setting $dps$.
+
+\section*{Addendum --- replay, 1 September}
+
+\texttt{code/squares47.py} now loads \texttt{zeros\_zeta\_90\_hp.pkl}
+after setting $dps$, then appends the $\gamma>133$ tail from
+\texttt{zeros280.pkl}. At $N_0=4$ (5-dimensional block):
+$\max|Q^{\mathrm{pr}}-Q^{\mathrm{z}}|=6.3\times10^{-3}$,
+max relative diagonal residual $6.1\%$. The residual is the
+$\gamma>280$ tail, not a $dps$ artifact. Flint certification of the
+same difference is still the missing stroke.
+
+\section*{Addendum --- tail enclosed, 1 September}
+
+Extended cache \texttt{zeros500.pkl} ($\gamma_{500}=811$). Replay at
+$N_0=4$: residual $4.1\%$ (was $6.1\%$ at $\gamma=514$). Explicit
+envelope on the remainder
+\[
+\bigl|Q^{\mathrm{z}}_{nm}-\sum_{|\gamma|\le G}\hat\eta_n(\gamma)\hat\eta_m(\gamma)\bigr|
+\;\le\;
+2c^2\int_G^\infty\frac{\tfrac1{2\pi}\log(g/2\pi)+1}{g^2}\,dg
+\]
+with $c=4/\sqrt L$, gives $3.2\times10^{-2}$ at $G=811$. Combined
+budget on each entry of the $5\times5$ block:
+$|Q^{\mathrm{pr}}-Q^{\mathrm{z}}|\le 4.3\times10^{-3}+3.2\times10^{-2}$.
+This is a remainder, not an Arb certificate of equality. The identity
+on $V$ is measured at four percent plus an explicit $O(1/G)$ tail.
+Flint can take the same difference to balls; the zeros are not yet
+Arb objects.
+\end{document}
