@@ -8,13 +8,13 @@ CODE = os.path.join(ROOT, 'code')
 
 def test_notebook_has_sections_19_through_32():
     text = open(NB).read()
-    missing = [n for n in range(19, 42) if f'## {n}.' not in text]
+    missing = [n for n in range(19, 43) if f'## {n}.' not in text]
     assert missing == [], missing
 
 
 def test_journal_92_through_106():
     text = open(NB).read()
-    missing = [n for n in range(92, 116) if f'({n})' not in text]
+    missing = [n for n in range(92, 117) if f'({n})' not in text]
     assert missing == [], missing
 
 
