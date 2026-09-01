@@ -71,7 +71,7 @@ def assemble(name, mu, NB, dps, DEG=12):
     ppts = []
     x = 2
     cap = int(float(mp.e**L) + 1e-9)
-    small = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71]
+    small = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83]
     while x <= cap:
         y2, p = x, None
         for qq in small:
