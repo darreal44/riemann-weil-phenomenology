@@ -97,8 +97,15 @@ def tail_diag(G):
     return 2 * (c ** 2) * integ
 
 
-tail = tail_diag(Gcut)
-print(f'tail envelope <= {tail:.4e}')
+def signed_tail(G):
+    avg = 1.0 / G
+    osc = abs(math.sin(L * G) / (L * G))
+    return (4.0 / L) * (avg + osc)
+
+tail_u = tail_diag(Gcut)
+tail = signed_tail(Gcut)
+print(f'unsigned envelope <= {tail_u:.4e}')
+print(f'signed   envelope <= {tail:.4e}')
 
 Qz = {}
 for n in range(NP):
@@ -106,8 +113,10 @@ for n in range(NP):
         s = arb(0)
         for g in zs:
             s += 2 * hat(n, g) * hat(m, g)
-        Qz[n, m] = s + arb(0, tail)  # add unsigned tail as radius
-print(f'[{time.time()-t0:.0f}s] Qz balls + tail radius')
+        # signed tail: shift mid by the 1/G average, radius = 1.5 * signed envelope
+        avg = arb((4.0 / L) / Gcut)
+        Qz[n, m] = s + avg + arb(0, 1.5 * tail)
+print(f'[{time.time()-t0:.0f}s] Qz balls + signed tail (mid shift {float(avg):.4e}, rad {1.5*tail:.4e})')
 
 print()
 print(f'{"n":>2} {"m":>2} {"Qpr mid":>14} {"Qz mid":>14} {"diff mid":>12} {"|diff|+rad":>12} {"0 in ball":>9}')
