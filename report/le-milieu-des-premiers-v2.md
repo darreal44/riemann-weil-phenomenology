@@ -2058,7 +2058,7 @@ Trois colonnes. Ne pas les mélanger.
 
 **Ouvert.**
 - 47×47 en Arb : script prêt, python-flint absent de l'environnement.
-- RH, au sens de Weil sur toutes les h (§52).
+- RH, au sens de Weil sur toutes les h. Une fenêtre n'est pas une preuve (§52).
 
 **Tranché depuis.**
 - C=κ : forme seulement (§51).
