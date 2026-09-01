@@ -170,7 +170,7 @@ frontier. The leakage spectrum obeys |v̂₀(γ)| ≈ e^(−τ(ω_max−γ)); D2
 of τ) died at the 85-digit zeros. The single measured root of hyper-nullity,
 the precision law and the profile is the endpoint law
 |v̂₀(γ₁)| ≈ C·λ₀ with C ∈ [7, 25] over sixty orders, equivalent to
-τ ≈ sµ/(2ω_max) to 6% on ζ (notebook §15.6–16.7). The complete
+τ ≈ sµ/(2ω_max) to 6% on ζ (notebook §15.6–17). The complete
 form's positivity at µ = 11 is a finite-window certificate, not a claim
 about RH.
 
