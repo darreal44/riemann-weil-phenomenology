@@ -51,7 +51,10 @@ def hat(n, g):
     return 2 * mp.sqrt(2 / L) * g * mp.sin(g * L / 2) / (g * g - om[n] * om[n])
 
 hp = os.path.join(BASE, 'zeros_zeta_90_hp.pkl')
-long = pickle.load(open(os.path.join(BASE, 'zeros280.pkl'), 'rb'))
+long_path = os.path.join(BASE, 'zeros500.pkl')
+if not os.path.exists(long_path):
+    long_path = os.path.join(BASE, 'zeros280.pkl')
+long = pickle.load(open(long_path, 'rb'))
 if os.path.exists(hp):
     zs = [mp.mpf(z) for z in pickle.load(open(hp, 'rb'))]
     last = float(zs[-1])

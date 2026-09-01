@@ -133,4 +133,22 @@ $\max|Q^{\mathrm{pr}}-Q^{\mathrm{z}}|=6.3\times10^{-3}$,
 max relative diagonal residual $6.1\%$. The residual is the
 $\gamma>280$ tail, not a $dps$ artifact. Flint certification of the
 same difference is still the missing stroke.
+
+\section*{Addendum --- tail enclosed, 1 September}
+
+Extended cache \texttt{zeros500.pkl} ($\gamma_{500}=811$). Replay at
+$N_0=4$: residual $4.1\%$ (was $6.1\%$ at $\gamma=514$). Explicit
+envelope on the remainder
+\[
+\bigl|Q^{\mathrm{z}}_{nm}-\sum_{|\gamma|\le G}\hat\eta_n(\gamma)\hat\eta_m(\gamma)\bigr|
+\;\le\;
+2c^2\int_G^\infty\frac{\tfrac1{2\pi}\log(g/2\pi)+1}{g^2}\,dg
+\]
+with $c=4/\sqrt L$, gives $3.2\times10^{-2}$ at $G=811$. Combined
+budget on each entry of the $5\times5$ block:
+$|Q^{\mathrm{pr}}-Q^{\mathrm{z}}|\le 4.3\times10^{-3}+3.2\times10^{-2}$.
+This is a remainder, not an Arb certificate of equality. The identity
+on $V$ is measured at four percent plus an explicit $O(1/G)$ tail.
+Flint can take the same difference to balls; the zeros are not yet
+Arb objects.
 \end{document}
