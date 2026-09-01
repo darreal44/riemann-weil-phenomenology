@@ -20,7 +20,8 @@ def th(n, m, y):
 euler = arb("0.5772156649015328606065120900824024310421593359399235988057672348848677267776646709369", 1e-86)
 CR = euler + (4*arb.pi()*(Larb.exp()-1)/(Larb.exp()+1)).log()
 eps = arb("1e-60")
-primes = [2,3,5,7,11]
+# T_11 vanishes identically on V (Theta(L)=0 when L=log 11). Interior primes: {2,3,5,7}.
+primes = [2,3,5,7]
 towers = {p: [(arb(p**k).log(), arb(p).log()/arb(p**k).sqrt()) for k in range(1,9) if p**k <= 11] for p in primes}
 Q = {}
 for n in range(NP):

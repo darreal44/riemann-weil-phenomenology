@@ -6,6 +6,8 @@
 # grace a l'HYPER-NULLITE : la masse lambda est refoulee aux zeros de la frontiere de bande.
 # Usage : python3 music_zeros.py zeta 11 46 50 6      (fonction, mu, NB, dps, d_bruit)
 #         python3 music_zeros.py chi3 11 40 45 2
+# Assembly is delegated to spectro.py via a scoped exec (same matrix
+# contract as radical spectroscopy). Keep the two files in the same directory.
 import sys, time, numpy as np
 import mpmath as mp
 
