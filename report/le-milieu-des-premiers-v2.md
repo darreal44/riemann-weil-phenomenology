@@ -2267,6 +2267,7 @@ Trois colonnes. Ne pas les mélanger.
 
 **Ouvert.**
 - RH (§52, §54) : pas de trou uniforme ; pas de minorant en L ; fenêtre PSD échantillonnée seulement. Une fenêtre n'est pas une preuve.
+- **Point 1 (positivité sur tout l'espace de fenêtre à L fixé) : mesuré, reformulé, expliqué — NON DÉMONTRÉ.** Le fond du puits est mesuré (§66) et sa taille prédite (§67) ; l'énoncé « Q_L ≥ c_L > 0 » est un théorème sous RH (échantillonnage de Beurling), pas dans le dépôt inconditionnellement. Trois marches : (i) la loi géométrique comme borne inférieure rigoureuse sous RH (analyse harmonique à trou) ; (ii) le premier pas inconditionnel L ∈ (log 2, log 3] — frontière du programme Connes-Consani, un argument à inventer ; (iii) tout L = RH. Les zéros vérifiés n'y servent pas : un ensemble fini n'échantillonne pas un espace de dimension infinie.
 
 **Tranché depuis.**
 - C=κ : forme seulement (§51).
