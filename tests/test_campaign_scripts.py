@@ -10,7 +10,7 @@ def test_required_scripts_exist():
         'squares47.py', 'squares47_arb.py', 'music_zeros.py',
         'positivite_certifiee.py', 'quorum_general.py',
         'high_directions.py', 'match_squares.py', 'endpoint_order.py',
-        'squares_tail.py', 'audit_00.py', 'lemma_B_chi.py', 'weil_normalization_check.py', 'map3.py',
+        'squares_tail.py', 'audit_00.py', 'lemma_B_chi.py', 'weil_normalization_check.py', 'endpoint_tail.py', 'map3.py',
     ):
         assert os.path.exists(os.path.join(CODE, name)), name
 
