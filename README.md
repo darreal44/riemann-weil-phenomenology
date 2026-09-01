@@ -6,11 +6,14 @@
 ## Tests
 
 ```
+python3 -m pytest tests -q              # campagne + quorum artefacts (<15 s)
 python3 tests/test_theta_endpoints.py   # identites de la table de correlation (App. A)
 python3 tests/test_cert_mu11.py         # coherence tables de certificats <-> temoins JSON
 python3 code/quorum_general.py 11 46 22 zeta verify   # rejeu certifie complet (python-flint requis)
 python3 code/positivite_certifiee.py    # Q>0 certifie a mu=11 (~150 s, python-flint)
 python3 code/music_zeros.py zeta 11 46 50 6   # MUSIC depuis le radical
+python3 code/squares47_arb.py 4         # enclosure Arb 5x5 (~1 s, python-flint)
+python3 code/map2.py                    # carte 2-var vs hold-out
 ```
 
 ## Documents
