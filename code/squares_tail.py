@@ -25,16 +25,18 @@ def tail_diag(G):
     integ = (lg + 1)/(2*math.pi) / G + 1.0/G
     return 2 * (c**2) * integ
 
-def signed_tail(G):
-    """Oscillatory remainder: hat ~ (2 sqrt(2/L)/g) sin(g L/2),
-    2 hat hat ~ (4/L) (1-cos(g L))/g^2.
-    int_G^inf (1-cos(Lg))/g^2 = 1/G - Re int e^{i L g}/g^2
-    = 1/G + O(sin(LG)/(L G))."""
+def signed_tail(G, which='nm'):
+    """Entry-dependent leading 1/g^2 tail.
+    2 hat0 hat0 ~ (4/L)(1-cos)/g^2
+    2 hat0 hatn ~ (4 sqrt(2)/L)(1-cos)/g^2
+    2 hatn hatm ~ (8/L)(1-cos)/g^2
+    """
     if G <= 2 * wmax:
         return float('inf')
+    pref = {'00': 4.0/L, '0n': 4.0*math.sqrt(2)/L, 'nm': 8.0/L}[which]
     avg = 1.0 / G
     osc = abs(math.sin(L * G) / (L * G))
-    return (4.0 / L) * (avg + osc)
+    return pref * (avg + osc)
 
 td = tail_diag(Gcut)
 sd = signed_tail(Gcut)
