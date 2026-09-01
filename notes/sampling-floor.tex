@@ -1,0 +1,74 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{theorem}{Theorem}\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{The floor of the truncated Weil form is a sampling constant\\ \large One theorem, one sharp mechanism, and where the quantitative bound stops}
+\author{D. Joubert (with the assistance of two language models)}
+\date{1 September 2026 --- companion to \texttt{riemann-weil-phenomenology}, notebook \S66--68}
+\begin{document}\maketitle
+\begin{abstract}
+Let $Q_L$ be the truncated Weil quadratic form on even test functions supported in $[-L/2,L/2]$, assembled from the pole, the archimedean term and the primes $\le e^L$. We prove, under RH, that its infimum $c_L$ over the whole window space is strictly positive and that the finite-basis minima decrease to it (Theorem~1); this is Beurling's sampling theorem read through the explicit formula. We identify the leading mechanism that makes $c_L$ exponentially small --- the desert $(-\gamma_1,\gamma_1)$ where a function of exponential type $L/2$ can hide its mass --- and quantify it with the Slepian concentration constant, computed to arbitrary precision (Proposition~2, conditional on a standard local lemma). We record numerically how much of the measured depth the desert explains (75\% at $\mu=3$, 28\% at $\mu=11$) and why the classical tools (Duffin--Schaeffer, Bernstein) cannot produce a quantitative lower bound here. Nothing in this note bears on RH itself.
+\end{abstract}
+
+\section{Setting}
+Fix $L>0$, $\tau=L/2$, and let $W_L$ be the real even functions in $L^2([-L/2,L/2])$. For $f\in W_L$ write $F(\gamma)=\hat f(\gamma)=\int f(x)e^{i\gamma x}\,dx$; $F$ is real, even, entire of exponential type $\tau$, and $\|F\|_{L^2(\mathbb R)}^2=2\pi\|f\|^2$: $F\in PW_\tau$. The Weil explicit formula gives, unconditionally,
+\[
+Q_L(f)\;=\;\sum_{\rho}\hat g_f(\rho),
+\]
+the sum over nontrivial zeros $\rho$, where the left side is the prime-side expression (pole $+$ archimedean $-$ towers $n\le e^L$) computed in the repository. Under RH, $\rho=\tfrac12+i\gamma$ and $Q_L(f)=\sum_{\gamma}F(\gamma)^2$, the sum over all zeros with multiplicity (the pair $\pm\gamma$ counted separately). Let $V_N\subset W_L$ be the $N$-dimensional cosine window space used throughout the repository, and
+\[
+\lambda_{\min}(N)=\min_{f\in V_N}\frac{Q_L(f)}{\|f\|^2},\qquad c_L=\inf_{f\in W_L\setminus 0}\frac{Q_L(f)}{\|f\|^2}.
+\]
+
+\section{The theorem}
+\begin{theorem}[floor]\label{th1}
+Assume RH. For every $L>0$, $c_L>0$; and $\lambda_{\min}(N)\downarrow c_L$ as $N\to\infty$.
+\end{theorem}
+\begin{proof}
+Under RH, $Q_L(f)=\sum_\gamma F(\gamma)^2$ with $F\in PW_\tau$, so $c_L\cdot 2\pi$ is the lower sampling constant of the zero set $\Gamma=\{\pm\gamma\}$ for $PW_\tau$. By Beurling's theorem (Landau's version suffices), a separated set $\Lambda$ with lower uniform density $D^-(\Lambda)>\tau/\pi$ is a set of sampling for $PW_\tau$: there is $A>0$ with $\sum_{\lambda\in\Lambda}|F(\lambda)|^2\ge A\|F\|^2$. The zeros are not separated, but a subset is: since the counting function satisfies $N(T+1)-N(T)\to\infty$, for any $\eta>0$ one extracts $\Lambda_\eta\subset\Gamma$ with consecutive gaps $\ge\eta$ and $D^-(\Lambda_\eta)\ge 1/(2\eta)$; choosing $\eta<\pi/(2\tau)$ gives $D^-(\Lambda_\eta)>\tau/\pi$. Dropping points only decreases the sum, so $\sum_\gamma F(\gamma)^2\ge\sum_{\Lambda_\eta}|F|^2\ge A\|F\|^2=2\pi A\|f\|^2$, i.e.\ $c_L\ge A>0$. The $V_N$ are nested with dense union in $W_L$ (Fourier cosine basis), so $\lambda_{\min}(N)$ is non-increasing and $Q_L$ is continuous on $W_L$ (it is a bounded quadratic form: pole and towers are finite sums of translation pairings, the archimedean term is an $L^2$-bounded convolution); hence $\lambda_{\min}(N)\to c_L$.
+\end{proof}
+\begin{remark}
+The theorem is the sampling-theoretic content of the numerically observed saturation (notebook \S66): at $\mu=e^L=3$, $\lambda_{\min}(N)=1.026,\,0.775,\,0.641,\,0.591,\,0.571,\,0.562\times10^{-7}$ for $N=9,15,23,33,45,61$, converging to $c_{\log 3}\approx5.55\times10^{-8}$; at $\mu=11$, $N=47,57,67$ give $3.59,\,1.86,\,1.54\times10^{-48}$. It corrects the earlier reading ``the quasi-kernel is dug indefinitely''. It says nothing about RH: without RH the identity $Q_L=\sum F(\gamma)^2$ fails, and positivity of $Q_L$ on $W_L$ for a single $L>\log 2$ is not known.
+\end{remark}
+
+\section{The mechanism: the desert as a Slepian hole}
+Let $\psi_0\in PW_\tau$ be the top prolate spheroidal function for the interval $I=(-\gamma_1,\gamma_1)$: the maximizer of $\int_I|F|^2/\|F\|^2$ over $PW_\tau$, with maximum $\lambda_0(c)$, $c=\tau\gamma_1$ (Slepian--Pollak). Thus every $F\in PW_\tau$ satisfies
+\begin{equation}\label{slepian}
+\int_{|\gamma|\ge\gamma_1}|F|^2\;\ge\;(1-\lambda_0(\tau\gamma_1))\,\|F\|^2,
+\end{equation}
+and this is sharp. Asymptotically $1-\lambda_0(c)\sim4\sqrt{\pi c}\,e^{-2c}$.
+\begin{lemma}[local sampling bound for the prolate; standard, cited]\label{lem}
+There is $C_\tau$ such that $\sum_{\gamma}\psi_0(\gamma)^2\le C_\tau\int_{|\gamma|\ge\gamma_1-1}\psi_0^2\cdot(1+\log\gamma_1)$, the sum over the zeros of $\zeta$.
+\end{lemma}
+This follows from pointwise bounds on prolates outside their interval (Bonami--Karoui) and $N(T+1)-N(T)=O(\log T)$; we do not reproduce the argument.
+\begin{proposition}[desert bound]\label{prop2}
+Assume RH and Lemma~\ref{lem}. Then $c_L\le C_\tau(1+\log\gamma_1)\bigl(1-\lambda_0(\tau(\gamma_1-1))\bigr)/(2\pi)$; in particular $-\ln c_L\ge L(\gamma_1-1)-O(\log(L\gamma_1))$.
+\end{proposition}
+\begin{proof}
+Rayleigh with $f=\check\psi_0$: $c_L\le Q_L(f)/\|f\|^2=2\pi\sum_\gamma\psi_0(\gamma)^2/\|\psi_0\|^2$, then Lemma~\ref{lem} and \eqref{slepian} on the interval $(-(\gamma_1-1),\gamma_1-1)$.
+\end{proof}
+The constant $1-\lambda_0(c)$ is computable to any precision as the top eigenvalue of the concentration operator (Nystr\"om) or, equivalently, as $1-\lambda_{\max}(M_I)/2\pi$ with $M_I=\int_I\hat\eta\hat\eta^{\!\top}$ in the window basis; the two agree to four digits in our runs.
+\begin{center}\small
+\begin{tabular}{lcccccc}\toprule
+$\mu$ & $\tau$ & $c=\tau\gamma_1$ & $1-\lambda_0(c)$ & $-\ln$ & measured $-\ln c_L$ & desert share\\\midrule
+3 & 0.549 & 7.76 & $3.35\times10^{-6}$ & 12.6 & 16.7 & 75\%\\
+11 & 1.199 & 16.95 & $5.42\times10^{-14}$ & 30.5 & 110.2 & 28\%\\
+16 & 1.386 & 19.60 & $2.93\times10^{-16}$ & 35.8 & 167.4 & 21\%\\\bottomrule
+\end{tabular}
+\end{center}
+The desert is the whole story at small $L$ and a quarter of it at large $L$. Three synthetic controls (notebook \S67, zero-side Gram, $\mu=3$) confirm the mechanism: three fictitious zeros placed in the desert raise $\lambda_{\min}$ by $9\times10^6$; a comb with the same $\gamma_1$ and density changes it by a factor $0.23$ only; shifting the whole spectrum by $\delta$ changes $-\ln\lambda_{\min}$ linearly with slope $1.45$ per unit of desert width, against $L=1.10$ predicted by \eqref{slepian}.
+
+\section{What the remaining 80 nats are, and why they resist}
+At $\mu=11$ the measured depth exceeds the desert bound by $\approx80$ nats. Replacing the single hole by the union $E$ of all gaps between consecutive zeros longer than the Nyquist step $2\pi/L$ (29 of them below $\gamma=300$) and computing $1-\lambda_0(E,\tau)$ the same way gives $6.9\times10^{-33}$ ($-\ln=74$): the sub-Nyquist gaps account for most of the excess, but the union constant is not a bound in either direction (it lies below $c_L$ by a factor 25 at $\mu=3$, above it by $10^{16}$ at $\mu=11$): treating a gap as a free interval ignores that its endpoints are zeros, and gaps slightly shorter than $2\pi/L$ still degrade sampling. The sharp constant is the bottom eigenvalue of the zero Gram --- which is $c_L$ itself.
+
+A \emph{quantitative lower bound} for $c_L$ is the real difficulty. The classical route (Duffin--Schaeffer / Wirtinger on each gap plus Bernstein's inequality $\|F'\|\le\tau\|F\|$) yields
+$\sum_k|F(\gamma_k)|^2\ge\bigl[(1-\lambda_0)-2(g\tau/\pi)^2\bigr]\|F\|^2/(2g)$ with $g$ the largest gap outside the hole; since Bernstein is global and $1-\lambda_0\sim e^{-L\gamma_1}$, the bracket is negative unless $g\lesssim e^{-L\gamma_1/2}$: the standard tools lose by an exponential factor exactly equal to the margin they are meant to control. Elementary test functions ($\mathrm{sinc}^{2K+2}\times$ polynomial vanishing at the first $K$ zeros) do not even recover the desert exponent. We record this as a negative result: any theorem giving $c_L\ge e^{-a L\gamma_1-bL\sum_k(\gamma_{k+1}-\gamma_k-2\pi/L)_+}$ with the measured $(a,b)\approx(1.69,0.82)$ (notebook \S67; fitted on $\zeta$, predicting $s(\chi)$ out of sample with median ratio $0.89$) must use the discrete structure of the zero set beyond its density.
+\begin{conjecture}[geometric law]
+$-\ln c_L= a\,L(\gamma_1-2\pi/L)_+ + b\,L\sum_k(\gamma_{k+1}-\gamma_k-2\pi/L)_+ + O(\log)$ with absolute constants $a,b$ depending only on the window class, not on the $L$-function.
+\end{conjecture}
+
+\section*{Status}
+Theorem~1 is proved (under RH). Proposition~2 rests on a cited local lemma. The table and controls are measurements. The conjecture is semi-empirical. None of it moves RH; all of it says what the positivity of $Q_L$ on a window is: a sampling inequality for the Riemann zeros, whose constant is set by the desert first and by the sub-Nyquist gaps second.
+\end{document}

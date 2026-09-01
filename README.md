@@ -52,6 +52,11 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 - `notes/lemma-map2.pdf` — two-variable candidate $s=c\gamma_1^\alpha\rho^{[odd]}$ dies on $\chi_{-23}$ (+97%); parity is the killing axis.
 - `notes/lemma-delta-2pie.pdf` — plateau vs $2\pi e$: $\chi_3$ hovers 16.8--17.1, $\chi_4$ sits above; interval $[16.8,18.2]$.
 - `notes/chi20-mu50.pdf` — $\chi_{-20}$ at $\mu=50$: last secant 0.59 vs 0.57 (+4%); the 20% kill from above is not fired.
+- `notes/sampling-floor.pdf` — *The floor of the truncated Weil form is a
+  sampling constant*: Theorem 1 (under RH, c_L > 0 and λ_min(N) ↓ c_L — Beurling
+  through the explicit formula), the desert quantified by the Slepian constant
+  (75% of the depth at µ=3, 28% at µ=11), why Duffin–Schaeffer/Bernstein cannot
+  give a quantitative lower bound, and the geometric-law conjecture.
 - `report/le-milieu-des-premiers-v2.md` — the full lab notebook (1710
   lines, 97 journal steps): every measurement, every artifact caught, every
   hypothesis executed.
