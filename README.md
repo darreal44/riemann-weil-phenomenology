@@ -47,7 +47,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
-- `notes/depth-phenomenology.pdf` — *superseded as a result, kept as a campaign.* "Fifteen
+- `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
   L-functions, one ladder" holds on the ramp (rungs 9–14) only; the four-variable map it
   presents is dead out of sample (χ₋₂₃, −29%, 20th preregistered execution) and replaced
   by the geometric law above. The preregistered stress record, the bandwidth-vs-counting
