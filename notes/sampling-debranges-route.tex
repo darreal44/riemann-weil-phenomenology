@@ -95,28 +95,43 @@ at height $10^6$. It is not compatible with an off-line zero inside the
 band of $V_N$ once $N$ resolves that height. A single certified window
 does not force RH; a uniform statement over $L\to\infty$ would.
 
-A schematic measurement on $V_5$ at $\mu=11$ (continuation of the
-square: $Q_{\mathrm{line}}+2\mathrm{Re}\,F(\sigma+i\gamma_1)^2$,
-forty real zeros already in $Q_{\mathrm{line}}$). This is \emph{not}
-the Weil--Bombieri term; it is the analytic continuation of the RH Gram.
+\paragraph{Wrong continuation.}
+Continuing the Dirichlet-kernel formula $2\sin(sL/2)/(s\sqrt L)$ to
+$s=\sigma+i\gamma$ explodes as $\sinh(\gamma L/2)$ and produces
+$\lambda_{\min}\sim-10^7$ already at $\sigma=0.05$. That is the Fourier
+transform in a complex \emph{frequency}, not the Weil pairing. Discarded.
+
+\paragraph{Weil weight.}
+The pairing at $\rho=\tfrac12+\sigma+i\gamma$ is
+$\hat\eta(\rho)=\int_{-L/2}^{L/2}\eta(x)\,e^{\sigma x}e^{i\gamma x}\,dx$,
+bounded by $e^{|\sigma|\tau}\sqrt L$. At $\sigma=0$ it recovers the
+on-line formula. The quadratic term attached to the pair
+$(\rho,1-\rho)$ is the Gram of
+$(\hat\eta_n(\rho)\hat\eta_m(1-\rho))$. On $V_9$ at $\mu=11$, forty
+real zeros already in $Q_{\mathrm{line}}$:
 
 \begin{center}\small
-\begin{tabular}{lc}\toprule
-$\sigma$ & $\lambda_{\min}$\\
+\begin{tabular}{lcc}\toprule
+$\sigma$ at $\gamma_1$ & $\lambda_{\min}$ of $Q_{\mathrm{line}}+F(\rho)F(1-\rho)$
+  & of $Q_{\mathrm{line}}+|F(\rho)|^2$\\
 \midrule
-$0$ (double-count $\gamma_1$) & $+8.7\times10^{-13}$\\
-$0.05$ & $-9.9\times10^{6}$\\
-$0.10$ & $-4.0\times10^{7}$\\
-$0.50$ & $-2.4\times10^{9}$\\
+$0$ & $+3\times10^{-22}$ & $+3\times10^{-22}$\\
+$0.01$ & $-5.4\times10^{-5}$ & $+3\times10^{-17}$\\
+$0.10$ & $-7.3\times10^{-3}$ & $+4\times10^{-17}$\\
+$0.50$ & $-0.23$ & $+4\times10^{-17}$\\
+$1.00$ & $-1.28$ & $+3\times10^{-17}$\\
 \bottomrule
 \end{tabular}
 \end{center}
-Already at $\sigma=0.05$, height $\gamma_1$, the schematic form on $V_5$
-is wildly indefinite. An off-line zero \emph{inside the band} is
-visible on this window. An off-line zero at height $10^6$ is not
-represented in the sum and is not a frequency $V_5$ can peak at.
-The measurement confirms visibility at the first zero; it does not
-replace Weil's theorem.
+$|F(\rho)|^2$ never crosses. $F(\rho)F(1-\rho)$ crosses at once, at
+height $\gamma_1$, with size $O(\sigma^2)$ at small $\sigma$ --- not
+$10^7$. The same extra term at height $80$ or $200$ leaves
+$\lambda_{\min}$ at $10^{-22}$: this window does not see a high
+off-line zero. Visibility is local in height, mild in $\sigma$, and
+tied to $\gamma_1$. A certified $Q_{11}\succ0$ still allows an off-line
+zero at large height. It does not allow one at $\gamma_1$ if the pairing
+really is $F(\rho)F(1-\rho)$. That last ``if'' is the remaining
+identification with App.~B of \emph{quorum-theorem}.
 
 \section{What de~Branges supplies, and what it does not}
 A de~Branges space $\mathcal{H}(E)$ is a Hilbert space of entire
