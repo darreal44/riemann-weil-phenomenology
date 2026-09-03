@@ -1,0 +1,77 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\title{Three convergences of $Q$\\
+\large $K$ (zeros), $N$ (basis), $L$ (window)}
+\author{D.\ Joubert}
+\date{4 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+$Q$ converges in three parameters, already measured, with three
+different meanings. In the number $K$ of zeros kept, $Q_K\to Q^{\mathrm{pr}}$
+in Frobenius, with a drop at the band edge and an algebraic tail
+$O(1/\omega_{\max})$. In the basis size $N$, $\lambda_{\min}(Q_N)\downarrow c_L>0$
+under RH (the floor). In the window $L$, $Q_L\succeq c_L>0$ for all $L$
+is RH. Nothing new is computed here; the rates are named.
+\end{abstract}
+
+\section{$K$: the explicit formula as a matrix limit}
+On $V_N$ at fixed $\mu$,
+\[
+Q^{\mathrm{pr}}=P+A-\sum_p T_p,
+\qquad
+Q_K=\sum_{k\le K}2\,\hat\eta(\gamma_k)\hat\eta(\gamma_k)^{\!\top}.
+\]
+Measured at $\mu=11$, $N=47$, $\omega_{\max}=120.53$:
+\[
+\frac{\|Q^{\mathrm{pr}}-Q_K\|_F}{\|Q^{\mathrm{pr}}\|_F}
+=
+\begin{cases}
+31\% & K=35,\;\gamma=112,\\
+8.9\% & K=40,\;\gamma=123,\\
+5.1\% & K=60,\;\gamma=163.
+\end{cases}
+\]
+The drop sits on the band edge. The remainder is the off-band lobes
+$\hat\eta_n(\gamma)\sim 1/(\gamma^2-\omega_n^2)$.
+\begin{lemma}[tail]
+$\sum_{\gamma>\omega_{\max}}|\hat\eta_n(\gamma)\hat\eta_m(\gamma)|
+\le C_N/\omega_{\max}$.
+\end{lemma}
+An Arb enclosure of $Q^{\mathrm{pr}}-Q^{\mathrm{z}}$ on the whole
+$V_{47}$ puts every one of the $1128$ independent entries in a ball
+about $0$ of radius $6\times10^{-3}$ (\S65). That is convergence in
+$K$ certified, not a density-$1$ residual.
+
+\section{$N$: the floor}
+At fixed $L$, $V_N\uparrow PW_{L/2}^{\mathrm{even}}$. Under RH,
+$Q$ is the Gram of the evaluators on that space, so
+\[
+\lambda_{\min}(Q_N)\ \downarrow\ c_L=\inf_{\|f\|_2=1}\sum_{\gamma}|\hat f(\gamma)|^2>0
+\]
+(Beurling / Duffin--Schaeffer on a set of density $<L/\pi$,
+\emph{sampling-floor}). Measured:
+at $\mu=3$, $c_{\log3}=5.55\times10^{-8}$, ratios $1.32\to1.02$;
+at $\mu=11$, $\lambda_{\min}(N)=3.59,1.86,1.54,1.4\times10^{-48}$ for
+$N=47,57,67,80$ --- flattening, not a new decade per ten modes.
+The statement ``one keeps digging'' (\S54) is false. $Q_N$ converges
+as an operator on each compact of $PW_{L/2}$ to the Beurling form;
+only the razor is numerically ugly.
+
+\section{$L$: the one that is RH}
+$Q_L$ on $PW_{L/2}$, $L\to\infty$, asks for a uniform $c_L>0$.
+Under RH this is the sampling floor with more and more points; the
+constant is expected to decay (geometric law, desert).
+Unconditionally it is Weil positivity at every compact window, i.e.\
+RH. There is no measured limit $Q_L\to Q_\infty$ in the repository
+that would bypass that.
+
+\section*{Status}
+$K$ converges, with a named tail and an enclosure. $N$ converges,
+to a positive floor under RH, measured at two windows. $L$ does not
+converge in the deposit; that limit is the theorem. Not a new factor
+of $Q$. Not RH.
+\end{document}
