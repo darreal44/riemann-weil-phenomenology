@@ -65,8 +65,9 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   (unitarity proved), compression not trace class, remainder log-divergent at ρ = 1 and
   spiked at ρ = 2 — and its conditioned remainder is *essentially positive* where CC's is
   essentially negative. The surplus has the form of the 2h(1)log Λ term of Connes 1999 (a reading of his Theorem 4, not an identification of operators).
-  Checked against the semi-local trace formula: archimedean to 1–4%, the 2-adic place at
-  λ = 2^(±1), its weights open at Λ ≤ 8. Fourteen recomputing tests.
+  Checked against the semi-local
+  trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), its mass
+  converging with the cell size to (log 2)/√2 — extrapolation of `visibility-offline`).
 
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
