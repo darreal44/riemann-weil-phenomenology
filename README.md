@@ -21,7 +21,7 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 
 Sixteen notes, one lab notebook. They are not of equal standing; read them by tier.
 
-**Living corpus — four notes, publishable as they stand.**
+**Living corpus — five notes, publishable as they stand (the fifth is a negative result).**
 
 - `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil positivity on a fixed
   window: certified witnesses* (5 pp.). The theorem of the repository: 340 ball-arithmetic
@@ -45,16 +45,6 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
   Beurling.
 
-- `notes/semilocal-step.pdf` — *The (log 2, log 3] step*: Connes–Consani's archimedean
-  operator rebuilt to every published digit (`code/cc_arch.py`); its second eigenvalue
-  crosses 1 at L ≈ 1.01; the prime-2 term cannot join the compact remainder; the
-  semi-local {∞,2} Sonin space built on the ord₂ = 0 slice (Fourier in closed form,
-  compression not trace class, remainder log-divergent at ρ=1 and spiked at ρ=2) with the
-  conditioned remainder *essentially positive* where CC's is essentially negative — the
-  compact-remainder mechanism does not cross the place 2; checked against the semi-local
-  trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), weights
-  open). Measurement and calibration; tier at the author's discretion.
-
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
 - `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
@@ -64,7 +54,19 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   test, the recruitment law and the quorum-as-phenomenon remain valid measurements.
 - `notes/lemma-speed-s.pdf` — *superseded.* s = κ_win·Λ(χ) is a dead map; its S2
   (err ≈ e^(−sµ)) lives in zeros-from-the-radical.
-- `notes/lemma-delta-profile.pdf` — Δ(ℓ) universal on the ramp 9–14 only; the 2π-comb
+- `notes/lemma-delta-profile.- `notes/semilocal-step.pdf` — *A negative result, measured:* the first semi-local step
+  of the Connes–Consani program, (log 2, log 3], cannot be taken by transporting their
+  Λ = 1 Sonin mechanism. Their archimedean operator is rebuilt to every published digit
+  (`code/cc_arch.py`); its compact part gets a second eigenvalue above 1 at L ≈ 1.01; the
+  prime-2 term cannot join the compact remainder; the semi-local {∞,2} Sonin space is
+  built on the ord₂ = 0 slice — Fourier in closed form Fg = ½[Σ ĝ(2ⁿρ) − ĝ(ρ/2)]
+  (unitarity proved), compression not trace class, remainder log-divergent at ρ = 1 and
+  spiked at ρ = 2 — and its conditioned remainder is *essentially positive* where CC's is
+  essentially negative. The surplus is the 2h(1)log Λ term of Connes 1999 (inference).
+  Checked against the semi-local trace formula: archimedean to 1–4%, the 2-adic place at
+  λ = 2^(±1), its weights open at Λ ≤ 8. Fourteen recomputing tests.
+
+pdf` — Δ(ℓ) universal on the ramp 9–14 only; the 2π-comb
   control (off-profile) and the L-variation at fixed χ₋₈ remain good controls.
 - `notes/lemma-delta-2pie.pdf`, `notes/lemma-delta-inf.pdf` — negative findings: two
   clusters ([16.8, 17.1] and [17.9, 18.2]), not 2πe, not split by parity.
