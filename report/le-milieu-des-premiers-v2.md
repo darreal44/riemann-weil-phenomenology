@@ -2601,3 +2601,10 @@ The edge p=29 is YES on both. The predicted death at p=27 was the proxy ln(kappa
 
 The single-vector certificate has no finite range on these two windows.
 
+## 95. 2x2 a mu=22 et omissions doubles a mu=30
+
+chi5 mu=22, N=37: 7/7 single-prime omissions indefinite (p=2..19).
+chi5 mu=30, eight double omissions {2,3},{2,29},{3,7},{11,13},{17,19},{23,29},{2,11},{7,29}: 8/8 indefinite on the same bottom vector.
+
+The one-vector 2x2 is not a mu=30 curiosity and is not limited to |M|=1.
+
