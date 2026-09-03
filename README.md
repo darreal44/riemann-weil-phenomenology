@@ -63,8 +63,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   prime-2 term cannot join the compact remainder; the semi-local {∞,2} Sonin space is
   built on the ord₂ = 0 slice — Fourier in closed form Fg = ½[Σ ĝ(2ⁿρ) − ĝ(ρ/2)]
   (unitarity proved), compression not trace class, remainder log-divergent at ρ = 1 and
-  spiked at ρ = 2 — and its conditioned remainder is *essentially positive* where CC's is
-  essentially negative. The surplus has the form of the 2h(1)log Λ term of Connes 1999 (a reading of his Theorem 4, not an identification of operators).
+  spiked at ρ = 2 — and its conditioned remainder is predominantly positive on twenty test functions (20/20 at
+  log 2, 13/20 at log 3) where CC's is essentially negative. The surplus has the form of the 2h(1)log Λ term of Connes 1999 (a reading of his Theorem 4, not an identification of operators).
   Checked against the semi-local
   trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), its mass
   converging with the cell size to (log 2)/√2 — extrapolation of `visibility-offline`).
