@@ -7,17 +7,26 @@ def avg_Fab(a, b, c, d, s):
     G = lambda x: (Si(2*np.pi*b*s*x) - Si(2*np.pi*a*s*x))/(np.pi*s)
     return (G(d) - G(c))/(d - c)
 def Fmat(ein, eout, semilocal, NN=40):
-    M = np.empty((len(eout)-1, len(ein)-1))
-    for j in range(len(ein)-1):
-        a, b = ein[j], ein[j+1]
-        for i in range(len(eout)-1):
-            c, d = eout[i], eout[i+1]
-            if not semilocal: M[i, j] = avg_Fab(a, b, c, d, 1.0)
-            else:
-                s = -avg_Fab(a, b, c, d, 0.5)
-                for n in range(NN): s += avg_Fab(a, b, c, d, 2.0**n)
-                M[i, j] = 0.5*s
-    return M
+    """Vectorized cell-average of F. Same values as the double loop."""
+    a = ein[:-1]; b = ein[1:]; c = eout[:-1]; d = eout[1:]
+    dc = (d - c)[:, None]
+
+    def block(s):
+        k = 2 * np.pi * s
+        # Si(k * edge_out * edge_in) differences / (pi s (d-c))
+        def G(x):
+            # x shape (N_out,), against a,b shape (N_in,)
+            xa = k * x[:, None] * a[None, :]
+            xb = k * x[:, None] * b[None, :]
+            return (Si(xb) - Si(xa)) / (np.pi * s)
+        return (G(d) - G(c)) / dc
+
+    if not semilocal:
+        return block(1.0)
+    acc = -block(0.5)
+    for n in range(NN):
+        acc = acc + block(2.0 ** n)
+    return 0.5 * acc
 def trace(Lam, semilocal, h, lam_grid, cells_per_unit):
     R = Lam*float(np.exp(np.max(np.abs(np.log(lam_grid)))))*1.02
     N_in = int(Lam*cells_per_unit); ein = np.linspace(0, Lam, N_in+1); hc = Lam/N_in
