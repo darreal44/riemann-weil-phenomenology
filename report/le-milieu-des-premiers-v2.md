@@ -2513,3 +2513,16 @@ Preregistered check of the phase-space reading. χ₅ even, μ=11, N=23, λ_min=
 | 7 | 13.6 | 8.60 | 0.256 | 3.02 | 0.016 |
 
 Silence: 0.23–0.26 against 0.19. Same order, 25–35% high — compatible with a short basis / transient, not a kill. Coupling /w² not stable on three points. Next: χ₅ at μ=16.
+
+Same character at μ=16, N=25, λ_min=2.4e-15 (target e^{-sμ}≈7e-18). Voting 2,3,7,11,13:
+
+| p | w | -ln|δ| | /(s w) | -ln κ |
+|---|---|--------|--------|-------|
+| 2 | 1.39 | 0.84 | 0.245 | 1.01 |
+| 3 | 3.30 | 1.79 | 0.219 | 0.23 |
+| 7 | 13.6 | 7.64 | 0.227 | 1.83 |
+| 11 | 26.4 | 15.3 | 0.235 | 5.48 |
+| 13 | 33.3 | 20.5 | 0.249 | 8.43 |
+
+Five primes, ratios 0.22–0.25. Cluster tighter than a kill. Still ~25% above 0.19; two windows, same bias. Not 0.19 on the nose, not a factor two. Coupling still not a clean c(μ) w² on this N.
+
