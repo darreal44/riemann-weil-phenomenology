@@ -12,9 +12,7 @@
 \begin{abstract}
 \noindent
 The every-scale quorum asks for two bounds on the bottom vector $v$ of
-$Q_L$: $\delta_p=v^{\!\top}T_pv\le e^{-7p+c}$ and
-$\kappa_p=\|T_pv-(v^{\!\top}T_pv)v\|\ge e^{-4p-c'}$, uniformly in the
-window. Both quantities are pairings of $v$ against the prime tower
+$Q_L$: a smallness bound on the silence $\delta_p=v^{\!\top}T_pv$ and a largeness bound on the coupling $\kappa_p=\|T_pv-(v^{\!\top}T_pv)v\|$, uniformly in the window. The first linear readings ($e^{-7p}$, $e^{-4p}$) were local slopes; in the prime weight $w=p\log p$ the measurements read $-\ln\delta_p\approx0.19\,s(\chi)\,w$ and $-\ln\kappa_p\approx c(\mu)\,w^2$ (Section~6). Both quantities are pairings of $v$ against the prime tower
 $T_p$. The leading term is the window autocorrelation of $v$ at lag
 $\log p$. Bandlimited decay (Slepian, Bernstein, integration by parts)
 gives powers of $1/\log p$, not $e^{-7p}$. The measured silence is the
@@ -95,7 +93,7 @@ $\mathbb R$ by $F(z)F(\bar z)$ with control we do not have on the
 ground state. Super-exponential in $p=e^y$ never comes from a strip.
 
 \paragraph{Fixed $p$, $L\to\infty$.}
-The measured $\delta_p$ is stable from $\mu=8$ to $16$. The statement
+The measured slope of $-\ln\delta_p$ in $w$ is stable from $\mu=8$ to $30$; the values at fixed $p$ are not --- $\delta_7$ rises by four orders of magnitude between $\mu=8$ and $16$ (notebook \S71) --- so any statement uniform in $L$ must be about the slope, not about a fixed bound $e^{-7p}$. The statement
 uniform in $\mu$ is therefore: the Beurling extremal $v_L$ of the
 zero set in $PW_{L/2}$ has $\Theta_{v_L}(\log p)$ bounded by $e^{-7p}$
 for each fixed $p$, for all large $L$. That is a quantitative property

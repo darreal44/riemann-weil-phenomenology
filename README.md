@@ -49,7 +49,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   hat f(rho) hat f(1-rho), measured on V_9 at µ=11 (crosses at γ_1, invisible at
   height 80). PW-de Branges is not the ξ-space. No RH claim.
 
-**Frontier — the first non-transfer of a Connes–Consani mechanism to the semi-local setting. Read after the theorem, not in its place.**
+**Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
 - `notes/visibility-offline.pdf` — two analytic statements: (i) an off-line zero at
   height γ₁ opens at −σ² on the ground state, hence is visible as soon as
@@ -68,6 +68,22 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Checked against the semi-local
   trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), its mass
   converging with the cell size to (log 2)/√2 — extrapolation of `visibility-offline`).
+
+- `notes/visibility-offline.pdf` (Grok, v2 refereed) — two calculations: an off-line zero at
+  γ₁ makes the windowed form negative at order −σ²|F₁|² on the ground state (the moment F₁,
+  purely imaginary for even f, depends on N: O(1) on V₉, 3.5×10⁻³ on V₄₇); and the 2-adic
+  trace mass sits at λ = 2^(±1) by conjugation of dilations, with mass converging to
+  (log 2)/√2 as the cell size shrinks. Completes and corrects `semilocal-step` §6.
+- `notes/quorum-exponents.pdf` (Grok, v2 refereed) — three routes to the every-scale silence
+  bound tried and found wanting for one structural reason (the lag log p lies inside the
+  support: there is no infinity to decay toward); two lemmas that hold; the laws re-read in
+  w = p log p (silence 0.19·s(χ)·w, coupling Gaussian in w); the slope is stable in µ, the
+  values are not. A documented non-result on conjecture B.
+- `notes/sampling-debranges-route.pdf` (Grok, v2 refereed) — the sampling reading of window
+  positivity and its limits: unconditionally Q is Weil's pairing, not a Gram of real
+  samples; one certified window does not force zeros onto the line; visibility of an
+  off-line zero is local in height; what de Branges spaces supply and do not. Companion to
+  `sampling-floor`.
 
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
