@@ -2510,3 +2510,5 @@ Poids de (τ_S−τ_∞) intégré en d*λ sur |λ−2|<0.12·2, attendu log 2/�
 
 À Λ=4 le poids grimpe encore : cpu 80 → 0.352, cpu 96 → 0.373. Fit linéaire des trois derniers points : w(h) → 0.488 pour h→0, contre log 2/√2 = 0.490. Le poids 2-adique *est* le terme du Thm 4, une fois h petit. w(1/2) à cpu=96 vaut déjà 0.502. À Λ=8, même h, w(2) est en retard (0.173 à cpu=64) : il faut h plus petit quand Λ grandit. La bosse lisse reste O(0.01) — mauvaise sonde, pas mauvaise masse. Couches 2^n : optionnelles maintenant que la limite numérique ferme.
 
+À Λ=8, même histoire une fois h petit : cpu 48→96 donne w(2)=0.085, 0.173, 0.234, 0.280. Fit linéaire des trois derniers : h→0 donne 0.491 contre 0.490. w(1/2) explose (1.17 à cpu=96) — la fenêtre dure |λ−1/2|<0.06 chevauche autre chose ; le pic en 2 est le propre. Deux échelles, une limite.
+

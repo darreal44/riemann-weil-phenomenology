@@ -7,6 +7,8 @@ W4_64 = 0.316
 W4_80 = 0.352
 W4_96 = 0.373
 EXPECTED = 0.490
+W8_48, W8_64, W8_80, W8_96 = 0.085, 0.173, 0.234, 0.280
+EXTRAP8_H0 = 0.491
 EXTRAP_H0 = 0.488  # linear fit of cpu 64,80,96
 
 
@@ -27,3 +29,11 @@ def test_coarse_lambda16_does_not_close():
 
 def test_h0_extrapolation_hits_expected():
     assert abs(EXTRAP_H0 - EXPECTED) < 0.01
+
+
+def test_lambda8_weight_rises():
+    assert W8_48 < W8_64 < W8_80 < W8_96
+
+
+def test_lambda8_h0_hits_expected():
+    assert abs(EXTRAP8_H0 - EXPECTED) < 0.01
