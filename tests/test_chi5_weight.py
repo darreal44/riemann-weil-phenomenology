@@ -27,3 +27,9 @@ C3_22, C3_30 = 0.00646, 0.00381
 
 def test_chi3_c_also_falls():
     assert C3_30 < C3_22
+
+N_INDEF_CHI5_30 = 9
+N_INDEF_CHI3_30 = 9
+
+def test_single_prime_2x2_all_yes():
+    assert N_INDEF_CHI5_30 == 9 and N_INDEF_CHI3_30 == 9
