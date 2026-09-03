@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{Arithmetic SOS for the truncated Weil form:\\
+\large what exists, what the smallest window shows, what would be a factor}
+\author{D.\ Joubert}
+\date{4 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+On a window where $Q_L\succ0$, a sum-of-squares factorization exists:
+$Q_L=\|Q_L^{1/2}\cdot\|^2$. That factor is spectral (or Cholesky). It is
+not built from the primes. An \emph{arithmetic} SOS is a factor
+$T_L$ written from $P$, $A$ and the towers $T_p$ only, with
+$T_L^*T_L=Q_L$. At $\mu=3$ --- one prime, one negative mode of
+$P+A$ --- the Cholesky factor on $V_9$ is dense, $T_2$ is indefinite,
+and completing the square against the lag at $\log2$ does not produce
+an explicit $T_L$. The closed SOS that does exist is the zero-side
+Gram. An arithmetic SOS for every $L$ is point~4 of the notebook: RH.
+\end{abstract}
+
+\section{Three factorizations, only one arithmetic in intent}
+On $V_N$ at a window with $Q\succ0$,
+\[
+Q=\sum_{j=1}^{N}\lambda_j v_jv_j^{\!\top}
+=C^{\!\top}C
+=\sum_{\gamma}\hat\eta(\gamma)\,\hat\eta(\gamma)^{\!\top}.
+\]
+The first two are $Q^{1/2}$ (spectral / Cholesky). They were computed
+at $\mu=11$ ($47$ squares, certified by congruence, not by ball
+Cholesky). The third is $T_{\mathrm{z}}f=(\hat f(\gamma))_{\gamma}$,
+closed form, and uses the zeros. An arithmetic $T_L$ would satisfy
+$T_L^*T_L=P+A-\sum T_p$ with each row of $T_L$ a local pairing
+(archimedean kernel or lag $\log p^k$), no $\gamma$ and no
+eigenvector of $Q$.
+
+\section{The smallest laboratory: $\mu=3$}
+Only the tower of $2$ is present. Spectro on $V_9$:
+\[
+\lambda_{\min}(P+A)=-0.073,\quad
+\operatorname{spec}(T_2)\subset[-0.490,0.490],
+\quad
+\lambda_{\min}(Q)=1.03\times10^{-7}.
+\]
+$P+A$ has \emph{one} negative direction. $T_2$ is indefinite of
+half-dimension (four negative eigenvalues on $V_9$). $Q$ is positive
+with the known razor. The numerical Cholesky factor $C$ of $Q$ on
+$V_9$ is dense in the lower triangle: no band, no visible Toeplitz,
+no displacement rank that would write $C$ as a short combination of
+the $\Theta(\log2)$ matrix and the archimedean kernel.
+
+\paragraph{Completing the square fails to be explicit.}
+Write $P+A=A_+-\lambda_-uu^{\!\top}$ with $\lambda_-=0.073$. Then
+\[
+Q=A_+-\lambda_-uu^{\!\top}-T_2.
+\]
+This is a difference of an PSD piece and an indefinite piece. It is
+not $A_+$ plus a square built from $U_{\log2}$, because $T_2$ itself
+is not a square: $\Theta_f(\log2)=\langle f,\tau_{\log2}f\rangle$ is a
+correlation, not a norm. Expanding $\tau_{\log2}$ in the cosine basis
+recovers the matrix of $T_2$, not a list of arithmetic linear forms
+whose Gram is $Q$.
+
+\section{What an arithmetic $T_L$ would look like}
+A candidate with the right shape, not known to work:
+\[
+(T_Lf)_p
+=\sqrt{\log p}\,p^{-1/4}\bigl(\alpha_p f+\beta_p\tau_{\log p}f\bigr)
+\quad\text{plus an archimedean row $T_\infty f$.}
+\]
+Then $\|T_Lf\|^2$ produces $\Theta(\log p)$ cross terms and
+$\|f\|^2$, $\|\tau f\|^2$ squares. Matching the coefficients of
+$P+A-\sum T_p$ is a finite linear algebra problem on each window ---
+and a moving target as $L$ grows (new primes, new lags $k\log p$).
+At $\mu=3$ this ansatz has four real scalars $(\alpha_2,\beta_2)$ plus
+the archimedean row. It does not have enough parameters to reproduce
+a $9\times9$ PSD matrix of rank $9$. Adding internal lags
+$k=2,3,\ldots$ does not help: $2^k\le3$ forbids them.
+
+The zero-side factor has as many rows as there are $\gamma$ in band,
+which is the right count. The Euler side has as many rows as there
+are prime powers $\le\mu$, which is too few (four towers at
+$\mu=11$, against $47$ dimensions). An arithmetic SOS must therefore
+use a \emph{continuous} archimedean fibre, not only the discrete
+lags. That fibre is the Weil archimedean integral, which is not
+itself a square for $L>0.85$. The mixing of a non-square continuous
+piece with four discrete lags is the whole problem.
+
+\section*{Status}
+Explored, not constructed. On every finite $V_N$ with $Q\succ0$ an
+SOS exists and is $Q^{1/2}$. The Cholesky of the smallest PSD window
+is unstructured. The Euler lags are too few to span the factor. The
+closed SOS is the list of evaluators at the zeros. Passing from that
+list to a factor written from $P,A,T_p$ for every $L$ is RH.
+\end{document}

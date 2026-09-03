@@ -51,7 +51,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
-- `notes/visibility-offline.pdf` — two analytic statements: (i) an off-line zero at
+- `notes/sos-arithmetic.pdf --- arithmetic SOS: Q^{1/2} exists, Cholesky at mu=3 is dense, Euler lags too few; closed SOS is the zeros. Not RH.
+- notes/visibility-offline.pdf` — two analytic statements: (i) an off-line zero at
   height γ₁ opens at −σ² on the ground state, hence is visible as soon as
   F₁(γ₁)≠0 (measured); (ii) F_S−F_∞ is a sum of dilations by 2^ℤ, so the extra
   trace mass sits at λ=2^{±1} with leading weight (log 2)/√2. Not RH.
@@ -69,7 +70,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), its mass
   converging with the cell size to (log 2)/√2 — extrapolation of `visibility-offline`).
 
-- `notes/visibility-offline.pdf` (Grok, v2 refereed) — two calculations: an off-line zero at
+- `notes/sos-arithmetic.pdf --- arithmetic SOS: Q^{1/2} exists, Cholesky at mu=3 is dense, Euler lags too few; closed SOS is the zeros. Not RH.
+- notes/visibility-offline.pdf` (Grok, v2 refereed) — two calculations: an off-line zero at
   γ₁ makes the windowed form negative at order −σ²|F₁|² on the ground state (the moment F₁,
   purely imaginary for even f, depends on N: O(1) on V₉, 3.5×10⁻³ on V₄₇); and the 2-adic
   trace mass sits at λ = 2^(±1) by conjugation of dilations, with mass converging to
