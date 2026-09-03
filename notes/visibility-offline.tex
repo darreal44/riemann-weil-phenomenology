@@ -33,18 +33,16 @@ for $g=f\star\tilde f$. Expand at fixed $\gamma$ in $\sigma$,
 \[
 \hat f(\tfrac12+\sigma+i\gamma)=F_0+\sigma F_1+\tfrac12\sigma^2 F_2+O(\sigma^3),
 \]
-with $F_0=\hat f(\tfrac12+i\gamma)$, $F_1=\int f(x)\,x\,e^{i\gamma x}\,dx$.
+with $F_0=\hat f(\tfrac12+i\gamma)$ real (even $f$) and $F_1=\int f(x)\,x\,e^{i\gamma x}\,dx=iM$, $M=\int f(x)\,x\sin(\gamma x)\,dx$ real: for even $f$ the first moment is purely imaginary.
 Then
 \[
-\hat g(\rho)=F_0^2-\sigma^2 F_1^2+O(\sigma^2 F_0)+O(\sigma^4).
+\hat g(\rho)=F_0^2-\sigma^2 |F_1|^2+O(\sigma^2 F_0)+O(\sigma^4)=F_0^2-\sigma^2M^2+\ldots,
 \]
 Take $f$ the ground state of $Q_L$ on $V_N$. Hyper-nullity
 (\emph{zeros-from-the-radical}) gives $|F_0(\gamma_1)|\approx C_\gamma\lambda_{\min}$,
-exponentially small. The moment $F_1(\gamma_1)$ is $O(\tau\|f\|)$ and
-numerically $O(1)$ on $V_9$ at $\mu=11$ ($F_1^2\approx0.54$ from
-$\hat g=-5.4\times10^{-5}$ at $\sigma=0.01$). Hence on that vector
+exponentially small. The moment $|F_1(\gamma_1)|$ is $O(\tau\|f\|)$ a priori; it depends on $N$: on $V_9$ at $\mu=11$ it is $O(1)$ ($M^2\approx0.54$ from $\hat g=-5.4\times10^{-5}$ at $\sigma=0.01$), while on $V_{47}$ at the same $\mu$ the same quantity, $|\partial_\gamma\hat v_0(\gamma_1)|$, is $3.5\times10^{-3}$ and decays like $e^{-0.6\gamma}$ along the band (notebook \S76): the visibility scale in $\sigma$ moves by two orders of magnitude between the two bases. Hence on the $V_9$ vector
 \[
-Q_L(f)+\hat g(\rho)=\lambda_{\min}-\sigma^2 F_1(\gamma_1)^2+O(\sigma^2\lambda_{\min})+O(\sigma^4).
+Q_L(f)+\hat g(\rho)=\lambda_{\min}-\sigma^2 |F_1(\gamma_1)|^2+O(\sigma^2\lambda_{\min})+O(\sigma^4).
 \]
 \begin{lemma}[visibility at $\gamma_1$, small $\sigma$]
 If $F_1(\gamma_1)\ne0$, then $Q_L+\hat g(\rho)$ is negative for every
