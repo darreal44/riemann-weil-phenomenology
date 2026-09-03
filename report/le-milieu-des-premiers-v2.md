@@ -2540,3 +2540,21 @@ Deep bases:
 
 s_loc climbs 1.97 → 2.20 toward 2.47; the ratio climbs down 0.25 → 0.215 toward 0.19. Floor at μ=22 confirmed (N=33 and 41 agree to 3%). The 0.19 law is an asymptotic statement; χ₅ was not a kill and is not a confirmation on the nose either until s_loc settles.
 
+## 91. χ₅ à μ=30 : le 0.19 est là
+
+Calibration window of s_∞=2.47. N=37 and 45: λ=3.7e-30 → 2.0e-30, s_loc=2.26→2.28 (intercept, not a short basis). Nine voting primes.
+
+| p | w | -ln|δ| | /(s_∞ w) |
+|---|---|--------|----------|
+| 2 | 1.39 | 0.82 | 0.239 |
+| 3 | 3.30 | 1.70 | 0.209 |
+| 7 | 13.6 | 6.99 | 0.208 |
+| 11 | 26.4 | 13.0 | **0.199** |
+| 13 | 33.3 | 16.2 | **0.197** |
+| 17 | 48.2 | 23.4 | **0.196** |
+| 19 | 55.9 | 27.4 | **0.198** |
+| 23 | 72.1 | 36.7 | 0.206 |
+| 29 | 97.7 | 60.0 | 0.249 (edge) |
+
+Interior p=11..19: 0.196–0.199 against 0.19. Median p≥3: 0.203. The 25% excess at μ=11 was the transient of s, not a wrong weight. Ratios identical at N=37 and 45.
+
