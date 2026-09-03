@@ -1,0 +1,114 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{Two analytic statements that do not move RH:\\
+\large visibility at $\gamma_1$, and why the $2$-adic mass sits at $2^{\pm1}$}
+\author{D.\ Joubert}
+\date{3 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+Two calculations. (1)~An off-line zero at height $\gamma_1$ makes the
+windowed form negative for every $\sigma\neq0$ small, because the
+App.~B term $\hat f(\rho)\hat f(1-\rho)$ opens at order $-\sigma^2$
+on the ground state while $\lambda_{\min}$ is exponentially small.
+(2)~The difference of Fourier transforms $F_S-F_\infty$ is a sum of
+dilations by $2^{\mathbb Z}$; conjugating the scaling $\vartheta(\lambda)$
+against those dilations puts the extra trace mass at $\lambda=2^{\pm1}$,
+with leading weight the local Weil factor $(\log2)/\sqrt2$. Neither
+statement is RH.
+\end{abstract}
+
+\section{Visibility at $\gamma_1$}
+Let $\tau=L/2$, $f$ even on $[-\tau,\tau]$, and
+\[
+\hat f(\tfrac12+\sigma+i\gamma)=\int_{-\tau}^{\tau}f(x)\,e^{\sigma x}e^{i\gamma x}\,dx.
+\]
+App.~B of \emph{quorum-theorem}: $\hat g(\rho)=\hat f(\rho)\,\hat f(1-\rho)$
+for $g=f\star\tilde f$. Expand at fixed $\gamma$ in $\sigma$,
+\[
+\hat f(\tfrac12+\sigma+i\gamma)=F_0+\sigma F_1+\tfrac12\sigma^2 F_2+O(\sigma^3),
+\]
+with $F_0=\hat f(\tfrac12+i\gamma)$, $F_1=\int f(x)\,x\,e^{i\gamma x}\,dx$.
+Then
+\[
+\hat g(\rho)=F_0^2-\sigma^2 F_1^2+O(\sigma^2 F_0)+O(\sigma^4).
+\]
+Take $f$ the ground state of $Q_L$ on $V_N$. Hyper-nullity
+(\emph{zeros-from-the-radical}) gives $|F_0(\gamma_1)|\approx C_\gamma\lambda_{\min}$,
+exponentially small. The moment $F_1(\gamma_1)$ is $O(\tau\|f\|)$ and
+numerically $O(1)$ on $V_9$ at $\mu=11$ ($F_1^2\approx0.54$ from
+$\hat g=-5.4\times10^{-5}$ at $\sigma=0.01$). Hence on that vector
+\[
+Q_L(f)+\hat g(\rho)=\lambda_{\min}-\sigma^2 F_1(\gamma_1)^2+O(\sigma^2\lambda_{\min})+O(\sigma^4).
+\]
+\begin{lemma}[visibility at $\gamma_1$, small $\sigma$]
+If $F_1(\gamma_1)\ne0$, then $Q_L+\hat g(\rho)$ is negative for every
+sufficiently small $\sigma\neq0$.
+\end{lemma}
+The hypothesis $F_1(\gamma_1)\ne0$ is a non-vanishing of one Fourier
+moment of an explicit eigenvector. It is measured, not proved for every
+$N,\mu$. It is the only analytic gap in the lemma.
+
+\paragraph{High zeros.}
+$|\hat\eta_0(\tfrac12+\sigma+i\gamma)|\le e^{|\sigma|\tau}/(|\gamma|\sqrt L)$
+and similarly for $n\ge1$ away from $\omega_n$. The extra Gram at height
+$\gamma$ has operator norm $O(e^{2|\sigma|\tau}/\gamma^2)$ on $V_N$.
+At $\gamma=80$, $\mu=11$, this is $10^{-3}$ or less and does not move
+$\lambda_{\min}$ (measured: stays $10^{-22}$). Visibility is local in
+height: a window of type $\tau$ sees an off-line zero near $\gamma_1$,
+not one at height $\gg 2\pi N/L$. A single certified $Q_{11}\succ0$ is
+compatible with an off-line zero at $10^6$. That is Weil on a compact
+window, not RH.
+
+\section{Why the mass sits at $2^{\pm1}$}
+On the slice $\mathrm{ord}_2=0$,
+\[
+F_S=\tfrac12\Bigl(\sum_{n\ge0}M_{2^n}-M_{1/2}\Bigr)F_\infty,
+\]
+where $(M_a\hat g)(\rho)=\hat g(a\rho)$. Thus
+\[
+F_S-F_\infty=\tfrac12\sum_{n\ge1}M_{2^n}F_\infty-\tfrac12 M_{1/2}F_\infty-\tfrac12 F_\infty.
+\]
+The scaling $\vartheta(\lambda)g(r)=\lambda^{-1/2}g(r/\lambda)$
+conjugates dilations of the frequency:
+$M_a\,\vartheta(\lambda)\,M_a^{-1}=\vartheta(\lambda/a)$ up to the
+normalization of $d^*\lambda$. Every extra copy $M_{2^n}$ in the trace
+$\mathrm{Tr}(\hat P_\Lambda P_\Lambda\vartheta(\lambda))$ produces a
+translate of the archimedean peak by $\lambda\mapsto 2^{\pm n}\lambda$.
+The first shells $n=\pm1$ sit at $\lambda=2$ and $\lambda=\tfrac12$.
+Higher shells $2^{\pm n}$ are present in the formula and not resolved
+as isolated peaks at $\Lambda\le8$.
+
+The coefficient of the first shell is the $k=1$ term of the local
+Weil factor at $p=2$:
+$(\log2)\,2^{-1/2}=(\log2)/\sqrt2$.
+At $\Lambda=4$ and $\Lambda=8$ the hard-window mass of
+$\tau_S-\tau_\infty$ around $\lambda=2$ extrapolates to that number
+as the cell size $h\to0$ ($0.488$ and $0.491$). That is a numerical
+limit of an explicit distribution, not a new identity. The
+archimedean peak at $\lambda=1$ and the factor $2h(1)\log\Lambda$
+are the other two terms of Connes (1999), Theorem~4; they are not
+re-derived here.
+
+\begin{remark}
+The hard window around $\lambda=\tfrac12$ at $\Lambda=8$ overshoots
+($w=1.17$ at $96$ cells per unit): it swallows mass that is not the
+first shell. The peak at $\lambda=2$ is clean. An analytic shell
+expansion would separate $n=\pm1$ from $n=\pm2,\pm3$ without a window.
+That calculation is not done.
+\end{remark}
+
+\section*{Status}
+Lemma~1 is a Taylor argument plus one measured non-vanishing.
+Proposition on the locus $2^{\pm1}$ is conjugation of dilations;
+the weight is identified with the local factor and confirmed by
+extrapolation, not proved as an operator coefficient.
+No movement of RH. The two remaining analytic targets of the
+repository --- $\delta_p\le e^{-7p}$ and $\kappa_p\ge e^{-4p}$ on
+the bottom vector, uniformly in $\mu$ --- are not touched.
+\end{document}

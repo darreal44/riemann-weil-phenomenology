@@ -51,6 +51,11 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 
 **Frontier — the first non-transfer of a Connes–Consani mechanism to the semi-local setting. Read after the theorem, not in its place.**
 
+- `notes/visibility-offline.pdf` — two analytic statements: (i) an off-line zero at
+  height γ₁ opens at −σ² on the ground state, hence is visible as soon as
+  F₁(γ₁)≠0 (measured); (ii) F_S−F_∞ is a sum of dilations by 2^ℤ, so the extra
+  trace mass sits at λ=2^{±1} with leading weight (log 2)/√2. Not RH.
+
 - `notes/semilocal-step.pdf` — *A negative result, measured (twenty test functions, two window lengths):* the first semi-local step
   of the Connes–Consani program, (log 2, log 3], cannot be taken by transporting their
   Λ = 1 Sonin mechanism. Their archimedean operator is rebuilt to every published digit
