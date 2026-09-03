@@ -129,9 +129,21 @@ $10^7$. The same extra term at height $80$ or $200$ leaves
 $\lambda_{\min}$ at $10^{-22}$: this window does not see a high
 off-line zero. Visibility is local in height, mild in $\sigma$, and
 tied to $\gamma_1$. A certified $Q_{11}\succ0$ still allows an off-line
-zero at large height. It does not allow one at $\gamma_1$ if the pairing
-really is $F(\rho)F(1-\rho)$. That last ``if'' is the remaining
-identification with App.~B of \emph{quorum-theorem}.
+zero at large height. It does not allow one at $\gamma_1$ once the
+pairing is identified with App.~B.
+
+\paragraph{App.~B closes the ``if''.}
+\emph{quorum-theorem}, Remark~(i) and App.~B: the implemented form is
+Weil's pairing for $g=f\star\tilde f$, with $\hat g=|\hat f|^2$ on the
+critical line, and
+\[
+Q(f)=\sum_\rho\hat g(\rho)
+\]
+unconditionally. On the line $\hat g(\tfrac12+i\gamma)=|\hat f(\gamma)|^2$.
+Off the line $\hat g(\rho)=\hat f(\rho)\,\hat f(1-\rho)$. That is the
+term measured above. The identification is the one already derived
+for the repository, not a new convention. The factor $2$ in
+$Q=\sum 2\,\hat c\hat c^\top$ is the pair $\pm\gamma$.
 
 \section{What de~Branges supplies, and what it does not}
 A de~Branges space $\mathcal{H}(E)$ is a Hilbert space of entire
@@ -174,16 +186,17 @@ and not a kernel.
 \item Prove a quantitative visibility lemma: an explicit $L(\sigma,\gamma)$
   beyond which an off-line pair at $\tfrac12+\sigma+i\gamma$ forces
   $\lambda_{\min}(Q_L)<0$. This is analysis, not flint.
-\item Compute, on $V_N$, the Gram with one complex pair added, and
-  record the $L$ at which $\lambda_{\min}$ crosses. A measurement of
-  the schematic lemma. Not RH.
+\item Done on $V_9$ at $\mu=11$: the pair at $\gamma_1$ crosses;
+  height $80$ does not. A quantitative $L(\sigma,\gamma)$ for every
+  height remains analysis.
 \item Do \emph{not} claim that $c_L>0$ for all $L$ unconditionally.
   That statement is RH.
 \end{enumerate}
 
 \section*{Status}
 Theorem~1 (under RH) is already in the living corpus. The present note
-adds the unconditional reading, the visibility obstruction, and the
-boundary between PW-de~Branges and $\xi$-de~Branges. No new theorem.
-No movement of RH.
+adds the unconditional reading, the Weil-weight visibility measurement,
+the identification $\hat g(\rho)=\hat f(\rho)\hat f(1-\rho)$ with App.~B,
+and the boundary between PW-de~Branges and $\xi$-de~Branges. No new
+theorem. No movement of RH. The branch can stop here.
 \end{document}

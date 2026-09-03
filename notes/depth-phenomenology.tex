@@ -4,9 +4,9 @@
 \usepackage{booktabs}
 \usepackage[hidelinks]{hyperref}
 
-\title{\bfseries Depth phenomenology of truncated Weil quadratic forms:\\ fifteen $L$-functions, one ladder}
+\title{\bfseries Depth phenomenology of truncated Weil quadratic forms:\\ fifteen $L$-functions, one ladder\\[3pt] \normalsize\mdseries (a dated campaign; read the erratum first)}
 \author{Denis Joubert\\ \small Independent researcher, Switzerland}
-\date{August 31, 2026 --- v2}
+\date{August 31, 2026 --- v2; erratum and status of September 3, 2026 (v3)}
 
 \newcommand{\R}{\mathbb{R}}
 \begin{document}
@@ -48,6 +48,19 @@ statement to two harmonic-analysis assertions. All claims here are
 measurements with stated error bars; every code path, zero cache and
 artifact is public.
 \end{abstract}
+
+\begin{center}\fbox{\parbox{0.94\textwidth}{\small
+\textbf{Erratum and status (September 3, 2026).} This note is kept as the record of a campaign. Three of its claims have since been superseded by the same repository, and a reader should know which before using them.
+
+\emph{The four-variable map (Section~2, claim (ii)) is dead.} It was killed out of sample by $\chi_{-23}$ (predicted $\hat s=0.76$ against a measured $s\approx0.54$ at $\mu\le38$, $-29\%$, 20th preregistered execution; at convergence, $\mu\le74$, $s_\infty\approx0.59$, still $-22\%$), exactly on the small-gap axis this note itself charted as fragile. Its two- and three-variable successors died harder ($+97\%$, $-24\%$). What replaces it is not another map but a \emph{geometric law} with no parameter per character: under RH, the floor $c_L=\inf Q_L/\|f\|^2$ is a sampling constant of the zero set for $PW_{L/2}$, made exponentially small by the desert $(-\gamma_1,\gamma_1)$ and by the gaps longer than the Nyquist step $2\pi/L$; with two coefficients fitted on four scales of $\zeta$ alone it predicts $s(\chi)$ for the seven fast characters ($s\ge1.4$) within $20\%$, and over-predicts the three narrow deserts $\chi_{11},\chi_{13},\chi_{-23}$ by a real factor $1.3$--$1.55$ once their transients are settled (notebook \S66--79; note \emph{depth-geometry-quorum-mechanism}). The measured $s(\chi)$ table of this note is the \emph{target} of that law, and several of its slow entries were transient lower bounds: $s(\chi_{11})=0.91\to1.14$, $s(\chi_{13})=0.88\to0.95$ at $\mu\le74$.
+
+\emph{The universal rung profile $\Delta(\ell)$ (Section~4, claim (iii)) holds on the ramp only} (rungs 9--14); at depth the spacings settle into two clusters, $[16.8,17.1]$ and $[17.9,18.2]$, neither $2\pi e$, not split by parity (notes \emph{lemma-delta-profile}, \emph{lemma-delta-2pie}, \emph{lemma-delta-inf}). The $2\pi$-comb control (off profile) shows the universality is a property of the Weil family, not of arbitrary spectra.
+
+\emph{The quorum (Section~5, claim (iv)) is now a theorem with both halves}: every proper sub-product violates positivity (certified, 340 witnesses) and the complete form is certified positive definite at $\mu=11$ ($\lambda_{\min}=3.58317\times10^{-48}\pm3\times10^{-54}$); its mechanism is an unconditional $2\times2$ lemma, depth $\times$ coupling (\emph{zeros-from-the-radical}, \emph{depth-geometry-quorum-mechanism}).
+
+What stands unchanged: the affine depth law (i) as a measurement, the bandwidth-not-counting result, the recruitment law read by radical spectroscopy, the harvest-front model of the generic regime, the surgical removals, and the preregistered stress record. The title's ``one ladder'' is true on the ramp and false at the summit.}}
+\end{center}
+
 
 \section{Setting}
 

@@ -1,4 +1,4 @@
-# Numerical phenomenology of the Weil positivity criterion
+# The truncated Weil form: two theorems on explicit forms, and their phenomenology
 
 [![DOI](https://zenodo.org/badge/1351526407.svg)](https://doi.org/10.5281/zenodo.22215278)
 
@@ -45,9 +45,19 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
   Beurling.
 
+- `notes/semilocal-step.pdf` — *The (log 2, log 3] step*: Connes–Consani's archimedean
+  operator rebuilt to every published digit (`code/cc_arch.py`); its second eigenvalue
+  crosses 1 at L ≈ 1.01; the prime-2 term cannot join the compact remainder; the
+  semi-local {∞,2} Sonin space built on the ord₂ = 0 slice (Fourier in closed form,
+  compression not trace class, remainder log-divergent at ρ=1 and spiked at ρ=2) with the
+  conditioned remainder *essentially positive* where CC's is essentially negative — the
+  compact-remainder mechanism does not cross the place 2; checked against the semi-local
+  trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), weights
+  open). Measurement and calibration; tier at the author's discretion.
+
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
-- `notes/depth-phenomenology.pdf` — *superseded as a result, kept as a campaign.* "Fifteen
+- `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
   L-functions, one ladder" holds on the ramp (rungs 9–14) only; the four-variable map it
   presents is dead out of sample (χ₋₂₃, −29%, 20th preregistered execution) and replaced
   by the geometric law above. The preregistered stress record, the bandwidth-vs-counting
@@ -112,7 +122,7 @@ digits). Proposition A: the transforms of the bottom vector at the zeros are the
 eigenvector of the zero Gram — the radical and the quasi-kernel of the zero Gram are the
 same object. Precision law err(γ₁) ≈ e^(−s(χ)µ), full depth — *the drilling speed is the
 per-digit cost of reading the first zero* — rooted in the endpoint law |v̂₀(γ₁)| ≈ C_γ λ₀
-(C_γ ∈ [7, 28] in the configurations measured): the radical's residual mass is expelled to
+(C_γ ∈ [7, 28] in the configurations measured; C_γ itself moves with N, notebook §51): the radical's residual mass is expelled to
 the band edge (leakage spectrum |v̂₀(γ)| ≈ e^(−τ(ω_max−γ)), τ ≈ sµ/(2ω_max) to 6% on ζ).
 Note: `notes/zeros-from-the-radical.pdf`.
 
