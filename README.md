@@ -44,6 +44,10 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   read through the explicit formula; the desert quantified by Slepian's constant; why
   Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
   Beurling.
+- `notes/sampling-debranges-route.pdf` — companion exploration: unconditionally Q_L is
+  Weil's pairing, not a real Gram; visibility of an off-line zero is the App. B term
+  hat f(rho) hat f(1-rho), measured on V_9 at µ=11 (crosses at γ_1, invisible at
+  height 80). PW-de Branges is not the ξ-space. No RH claim.
 
 **Frontier — the first non-transfer of a Connes–Consani mechanism to the semi-local setting. Read after the theorem, not in its place.**
 
