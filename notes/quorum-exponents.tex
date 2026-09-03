@@ -1,0 +1,101 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{The quorum exponents:\\ \large what reduces, what the classical bounds miss, what remains}
+\author{D.\ Joubert}
+\date{3 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+The every-scale quorum asks for two bounds on the bottom vector $v$ of
+$Q_L$: $\delta_p=v^{\!\top}T_pv\le e^{-7p+c}$ and
+$\kappa_p=\|T_pv-(v^{\!\top}T_pv)v\|\ge e^{-4p-c'}$, uniformly in the
+window. Both quantities are pairings of $v$ against the prime tower
+$T_p$. The leading term is the window autocorrelation of $v$ at lag
+$\log p$. Bandlimited decay (Slepian, Bernstein, integration by parts)
+gives powers of $1/\log p$, not $e^{-7p}$. The measured silence is the
+decay of a near-kernel, not of a desert prolate. The hole shrinks to
+one estimate: $\|T_pv\|$ itself is exponentially small in $p$. That
+estimate is not proved. Nothing here is RH.
+\end{abstract}
+
+\section{Reduction}
+$T_p$ is the contribution of the powers $p^k\le\mu$ to the prime-side
+form,
+\[
+T_p(f,f)=\sum_{p^k\le\mu}(\log p)\,p^{-k/2}\,\Theta_f(k\log p),
+\qquad
+\Theta_f(y)=\int f(x)f(x+y)\,dx,
+\]
+with $\Theta_f$ supported in $[0,L]$, $L=\log\mu$, and $\Theta_f(L)=0$.
+Then $\delta_p=T_p(v,v)$ and
+$\kappa_p^2=\|T_pv\|^2-\delta_p^2$. The $k=1$ term dominates for
+$p\ge5$:
+\begin{equation}
+\label{lead}
+\delta_p=\frac{\log p}{\sqrt p}\,\Theta_v(\log p)+O\bigl(p^{-1}\Theta_v(2\log p)\bigr).
+\end{equation}
+So $\delta_p\le e^{-7p+c}$ is a pointwise bound on the autocorrelation
+of one explicit vector at the points $\log p$.
+
+\section{What the classical bounds give}
+If $v$ were merely unit-norm in $PW_\tau$,
+\[
+|\Theta_v(y)|\le\min\bigl(1,\,C_N(\tau y)^{-N}\bigr)
+\]
+after $N$ integrations by parts on a smooth cutoff. At $y=\log p$ this
+is a power of $1/\log p$. The Slepian that lives in the desert
+$(-\gamma_1,\gamma_1)$ has
+$\Theta(y)\sim\gamma_1\,\mathrm{sinc}(\gamma_1 y/\pi)$, which at
+$p=7$ is $O(1/28)$, against a measured $\delta_7\sim10^{-16}$.
+Duffin--Schaeffer on gaps loses the same exponential that
+\emph{sampling-floor} already recorded for $c_L$.
+
+None of these tools sees $e^{-7p}$. The exponent linear in $p$ is not
+the Fourier decay of a function bandlimited to $\gamma_1$.
+
+\section{What the measurements say instead}
+At $\mu=11$, $-\ln\delta_p\approx7p-12$ for $p\ge5$, and later
+$-\ln\delta_p\approx0.19\,s(\chi)\,p\log p$ across $\zeta,\chi_3,\chi_4$.
+Both $\delta_p$ and $\kappa_p$ are exponentially small, so
+$\|T_pv\|$ itself is exponentially small: $v$ is close to the kernel
+of $T_p$, not just orthogonal to $T_pv$ in one direction. That is
+stronger than silence. It means the near-kernel of $Q$ is already
+almost orthogonal to every individual tower of a large prime.
+
+This matches the leakage picture: the mass of $\hat v$ is expelled to
+the band edge, and the pairing against a lag $\log p$ --- a frequency
+modulation of width $1$ --- sees that edge through a rapidly
+oscillating integral. Writing a bound that tracks the measured $7p$
+requires a pointwise description of $\hat v$ on the edge, uniformly in
+$L$. The leakage profile $\ln|\hat v(\gamma)|\approx-\tau(\omega_{\max}-\gamma)$
+is measured, not proved, and $\tau$ itself moves with $\mu$.
+
+\section{Two lemmas that do hold}
+\begin{lemma}[edge]
+$\Theta_v(L)=0$, hence the tower of a prime sitting at the window edge
+vanishes identically ($T_{11}\equiv0$ at $\mu=11$).
+\end{lemma}
+\begin{lemma}[crude]
+$|\delta_p|\le(\log p)\,p^{-1/2}\|v\|_1^2$. In particular $\delta_p=O(p^{-1/2}\log p)$.
+\end{lemma}
+Lemma 2 is the bound one writes in a first course. It is weaker than
+the $2\times2$ criterion needs by an exponential factor, exactly as
+Bernstein was weaker than $c_L$ by $e^{L\gamma_1/2}$.
+
+A matching lower bound $\kappa_p\ge e^{-4p}$ is the same object from
+below: a piece of $\|T_pv\|$ must survive. The measurements say the
+surviving piece decays at half the rate of $\delta_p$. There is no
+mechanism yet that forces a floor under $\kappa_p$ once $\|T_pv\|$
+itself is allowed to be $e^{-4p}$.
+
+\section*{Status}
+The every-scale quorum is reduced to a bound on $\|T_pv\|_2$ for the
+bottom vector of an explicit Gram. The classical Paley--Wiener
+inventory does not reach the measured exponents. The two lemmas above
+are the part that is proved. The hole is named, not closed. No RH.
+\end{document}
