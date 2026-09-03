@@ -115,10 +115,55 @@ $|\delta_p|\le(\log p)\,p^{-1/2}\|v\|_1^2$. In particular $\delta_p=O(p^{-1/2}\l
 Lemma 2 is weaker than the $2\times2$ criterion by an exponential
 factor, exactly as Bernstein was weaker than $c_L$ by $e^{L\gamma_1/2}$.
 
+\section{Why $p\log p$, why a Gaussian}
+The linear laws $-ln\delta\sim7p$ and $-ln\kappa\sim4p$ were local
+slopes. In the weight $w=p\log p$ the measurements collapse
+(\S87):
+\[
+-\ln\delta_p\approx0.19\,s(\chi)\,w,\qquad
+-\ln\kappa_p\approx c(\mu)\,w^2\quad(p\ge5).
+\]
+One constant $0.19$ for $\zeta,\chi_3,\chi_4$ at four windows. $c(\mu)$
+grows with the window ($0.005$--$0.03$). The $2\times2$ margin
+$\ln(\kappa^2/\delta)\approx0.19 s\,w-2c\,w^2$ is then a downward
+parabola: it peaks near $w\approx43$ and would vanish near $w\approx86$
+($p\approx27$ at $\chi_3$, $\mu=30$), which is the measured finite
+range of the single-vector certificate.
+
+\paragraph{Why $w=p\log p$.}
+$y=\log p$ is the additive lag at which $\Theta_v$ is evaluated.
+$e^y=p$ is the multiplicative place of the same prime. The product
+$y\,e^y=p\log p$ is the phase-space area of that prime in the
+window --- lag times place. Neither factor alone collapsed the three
+$L$-functions: $p$ gave the old $7p$ (local), $\log p$ is too slow,
+$(\log p)/\sqrt p$ is the bare tower weight and goes the wrong way.
+Stirling's $p\log p-p$ is the same area: $\Theta_v(\log p)\sim1/p!$
+would produce exactly this leading term. That reading is a mnemonic,
+not a derivation. What is structural is that the form multiplies an
+additive pairing by an Euler place, and the invariant of that product
+is $w$.
+
+\paragraph{Why a Gaussian in $w$.}
+Silence is linear in $w$: one cumulant, intensive in the speed $s$.
+Coupling is the remainder of $T_pv$ orthogonal to $v$. A quadratic
+cost in the same action is the next cumulant. Then $\kappa\sim
+e^{-c(\mu)w^2}$ is Gaussian in $w$, and $c$ may depend on the window
+because the orthogonal of $v$ grows with $N$. This is maximum-entropy
+bookkeeping, not a spectral theorem. It does explain, without a new
+parameter, why the margin is a parabola and why a single vector
+stops certifying around $p=29$.
+
+A check that would kill the reading: a fourth $L$-function whose
+$-ln\delta_p/(s\,w)$ is not $0.19$, or a window at which $-ln\kappa$
+is linear in $w$ rather than quadratic. $\chi_5$ or $\mu=38$ on
+$\zeta$ would do.
+
 \section*{Status}
 Tried. The three routes --- decay at infinity, contour shift, edge
 continuity --- miss $e^{-7p}$ for the same structural reason: the lag
 is interior and the smallness is a dip of the Beurling extremal at
-arithmetic points. That dip is measured and stable in $\mu$. It is not
-proved. The hole is the same hole as the quantitative floor. No RH.
+arithmetic points. The measured laws live in the phase-space weight
+$w=p\log p$; the Gaussian in $w$ for $\kappa$ is the second cumulant
+of that action. Neither law is proved. The hole is the same hole as
+the quantitative floor. No RH.
 \end{document}
