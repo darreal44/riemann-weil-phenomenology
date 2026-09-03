@@ -21,7 +21,7 @@ python3 code/map2.py                    # carte 2-var vs hold-out
 
 Sixteen notes, one lab notebook. They are not of equal standing; read them by tier.
 
-**Living corpus — five notes, publishable as they stand (the fifth is a negative result).**
+**Living corpus — four notes, publishable as they stand.**
 
 - `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil positivity on a fixed
   window: certified witnesses* (5 pp.). The theorem of the repository: 340 ball-arithmetic
@@ -45,7 +45,9 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
   Beurling.
 
-- `notes/semilocal-step.pdf` — *A negative result, measured:* the first semi-local step
+**Frontier — the first non-transfer of a Connes–Consani mechanism to the semi-local setting. Read after the theorem, not in its place.**
+
+- `notes/semilocal-step.pdf` — *A negative result, measured (twenty test functions, two window lengths):* the first semi-local step
   of the Connes–Consani program, (log 2, log 3], cannot be taken by transporting their
   Λ = 1 Sonin mechanism. Their archimedean operator is rebuilt to every published digit
   (`code/cc_arch.py`); its compact part gets a second eigenvalue above 1 at L ≈ 1.01; the
@@ -53,7 +55,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   built on the ord₂ = 0 slice — Fourier in closed form Fg = ½[Σ ĝ(2ⁿρ) − ĝ(ρ/2)]
   (unitarity proved), compression not trace class, remainder log-divergent at ρ = 1 and
   spiked at ρ = 2 — and its conditioned remainder is *essentially positive* where CC's is
-  essentially negative. The surplus is the 2h(1)log Λ term of Connes 1999 (inference).
+  essentially negative. The surplus has the form of the 2h(1)log Λ term of Connes 1999 (a reading of his Theorem 4, not an identification of operators).
   Checked against the semi-local trace formula: archimedean to 1–4%, the 2-adic place at
   λ = 2^(±1), its weights open at Λ ≤ 8. Fourteen recomputing tests.
 
