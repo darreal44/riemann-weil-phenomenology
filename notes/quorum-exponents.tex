@@ -75,6 +75,35 @@ requires a pointwise description of $\hat v$ on the edge, uniformly in
 $L$. The leakage profile $\ln|\hat v(\gamma)|\approx-\tau(\omega_{\max}-\gamma)$
 is measured, not proved, and $\tau$ itself moves with $\mu$.
 
+\section{An attempt}
+$\Theta_v$ is supported in $[0,L]$. The points $y=\log p$ lie
+\emph{inside} the support. Exponential decay as $y\to\infty$ is the
+wrong picture: there is no infinity. What is asked is a dip of size
+$e^{-7p}$ at each arithmetic lag $\log p\in(0,L)$.
+
+\paragraph{Near the edge.}
+Bernstein plus $\Theta_v(L)=0$ gives
+$|\Theta_v(\log p)|\le\tau\log(\mu/p)$. Useful only for $p=\mu^{1-o(1)}$.
+At $p=7$, $\mu=11$, the bound is $O(1)$ against $10^{-16}$.
+
+\paragraph{Contour shift.}
+$F\in PW_\tau$ is entire of type $\tau$, so $\int F(\omega)\overline{F(\omega)}\,e^{i\omega y}\,d\omega$
+can be shifted. The shift produces a factor $e^{-\delta y}$ and a
+bound $e^{\tau\delta}$ on the new line --- net $e^{(-\delta+\tau)y}$ at
+best, i.e.\ a power of $p$, and only after replacing $|F|^2$ on
+$\mathbb R$ by $F(z)F(\bar z)$ with control we do not have on the
+ground state. Super-exponential in $p=e^y$ never comes from a strip.
+
+\paragraph{Fixed $p$, $L\to\infty$.}
+The measured $\delta_p$ is stable from $\mu=8$ to $16$. The statement
+uniform in $\mu$ is therefore: the Beurling extremal $v_L$ of the
+zero set in $PW_{L/2}$ has $\Theta_{v_L}(\log p)$ bounded by $e^{-7p}$
+for each fixed $p$, for all large $L$. That is a quantitative property
+of one sampling-extremal function attached to $\Gamma$. It is the same
+order of difficulty as a quantitative lower bound for $c_L$, already
+recorded as out of reach of Duffin--Schaeffer / Bernstein
+(\emph{sampling-floor}, \S4).
+
 \section{Two lemmas that do hold}
 \begin{lemma}[edge]
 $\Theta_v(L)=0$, hence the tower of a prime sitting at the window edge
@@ -83,19 +112,13 @@ vanishes identically ($T_{11}\equiv0$ at $\mu=11$).
 \begin{lemma}[crude]
 $|\delta_p|\le(\log p)\,p^{-1/2}\|v\|_1^2$. In particular $\delta_p=O(p^{-1/2}\log p)$.
 \end{lemma}
-Lemma 2 is the bound one writes in a first course. It is weaker than
-the $2\times2$ criterion needs by an exponential factor, exactly as
-Bernstein was weaker than $c_L$ by $e^{L\gamma_1/2}$.
-
-A matching lower bound $\kappa_p\ge e^{-4p}$ is the same object from
-below: a piece of $\|T_pv\|$ must survive. The measurements say the
-surviving piece decays at half the rate of $\delta_p$. There is no
-mechanism yet that forces a floor under $\kappa_p$ once $\|T_pv\|$
-itself is allowed to be $e^{-4p}$.
+Lemma 2 is weaker than the $2\times2$ criterion by an exponential
+factor, exactly as Bernstein was weaker than $c_L$ by $e^{L\gamma_1/2}$.
 
 \section*{Status}
-The every-scale quorum is reduced to a bound on $\|T_pv\|_2$ for the
-bottom vector of an explicit Gram. The classical Paley--Wiener
-inventory does not reach the measured exponents. The two lemmas above
-are the part that is proved. The hole is named, not closed. No RH.
+Tried. The three routes --- decay at infinity, contour shift, edge
+continuity --- miss $e^{-7p}$ for the same structural reason: the lag
+is interior and the smallness is a dip of the Beurling extremal at
+arithmetic points. That dip is measured and stable in $\mu$. It is not
+proved. The hole is the same hole as the quantitative floor. No RH.
 \end{document}
