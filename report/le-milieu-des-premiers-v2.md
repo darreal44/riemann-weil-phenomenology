@@ -2526,3 +2526,17 @@ Same character at μ=16, N=25, λ_min=2.4e-15 (target e^{-sμ}≈7e-18). Voting 
 
 Five primes, ratios 0.22–0.25. Cluster tighter than a kill. Still ~25% above 0.19; two windows, same bias. Not 0.19 on the nose, not a factor two. Coupling still not a clean c(μ) w² on this N.
 
+## 90. χ₅, base à fond
+
+N-scan at μ=11: λ stuck at 3.6e-10 from N=29 to 41 (5.4 nats above e^{-s_∞ μ}). That *is* the floor at this window — s_∞=2.47 is the μ=30–38 secant; locally -lnλ/μ=1.97.
+
+Deep bases:
+
+| μ | N | λ | s_loc | median -lnδ/(s_∞ w) | cluster |
+|---|---|---|---|---|---|
+| 11 | 37 | 3.7e-10 | 1.97 | 0.25 | 0.23–0.26 (3 p) |
+| 16 | 37 | 2.1e-15 | 2.11 | 0.235 | 0.22–0.25 (5 p) |
+| 22 | 33–41 | 1.01e-21 | 2.20 | 0.215 | 0.211–0.215 on p=3..13 |
+
+s_loc climbs 1.97 → 2.20 toward 2.47; the ratio climbs down 0.25 → 0.215 toward 0.19. Floor at μ=22 confirmed (N=33 and 41 agree to 3%). The 0.19 law is an asymptotic statement; χ₅ was not a kill and is not a confirmation on the nose either until s_loc settles.
+
