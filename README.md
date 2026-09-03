@@ -45,6 +45,16 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
   Beurling.
 
+- `notes/semilocal-step.pdf` — *The (log 2, log 3] step*: Connes–Consani's archimedean
+  operator rebuilt to every published digit (`code/cc_arch.py`); its second eigenvalue
+  crosses 1 at L ≈ 1.01; the prime-2 term cannot join the compact remainder; the
+  semi-local {∞,2} Sonin space built on the ord₂ = 0 slice (Fourier in closed form,
+  compression not trace class, remainder log-divergent at ρ=1 and spiked at ρ=2) with the
+  conditioned remainder *essentially positive* where CC's is essentially negative — the
+  compact-remainder mechanism does not cross the place 2; checked against the semi-local
+  trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), weights
+  open). Measurement and calibration; tier at the author's discretion.
+
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
 - `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
