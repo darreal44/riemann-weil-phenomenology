@@ -2558,3 +2558,19 @@ Calibration window of s_∞=2.47. N=37 and 45: λ=3.7e-30 → 2.0e-30, s_loc=2.2
 
 Interior p=11..19: 0.196–0.199 against 0.19. Median p≥3: 0.203. The 25% excess at μ=11 was the transient of s, not a wrong weight. Ratios identical at N=37 and 45.
 
+## 92. Couplage χ₅ : gaussienne en w, coefficient pas universel
+
+Deep basis. Fit on interior primes (p≥5, not the edge).
+
+μ=22, N=37, interior 7,11,13,17:
+-ln κ vs w² + intercept: c=0.00420, rms=0.13
+linear in w: rms=0.48
+k/w²: 0.0064 → 0.0044 (drifts)
+
+μ=30, N=41, interior 7..23:
+-ln κ vs w² + intercept: c=0.00255, rms=0.20
+linear in w: rms=0.70
+k/w²: 0.0040 → 0.00265 (drifts down)
+
+Gaussian beats linear on both windows. c(μ) *falls* 0.0042 → 0.0026, against χ₃ where it *rose* 0.0068 → 0.009. The quadratic shape is reproducible; the coefficient is not a function of μ alone, and not ~10^{-3} s (s_χ₅=2.47 would give 0.002–0.006, which happens to cover both numbers). Edge p=29 at μ=30 sits above the fit (28.7 against ~22). Parabolic margin still peaks then dies, but the peak location moves with c(μ,χ).
+
