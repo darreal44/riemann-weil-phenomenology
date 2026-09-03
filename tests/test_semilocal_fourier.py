@@ -76,28 +76,28 @@ def test_involution_on_the_support():
     ratio = back/np.array([np.exp(-((x-0.5)/0.09)**2) for x in xs])
     assert np.all(np.abs(ratio - 1.0) < 0.10), ratio
 
-# ---------- 4. the structural fact: P1 F P1 is NOT self-adjoint here ----------
-def test_cutoff_compression_is_not_self_adjoint():
+# ---------- 4. structural facts, with EXACT cell averaging (midpoint evaluation aliases) ----------
+def test_compression_is_self_adjoint_with_exact_averaging():
+    import semilocal2 as s2
+    A, h = s2.build_exact(120, True)
+    asym = np.abs(A - A.T).max()/np.abs(A).max()
+    assert asym < 1e-8, asym
+
+def test_midpoint_evaluation_aliases():
+    """The 0.43 'asymmetry' of notebook 82 was aliasing of the lacunary terms."""
     import semilocal as sl
     F, h, mids = sl.build(1.0, 300, True)
-    asym = np.abs(F - F.T).max()/np.abs(F).max()
-    assert asym > 0.2, asym          # archimedean counterpart is ~1e-6
+    assert np.abs(F - F.T).max()/np.abs(F).max() > 0.2
 
-def test_archimedean_compression_is_self_adjoint():
-    import semilocal as sl
-    F, h, mids = sl.build(1.0, 300, False)
-    asym = np.abs(F - F.T).max()/np.abs(F).max()
-    assert asym < 1e-4, asym
-
-def test_semilocal_angle_is_wider_than_archimedean():
-    """sum lambda^2 of P1 F P1: 2.2375 at the archimedean place, markedly larger here."""
-    import semilocal as sl
-    Fa, _, _ = sl.build(1.0, 300, False)
-    Fs, _, _ = sl.build(1.0, 300, True)
-    sa = np.sum(np.linalg.eigvalsh(0.5*(Fa+Fa.T))**2)
-    ss = np.sum(np.linalg.eigvalsh(0.5*(Fs+Fs.T))**2)
-    assert abs(sa - 2.2375) < 0.02, sa
-    assert ss > 2*sa, (ss, sa)
+def test_semilocal_compression_is_not_trace_class():
+    """sum lambda^2 = ||P1 F P1||_HS^2 : 2.2375 (finite) at the archimedean place,
+    growing with resolution (log-divergent) for {inf, 2}."""
+    import semilocal2 as s2
+    Aa, _ = s2.build_exact(120, False); sa = np.sum(np.linalg.eigvalsh(0.5*(Aa+Aa.T))**2)
+    assert abs(sa - 2.2375) < 0.01, sa
+    A1, _ = s2.build_exact(100, True); A2, _ = s2.build_exact(200, True)
+    s1 = np.sum(np.linalg.eigvalsh(0.5*(A1+A1.T))**2); s2v = np.sum(np.linalg.eigvalsh(0.5*(A2+A2.T))**2)
+    assert s1 > 3.0 and s2v > s1 + 0.2, (s1, s2v)
 
 # ---------- 5. archimedean calibration against Connes-Consani (Selecta 2021) ----------
 def test_cc_archimedean_calibration():
