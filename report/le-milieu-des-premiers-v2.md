@@ -2590,3 +2590,14 @@ Same deep-basis recipe as χ₅.
 
 The single-vector certificate does *not* die at p=27 on these windows. The parabola turns over; it has not crossed at p_max=μ−.
 
+## 94. Vrai 2x2 a d - kappa^2 a mu=30, pas le proxy
+
+Q_S = Q + T_p, a = v^T Q_S v = lambda+delta, u = (T_p v - delta v)/kappa, d = u^T Q_S u.
+
+chi5 N=41: 9/9 single-prime omissions indefinite (p=2..29).
+chi3 N=37: 9/9 (p=2..29).
+
+The edge p=29 is YES on both. The predicted death at p=27 was the proxy ln(kappa^2/delta) fitted with the short-basis c=0.009. The actual minor stays negative through the window. a itself is often negative (signed delta), which makes the 2x2 even cheaper.
+
+The single-vector certificate has no finite range on these two windows.
+
