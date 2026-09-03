@@ -2500,3 +2500,16 @@ Trois colonnes. Ne pas les mélanger.
 
 
 
+
+
+## 89. χ₅ contre 0.19 s w
+
+Preregistered check of the phase-space reading. χ₅ even, μ=11, N=23, λ_min=4.7e-10 (a bit above e^{-sμ}≈1.7e-12: basis still short). Voting primes 2,3,7:
+
+| p | w=p log p | -ln|δ| | -ln|δ|/(s w) | -ln κ | κ/w² |
+|---|-----------|--------|----------------|-------|------|
+| 2 | 1.39 | 0.86 | 0.251 | 1.00 | 0.52 |
+| 3 | 3.30 | 1.88 | 0.231 | 0.36 | 0.033 |
+| 7 | 13.6 | 8.60 | 0.256 | 3.02 | 0.016 |
+
+Silence: 0.23–0.26 against 0.19. Same order, 25–35% high — compatible with a short basis / transient, not a kill. Coupling /w² not stable on three points. Next: χ₅ at μ=16.
