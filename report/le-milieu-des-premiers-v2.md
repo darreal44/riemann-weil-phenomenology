@@ -2508,5 +2508,5 @@ Poids de (τ_S−τ_∞) intégré en d*λ sur |λ−2|<0.12·2, attendu log 2/�
 
 À Λ=4 le poids *monte* vers 0.49 quand on raffine h=1/cpu. Agrandir Λ sans raffiner h renvoie un poids plus négatif (16@16). Les +0.13 / −0.23 du §85 sont le même objet sous-résolu, pas une oscillation en Λ à résoudre par Λ≥16 seul.
 
-Bosse lisse en log λ=log 2 : S−A = O(0.01), pas 0.49 — le δ n’est pas encore formé, ou la normalisation du test n’est pas celle du Thm 4. Ouvert : cpu→∞ à Λ=4 (vise 0.49) ; traitement analytique des couches 2^n.
+À Λ=4 le poids grimpe encore : cpu 80 → 0.352, cpu 96 → 0.373. Fit linéaire des trois derniers points : w(h) → 0.488 pour h→0, contre log 2/√2 = 0.490. Le poids 2-adique *est* le terme du Thm 4, une fois h petit. w(1/2) à cpu=96 vaut déjà 0.502. À Λ=8, même h, w(2) est en retard (0.173 à cpu=64) : il faut h plus petit quand Λ grandit. La bosse lisse reste O(0.01) — mauvaise sonde, pas mauvaise masse. Couches 2^n : optionnelles maintenant que la limite numérique ferme.
 
