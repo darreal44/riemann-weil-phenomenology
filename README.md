@@ -45,16 +45,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Duffin–Schaeffer/Bernstein cannot give a quantitative lower bound. Says no more than
   Beurling.
 
-**Campaign notes — useful measurement, titles to be read as dated records.**
-
-- `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
-  L-functions, one ladder" holds on the ramp (rungs 9–14) only; the four-variable map it
-  presents is dead out of sample (χ₋₂₃, −29%, 20th preregistered execution) and replaced
-  by the geometric law above. The preregistered stress record, the bandwidth-vs-counting
-  test, the recruitment law and the quorum-as-phenomenon remain valid measurements.
-- `notes/lemma-speed-s.pdf` — *superseded.* s = κ_win·Λ(χ) is a dead map; its S2
-  (err ≈ e^(−sµ)) lives in zeros-from-the-radical.
-- `notes/lemma-delta-profile.- `notes/semilocal-step.pdf` — *A negative result, measured:* the first semi-local step
+- `notes/semilocal-step.pdf` — *A negative result, measured:* the first semi-local step
   of the Connes–Consani program, (log 2, log 3], cannot be taken by transporting their
   Λ = 1 Sonin mechanism. Their archimedean operator is rebuilt to every published digit
   (`code/cc_arch.py`); its compact part gets a second eigenvalue above 1 at L ≈ 1.01; the
@@ -66,7 +57,16 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   Checked against the semi-local trace formula: archimedean to 1–4%, the 2-adic place at
   λ = 2^(±1), its weights open at Λ ≤ 8. Fourteen recomputing tests.
 
-pdf` — Δ(ℓ) universal on the ramp 9–14 only; the 2π-comb
+**Campaign notes — useful measurement, titles to be read as dated records.**
+
+- `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
+  L-functions, one ladder" holds on the ramp (rungs 9–14) only; the four-variable map it
+  presents is dead out of sample (χ₋₂₃, −29%, 20th preregistered execution) and replaced
+  by the geometric law above. The preregistered stress record, the bandwidth-vs-counting
+  test, the recruitment law and the quorum-as-phenomenon remain valid measurements.
+- `notes/lemma-speed-s.pdf` — *superseded.* s = κ_win·Λ(χ) is a dead map; its S2
+  (err ≈ e^(−sµ)) lives in zeros-from-the-radical.
+- `notes/lemma-delta-profile.pdf` — Δ(ℓ) universal on the ramp 9–14 only; the 2π-comb
   control (off-profile) and the L-variation at fixed χ₋₈ remain good controls.
 - `notes/lemma-delta-2pie.pdf`, `notes/lemma-delta-inf.pdf` — negative findings: two
   clusters ([16.8, 17.1] and [17.9, 18.2]), not 2πe, not split by parity.
