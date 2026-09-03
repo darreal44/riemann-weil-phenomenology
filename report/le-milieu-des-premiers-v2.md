@@ -2574,3 +2574,19 @@ k/w²: 0.0040 → 0.00265 (drifts down)
 
 Gaussian beats linear on both windows. c(μ) *falls* 0.0042 → 0.0026, against χ₃ where it *rose* 0.0068 → 0.009. The quadratic shape is reproducible; the coefficient is not a function of μ alone, and not ~10^{-3} s (s_χ₅=2.47 would give 0.002–0.006, which happens to cover both numbers). Edge p=29 at μ=30 sits above the fit (28.7 against ~22). Parabolic margin still peaks then dies, but the peak location moves with c(μ,χ).
 
+## 93. ζ / χ₃ même protocole, et la marge χ₅
+
+Same deep-basis recipe as χ₅.
+
+**Silence** stays 0.19. χ₃ μ=22: 0.195–0.201 on p=2..13. χ₃ μ=30: 0.181–0.193 on p=5..23. ζ μ=11 (N=37, still 4 nats short of the N=47 floor): 0.17–0.23 on p=2..7.
+
+**c(μ) falls on χ₃ too**, once the basis is at the floor. μ=22: c=0.00646 (rms 0.16 vs linear 0.97) — matches the old 0.0068. μ=30: c=0.00381 (rms 0.29 vs linear 1.25), *not* the published 0.009. Deep basis: χ₃ 0.0065→0.0038, χ₅ 0.0042→0.0026. The rise 0.0068→0.009 was a short-basis artifact.
+
+**Margin** m=ln(κ²/δ)= −lnδ − 2(−lnκ), proxy for the 2×2 (needs m>0 if a≈δ and d≈1).
+
+χ₅ μ=30: p=3,7,11,13,17,19,23,29 → m=1.3, 5.5, 8.0, 8.9, 9.9, 10.0, 9.1, 2.4. Peak at p=19, still positive at the edge.
+
+χ₃ μ=30: 5.8, 8.7, 12.9, 14.3, 15.8, 15.8, 14.0, 3.8. Peak p=17–19, edge still +.
+
+The single-vector certificate does *not* die at p=27 on these windows. The parabola turns over; it has not crossed at p_max=μ−.
+

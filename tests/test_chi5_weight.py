@@ -22,3 +22,8 @@ def test_chi5_kappa_gaussian_beats_linear():
 
 def test_chi5_c_falls_with_mu():
     assert C30 < C22
+
+C3_22, C3_30 = 0.00646, 0.00381
+
+def test_chi3_c_also_falls():
+    assert C3_30 < C3_22
