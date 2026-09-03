@@ -2620,3 +2620,22 @@ chi5 mu=30, eight double omissions {2,3},{2,29},{3,7},{11,13},{17,19},{23,29},{2
 
 The one-vector 2x2 is not a mu=30 curiosity and is not limited to |M|=1.
 
+## 96. Limite N de lambda_min a mu=3
+
+Measured Q_N on spectro, mu=3 (only T_2). lambda_min(N):
+
+| N | lambda_min | ratio |
+|---|---------|-------|
+| 7 | 1.042e-7 | |
+| 11 | 9.49e-8 | 1.10 |
+| 15 | 7.75e-8 | 1.22 |
+| 19 | 6.93e-8 | 1.12 |
+| 25 | 6.27e-8 | 1.11 |
+| 31 | 5.97e-8 | 1.06 |
+| 37 | 5.82e-8 | 1.03 |
+| 43 | 5.73e-8 | 1.015 |
+
+Quadratic fit of last five in 1/N: c_log3 = 5.65e-8 (notebook 5.55e-8). Ratios have entered the 1.02 band. The floor is a number, not a motion.
+
+mu=11 is still descending at N=41 (3.4e-47 vs 3.6e-48 at N=47): not yet the floor, as recorded.
+
