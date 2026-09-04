@@ -2673,3 +2673,12 @@ Driver: code/campaign_geom_chars.py (harvest / slope / table).
 Run on the 3075WX after the 2-adic night, or in parallel: this one is
 mpmath serial per window, ~minutes each, not a GPU job.
 
+Run on this box, 4 Sep afternoon:
+
+chi5 mu=30 N=41: ell=68.07 (s_loc=2.27). mu=50 N=49: ell=108.45 (s_loc=2.17).
+s_hat(30-50)=2.019 against s_pred=1.817 (ratio 1.11) with zeros only to 149.
+s_inf 2.47 was the 30-38 secant; the slope is still easing.
+
+chi17 new: g1=3.728, 23 zeros to 40. s_hat(11-22)=0.677 against s_pred=0.954 (ratio 0.71).
+Basis short (lam0=7.5e-3 at mu=11). Harvest and N both still light.
+
