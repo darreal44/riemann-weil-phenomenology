@@ -1,0 +1,111 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\title{Landau's bounds on the early zeros\\
+\large necessary density, local deficit, no constant $A$}
+\author{D.\ Joubert}
+\date{4 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+Landau's necessary conditions say that a sampling set for
+$PW_{L/2}$ must have lower density $D^-\ge L/(2\pi)$. Globally the
+zeros satisfy this (the density tends to infinity). Locally, on
+the desert and on $[0,2\pi\mu]$, they do not: the Landau dimension
+of functions concentrated there exceeds the number of zeros by
+$4$ to $90$, depending on the window. That deficit is why $c_L$
+is exponentially small. It does not produce the constant $A$ in
+the sampling inequality --- Landau is a necessary count of modes,
+not a Slepian eigenvalue. Beurling's sufficiency is global and
+too coarse to see the desert.
+\end{abstract}
+
+\section{What Landau proves}
+For the Paley--Wiener space $PW_\Omega$ of type $\Omega$:
+if $\Lambda$ is sampling then $D^-(\Lambda)\ge\Omega/\pi$;
+if $\Lambda$ is interpolating then $D^+(\Lambda)\le\Omega/\pi$.
+Here $\Omega=L/2$, so the critical density is
+\[
+\rho=\frac{L}{2\pi}=\frac1{2\pi/L},
+\]
+the reciprocal of the Nyquist spacing. The proof is spectral:
+the concentration operator $\chi_I P_\Omega\chi_I$ has
+\[
+\#\{\text{eigenvalues close to }1\}
+=\frac\Omega\pi\,|I|+o(|I|)
+=\frac{L}{2\pi}\,|I|+o(|I|)
+\]
+as $|I|\to\infty$ (Landau 1967). Those eigenfunctions live on $I$
+and are invisible to $\Lambda\setminus I$. If
+$\#(\Lambda\cap I)$ is smaller than that dimension, $\Lambda$
+cannot sample $PW_\Omega$.
+
+\section{Global versus local}
+The Riemann zeros (and those of a fixed primitive $L$-function)
+have $N(T)\sim (T/2\pi)\log(T/2\pi)$. On $\mathbb{R}$ one has
+$D^-=\infty>\rho$ for every finite $L$. Beurling's sufficiency,
+applied to a separated subset as in \emph{sampling-floor}
+Theorem~1, therefore gives $c_L>0$ under RH. The bound does not
+see any desert: $D^-$ is a $\limsup$ of counts in long intervals,
+and long intervals are well filled.
+
+The desert is a \emph{short} interval. Landau's count on
+$I=[-\gamma_1,\gamma_1]$ is finite and sharp enough to be used:
+\[
+\dim\{\text{functions concentrated on }[-\gamma_1,\gamma_1]\}
+\approx\frac{L\gamma_1}{\pi}.
+\]
+One even pair $\{\pm\gamma_1\}$ is two points. The local density
+$1/\gamma_1$ against $\rho$ is $0.16$--$0.40$ for $\zeta$ on the
+windows below.
+
+\section{Measured deficit}
+Number of positive zeros up to $T$ versus Landau dimension
+$LT/\pi$ (even window, $I=[-T,T]$).
+
+\begin{center}
+\small
+\begin{tabular}{lrrrrrr}
+set & $\mu$ & $T$ & need $LT/\pi$ & have & deficit & $D_{\mathrm{loc}}/\rho$\\
+$\zeta$ & 3 & $\gamma_1$ & 4.9 & 1 & 3.9 & 0.40\\
+$\zeta$ & 11 & $\gamma_1$ & 10.8 & 1 & 9.8 & 0.19\\
+$\zeta$ & 11 & $2\pi\mu$ & 52.8 & 16 & 36.8 & 0.61\\
+$\zeta$ & 16 & $2\pi\mu$ & 88.7 & 29 & 59.7 & 0.65\\
+$\chi_5$ & 30 & $\gamma_1$ & 7.2 & 1 & 6.2 & 0.28\\
+$\chi_5$ & 30 & $150$ & 161 & 89 & 72 & 1.11\\
+$\chi_{17}$ & 11 & $\gamma_1$ & 2.9 & 1 & 1.9 & 0.70\\
+\end{tabular}
+\end{center}
+
+On the desert the set is always subcritical (ratio $0.2$--$0.7$).
+On $[0,2\pi\mu]$ it climbs toward criticality and crosses it for
+$\chi_5$ once the cache is long enough --- that crossing is why a
+finite list of zeros can look ``dense enough'' while $c_L$ is
+still $e^{-s\mu}$: the \emph{first} $LT/\pi$ modes, not the last,
+set the floor.
+
+\section{What the bound does not give}
+Landau does not estimate the gap $1-\lambda$ of the concentration
+operator, only how many eigenvalues sit near $1$. The size of
+$c_L$ is that gap for the ground state of the Gram of $\Lambda$,
+which is a Slepian problem on a multi-band set (the complement of
+the early gaps). Replacing the count ``deficit $=4$'' by
+``$-\ln c_L=16.7$'' is exactly the passage this note does not
+make --- it is \emph{desert-slepian}, and the factor is $2.5$--$6$.
+
+Beurling's $D^->\rho$ is sufficient after thinning, and ignores
+the same short interval. A quantitative Landau inequality with an
+explicit $A$ in terms of $D^--\rho$ exists only in asymptotic
+form for long sets; it does not cover a hole of length $\gamma_1$
+followed by twenty sparse points.
+
+\section*{Status}
+Landau names the obstruction: on every window the early zeros are
+a locally subcritical set, by $4$ to $90$ modes. That is the
+necessary half of the sampling theorem already used qualitatively
+in Theorem~1. It is not a formula for $c_L$. The sufficient
+half with a constant remains the Slepian of the early set as a
+whole. Not RH.
+\end{document}
