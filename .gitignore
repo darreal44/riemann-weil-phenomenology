@@ -1,0 +1,27 @@
+# python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+
+# latex scratch next to the notes
+notes/*.aux
+notes/*.log
+notes/*.out
+notes/*.toc
+notes/*.fls
+notes/*.fdb_latexmk
+notes/*.synctex.gz
+
+# editor / os
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
+
+# campaign runtime only — keep the results
+report/*.tmp
+*.prof
