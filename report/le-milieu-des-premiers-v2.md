@@ -2639,3 +2639,23 @@ Quadratic fit of last five in 1/N: c_log3 = 5.65e-8 (notebook 5.55e-8). Ratios h
 
 mu=11 is still descending at N=41 (3.4e-47 vs 3.6e-48 at N=47): not yet the floor, as recorded.
 
+## 97. Forme du pic 2-adique a Lambda=16
+
+Weight was acquired by h->0 at Lambda=4 and 8. The remaining validation is the *shape* at Lambda>=16 on a finer grid.
+
+Lambda=16, hard window |lambda-2|<0.24:
+
+| cpu | h | w(2) | peak |
+|-----|---|------|------|
+| 16 | 0.062 | -0.397 | -18.3 |
+| 24 | 0.042 | -0.364 | -24.4 |
+| 32 | 0.031 | -0.289 | -20.8 |
+| 40 | 0.025 | -0.203 | -10.2 |
+| 48 | 0.021 | -0.137 | +2.1 |
+| 64 | 0.016 | +0.007 | +26.9 |
+| 80 | 0.0125 | +0.140 | +50.4 |
+
+The peak *sits at lambda=2* once h<=1/48 (sign flip of the height). The mass is still short of 0.490 at cpu=80; linear h->0 on the last three points gives 0.54. Same resolution law as Lambda=4,8; Lambda itself is not the missing parameter. cpu=96 timed out here (~80s expected).
+
+Geometric law / two extra characters: the request cut off at « chi5 a mu >= 5 ». chi5 is already in the §67 OOS set (ratio 0.87) and s_loc was tracked to 2.28 at mu=30 against s_inf=2.47. A mu>=50 campaign needs the zero list and a larger machine; not run in this step.
+
