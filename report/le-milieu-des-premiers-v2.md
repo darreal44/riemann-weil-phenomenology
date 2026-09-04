@@ -2659,3 +2659,17 @@ The peak *sits at lambda=2* once h<=1/48 (sign flip of the height). The mass is 
 
 Geometric law / two extra characters: the request cut off at « chi5 a mu >= 5 ». chi5 is already in the §67 OOS set (ratio 0.87) and s_loc was tracked to 2.28 at mu=30 against s_inf=2.47. A mu>=50 campaign needs the zero list and a larger machine; not run in this step.
 
+## 98. Campagne loi geometrique : chi5 mu>=50 et chi17
+
+Coefficients frozen a=1.69, b=0.82. chi5 zeros already to 148.7 (89 zeros).
+With that cache, s_pred(11,22)=2.52 against s_inf=2.47 (ratio 1.02) — the
+0.87 OOS figure was the truncated-cache bias of §67.
+
+s_pred falls at larger mu while the zero list is capped at 150
+(s_pred 50-62 = 1.47): harvest must go to gamma ~ 2 pi mu (~320 at mu=50).
+
+New conductor: chi17 (Kronecker (./17), even, not in the §67 set).
+Driver: code/campaign_geom_chars.py (harvest / slope / table).
+Run on the 3075WX after the 2-adic night, or in parallel: this one is
+mpmath serial per window, ~minutes each, not a GPU job.
+
