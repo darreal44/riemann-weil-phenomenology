@@ -42,6 +42,7 @@ OUT = ROOT / "report" / "campaign_geom_chars.jsonl"
 
 # New conductor: primitive even Kronecker (./17). Not in the §67 set.
 CHARS.setdefault("chi17", dict(q=17, d=17, a=0))
+CHARS.setdefault("chi29", dict(q=29, d=29, a=0))
 
 # Depth-adequate (N, dps) guesses. Raise N if lam0 is still diving.
 WINDOWS = {
