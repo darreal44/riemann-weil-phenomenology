@@ -1,0 +1,97 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\newtheorem{lemma}{Lemma}
+\title{The cost of the desert is not a Slepian hole\\
+\large hole then sub-Nyquist, not a sum of holes}
+\author{D.\ Joubert}
+\date{4 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+A pure Slepian estimate on the first gap $(\gamma_1-2\pi/L)_+$
+underpredicts $-\ln c_L$ by a factor $2.5$ at $\mu=3$ and $5$--$6$
+at $\mu=30$--$50$. The factor moves with $\mu$ and is never $1$.
+The additive law $aL(\gamma_1-2\pi/L)_++bL\sum(\mathrm{gap}-2\pi/L)_+$
+with $a=1.69$, $b=0.82$ is a local fit, not the sampling constant of
+the set. The missing object is Beurling--Landau for a hole
+\emph{followed by} a sub-Nyquist stretch --- one set, not two terms.
+\end{abstract}
+
+\section{Slepian on the hole alone}
+Take $f\in PW_{L/2}$, even. The prolate problem with frequency
+support in the desert $[0,\gamma_1]$ has parameter
+$c=\tfrac L2(\gamma_1-2\pi/L)_+$. The leakage out of the desert is
+\[
+1-\lambda_0(c)\sim 4\sqrt{\pi c}\,e^{-2c}.
+\]
+If later zeros sampled the leakage at Nyquist and independently,
+one would have $-\ln c_L\approx 2c=-\ln(1-\lambda_0)$ up to
+$\tfrac12\ln c$. That is the ``naive $a=2$''.
+
+Measured against that prediction:
+
+\begin{center}
+\begin{tabular}{lrrrrr}
+name & $\mu$ & $2c$ & $-\ln\mathrm{Slep}$ & $-\ln\lambda$ & ratio\\
+$\zeta$ & 3 & 9.25 & 6.52 & 16.69 & 2.56\\
+$\zeta$ & 11 & 27.6 & 24.3 & 109.3 & 4.49\\
+$\chi_5$ & 30 & 16.3 & 13.3 & 68.1 & 5.11\\
+$\chi_5$ & 50 & 19.7 & 16.6 & 108.5 & 6.52\\
+$\chi_{17}$ & 11 & 2.66 & 0.56 & 4.89 & 8.8\\
+\end{tabular}
+\end{center}
+
+The hole explains the floor \emph{up to a factor}. The factor is
+$2.5$ on the smallest window and climbs. It is not $1.69/2$ either:
+writing $-\ln\lambda=a_{\mathrm{eff}}L(\gamma_1-2\pi/L)_+$ gives
+$a_{\mathrm{eff}}=1.81$ at $\mu=3$ ($\zeta$) and $4.2$--$5.5$ at
+$\chi_5$, $\mu=30$--$50$. So $a\in[1.7,2.1]$ is the $\zeta$ fit on
+$\mu=3$--$16$, not a constant of the hole.
+
+\section{Why adding gaps does not repair it}
+The first zeros after $\gamma_1$ are themselves wider than
+$2\pi/L$. Treating each excess as a new Slepian hole and summing
+the exponents assumes that a test function can hide in one gap
+without seeing the others. The function that realises the floor
+is (to leading exponential) the first prolate of the desert: its
+Fourier tail on $[\gamma_1,\gamma_*]$ is fixed, one-sided, and
+already correlated with those zeros. The extra cost is the
+sampling constant of
+\[
+\Lambda_{\mathrm{early}}=\{\gamma_k:\gamma_k\le\gamma_*\}
+\]
+as a single non-uniform set for $PW_{L/2}$, not
+$\mathrm{cost}(\mathrm{desert})+\sum\mathrm{cost}(\mathrm{gap}_k)$.
+
+That is why $b$ in the additive fit is $0.82$ rather than $1$,
+and why $s_{\mathrm{pred}}$ drifts once $\mu$ leaves the window
+where $(a,b)$ were pinned.
+
+\section{What Beurling--Landau ask for}
+A discrete set $\Lambda\subset\mathbb{R}$ is sampling for
+$PW_{\Omega}$ if and only if its exterior density satisfies
+$D^-(\Lambda)\ge\Omega/\pi$ (Beurling) and a uniform separation
+holds. Here $\Omega=L/2$, so the Nyquist density is $L/(2\pi)$,
+spacing $2\pi/L$. On $[0,\gamma_1]$ one has $D^-=0$. On
+$[\gamma_1,\gamma_*]$ the density climbs from $0$ to Nyquist
+through the measured gaps. The sampling constant of that
+union is a classical object (Landau's completeness radius,
+Slepian on a multi-band frequency set). It is not computed by
+adding two Slepian exponents.
+
+A computable proxy, not used as a theorem: the first prolate
+$\psi_0$ of the desert, then $\sum_k|\hat\psi_0(\gamma_k)|^2$.
+That sum is the quadratic form of $Q_z$ on one vector. It
+reproduces the leading exponential only if $\psi_0$ is already
+close to the ground state of $Q$; MUSIC says it is not --- the
+ground state is a Slepian of the \emph{whole} early set.
+
+\section*{Status}
+Diagnosed. The hole gives the right exponential \emph{shape}
+and the wrong constant, by a $\mu$-dependent factor $2.5$--$6$.
+The additive $(a,b)$ law is a chart, not Beurling. The missing
+analysis is the sampling constant of a hole plus a sub-Nyquist
+prefix, as one set. Not RH.
+\end{document}
