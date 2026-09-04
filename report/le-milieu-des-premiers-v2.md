@@ -2682,3 +2682,20 @@ s_inf 2.47 was the 30-38 secant; the slope is still easing.
 chi17 new: g1=3.728, 23 zeros to 40. s_hat(11-22)=0.677 against s_pred=0.954 (ratio 0.71).
 Basis short (lam0=7.5e-3 at mu=11). Harvest and N both still light.
 
+## 99. scan_s chi5 at mu=38,50,62,74
+
+| mu | N | dps | lam0 | ell | s_loc |
+|----|---|-----|------|-----|-------|
+| 38 | 47 | 58 | 2.25e-38 | 86.69 | 2.281 |
+| 50 | 49 | 60 | 7.93e-48 | 108.45 | 2.169 |
+| 62 | 53 | 65 | 9.29e-56 | 126.72 | 2.044 |
+| 74 | 57/63 | 70-90 | **negative** | — | failed |
+
+Secants (zeros to 149 for s_pred):
+38-50 s_hat=1.814 vs 1.764 (ratio 1.03)
+50-62 s_hat=1.522 vs 1.468 (ratio 1.04)
+62-74 discarded: Q indefinite at this assembly (lam0 ~ -1e-56 even at dps 90, N=63).
+38-62 s_hat=(126.72-86.69)/24=1.668.
+
+s_loc still easing 2.28 -> 2.04. The 2.47 was a lower-window secant.
+
