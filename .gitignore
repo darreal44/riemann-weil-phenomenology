@@ -2,3 +2,5 @@ __pycache__/
 *.log
 *.npy
 *.npz
+.venv/
+venv/
