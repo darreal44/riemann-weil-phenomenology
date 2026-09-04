@@ -18,6 +18,7 @@ CHARS = {
     'chi5':  dict(q=5,  d=5,   a=0),
     'chi8':  dict(q=8,  d=8,   a=0),
     'chi7':  dict(q=7,  d=-7,  a=1),
+    'chi29': dict(q=29, d=29,  a=0),
 }
 
 def assemble(name, mu, NB, dps, DEG=12):
