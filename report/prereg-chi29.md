@@ -21,3 +21,15 @@ Official locked number for the first measurement: **s_pred(11,22) = 0.436**.
 
 Do not measure Q before this file is on main. After measurement, compare
 s_hat / 0.436 and do not retune a,b.
+
+## Result (5 September 2026)
+
+Floor set (N-ratios 1.002 at both windows).
+
+| mu | N | lam0 | ell | s_loc |
+|----|---|------|-----|-------|
+| 11 | 45 | 0.3021 | 1.197 | 0.109 |
+| 22 | 49 | 0.00414 | 5.487 | 0.249 |
+
+s_hat(11,22) = 0.390 against locked s_pred = 0.436. Ratio 0.89.
+a,b untouched.
