@@ -1,17 +1,7 @@
-# bytecode
 __pycache__/
 *.py[cod]
-
-# latex build scratch (keep the .tex and the .pdf)
-notes/*.aux
-notes/*.log
-notes/*.out
-notes/*.toc
-notes/*.fls
-notes/*.fdb_latexmk
-notes/*.synctex.gz
-
-# local dumps, not results
+.venv/
+venv/
 artifacts/
 *.tmp
 *.prof
