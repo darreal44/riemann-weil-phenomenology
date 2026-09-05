@@ -27,3 +27,15 @@ Measured -ln λ versus the three one-set scales. Weyl caches at T0=320.
 - dim is the least bad single predictor here (χ₁₇ ~1.7, χ₂₉ ~1.3–1.6, χ₅ ~2.4–2.8) and still not absolute.
 
 Step 1 does not falsify a lower bound with a small C. It falsifies |E| as a replacement for a+b. Step 2 (local Bernstein) is only worth it if one insists on a theorem with some C; it will not give the measured depths.
+
+## C(χ) = ell / (L|E|) on measured Q
+
+| χ | C at high μ | range | γ₁ log q |
+|---|-------------|-------|----------|
+| χ₅ | 0.199 | 0.198–0.199 | 10.70 |
+| χ₁₇ | 0.12 | 0.107–0.209 (drops then flat) | 10.56 |
+| χ₂₉ | 0.085 | 0.082–0.095 | 6.04 |
+
+A plateau per character exists. It is not γ₁, not log q, not γ₁ log q
+(those two match for χ₅ and χ₁₇ and C does not). The scale is real
+and unnamed.
