@@ -25,9 +25,14 @@ and goes the wrong way (||D||₂≈1.8, λ0→0).
 χ₅ / Δ / Maass: Gram INDEF or Q with the
 wrong Γ. χ₂₉ is still the only paired window.
 
-## What would still be a calculation
+## Beurling (done)
 
-Build nothing else Slepian. Either stop, or
-measure Beurling D⁻(zeros ∩ [γ2, ω_max])
-versus τ(μ)/π — a density, not an operator
-on E.
+D⁻ after γ2 stays above τ/π. D⁻ from 0 is
+flat ≈ 0.45 and crosses τ/π at **μ≈18**.
+That is A(μ)→0 and the break of the one-hole
+bound. Sampling thread closed.
+
+## What is not next
+
+Another Slepian matrix, another L, Li, Maass.
+The remaining wall is Weil: |Q−Gram|<λ_min.
