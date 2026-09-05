@@ -1,11 +1,9 @@
 # maass1 zeros
 
-First even Maass form on SL(2,Z), r = 9.533695261.
-30 positive ordinates of L(s,f) from Booker–Then,
-*Rapid computation of L-functions attached to Maass forms*
-(Table 1, r=9.533695261, ε=1), last digit ±1.
+First even Maass form on SL(2,Z), r = 9.533695261, ε=1.
+Booker–Then, arXiv:1703.08863, Table 1 column 1.
+70 ordinates, γ1=17.0249420759926, T=114.945311219697.
+Last digit ±1. Text copy: code/zeros_maass1.txt.
 
-γ1 = 17.02 — larger than Δ. Gram at μ=22 is expected
-INDEF (same desert artifact). The list exists so the
-name `maass1` is real data, not an API stub.
-LMFDB API returned 500; this table is the fallback.
+Gram at μ=22 remains INDEF: the desert is 17, not the
+length of the list.
