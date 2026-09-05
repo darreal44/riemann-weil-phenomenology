@@ -57,10 +57,14 @@ def main():
         print(f"{name}: already to {Z[-1]:.1f}")
         return
     width = (tmax - t_start) / workers
-    slices = [
-        (name, t_start + i * width, t_start + (i + 1) * width, step)
-        for i in range(workers)
-    ]
+    overlap = 2 * step
+    slices = []
+    for i in range(workers):
+        lo = t_start + i * width
+        hi = t_start + (i + 1) * width
+        if i:
+            lo -= overlap
+        slices.append((name, max(t_start, lo), hi, step))
     print(
         f"{name}: {workers} workers, t={t_start:.2f}->{tmax}, have {len(Z)}",
         flush=True,
