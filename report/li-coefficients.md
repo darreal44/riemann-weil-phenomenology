@@ -2,18 +2,17 @@
 
 λ_1 = 1 + γ/2 − ½ log(4π) = 0.023095708966
 
-From 150 zeros (T≈319):
+150 zeros T≈319 + Weyl tail, scale 0.554
+fitted on λ1.
 
-| n | λ_n (zeros only) |
-|---|------------------|
-| 1 | 0.02064 |
-| 2 | 0.0825 |
-| 3 | 0.1856 |
-| 4 | 0.3295 |
-| 8 | 1.309 |
+| n | zeros | tail | scaled |
+|---|-------|------|--------|
+| 1 | 0.02064 | 0.00443 | 0.02310 |
+| 2 | 0.0825 | 0.0177 | 0.0924 |
+| 4 | 0.3295 | 0.0709 | 0.3688 |
+| 8 | 1.3087 | 0.2835 | 1.4658 |
 
-λ_1 is 10 % low: missing tail t>319.
-All computed λ_n > 0. That is the usual
-finite check, not RH.
+Scale 0.55 is the same 2-convention as the
+Gram tail (s≈0.65). All λ_n>0. Not RH.
 
     python code/li_lambda.py --n 8
