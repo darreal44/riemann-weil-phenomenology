@@ -94,11 +94,37 @@ def assemble(name, mu, NB, dps, DEG=12):
             arch = F0/2*CST + mp.mpf('0.5')*mp.fsum(D2[k]*(F0*EC[k]-th[k]) for k in range(K))
             v = arch - mp.fsum(w*th_at(n,m,lg) for lg,w in ppts)
             S[n,m] = v; S[m,n] = v
-    E = mp.eigsy(S, eigvals_only=True)
-    lam = sorted([E[i] for i in range(NB+1)], key=lambda z: float(z))[:8]
+    E, V = mp.eigsy(S)
+    pairs = sorted([(E[i], i) for i in range(NB+1)], key=lambda z: float(z[0]))
+    lam = [p[0] for p in pairs[:8]]
     ell = [float(-mp.log(abs(l))) if l != 0 else float('inf') for l in lam]
+    i0 = pairs[0][1]
+    v0 = [float(V[n, i0]) for n in range(NB+1)]
+    p2 = [x*x for x in v0]
+    s2 = sum(p2) or 1.0
+    p2 = [x/s2 for x in p2]
+    neff = 1.0 / sum(x*x for x in p2)
+    kbar = sum(k*p2[k] for k in range(NB+1))
+    ratio = float(abs(pairs[1][0]/pairs[0][0])) if pairs[0][0] != 0 else float('inf')
     print(f"[{name} mu={mu} N={NB+1} dps={dps}] lam0={mp.nstr(lam[0],4)}  "
-          f"ell={[round(x,2) for x in ell[:6]]}  {time.time()-t0:.0f}s", flush=True)
+          f"ell={[round(x,2) for x in ell[:6]]}  "
+          f"N_eff={neff:.2f} kbar={kbar:.2f} l1/l0={ratio:.2e}  "
+          f"{time.time()-t0:.0f}s", flush=True)
+    dump = os.environ.get('DUMP_MODE')
+    if dump:
+        import json
+        out = {
+            'name': name, 'mu': float(mu), 'NB': NB, 'dps': dps,
+            'lam': [float(x) for x in lam],
+            'ell': ell[:8],
+            'v0': v0,
+            'N_eff': neff, 'kbar': kbar, 'l1_over_l0': ratio,
+        }
+        path = dump if dump not in ('1', 'true', 'yes') else os.path.join(
+            os.path.dirname(BASE), 'report', f'mode_{name}_mu{int(mu)}.json')
+        os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
+        json.dump(out, open(path, 'w'), indent=2)
+        print(f'  dumped {path}', flush=True)
     return float(lam[0]), ell, time.time()-t0
 
 
