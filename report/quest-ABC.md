@@ -8,8 +8,9 @@
 |---|----------|----------------------|
 | 11 | 0.929 | 0.065 |
 | 22 | 0.882 | 0.054 |
+| 38 | 0.826 | 0.041 |
 
-Five to seven percent on the whole matrix, not just λ0.
+Four to seven percent on the whole matrix; F-norm falls with μ.
 The drift in λ0 is the same size as the matrix
 discrepancy. Not 1 %, not a proof.
 
