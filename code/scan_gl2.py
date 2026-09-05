@@ -28,6 +28,10 @@ CURVES = (
     "sym2_11a1",
     "sym2_delta",
     "maass1",
+    "maass2",
+    "maass3",
+    "maass4",
+    "maass5",
 )
 
 
