@@ -86,7 +86,7 @@ def harvest(name: str, tmax: float) -> None:
     if name not in TARGETS:
         sys.exit(f"unknown {name}, have {sorted(TARGETS)}")
     body, note = TARGETS[name]
-    print(f"== {name} == {note}", flush=True)
+    print(f"== {name} == T={tmax} == {note}", flush=True)
     zeros, err = run_gp(body, tmax)
     if not zeros:
         for fb in FALLBACKS.get(name, []):
@@ -107,10 +107,14 @@ def harvest(name: str, tmax: float) -> None:
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("name", nargs="?")
-    p.add_argument("tmax", nargs="?", type=float, default=80.0)
+    p.add_argument("tmax_pos", nargs="?", type=float, default=None)
     p.add_argument("--all", action="store_true")
+    p.add_argument("--tmax", type=float, default=None)
     p.add_argument("--list", action="store_true")
     args = p.parse_args()
+    args.tmax = args.tmax if args.tmax is not None else (
+        args.tmax_pos if args.tmax_pos is not None else 80.0
+    )
     if args.list:
         for k, (_, note) in TARGETS.items():
             print(f"{k:16s} {note}")
