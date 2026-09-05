@@ -27,6 +27,7 @@ CURVES = (
     "11a1_chi5",
     "sym2_11a1",
     "sym2_delta",
+    "maass1",
 )
 
 
