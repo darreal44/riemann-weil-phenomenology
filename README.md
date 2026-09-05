@@ -35,9 +35,10 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   from prime-built matrices, err ≈ e^(−sµ), the endpoint law |v̂₀(γ₁)| ≈ C_γ λ₀ and the
   leakage spectrum, and the certified positive definiteness of the complete form at µ = 11.
 - `notes/depth-geometry-quorum-mechanism.pdf` (v2) — §1 (under RH): the depth law as a
-  sampling constant of the zero set; the geometric law −ln c_L ≈ a L(γ₁−ν)₊ + b L Σ(gap−ν)₊
-  with (a, b) fitted on four scales of ζ, predicting s(χ) out of sample (median 0.89, 10/14
-  within 20%); the Slepian share of the depth. §2 (no zeros): the unconditional 2×2
+  sampling constant of the zero set; the geometric structure — desert plus sub-Nyquist gaps —
+  whose two-term formula a·L(γ₁−ν)₊ + b·L·Σ(gap−ν)₊ died at a common cutoff T₀ = 320 (§92–94:
+  overprediction 0.57–0.93 on most L-functions, one underprediction ×2.2; the constant is the
+  one-set sampling constant of E_L, open); the Slepian share of the depth. §2 (no zeros): the unconditional 2×2
   interlacing lemma — depth × coupling — its certified µ = 11 instance (15/15 sub-products
   on one vector), the µ-content at three scales, δ_p ~ e^(−7p), κ_p ~ e^(−4p).
 - `notes/sampling-floor.pdf` — Theorem 1 (under RH): c_L > 0 and λ_min(N) ↓ c_L, Beurling
@@ -72,7 +73,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   log 2, 13/20 at log 3) where CC's is essentially negative. The surplus has the form of the 2h(1)log Λ term of Connes 1999 (a reading of his Theorem 4, not an identification of operators).
   Checked against the semi-local
   trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1); its mass is
-  open — 0.49 by cell extrapolation at Λ=4, climbing past 0.49 at Λ=16 in the Λ≥16 campaign).
+  1.078 at h = 1/400, Λ = 16, heading to √2 — the twist applies to |u⁻¹|; exact value open).
 
 - `notes/landau-bounds.pdf --- Landau necessary density: early zeros subcritical by 4-90 modes; no constant A.
 - notes/desert-slepian.pdf --- desert cost vs Slepian: factor 2.5-6, never 1; hole+sub-Nyquist is one set.
@@ -100,7 +101,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen
   L-functions, one ladder" holds on the ramp (rungs 9–14) only; the four-variable map it
   presents is dead out of sample (χ₋₂₃, −29%, 20th preregistered execution) and replaced
-  by the geometric law above. The preregistered stress record, the bandwidth-vs-counting
+  by the geometric structure above (whose two-term formula itself died at T₀ = 320). The preregistered stress record, the bandwidth-vs-counting
   test, the recruitment law and the quorum-as-phenomenon remain valid measurements.
 - `notes/lemma-speed-s.pdf` — *superseded.* s = κ_win·Λ(χ) is a dead map; its S2
   (err ≈ e^(−sµ)) lives in zeros-from-the-radical.
@@ -173,8 +174,9 @@ visible at µ = 3 (c_log3 ≈ 5.55×10⁻⁸ from N = 9…61), a decelerating tr
 (3.59 → 1.86 → 1.54×10⁻⁴⁸ for N = 47, 57, 67). The depth law −ln c_L = s(χ)µ + b is
 thereby a *geometric* property of the zeros: −ln c_L ≈ 1.69·L(γ₁−2π/L)₊ +
 0.82·L·Σ(gap−2π/L)₊, the two coefficients fitted on four scales of ζ alone, predicts s(χ)
-out of sample with median ratio 0.89 (10 of 14 characters within 20%, no parameter per
-character); the desert alone (Slepian's constant) accounts for 75% / 28% / 21% of the depth
+as a structure; its two-term formula, fitted on ζ, predicted s(χ) for the fast characters
+within 20% at mixed cutoffs but overpredicts most L-functions (0.57–0.93) once all zero lists are
+cut at a common T₀ = 320 (§92–94) — the constant is the one-set sampling constant, open;
 at µ = 3 / 11 / 16. *(No zeros)* the quorum has a mechanism: an unconditional 2×2
 interlacing lemma — Q_S = Q + T_M is indefinite as soon as (ε + vᵀT_Mv)·d < κ², depth ×
 coupling — whose three quantities are certified at µ = 11 (all 15 proper sub-products
