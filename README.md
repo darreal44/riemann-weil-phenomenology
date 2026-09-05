@@ -96,6 +96,15 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   off-line zero is local in height; what de Branges spaces supply and do not. Companion to
   `sampling-floor`.
 
+- `notes/gl2-prime-side.pdf` — *Weil positivity in degree 2:* the windowed form built from the
+  a_p of eight elliptic curves and judged by the Gram of their zeros (harvested to T = 320): after
+  five errors caught by that judge, the two sides agree to the zero tail (Frobenius 1.4–1.8%, λ_min
+  to 1–6%) on all eight curves; the prime side reads the analytic rank (the central zero required once
+  on the constant mode for the four rank-1 curves, refused by rank 0); depth desert-dominated,
+  decreasing with conductor and rank, predicted to ±20% by ζ's desert coefficients; quorum complete
+  once ℓ ≳ 10 and progressive before (heaviest towers last); the quorum laws hold with the degree as a
+  factor (0.19·d·s·w, 0.11·d·s·w²/W). Measurement, each claim with its judge; ten tests.
+
 **Campaign notes — useful measurement, titles to be read as dated records.**
 
 - `notes/depth-phenomenology.pdf` (v3, with erratum) — *superseded as a result, kept as a campaign; the erratum box after the abstract says what died and what stands.* "Fifteen

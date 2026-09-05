@@ -1,0 +1,80 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb,booktabs}
+\title{Weil positivity in degree 2:\\ \large eight elliptic curves on the prime side --- the identity, the rank, the depth, the quorum}
+\author{D. Joubert (with the assistance of two language models)}
+\date{6 September 2026 --- consolidates notebook \S105--116 of \texttt{riemann-weil-phenomenology}}
+\begin{document}\maketitle
+\begin{abstract}
+The windowed Weil form $Q_L$ of the repository --- archimedean part plus prime towers on the window $[-L/2,L/2]$, $L=\log\mu$ --- is built for the $L$-functions of eight elliptic curves (11a1, 19a1, 32a1, 37a1, 43a1, 53a1, 61a1, 67a1) from their $a_p$ alone, and judged against the Gram matrix of their zeros harvested to height $320$. After three convention errors and two implementation errors, found by that judge and by an independent frequency-domain evaluation of the archimedean term, the two sides agree to the zero tail (Frobenius $1.4$--$1.8\%$) and the smallest eigenvalue agrees to $1$--$6\%$ on all eight curves and at three windows. Along the way: the prime side reads the analytic rank (the central zero of the four rank-$1$ curves is required, once, on the constant mode, and refused by the rank-$0$ curves); the depth $s$ of the well decreases with the conductor ($0.91\to0.46$) and with the rank ($0.30$, $0.25$), is desert-dominated (the sub-Nyquist gap term is small because the zeros are twice as dense), and is predicted to $\pm20\%$ by the desert law with $\zeta$'s coefficients; the quorum --- every voting prime necessary --- holds completely once the well is deep enough ($\ell\gtrsim10$) and completes progressively before, heaviest towers last; and the two quorum laws of degree $1$ hold with the degree as a factor, $-\ln\delta_p\approx0.19\,d\,s\,p\log p$ and $-\ln\kappa_p\approx0.11\,d\,s\,(p\log p)^2/(\mu\log\mu)$. Everything is measurement, each claim with its judge in the repository; nothing here bears on RH or on BSD.
+\end{abstract}
+
+\section{The form and its judge}
+For a weight-$2$ newform $f$ of level $N$, $\Lambda(s,f)=N^{s/2}(2\pi)^{-s}\Gamma(s)L(s,f)$, critical line $\Re s=1$, and $\Gamma_{\mathbb C}(s)=\Gamma_{\mathbb R}(s)\Gamma_{\mathbb R}(s+1)$. In the analytic normalization the windowed form is
+\[
+Q_L(f)=\sum_{a\in\{0,1\}}\Bigl[\tfrac{F_0}{2}\bigl(\tfrac12\log N-\log\pi-\gamma-\log(1-e^{-2L})\bigr)+\!\int_0^L\!\frac{F_0e^{-2y}-e^{-2s_a y}\Theta(y)}{1-e^{-2y}}\,dy\Bigr]-\sum_{n=p^k\le\mu}\frac{\Lambda_f(n)}{n}\,\Theta(\log n),
+\]
+with $s_0=\tfrac12$, $s_1=1$ (the real parts of $(1+it)/2$ and $(2+it)/2$), $\Lambda_f(p^k)=(\alpha_p^k+\beta_p^k)\log p$ ($\alpha_p+\beta_p=a_p$, $\alpha_p\beta_p=p$; $\alpha_p\beta_p=0$ for $p\mid N$), $\Theta$ the autocorrelation of the test function, $F_0=\Theta(0)$. Each term was checked: the two panels equal the $\Gamma_{\mathbb C}$ term by duplication, $\psi(1+it)=\tfrac12\psi(\tfrac12+\tfrac{it}2)+\tfrac12\psi(1+\tfrac{it}2)+\log2$; the conductor contributes $\tfrac12\log N$ once; the $\log(1-e^{-2L})$ is the tail of the Frullani integral beyond $y=L$, where $\Theta$ vanishes but $F_0e^{-2y}/(1-e^{-2y})$ does not. The judge is the zero Gram $Q_z=\sum_{\gamma>0}2\,\hat c(\gamma)\hat c(\gamma)^{\!\top}$ over the harvested zeros ($\hat c$ the transforms of the basis; zeros by sign change of the real completed $\Lambda$, one-sided Weyl count within $1\%$ to $T=320$), which under GRH equals $Q_L$ minus the tail beyond $320$.
+
+Five errors were found against this judge before agreement: $\Gamma$ arguments taken at centre $\tfrac12$ instead of $1$; $a_{p^k}\log p$ in place of $\Lambda_f(p^k)$; the conductor constant doubled (this alone made a false ``positive'' form whose bottom mode was the constant function, with the $(0,0)$ entry $11\times$ the truth); a filter on $a_n=0$ that dropped the $n=8$ tower of 11a1 ($a_8=0$ but $\Lambda_f(8)=4\log2$), located by a scan over lags; and the Frullani tail removed as ``ad hoc'', located by the frequency-domain evaluation. The $a_p$ come from point counting on Weierstrass models; a wrong model would show at once.
+
+\section{The identity and the rank}
+\begin{center}\small
+\begin{tabular}{lcccc}\toprule
+curve & rank & Frobenius, no central zero & Frobenius, central zero once & $\lambda_{\min}$ prime / zeros\\\midrule
+11a1 & 0 & $\mathbf{0.018}$ & $0.123$ & $5.39\text{e-}6/5.11\text{e-}6=1.06$\\
+19a1 & 0 & $\mathbf{0.017}$ & --- & $2.89\text{e-}4/2.78\text{e-}4=1.04$\\
+32a1 (CM) & 0 & $\mathbf{0.016}$ & --- & $8.20\text{e-}3/7.96\text{e-}3=1.03$\\
+67a1 & 0 & $\mathbf{0.014}$ & --- & $4.35\text{e-}2/4.26\text{e-}2=1.02$\\
+37a1 & 1 & $0.101$ & $\mathbf{0.014}$ & $0.396/0.388=1.02$\\
+43a1 & 1 & $0.098$ & $\mathbf{0.016}$ & $0.867/0.859=1.01$\\
+53a1 & 1 & $0.095$ & $\mathbf{0.015}$ & $0.869/0.862=1.01$\\
+61a1 & 1 & $0.094$ & $\mathbf{0.014}$ & $0.958/0.951=1.01$\\\bottomrule
+\end{tabular}
+\end{center}
+The diagonal ratios are all $\ge1$ (the excess is the zero tail; $3.3\%$ estimated on $(0,0)$ for 11a1, $4.3\%$ measured); the residual Frobenius $1.4$--$1.8\%$ is entirely the tail. The four rank-$1$ curves fail identically without the central zero --- $(0,0)$ seven to twelve times too large --- and agree once $\hat c(0)\hat c(0)^{\!\top}$ is added \emph{once} (the central zero is its own conjugate; $\hat c(0)=(\sqrt L,0,\dots)$); 11a1 refuses it. The prime-side form, from $a_p$ and $\Gamma$ alone, reads whether $L(1,E)=0$. This is the analytic rank, not the Mordell--Weil rank.
+
+\section{Depth}
+Windows $\mu=11\to22$, prime side / zero side ($N=17/29$):
+\begin{center}\small
+\begin{tabular}{lccccc}\toprule
+curve & $\gamma_1$ & $\lambda(11)$ pr/z & $\lambda(22)$ pr/z & $\hat s$ pr/z & $N_{\rm eff}$\\\midrule
+11a1 & 6.36 & 5.39e-6 / 5.11e-6 & 2.48e-10 / 2.22e-10 & $\mathbf{0.908/0.913}$ & 2.11\\
+19a1 & 5.04 & 2.89e-4 / 2.78e-4 & 3.37e-7 / 3.16e-7 & $0.614/0.617$ & 1.93\\
+32a1 & 3.68 & 8.20e-3 / 7.96e-3 & 4.96e-5 / 4.73e-5 & $0.464/0.466$ & 1.69\\
+67a1 & 3.19 & 4.35e-2 / 4.26e-2 & 2.86e-4 / 2.75e-4 & $0.457/0.458$ & 1.52\\\bottomrule
+\end{tabular}
+\end{center}
+The identity holds to $0.5\%$ on the secant. The depth decreases with the conductor and is far below a Dirichlet character of the same $\gamma_1$ ($\chi_5$: $\gamma_1=6.65$, $s=2.41$): the zero density is doubled, so the sub-Nyquist gaps that deepen the well in degree $1$ are rare here. At a common cutoff $T_0=320$ the gap term is $0.2$--$0.8$ of the desert term (against $4$--$7$ in degree $1$), the gap sums are small and convergent ($G(22)=0.5$--$2.9$ against $20$--$60$), and $\zeta$'s coefficients $(a,b)=(1.71,0.97)$ predict the four depths to $1.07,0.81,1.05,0.92$ --- better than the Dirichlet characters at the same cutoff, because the part of the formula that fails there (the gaps) weighs little. The rank-$1$ curves dig their well orthogonally to the constant mode (weight on $\eta_0$ from $0.015$ to $0.0000$ at $\mu\ge22$) and are shallower: $s\approx0.30$ (37a1), $0.25$ (43a1).
+
+\section{Quorum}
+Removing all powers of a prime and reading the sign of $\lambda_{\min}$:
+\begin{center}\small
+\begin{tabular}{lcl}\toprule
+curve, window & $\ell$ & result\\\midrule
+11a1, $\mu=22$ & 22 & every voting prime necessary, whatever the sign of $a_p$ ($a_5=+1$: $-0.22$; $a_{13}=+4$: $-0.028$)\\
+19a1, $\mu=22$ & 15 & every voting prime necessary; $2$ ($a_2=0$) necessary through $4$ ($\Lambda_f(4)=-4\log2$)\\
+32a1 (CM), $\mu=38$ & 15.5 & every voter necessary; $3$ ($a_3=0$) through $9$: $-0.63$; non-voter $7$ invisible to the digit; edge prime $37$ weightless\\
+67a1, $\mu=22$ & 8 & partial: $2,5,13,17,19$ dispensable ($+1.02,+0.21,\dots$); $3,7,11$ necessary\\
+67a1, $\mu=38$ & 10.7 & complete: $2,5,13$ now $-0.22,-0.60,-0.063$\\
+37a1, $\mu=22$ & 4.2 & partial: $2,3,5$ dispensable (all $a_p<0$); $7,11,13$ necessary\\
+37a1, $\mu=38$ & 9.0 & $2,5$ necessary ($-0.33,-0.35$); $3$ still dispensable ($+0.37$, falling from $+1.03$)\\\bottomrule
+\end{tabular}
+\end{center}
+The quorum is a full-window property: complete once $\ell\gtrsim10$, progressive before, with the heaviest towers ($|\Lambda_f(p)|/p$ largest) locked last. The switch for 67a1 between $\mu=22$ and $38$ coincides with the recruitment of $23,29,31,37$; nothing moved between $11$ and $22$ with the same voters. Two predictions died on the way (the ``sign of $a_p$'' pattern; a threshold at $\mu=22$) and one is pre-registered: 37a1 at $\mu=62$, removal of $3$ negative.
+
+\section{The quorum laws}
+On the bottom vector $v$, $\delta_p=v^{\!\top}T_pv$ and $\kappa_p=\|T_pv-\delta_pv\|$, in the prime weight $w=p\log p$ and the window weight $W=\mu\log\mu$. With the degree-$1$ laws as written ($0.19\,s\,w$) the degree-$2$ silence comes out $1.8$--$2\times$ too large; with $s\to d\,s$, $d=2$:
+\begin{center}\small
+\begin{tabular}{lcccccc}\toprule
+curve & $s$ & $-\ln\delta_p/w$ ($p=11,13,17$) & $0.19\cdot2s$ & $-\ln\kappa_p/w^2$ ($p=17$) & $0.11\cdot2s/W$\\\midrule
+11a1 & 0.91 & 0.37, 0.31, 0.33 & 0.345 & 0.00313 & 0.00294\\
+19a1 & 0.61 & 0.23, 0.22, 0.23 & 0.233 & 0.00224 & 0.00199\\
+67a1 & 0.46 & 0.12, 0.14, 0.14 & 0.174 & 0.00147 & 0.00148\\\bottomrule
+\end{tabular}
+\end{center}
+$-\ln\delta_p\approx0.19\,d\,s\,p\log p$ and $-\ln\kappa_p\approx0.11\,d\,s\,(p\log p)^2/(\mu\log\mu)$: the two laws pass with the degree as a factor, to $\pm10\%$ (11a1, 19a1) and $-20\%$ on the shallowest well. What ``$d$'' measures --- two $\Gamma_{\mathbb R}$ factors, doubled zero density, degree of the local Euler polynomial --- cannot be told apart between $d=1$ and $2$; degree $3$ will.
+
+\section*{Status and reproducibility}
+\texttt{code/scan\_q\_gl2.py} (\texttt{GL2\_FIX=1}), \texttt{code/gl2\_curves.py} (models and point counting), zero lists \texttt{code/zeros\_*a1\_weyl.pkl}; \texttt{report/scan\_q\_gl2-review.md} records the five errors; ten recomputing tests (\texttt{tests/test\_gl2\_*.py}). Eight curves, two ranks, three windows: measurement throughout, each claim with its judge. Two pre-registrations died (36th execution of the repository, in magnitude only), one survives (the $d\,s$ laws), two are open on the server (67a1 at $\mu=74$, 37a1 at $\mu=62$). The one thing that would have been a result about RH is not here: positivity of $Q_L$ for finite $N$ on curves whose zeros are verified.
+\end{document}
