@@ -77,7 +77,9 @@ def assemble(name, mu, NB, dps, DEG=12):
     t0 = time.time()
     L = mp.log(mp.mpf(mu))
     # Gamma_C(s) = Gamma_R(s) Gamma_R(s+1): both Dirichlet panels.
-    s0s = (mp.mpf(1) / 4, mp.mpf(3) / 4)
+    FIX = os.environ.get("GL2_FIX", "0") == "1"
+    # critical line Re s = 1: Gamma_R(s) Gamma_R(s+1) has arguments (1+it)/2, (2+it)/2 -> s0 = 1/2, 1
+    s0s = (mp.mpf(1) / 2, mp.mpf(1)) if FIX else (mp.mpf(1) / 4, mp.mpf(3) / 4)
     om = [2 * mp.pi * n / L for n in range(NB + 1)]
     xr0, _ = NL.leggauss(DEG)
     xr, wr = [], []
@@ -115,8 +117,11 @@ def assemble(name, mu, NB, dps, DEG=12):
         ncut = int(os.environ.get("GL2_NCUT", "2"))
         cut = mp.log(1 - mp.e ** (-2 * L)) if ncut > 0 else mp.mpf(0)
         # ncut=2: one cutoff per Gamma_R (old). ncut=1: once. ncut=0: drop.
-        CST = mp.log(mp.mpf(Ncond) / mp.pi) - mp.euler
-        if ncut >= 2:
+        # N^{s/2} contributes (1/2) log N once, i.e. (1/4) log N... in this convention: half of log N per panel
+        CST = (mp.log(mp.mpf(Ncond)) / 2 - mp.log(mp.pi) - mp.euler) if FIX else (mp.log(mp.mpf(Ncond) / mp.pi) - mp.euler)
+        if FIX:
+            pass
+        elif ncut >= 2:
             CST -= cut
         elif ncut == 1 and s0 == s0s[0]:
             CST -= cut
@@ -161,8 +166,20 @@ def assemble(name, mu, NB, dps, DEG=12):
                     y2 //= qq
                 break
         if p and y2 == 1:
-            # Re=1: a_n log p / n
-            ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
+            if FIX:
+                # Lambda_f(p^k) = (alpha^k + beta^k) log p, alpha+beta = a_p, alpha*beta = p (good p) or 0 (p | N)
+                k = 0; nn = n
+                while nn > 1:
+                    nn //= p; k += 1
+                ap = an.get(p, 0); pb = 0 if Ncond % p == 0 else p
+                c0, c1 = 2, ap
+                for _ in range(k - 1):
+                    c0, c1 = c1, ap * c1 - pb * c0
+                lam_f = mp.mpf(c1) * mp.log(p)
+                ppts.append((mp.log(n), lam_f / n))
+            else:
+                # Re=1: a_n log p / n   (original: wrong for k >= 2 at good primes)
+                ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
 
     S = mp.matrix(NB + 1)
     for n in range(NB + 1):
