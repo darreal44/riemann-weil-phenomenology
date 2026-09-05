@@ -31,3 +31,17 @@ identified (not the constant — a constant shifts all diagonals equally; not th
 zero-side Gram results (`scan_gl2.py`, `gl2-gram-slopes.md`) are unaffected. The corrected variant is kept behind
 `GL2_FIX=1` as the current best, with this review as its warning label; the 3.7% comparison against the zero Gram
 is the test to beat. Guarded by `tests/test_gl2_conventions.py`.
+
+
+## Addendum (6 September): the 8-tower, and what λ_min sees
+
+The residual had the signature of a single tower: a scan over lags found y* = 2.076 ≈ log 8 with weight
++0.346 explaining 58% of R, all six other towers fitting to 0 — and 0.3466 = Λ_f(8)/8 = 4 log 2/8. The tower
+was **absent** from Q_pr: for 11a1, a₈ = a₂a₄ − 2a₂ = 0, and the pre-filter `if a == 0: continue`, written for
+a_n, dropped n = 8 before Λ_f(8) = 4 log 2 ≠ 0 was computed. Fixed (the FIX path now filters on Λ_f). Result:
+Frobenius error against the 11a1 zero Gram **4.0% → 1.7%** (N = 17 and 25), (5,5) ratio 1.0013, (0,0) 0.974.
+
+λ_min(Q_pr) is unchanged at −0.0166 to five digits — as it must be: the bottom vector is silent at every prime
+lag (the silence law), so λ_min is blind to tower errors and sees only the archimedean part. The remaining
+~1.7% residual is therefore archimedean, of size ≈ 0.02 in the ground direction (Q_pr(v₀) = −0.017 against a
+PSD zero Gram), concentrated on the lowest modes. Unidentified; localized. No positivity statement yet.

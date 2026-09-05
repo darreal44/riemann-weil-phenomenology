@@ -191,8 +191,10 @@ def assemble(name, mu, NB, dps, DEG=12):
     small = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
     ppts = []
     for n, a in an.items():
-        if n < 2 or a == 0:
+        if n < 2:
             continue
+        if a == 0 and not FIX:
+            continue          # original path keys on a_n; the FIX path keys on Lambda_f (a_8 = 0 but Lambda_f(8) = 4 log 2 for 11a1)
         y2, p = n, None
         for qq in small:
             if y2 % qq == 0:
@@ -211,7 +213,8 @@ def assemble(name, mu, NB, dps, DEG=12):
                 for _ in range(k - 1):
                     c0, c1 = c1, ap * c1 - pb * c0
                 lam_f = mp.mpf(c1) * mp.log(p)
-                ppts.append((mp.log(n), lam_f / n))
+                if c1 != 0:
+                    ppts.append((mp.log(n), lam_f / n))
             else:
                 # Re=1: a_n log p / n   (original: wrong for k >= 2 at good primes)
                 ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
