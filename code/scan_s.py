@@ -20,9 +20,24 @@ CHARS = {
     'chi7':  dict(q=7,  d=-7,  a=1),
     'chi29': dict(q=29, d=29,  a=0),
     'chi17': dict(q=17, d=17,  a=0),
+    'chi3':  dict(q=3,  d=-3,  a=1),
+    'chi4':  dict(q=4,  d=-4,  a=1),
+    'chi12': dict(q=12, d=12,  a=0),
+    'chi15': dict(q=15, d=-15, a=1),
+    'chi19': dict(q=19, d=-19, a=1),
+    'chi21': dict(q=21, d=21,  a=0),
+    'chi24e': dict(q=24, d=24,  a=0),
+    'chi24o': dict(q=24, d=-24, a=1),
+    'chi31': dict(q=31, d=-31, a=1),
 }
 
 def assemble(name, mu, NB, dps, DEG=12):
+    if name in (
+        "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
+    ):
+        raise SystemExit(
+            f"{name} is GL(2): use  python3 code/scan_gl2.py {name} 22 36 50"
+        )
     cf = CHARS[name]
     q, a = cf['q'], cf['a']
     tab = chi_tab(cf['d'], q)
