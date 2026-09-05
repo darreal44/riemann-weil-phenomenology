@@ -36,10 +36,41 @@ def weyl_gl2(T, N):
     return (T / math.pi) * math.log(max(T * math.sqrt(N) / (2 * math.pi), 2.0)) - T / math.pi
 
 
-def hecke_11(cap):
+def primes_upto(n):
+    s = [True] * (n + 1)
+    s[0] = s[1] = False
+    for i in range(2, int(n ** 0.5) + 1):
+        if s[i]:
+            s[i * i :: i] = [False] * len(s[i * i :: i])
+    return [i for i, v in enumerate(s) if v]
+
+
+def hecke_ap(label, cap):
+    import shutil, subprocess
+    if shutil.which("gp"):
+        script = f"""
+E = ellinit("{label}");
+forprime(p=2, {cap}, print(p, " ", ellap(E, p)));
+"""
+        proc = subprocess.run(
+            ["gp", "-q"], input=script, text=True, capture_output=True
+        )
+        out = {}
+        for line in proc.stdout.splitlines():
+            parts = line.split()
+            if len(parts) != 2:
+                continue
+            try:
+                out[int(parts[0])] = int(float(parts[1]))
+            except ValueError:
+                continue
+        if out:
+            return out
+    if label != "11a1":
+        raise SystemExit("gp required for this curve")
     sys.path.insert(0, HERE)
-    from scan_q_gl2 import AP_11, hecke_an
-    return hecke_an(AP_11, 11, cap)
+    from scan_q_gl2 import AP_11
+    return {p: a for p, a in AP_11.items() if p <= cap}
 
 
 def main():
@@ -67,12 +98,13 @@ def main():
         i = sys.argv.index("--hecke")
         label = sys.argv[i + 1] if i + 1 < len(sys.argv) else "11a1"
         cap = int(sys.argv[i + 2]) if i + 2 < len(sys.argv) else 40
-        if label != "11a1":
-            sys.exit("hecke table only for 11a1")
-        an = hecke_11(cap)
-        print(f"T_p = a_p for 11a1, p<={cap}:")
-        for p in sorted(p for p in an if p in (2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37)):
-            print(f"  T_{p} ↦ {an[p]}")
+        ap = hecke_ap(label, cap)
+        print(f"T_p = a_p for {label}, p<={cap} ({len(ap)} primes):")
+        print(f"  {'p':>5} {'a_p':>6} {'2sqrt(p)':>9} {'a_p/bound':>10}")
+        for p in sorted(ap):
+            bound = 2 * math.sqrt(p)
+            a = ap[p]
+            print(f"  {p:5d} {a:6d} {bound:9.3f} {a/bound:10.3f}")
 
 
 if __name__ == "__main__":
