@@ -19,3 +19,13 @@ a mass depending on Λ after resolution would mean the peak is not a point mass 
 **Data so far** (`campaign_2adic_large.csv`, Grok): at Λ = 16, mass(2) = 0.14, 0.26, 0.35, 0.44, 0.59
 for h = 1/80 … 1/160 — still climbing, between the two candidates; mass(½) unresolved (far above).
 Peak width ~ Λ⁻² = 0.004 at Λ = 16 against h = 0.006: not resolved yet. Decision requires h ≤ 1/400 at Λ = 16.
+
+
+## Outcome (5 September, evening)
+
+`campaign_2adic_large.csv`, Λ = 16: w₂ = 0.594 (h = 1/160), 0.665 (1/200), **1.078 (1/400)**, three window widths
+agreeing to 1%. The mass passes the locked 0.7071 and heads toward ~1.4 (Grok's extrapolation; grid closed).
+**Falsified**, by the named falsifier: √2 = 1.414 means the twist applies to |u⁻¹|, not |u| — the shell |u|₂ = ½
+(|1−u|₂ = 1, weight 1) carries λ = 2, twisted to √2·1; λ = ½ should then carry ½·(½)^{1/2} = 0.354. Grok's
+analytic derivation (local Haar, Tamagawa) reached 1/√2 as well: same direction error on both sides.
+Peak width Λ⁻² = 0.0039 against h = 0.0025: not fully resolved; the direction is settled, the exact value is not.
