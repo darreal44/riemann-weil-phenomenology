@@ -76,10 +76,8 @@ def assemble(name, mu, NB, dps, DEG=12):
     mp.mp.dps = dps
     t0 = time.time()
     L = mp.log(mp.mpf(mu))
-    # default: shifted L(E, s+1/2) so the line is Re=1/2 like Dirichlet.
-    # WEIGHT=1 is the unshifted Re=1 form (usually indefinite here).
-    shift = os.environ.get("GL2_SHIFT", "half")
-    s0 = mp.mpf("0.5") if shift == "half" else mp.mpf(1)
+    # Gamma_C(s) = Gamma_R(s) Gamma_R(s+1): both Dirichlet panels.
+    s0s = (mp.mpf(1) / 4, mp.mpf(3) / 4)
     om = [2 * mp.pi * n / L for n in range(NB + 1)]
     xr0, _ = NL.leggauss(DEG)
     xr, wr = [], []
@@ -107,13 +105,19 @@ def assemble(name, mu, NB, dps, DEG=12):
     SIN = [[mp.sin(om[n] * y) for y in nodes] for n in range(NB + 1)]
     COS = [[mp.cos(om[n] * y) for y in nodes] for n in range(NB + 1)]
     LY = [(L - y) / L for y in nodes]
-    D2 = [wts[k] * 2 * mp.e ** (-2 * s0 * nodes[k]) / (1 - mp.e ** (-2 * nodes[k])) for k in range(K)]
-    EC = [mp.e ** (-(2 - 2 * s0) * nodes[k]) for k in range(K)]
-    CST = (
-        mp.log(mp.mpf(Ncond) / (4 * mp.pi * mp.pi))
-        - 2 * mp.euler
-        - mp.log(1 - mp.e ** (-2 * L))
-    )
+    panels = []
+    for s0 in s0s:
+        D2 = [
+            wts[k] * 2 * mp.e ** (-2 * s0 * nodes[k]) / (1 - mp.e ** (-2 * nodes[k]))
+            for k in range(K)
+        ]
+        EC = [mp.e ** (-(2 - 2 * s0) * nodes[k]) for k in range(K)]
+        CST = (
+            mp.log(mp.mpf(Ncond) / mp.pi)
+            - mp.euler
+            - mp.log(1 - mp.e ** (-2 * L))
+        )
+        panels.append((D2, EC, CST))
 
     def th_nodes(n, m):
         if n == 0 and m == 0:
@@ -153,16 +157,17 @@ def assemble(name, mu, NB, dps, DEG=12):
                 break
         if p and y2 == 1:
             # Re=1: a_n log p / n
-            den = mp.sqrt(n) if shift == "half" else n
-            ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / den))
+            ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
 
     S = mp.matrix(NB + 1)
     for n in range(NB + 1):
         for m in range(n, NB + 1):
             th, F0 = th_nodes(n, m)
-            arch = F0 / 2 * CST + mp.mpf("0.5") * mp.fsum(
-                D2[k] * (F0 * EC[k] - th[k]) for k in range(K)
-            )
+            arch = mp.mpf(0)
+            for D2, EC, CST in panels:
+                arch += F0 / 2 * CST + mp.mpf("0.5") * mp.fsum(
+                    D2[k] * (F0 * EC[k] - th[k]) for k in range(K)
+                )
             v = arch - mp.fsum(w * th_at(n, m, lg) for lg, w in ppts)
             S[n, m] = v
             S[m, n] = v
