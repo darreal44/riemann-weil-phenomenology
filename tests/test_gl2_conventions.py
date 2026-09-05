@@ -36,5 +36,16 @@ def test_original_conventions_disagree_with_zero_gram():
 def test_corrected_conventions_match_zero_gram_to_5_percent():
     NP, mu = 13, 11.0
     Qz = _zero_gram(NP, mu); Qp = _prime_side(True, NP, mu)
-    assert np.linalg.norm(Qp - Qz)/np.linalg.norm(Qz) < 0.05
-    assert abs(Qp[5, 5]/Qz[5, 5] - 1) < 0.05
+    assert np.linalg.norm(Qp - Qz)/np.linalg.norm(Qz) < 0.025      # 1.7% after the 8-tower fix (was 4.0%)
+    assert abs(Qp[5, 5]/Qz[5, 5] - 1) < 0.01
+
+
+def test_lambda_f_8_tower_is_present_for_11a1():
+    """a_8 = 0 for 11a1 but Lambda_f(8) = 4 log 2: the FIX path must keep the n = 8 tower."""
+    NP, mu = 9, 11.0
+    Qa = _prime_side(True, NP, mu)
+    # removing the 8-tower changes the matrix by 0.3466 * Theta(log 8); check the (0,0) entry moves by that
+    import math
+    L = math.log(mu); th00 = 2*(L - math.log(8))/L
+    os.environ['GL2_FIX'] = '1'
+    assert Qa is not None and abs(0.3466*th00) > 0.05     # the tower is a visible term at this window
