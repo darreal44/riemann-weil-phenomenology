@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{The sampling constant of a hole plus a sub-Nyquist prefix\\
+\large One set, not $aL+bL$}
+\author{D.\ Joubert}
+\date{5 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Under RH the floor \(c_L\) of the truncated Weil form is the lower
+sampling constant of the zero set \(\Gamma\) for \(PW_{L/2}\). The
+empirical law \(-\ln c_L\approx aL(\gamma_1-\nu)_++bL\sum(\mathrm{gap}-\nu)_+\)
+splits that geometry into two Slepian factors and over-predicts the
+narrow deserts by \(1.4\)--\(1.8\) at a common cutoff \(T_0=320\).
+The honest object is one measurable set
+\(E_L=(-\gamma_1,\gamma_1)\cup\bigcup_{\Delta>\nu}(\gamma_k,\gamma_{k+1})\).
+Beurling still only gives \(c_L>0\). Slepian on the largest component
+of \(E_L\) gives an upper bound on \(c_L\), already in
+\emph{sampling-floor}. A matching lower bound that sees all of \(E_L\)
+is not proved: Bernstein plus Duffin--Schaeffer loses the exponent.
+Numerically \(-\ln\lambda/(L|E|)\) is constant per character and not
+across characters. The missing term is therefore either a
+Beurling--Malliavin density of \(\Gamma\) weighted by \(E_L\), or a
+character-wise constant \(C(\chi)\) times \(|E|\). This note records
+the theorems, the measurements, and where a proof has to start. It
+does not move RH.
+\end{abstract}
+
+\section{What is a theorem}
+
+Let \(Q_L\) be the truncated Weil form on even functions supported in
+\([-L/2,L/2]\), and \(c_L=\inf Q_L/\|f\|^2\). Write \(\tau=L/2\),
+\(\nu=2\pi/L\), \(F=\hat f\in PW_\tau\). Under RH,
+\(Q_L(f)=\sum_{\gamma\in\Gamma}F(\gamma)^2\).
+
+\begin{theorem}[floor, \emph{sampling-floor} Th.~1]
+Assume RH. Then \(c_L>0\), and the finite-basis minima decrease to it.
+\end{theorem}
+
+The proof is Beurling: a separated subset of \(\Gamma\) has lower
+density \(>\tau/\pi\). Density sees positivity, not the size of \(c_L\).
+
+\begin{proposition}[desert upper bound, \emph{sampling-floor} Prop.~2]
+Assume RH. Then
+\(c_L\le C_\tau(1+\log\gamma_1)\,(1-\lambda_0(\tau(\gamma_1-1)))\),
+hence \(-\ln c_L\ge L(\gamma_1-1)-O(\log)\).
+\end{proposition}
+
+This is Slepian on \((-\gamma_1,\gamma_1)\). At \(\mu=11\) for \(\zeta\)
+it accounts for \(28\%\) of the measured depth. Replacing the desert
+by the union \(E_L\) and computing \(1-\lambda_0(E_L,\tau)\) does not
+bound \(c_L\) in either direction (factor \(25\) one way, \(10^{16}\)
+the other, \emph{sampling-floor} §4).
+
+\section{The set}
+
+\[
+E_L=(- \gamma_1,\gamma_1)\cup\bigcup_{\gamma_{k+1}-\gamma_k>\nu}(\gamma_k,\gamma_{k+1}).
+\]
+Landau's count on this set is \(n_L(E)=(\tau/\pi)|E|\). The number of
+endpoints of the components of \(E\cap\mathbb R_+\) is
+\(n_\partial=1+2N_{\mathrm{long}}\). Interlacing of
+\(A=\chi_E P_\tau\chi_E\) restricted to
+\(V=\{F\in PW_\tau:F|_{\partial E}=0\}\) gives
+\[
+\dim_\delta(E)=\#\{\lambda_j(A|_V)\ge 1-\delta\}=n_L(E)-n_\partial+O(\log).
+\]
+That count is proved (\texttt{report/one-set-lemmas.md}). It is not
+an exponent.
+
+\section{What the hold-out did}
+
+Sixteen primitive \(L\)-functions have complete one-sided zero lists
+to \(T_0=320\). Coefficients \(a=1.71\), \(b=0.97\) are those of
+\(\zeta\) alone. Three characters measured after the definition:
+
+\begin{center}\small
+\begin{tabular}{lccc}\toprule
+\(\chi\) & \(s_{\mathrm{hat}}\) & \(s_{\mathrm{pred}}(a,b)\) & ratio\\\midrule
+\(\chi_{29}\), \(11\)--\(22\) & \(0.390\) & \(0.555\) & \(0.70\)\\
+\(\chi_{17}\), \(22\)--\(74\) & \(0.728\) & \(1.187\) & \(0.61\)\\
+\(\chi_5\), \(30\)--\(50\) & \(2.019\) & \(3.048\) & \(0.66\)\\\bottomrule
+\end{tabular}
+\end{center}
+
+Narrow deserts are over-predicted by \(1.4\)--\(1.8\). The split
+\(aL+bL\) charges every long gap as a second independent Slepian in
+the same measure \(E_L\).
+
+\section{Three scales against the measurements}
+
+On the same lists, with \(\ell=-\ln\lambda_{\min}\):
+
+\begin{center}\small
+\begin{tabular}{lcccc}\toprule
+\(\chi\) & \(\mu\) & \(\ell/(L|E|)\) & \(\ell/(L|I_{\max}|)\) & \(\ell/\dim\)\\\midrule
+\(\chi_5\) & \(38\)--\(62\) & \(0.198\)--\(0.199\) & \(3.6\)--\(4.6\) & \(2.4\)--\(2.8\)\\
+\(\chi_{17}\) & \(11\)--\(74\) & \(0.11\)--\(0.21\) & \(0.55\)--\(3.1\) & \(1.66\)--\(2.0\)\\
+\(\chi_{29}\) & \(11\)--\(74\) & \(0.082\)--\(0.095\) & \(0.14\)--\(1.75\) & \(1.13\)--\(1.59\)\\\bottomrule
+\end{tabular}
+\end{center}
+
+\(L|I_{\max}|\) is not the scale of \(\ell\). \(L|E|\) is constant
+\emph{inside} a character and not across characters (factor \(2.5\)).
+A universal lower bound \(\ell\ge 0.08\,L|E|\) survives the table and
+has the same slack as \(a+b\). \(\dim\) is the least bad single
+predictor and is not absolute. Details:
+\texttt{report/one-set-ratios.md}.
+
+\section{What a lower bound would have to be}
+
+The inequality that would replace \(aL+bL\) is: for every
+\(F\in PW_\tau\),
+\[
+\sum_{\gamma\in\Gamma}|F(\gamma)|^2
+\;\ge\;
+\exp\bigl(-C\,\tau\,|E_L|\bigr)\,\|F\|^2
+\]
+with \(C\) absolute. Slepian gives the integral of \(|F|^2\) off
+\(I_{\max}\), not the sum over \(\Gamma\), and not off all of \(E_L\).
+Passing from the integral to the sum by Bernstein
+(\(\|F'\|\le\tau\|F\|\)) and Duffin--Schaeffer on each short gap makes
+the bracket negative of order \(e^{-L\gamma_1}\)
+(\emph{sampling-floor} §4). That route is closed.
+
+A form \(c_L\ge\exp(-C\dim(E))\) is false as soon as
+\(\dim\ll L|I_{\max}|\) (\(\chi_{29}\) at \(\mu=11\): \(1.1\) against
+\(4\)). A form \(c_L\ge\exp(-L|I_{\max}|)\) is false as a lower bound
+(\(\zeta\) at \(\mu=11\): \(e^{-34}\) against measured \(e^{-110}\));
+it is the desert \emph{upper} bound on \(c_L\), already known.
+
+\section{Where a proof starts}
+
+Two objects, neither of them a scan of \(Q\).
+
+\paragraph{Weighted Beurling--Malliavin.}
+The multiplier radius of \(\Gamma\) for type \(\tau\), computed with
+a hole kernel \(1_{E_L}\). If that radius is \(C|E_L|\), the
+inequality of §5 is a theorem. This is an article in harmonic
+analysis.
+
+\paragraph{A profile, not a length.}
+The bottom eigenvector \(v_0\) of \(Q\) is known numerically. The
+mass \(|\hat v_0(\gamma)|^2\) and the derivatives
+\(\partial(-\ln\lambda)/\partial\gamma_k\) on the zero-side Gram say
+whether the cost is one gap, an energy of gaps, or a factor
+\(C(\chi)\) independent of \(L\). The ratios \(\ell/(L|E|)\) already
+point to \(C(\chi)\). That computation is the sequel to this note.
+
+\section*{Status}
+Theorem 1 and Proposition 2 are unchanged. The set \(E_L\) and the
+count \(\dim(E)\) are defined and measured. The law \(aL+bL\) is
+diagnosed, not refit. No lower bound that sees \(E_L\) as a set is
+proved. Nothing bears on RH.
+\end{document}
