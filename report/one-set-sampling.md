@@ -63,3 +63,40 @@ of intervals with Dirichlet conditions at the zeros, or a Beurling
 density of the weighted set Γ with a hole kernel. Until that exists,
 a and b stay frozen and the overprediction on narrow deserts is the
 measurement of the missing term, not a reason to refit.
+
+## Landau minus the boundary (the open term, written)
+
+Let \(n_L(E)=(L/\pi)|E\cap\mathbb R_+|\) be the two-sided Landau count
+on \(E_L\), and \(n_\partial=1+2N_{\mathrm{long}}\) the number of
+endpoints of the components of \(E\cap\mathbb R_+\) (the desert and
+every later long gap). Those endpoints are zeros. The space of
+functions in \(PW_{L/2}\) that live on \(E_L\) and vanish on
+\(\partial E_L\) has dimension
+
+    dim(E_L) = n_L(E) − n_∂ + o(1)
+
+in the Landau–Widom sense (eigenvalues of \(\chi_E P_\tau\chi_E\)
+near 1, minus one constraint per endpoint). This is the one-set
+object. It is not a theorem for \(c_L\); it is the count that
+replaces \(aL+bL\).
+
+| χ | μ | n_L | n_∂ | dim | −ln λ measured | ell / n_L |
+|---|---|-----|-----|-----|----------------|-----------|
+| χ₂₉ | 11 | 4.1 | 3 | 1.1 | 1.20 | 0.30 |
+| χ₂₉ | 22 | 18.5 | 15 | 3.5 | 5.49 | 0.30 |
+| χ₂₉ | 50 | 63.3 | 51 | 12.3 | 16.31 | 0.26 |
+| χ₁₇ | 11 | 7.4 | 5 | 2.4 | 4.89 | 0.66 |
+| χ₁₇ | 22 | 21.1 | 15 | 6.1 | 12.34 | 0.59 |
+| χ₁₇ | 50 | 94.5 | 75 | 19.5 | 32.49 | 0.34 |
+| χ₅ | 38 | 138.5 | 107 | 31.5 | 86.69 | 0.63 |
+| χ₅ | 50 | 173.9 | 131 | 42.9 | 108.45 | 0.62 |
+
+On a narrow desert dim is O(1) and tracks −ln λ to a factor two
+(χ₂₉). On a wide desert (χ₅) ell / n_L sits near 0.62 and dim
+undercounts: gaps just below ν are absent from E and still cost.
+That remainder is the short-gap tail, not a second additive Slepian.
+
+What remains unproved: \(c_L \ge \exp(-C\,\mathrm{dim}(E_L))\) with an
+absolute C, or a Landau–Widom expansion of \(\chi_E P_\tau\chi_E\)
+with Dirichlet conditions. The count is the statement. The bound is
+not.
