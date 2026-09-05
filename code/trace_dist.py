@@ -2,16 +2,21 @@
 import numpy as np, sys
 sys.path.insert(0, '.')
 from trace_formula import Fmat
-def tau_curve(Lam, semilocal, lams, cells_per_unit=32):
+def tau_curve(Lam, semilocal, lams, cells_per_unit=32, taper=0.0):
     R = Lam*lams.max()*1.02
     N_in = int(Lam*cells_per_unit); ein = np.linspace(0, Lam, N_in+1); hc = Lam/N_in
     N_out = int(np.ceil(R/hc)); eout = np.linspace(0, N_out*hc, N_out+1)
     M = Fmat(ein, eout, semilocal); A = 0.5*(M[:N_in,:N_in]+M[:N_in,:N_in].T); W = M.dot(A)
     xin = 0.5*(ein[:-1]+ein[1:])
+    wcell = np.ones(N_in)
+    if taper > 0:
+        x0 = (1.0 - taper) * Lam
+        m = xin >= x0
+        wcell[m] = 0.5 * (1.0 + np.cos(np.pi * (xin[m] - x0) / (taper * Lam)))
     out = np.empty(len(lams))
     for k, l in enumerate(lams):
         idx = np.clip(np.floor(xin/l/hc).astype(int), 0, N_out-1)
-        out[k] = l**-0.5*np.sum(W[idx, np.arange(N_in)])           # sum_i <e_i | theta(l) Phat e_i>
+        out[k] = l**-0.5*np.sum(W[idx, np.arange(N_in)] * wcell)
     return out
 if __name__ == '__main__':
     lams = np.concatenate([np.linspace(0.3, 0.9, 61), np.linspace(0.905, 1.095, 77), np.linspace(1.1, 3.3, 221)])
