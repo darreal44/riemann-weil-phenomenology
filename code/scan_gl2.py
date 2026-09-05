@@ -22,6 +22,11 @@ CURVES = (
     "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
     "zeta",
     "delta",
+    "delta_chi5",
+    "delta_chi4",
+    "11a1_chi5",
+    "sym2_11a1",
+    "sym2_delta",
 )
 
 
