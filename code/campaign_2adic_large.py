@@ -41,8 +41,14 @@ sys.path.insert(0, str(HERE))
 from trace_dist import tau_curve  # noqa: E402
 
 EXPECTED = float(np.log(2) / np.sqrt(2))
-OUT_JSONL = ROOT / "report" / "campaign_2adic_large.jsonl"
-OUT_CSV = ROOT / "report" / "campaign_2adic_large.csv"
+def _out_paths():
+    tap = os.environ.get("TAPER", "0")
+    if float(tap or 0) > 0:
+        return (ROOT / "report" / "campaign_2adic_taper.jsonl",
+                ROOT / "report" / "campaign_2adic_taper.csv")
+    return (ROOT / "report" / "campaign_2adic_large.jsonl",
+            ROOT / "report" / "campaign_2adic_large.csv")
+
 
 # Default: finish Lambda=16 (cpu 80 already at w=0.14) then 24.
 JOBS = {
@@ -198,6 +204,8 @@ def main():
     else:
         jobs = list(JOBS[args.jobs])
 
+    global OUT_JSONL, OUT_CSV
+    OUT_JSONL, OUT_CSV = _out_paths()
     done = load_done(OUT_JSONL)
     todo = [(L, c) for L, c in jobs if (float(L), int(c)) not in done]
     print(f"expected mass {EXPECTED:.4f}")
