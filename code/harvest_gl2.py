@@ -13,7 +13,7 @@ Requires `gp` on PATH. Install:
               add gp.exe to PATH
 
     python3 code/harvest_gl2.py 11a1 80
-    python3 code/harvest_gl2.py --all 80 --workers 4
+    python3 code/harvest_gl2.py --all --tmax 320 --workers 8
 
 Writes code/zeros_{name}_weyl.pkl (same shape as Dirichlet harvests).
 One process per curve. Slices inside one L-function stay in GP.
@@ -98,11 +98,12 @@ def harvest_one(name: str, tmax: float) -> dict:
         old = [float(x) for x in pickle.load(open(dest, "rb"))]
         zeros = sorted(set(old + zeros))
     pickle.dump(zeros, open(dest, "wb"))
-    nexp = expected_N(tmax, CURVES[name])
+    Tend = zeros[-1] if zeros else tmax
+    nexp = expected_N(Tend, CURVES[name]) - Tend / __import__("math").pi
     return {
         "name": name,
         "n": len(zeros),
-        "T": zeros[-1] if zeros else 0.0,
+        "T": Tend,
         "expected": nexp,
         "ratio": (len(zeros) / nexp) if nexp else 0.0,
         "path": dest,
@@ -112,10 +113,14 @@ def harvest_one(name: str, tmax: float) -> dict:
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("name", nargs="?", help="Cremona label, e.g. 11a1")
-    p.add_argument("tmax", nargs="?", type=float, default=80.0)
+    p.add_argument("tmax_pos", nargs="?", type=float, default=None)
     p.add_argument("--all", action="store_true")
+    p.add_argument("--tmax", type=float, default=None)
     p.add_argument("--workers", type=int, default=1)
     args = p.parse_args()
+    args.tmax = args.tmax if args.tmax is not None else (
+        args.tmax_pos if args.tmax_pos is not None else 80.0
+    )
     if args.all:
         jobs = list(CURVES)
     elif args.name:
