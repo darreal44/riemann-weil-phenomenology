@@ -50,3 +50,20 @@ ell_G = 5.76 → 5.59. Not a cutoff artefact.
 gap/ν on χ₂₉, N=33: the charged pair has gap/ν = 0.38. A tighter pair
 at 17.81–18.51 (gap/ν = 0.34) carries 3 %. Tightness is not enough;
 the pair has to sit where the bottom mode of the *window* can live.
+
+## Predictor: tightest pair with midpoint in [2ν, 8ν]
+
+Does not use Q. Compared to the charged pair of v0 (N=33).
+
+| χ | μ | charged | g/ν | pred | hit |
+|---|---|---|---|---|---|
+| χ₂₉ | 22 | 10.42–11.20 | 0.38 | same | yes |
+| χ₁₇ | 22 | 15.64–16.27 | 0.31 | same | yes |
+| χ₁₁ | 11 | 8.97–10.11 | 0.43 | same | yes |
+| χ₂₉ | 11 | 5.32–6.76 | 0.55 | 17.81–18.51 | no |
+| χ₁₇ | 11 | 10.62–11.98 | 0.52 | 15.64–16.27 | no |
+| χ₁₁ | 22 | 25.69–26.79 | 0.54 | 8.97–10.11 | no |
+| χ₈, χ₂₄ᵒ, χ₅ |  |  |  |  | no |
+
+The window [2ν, 8ν] is a guess. It hits the two hold-out slopes at μ=22
+and misses as soon as μ or the desert changes. Not a term.
