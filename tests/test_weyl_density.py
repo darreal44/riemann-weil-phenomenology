@@ -19,7 +19,8 @@ def _weyl_ratio(zeros, q, T):
     have = sum(1 for g in zeros if g <= T)
     if T <= 1:
         return 0.0
-    expected = (T / math.pi) * math.log(q * T / (2 * math.pi * math.e))
+    # one-sided count (the lists hold gamma > 0 only); (T/pi) would be the two-sided count and read 0.5 on a complete list
+    expected = (T / (2 * math.pi)) * math.log(q * T / (2 * math.pi * math.e))
     return have / expected if expected else 0.0
 
 
