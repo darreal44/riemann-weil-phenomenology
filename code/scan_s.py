@@ -145,6 +145,8 @@ def assemble(name, mu, NB, dps, DEG=12):
         os.makedirs(os.path.dirname(path) or '.', exist_ok=True)
         json.dump(out, open(path, 'w'), indent=2)
         print(f'  dumped {path}', flush=True)
+    if os.environ.get("RETURN_S"):
+        return float(lam[0]), ell, time.time()-t0, S
     return float(lam[0]), ell, time.time()-t0
 
 
