@@ -112,11 +112,14 @@ def assemble(name, mu, NB, dps, DEG=12):
             for k in range(K)
         ]
         EC = [mp.e ** (-(2 - 2 * s0) * nodes[k]) for k in range(K)]
-        CST = (
-            mp.log(mp.mpf(Ncond) / mp.pi)
-            - mp.euler
-            - mp.log(1 - mp.e ** (-2 * L))
-        )
+        ncut = int(os.environ.get("GL2_NCUT", "2"))
+        cut = mp.log(1 - mp.e ** (-2 * L)) if ncut > 0 else mp.mpf(0)
+        # ncut=2: one cutoff per Gamma_R (old). ncut=1: once. ncut=0: drop.
+        CST = mp.log(mp.mpf(Ncond) / mp.pi) - mp.euler
+        if ncut >= 2:
+            CST -= cut
+        elif ncut == 1 and s0 == s0s[0]:
+            CST -= cut
         panels.append((D2, EC, CST))
 
     def th_nodes(n, m):
@@ -141,8 +144,10 @@ def assemble(name, mu, NB, dps, DEG=12):
             return 2 * ((L - y) * mp.cos(om[n] * y) / L - mp.sin(om[n] * y) / (2 * mp.pi * n))
         return 2 * (n * mp.sin(om[n] * y) - m * mp.sin(om[m] * y)) / (mp.pi * (m * m - n * n))
 
-    cap = int(float(mp.e ** L) + 1e-9)
+    cap_mul = float(os.environ.get("GL2_CAP_MUL", "1"))
+    cap = int(float(mp.e ** L) * cap_mul + 1e-9)
     an = ellan(name, cap)
+    print(f"  cap={cap} ncut={os.environ.get('GL2_NCUT','2')} n_an={len(an)}", flush=True)
     small = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
     ppts = []
     for n, a in an.items():
