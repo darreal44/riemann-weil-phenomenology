@@ -10,6 +10,10 @@ panel (two Gamma_R ~ Gamma(s)): treat as experimental.
 
 Needs gp on PATH for a_n. 11a1 has a built-in table for n<=30
 so a smoke runs without gp.
+
+Default path is the validated conventions (Re s = 1, Λ_f
+power sums, ½ log N per panel, Frullani tail). The original
+wrong path is GL2_LEGACY=1.
 """
 from __future__ import annotations
 
@@ -112,7 +116,11 @@ def assemble(name, mu, NB, dps, DEG=12):
     t0 = time.time()
     L = mp.log(mp.mpf(mu))
     # Gamma_C(s) = Gamma_R(s) Gamma_R(s+1): both Dirichlet panels.
-    FIX = os.environ.get("GL2_FIX", "0") == "1"
+    # Default = validated path. GL2_FIX=0 or GL2_LEGACY=1 restores the old conventions.
+    if os.environ.get("GL2_LEGACY") == "1":
+        FIX = False
+    else:
+        FIX = os.environ.get("GL2_FIX", "1") != "0"
     # critical line Re s = 1: Gamma_R(s) Gamma_R(s+1) has arguments (1+it)/2, (2+it)/2 -> s0 = 1/2, 1
     s0s = (mp.mpf(1) / 2, mp.mpf(1)) if FIX else (mp.mpf(1) / 4, mp.mpf(3) / 4)
     om = [2 * mp.pi * n / L for n in range(NB + 1)]
