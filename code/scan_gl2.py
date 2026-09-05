@@ -21,6 +21,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CURVES = (
     "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
     "zeta",
+    "delta",
 )
 
 
