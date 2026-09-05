@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Weyl-complete zero harvest by sign change of the completed L.
 
-Not the |L|^2 grid (that produced the half-density chi5 cache).
+Sign changes of completed Lambda. One-sided Weyl counter (gamma>0).
 
     python3 code/harvest_weyl.py chi5 320
     python3 code/harvest_weyl.py chi29 200

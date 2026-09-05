@@ -1,3 +1,8 @@
+SUPERSEDED by report/weyl-density-check.md.
+
+The factor 0.50 was a two-sided Weyl formula on a one-sided list.
+The chi5 cache at 149 is complete (89 vs 89.6).
+
 # Cache χ₅ à 149
 
 89 zeros, γ₁ = 6.64845, γ_max = 148.679.
