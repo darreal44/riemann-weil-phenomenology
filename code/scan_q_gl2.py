@@ -13,6 +13,7 @@ so a smoke runs without gp.
 """
 from __future__ import annotations
 
+import math
 import os
 import shutil
 import subprocess
@@ -33,20 +34,54 @@ CURVES = {
     "67a1": 67,
 }
 
-# a_n for 11a1, n<=30 (Cremona). Enough for mu<=30 smoke.
-A11 = {
-    1: 1, 2: -2, 3: -1, 4: 2, 5: 1, 6: 2, 7: -2, 8: 0, 9: -2, 10: -2,
-    11: 1, 12: -2, 13: 4, 14: 4, 15: -1, 16: 4, 17: -2, 18: 4, 19: 0,
-    20: 2, 21: 2, 22: -2, 23: -1, 24: 0, 25: -4, 26: -8, 27: 5, 28: -4,
-    29: 6, 30: 2,
+# a_p for 11a1 from L-factors (LMFDB 11.a). Not the old A11 table.
+AP_11 = {
+    2: -2, 3: -1, 5: 1, 7: -2, 11: 1, 13: 4, 17: -2, 19: 0, 23: -1,
+    29: 0, 31: 7, 37: 3,
 }
 
 
+def hecke_an(ap: dict[int, int], Ncond: int, cap: int) -> dict[int, int]:
+    an = {1: 1}
+    primes = sorted(ap)
+    for p in primes:
+        if p > cap:
+            continue
+        a = [1, ap[p]]
+        while True:
+            k = len(a)
+            pk = p ** k
+            if pk > cap:
+                break
+            if Ncond % p == 0:
+                a.append(ap[p] * a[-1])
+            else:
+                a.append(ap[p] * a[-1] - p * a[-2])
+        for k, val in enumerate(a):
+            if k == 0:
+                continue
+            an[p ** k] = val
+    # multiplicative fill
+    changed = True
+    while changed:
+        changed = False
+        items = list(an.items())
+        for n, an_n in items:
+            for m, an_m in items:
+                if math.gcd(n, m) == 1 and n * m <= cap and n * m not in an:
+                    an[n * m] = an_n * an_m
+                    changed = True
+    return an
+
+
 def ellan(label: str, cap: int) -> dict[int, int]:
-    if label == "11a1" and cap <= 30:
-        return {n: a for n, a in A11.items() if n <= cap}
+    use_gp = os.environ.get("GL2_USE_GP", "0") == "1"
+    if label == "11a1" and not use_gp:
+        return hecke_an(AP_11, 11, cap)
     if not shutil.which("gp"):
-        raise SystemExit("gp required for a_n (except 11a1 n<=30)")
+        if label == "11a1":
+            return hecke_an(AP_11, 11, cap)
+        raise SystemExit("gp required for a_n")
     script = f"""
 default(realprecision, 19);
 E = ellinit("{label}");
