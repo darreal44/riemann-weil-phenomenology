@@ -56,7 +56,19 @@ def main():
     print(f"locked twist at n=±1: {1/SQRT2:.4f} and {1/SQRT2:.4f}")
     print(f"Bombieri (log 2)/sqrt(2) = {LOG2/SQRT2:.4f}")
     print("Grid at Λ=16, h→0 extrapolates to ~1.4 — not a local shell.")
+    print("\ngeneral p  twisted mass at p^{±1} (Connes units)")
+    for p0 in (2,3,5,7):
+        print(f"  p={p0}  {twisted_mass(p0):.4f}")
+
 
 
 if __name__ == "__main__":
     main()
+
+
+def twisted_mass(p: int) -> float:
+    """Twisted shell mass at lambda=p and lambda=1/p. Connes units."""
+    return p ** -0.5
+
+if __name__ == "__main__" and False:
+    pass
