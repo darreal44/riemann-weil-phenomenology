@@ -46,7 +46,8 @@ def Lam(t, q, tab, a):
 def expected_N(T, q):
     if T <= 1:
         return 0.0
-    return (T / mp.pi) * mp.log(q * T / (2 * mp.pi * mp.e))
+    # one-sided count (gamma > 0 only), matching the lists; the two-sided formula (T/pi)... reads 0.50 on a complete harvest
+    return (T / (2 * mp.pi)) * mp.log(q * T / (2 * mp.pi * mp.e))
 
 
 def path(name):

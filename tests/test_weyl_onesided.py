@@ -23,12 +23,17 @@ def test_chi5_zero_count_on_0_30_is_one_sided_weyl():
     assert len(mins) == ncache == 11, (len(mins), ncache)
     assert abs(len(mins) - one_sided) < 2.5, one_sided      # 10.4 ; the two-sided formula gives 20.7
 
-def test_sign_change_would_double_count():
+def test_completed_L_is_real_and_its_sign_changes_are_the_zeros():
+    """harvest_weyl.Lam is the completed L; root number 1 for real primitive chi => real on the line."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("hw", os.path.join(CODE, "harvest_weyl.py"))
+    hw = importlib.util.module_from_spec(spec); spec.loader.exec_module(hw)
+    spec2 = importlib.util.spec_from_file_location("kr", os.path.join(CODE, "kronecker.py"))
+    kr = importlib.util.module_from_spec(spec2); spec2.loader.exec_module(kr)
     mp.mp.dps = 15
-    L = _L5()
-    ts = np.arange(6.0, 20.0, 0.1)
-    re = np.array([float(mp.re(L(t))) for t in ts])
-    ab = np.array([float(abs(L(t))) for t in ts])
-    sign_changes = int(np.sum(re[1:]*re[:-1] < 0))
-    zeros = sum(1 for i in range(1, len(ab)-1) if ab[i] < ab[i-1] and ab[i] < ab[i+1] and ab[i] < 0.05)
-    assert sign_changes >= 1.6*zeros, (sign_changes, zeros)
+    q, tab, a = 5, kr.chi_tab(5, 5), 0
+    ts = np.arange(0.5, 30.0, 0.05)
+    vals = [float(hw.Lam(mp.mpf(t), q, tab, a)) for t in ts]
+    sc = sum(1 for i in range(len(ts)-1) if vals[i]*vals[i+1] < 0)
+    assert sc == 11, sc
+    assert abs(float(hw.expected_N(30, q)) - 10.4) < 0.5, float(hw.expected_N(30, q))   # one-sided
