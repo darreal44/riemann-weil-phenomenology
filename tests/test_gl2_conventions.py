@@ -49,3 +49,12 @@ def test_lambda_f_8_tower_is_present_for_11a1():
     L = math.log(mu); th00 = 2*(L - math.log(8))/L
     os.environ['GL2_FIX'] = '1'
     assert Qa is not None and abs(0.3466*th00) > 0.05     # the tower is a visible term at this window
+
+
+def test_corrected_prime_side_lambda_min_matches_zero_gram():
+    """After the Frullani tail is kept, lambda_min agrees with the zero Gram to 10% and Q_pr >= Q_z on the diagonal."""
+    NP, mu = 13, 11.0
+    Qz = _zero_gram(NP, mu); Qp = _prime_side(True, NP, mu)
+    lz, lp = np.linalg.eigvalsh(Qz)[0], np.linalg.eigvalsh(Qp)[0]
+    assert lp > 0 and abs(lp/lz - 1) < 0.10, (lp, lz)
+    assert np.all(np.diag(Qp)/np.diag(Qz) >= 0.999)        # the zero list is truncated at 320: Q_pr >= Q_z

@@ -155,7 +155,9 @@ def assemble(name, mu, NB, dps, DEG=12):
         # N^{s/2} contributes (1/2) log N once, i.e. (1/4) log N... in this convention: half of log N per panel
         CST = (mp.log(mp.mpf(Ncond)) / 2 - mp.log(mp.pi) - mp.euler) if FIX else (mp.log(mp.mpf(Ncond) / mp.pi) - mp.euler)
         if FIX:
-            pass
+            # Frullani tail beyond y = L: the F0 e^{-2y}/(1-e^{-2y}) term does not vanish there; its integral is
+            # -(F0/2) log(1 - e^{-2L}) per panel (Grok's original 'cut', correct; wrongly dropped in an earlier FIX)
+            CST -= cut
         elif ncut >= 2:
             CST -= cut
         elif ncut == 1 and s0 == s0s[0]:
