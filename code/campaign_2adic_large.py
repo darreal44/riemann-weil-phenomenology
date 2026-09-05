@@ -70,6 +70,7 @@ JOBS = {
         (32, 96),
     ],
     "smoke": [(16, 32), (16, 48)],
+    "taper16": [(16, 80), (16, 112), (16, 160)],
 }
 
 
@@ -97,8 +98,9 @@ def one_job(Lam: float, cpu: int) -> dict:
     os.environ.setdefault("MKL_NUM_THREADS", "1")
     lams = lams_grid()
     t0 = time.time()
-    tA = tau_curve(Lam, False, lams, cells_per_unit=cpu)
-    tS = tau_curve(Lam, True, lams, cells_per_unit=cpu)
+    tap = float(os.environ.get("TAPER", "0.2"))
+    tA = tau_curve(Lam, False, lams, cells_per_unit=cpu, taper=tap)
+    tS = tau_curve(Lam, True, lams, cells_per_unit=cpu, taper=tap)
     d = tS - tA
     dt = time.time() - t0
 
@@ -121,6 +123,7 @@ def one_job(Lam: float, cpu: int) -> dict:
         "peak2": float(d[i2]),
         "peak05": float(d[i5]),
         "expected": EXPECTED,
+        "taper": float(os.environ.get("TAPER", "0.2")),
         "profile_lams": [float(x) for x in lams[i2 - 20 : i2 + 21]],
         "profile_d": [float(x) for x in d[i2 - 20 : i2 + 21]],
     }
