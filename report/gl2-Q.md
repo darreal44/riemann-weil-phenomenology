@@ -1,21 +1,16 @@
 # Prime-side Q for GL(2)
 
-`code/scan_q_gl2.py` — a_n from gp/`ellan`, two attempts
-for the archimedean panel copied from scan_s.
+How to find the archimedean term: L(E,s) is completed by
+Γ_C(s) = 2(2π)^{-s} Γ(s) = Γ_R(s) Γ_R(s+1). Each Γ_R is one
+`scan_s` panel (s0=1/4 even, s0=3/4 odd). Add both, subtract
+the primes once, with weight a_n log p / n (line Re=1).
 
-Smoke 11a1, μ=11, N=25:
+Smoke 11a1 μ=11 N=25:
 
-| shift | weight | λ0 |
-|-------|--------|----|
-| Re=1 | a_n / n | −2.58 |
-| Re=1/2 | a_n / √n | −3.55 |
+| panel | λ0 |
+|-------|----|
+| one s0 (old) | −2.6 / −3.5 |
+| Γ_R(s)+Γ_R(s+1) | **+1.217** |
 
-Both indefinite. a_n are not the issue (table matches Cremona).
-The Dirichlet archimedean (s0, CST, D2) does not transport to
-Γ(s) (2π)^{-s} N^{s/2}. Same class of failure as `scan_s zeta`
-with q=1.
-
-Working GL(2) object remains the **zero-side Gram**
-(`scan_gl2.py`, `gl2-gram-slopes.md`). Writing Q requires
-the explicit formula for L(E,s) with the correct Γ-derivative
-panel, not a copy of χ.
+Positive. λ1/λ0≈2: no deep singlet at this short window.
+`python code/scan_q_gl2.py 11a1 11 24 40` then 22 / 38.
