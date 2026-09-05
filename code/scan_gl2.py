@@ -18,7 +18,10 @@ import sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CURVES = ("11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1")
+CURVES = (
+    "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
+    "zeta",
+)
 
 
 def zeros(name):
@@ -42,7 +45,12 @@ def gram(name, mu, NB):
     Ph = np.array([hat(g, L, om) for g in zz])
     ev, evc = np.linalg.eigh(2 * Ph.T @ Ph)
     if ev[0] <= 0:
-        raise RuntimeError(f"indefinite Gram {name} mu={mu}")
+        print(
+            f"[{name} mu={mu} N={NB+1} Gram] INDEF lam0={ev[0]:.3e} "
+            f"(desert artifact; zeta/chi5: use prime-side Q)",
+            flush=True,
+        )
+        return float(ev[0]), [float("nan")] * 6
     v0 = evc[:, 0]
     p = v0 ** 2
     p /= p.sum()
