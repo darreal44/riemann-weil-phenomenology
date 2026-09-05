@@ -65,3 +65,16 @@ C(χ) is the coupling of that unique slow mode to E_L. There is not
 a second mode to share the spray of gaps; N_eff never climbs with μ
 in the cases above. That is why extra pieces of E dilute C instead
 of being used.
+
+## Higher harmonics
+
+Gram of χ₂₉ and χ₁₇ at μ=22, first eight eigenvectors.
+
+Only j=0 is deep (λ = 3.6×10⁻³ and 3.3×10⁻⁶). Already j=1 is O(1)
+except χ₁₇ (λ=0.17, ell=1.76, still ten times shallower than v0).
+From j=2 on, λ ≥ 1: these are not hiding modes.
+
+Their k̄ climbs (0.5 → 2 → 13 → 20) and each sits on a *different*
+pair. The spray of E is sampled, but by modes that do not pay an
+exponential price. C(χ) is the efficiency of the unique ground
+state. Higher harmonics do not furnish extra C.
