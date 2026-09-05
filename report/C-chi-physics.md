@@ -48,3 +48,20 @@ zeros adjacent to components of E, or equivalently the inverse
 number of coherent pieces that the bottom window mode can see.
 Until that is a theorem, C(χ) is the measured efficiency of E_L as a
 hiding set for one mode of type log μ / 2.
+
+## The L-mode
+
+The bottom eigenvector of the Gram, in the cosine window of length L,
+has participation N_eff = 1.3–2.8 and centroid k̄ ≤ 1. It is the
+ground state of the window: almost constant-plus-one-harmonic, type
+τ = L/2, not a high oscillation.
+
+Its Fourier mass still sits on one mid-band pair (γ*/ν from 2 to 20).
+A slow time mode seeing a fast pair is ordinary Paley–Wiener: the
+prolate of a short window is smooth, and smoothness is expensive
+exactly where Γ has a tight pair inside the type.
+
+C(χ) is the coupling of that unique slow mode to E_L. There is not
+a second mode to share the spray of gaps; N_eff never climbs with μ
+in the cases above. That is why extra pieces of E dilute C instead
+of being used.
