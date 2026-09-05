@@ -1,4 +1,4 @@
-# Locks the claims that would silently rot: half-density cache,
+# Locks the claims that would silently rot: one-sided Weyl completeness of the chi5 cache,
 # frozen geometric coefficients, chi29 pre-reg, 2-adic taper overshoot.
 import math
 import os
