@@ -129,3 +129,5 @@ The exponential cost is at most the number of hidden modes,
 
 Nothing here is a script. Lemma 2 is a statement in
 Beurling–Malliavin / de Branges, not a scan of \(Q\).
+
+Clarified chain: report/lemma2-proof.md. The hole is the multi-interval LW tail after Dirichlet.
