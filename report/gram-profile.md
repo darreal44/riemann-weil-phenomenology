@@ -39,3 +39,14 @@ C(χ) in ell ~ C(χ) L|E| is a proxy for “where the first tight pair
 sits in the window”, not a second length functional. Next: the same
 profile at two N, to kill a cutoff artefact, and one plot of mass
 versus (gap/ν).
+
+## Two N (cutoff check) and mass vs gap/ν
+
+χ₂₉ μ=22: pair (10.42, 11.20) holds 65→60 % of v0 from N=17 to 41.
+ell_G = 5.76 → 5.59. Not a cutoff artefact.
+
+χ₁₇ μ=22: pair (15.64, 16.27) holds 35→45 % over the same N.
+
+gap/ν on χ₂₉, N=33: the charged pair has gap/ν = 0.38. A tighter pair
+at 17.81–18.51 (gap/ν = 0.34) carries 3 %. Tightness is not enough;
+the pair has to sit where the bottom mode of the *window* can live.
