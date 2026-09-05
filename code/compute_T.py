@@ -50,7 +50,19 @@ def main():
     z = load_zeros(path)
     T = z[-1] if z else 0.0
     print(f"n={len(z)}  T={T:.6f}  g1={z[0] if z else float('nan'):.6f}")
-    print(f"  Weyl GL1 q=1   {weyl_dirichlet(T):.1f}  ratio={len(z)/max(weyl_dirichlet(T),1):.3f}")
+    name = os.path.basename(path)
+    if "a1" in name or "sym2" in name:
+        N = 11
+        for tok in ("67", "61", "53", "43", "37", "32", "19", "11"):
+            if tok in name:
+                N = int(tok)
+                break
+        W = weyl_gl2(T, N)
+        tag = f"GL2 N={N}"
+    else:
+        W = weyl_dirichlet(T, 1)
+        tag = "GL1"
+    print(f"  Weyl {tag:12s} {W:.1f}  ratio={len(z)/max(W,1):.3f}")
     if "--hecke" in sys.argv:
         i = sys.argv.index("--hecke")
         label = sys.argv[i + 1] if i + 1 < len(sys.argv) else "11a1"
