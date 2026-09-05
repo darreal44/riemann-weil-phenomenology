@@ -38,6 +38,7 @@ CHARS = {
     "chi24e": dict(q=24, d=24, a=0),
     "chi24o": dict(q=24, d=-24, a=1),
     "chi29": dict(q=29, d=29, a=0),
+    "chi31": dict(q=31, d=-31, a=1),
 }
 
 
