@@ -2729,3 +2729,10 @@ Secants (zeros to 149 for s_pred):
 
 s_loc still easing 2.28 -> 2.04. The 2.47 was a lower-window secant.
 
+
+## 100. Verdict at T₀ = 320
+
+See `report/verdict-T0-320.md`. Sixteen Weyl-complete lists to 320.
+Hold-out: χ₂₉ 0.390/0.555, χ₁₇ 0.728/1.187, χ₅ 2.019/3.048.
+a = 1.71, b = 0.97 frozen on ζ. The a+b law overpredicts narrow deserts
+by ×1.4–1.8. No refit, no further character.
