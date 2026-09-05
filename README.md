@@ -71,8 +71,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   spiked at ρ = 2 — and its conditioned remainder is predominantly positive on twenty test functions (20/20 at
   log 2, 13/20 at log 3) where CC's is essentially negative. The surplus has the form of the 2h(1)log Λ term of Connes 1999 (a reading of his Theorem 4, not an identification of operators).
   Checked against the semi-local
-  trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1), its mass
-  converging with the cell size to (log 2)/√2 — extrapolation of `visibility-offline`).
+  trace formula of Connes 1999 (archimedean to 1–4%, 2-adic place at λ = 2^(±1); its mass is
+  open — 0.49 by cell extrapolation at Λ=4, climbing past 0.49 at Λ=16 in the Λ≥16 campaign).
 
 - `notes/landau-bounds.pdf --- Landau necessary density: early zeros subcritical by 4-90 modes; no constant A.
 - notes/desert-slepian.pdf --- desert cost vs Slepian: factor 2.5-6, never 1; hole+sub-Nyquist is one set.
@@ -82,8 +82,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - notes/visibility-offline.pdf` (Grok, v2 refereed) — two calculations: an off-line zero at
   γ₁ makes the windowed form negative at order −σ²|F₁|² on the ground state (the moment F₁,
   purely imaginary for even f, depends on N: O(1) on V₉, 3.5×10⁻³ on V₄₇); and the 2-adic
-  trace mass sits at λ = 2^(±1) by conjugation of dilations, with mass converging to
-  (log 2)/√2 as the cell size shrinks. Completes and corrects `semilocal-step` §6.
+  trace mass sits at λ = 2^(±1) by conjugation of dilations (its h→0 extrapolation to (log 2)/√2
+  at Λ=4 is not confirmed at Λ=16, where the mass keeps climbing: open). Completes and corrects `semilocal-step` §6.
 - `notes/quorum-exponents.pdf` (Grok, v2 refereed) — three routes to the every-scale silence
   bound tried and found wanting for one structural reason (the lag log p lies inside the
   support: there is no infinity to decay toward); two lemmas that hold; the laws re-read in
