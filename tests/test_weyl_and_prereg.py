@@ -23,15 +23,15 @@ def test_geom_coefficients_frozen():
     assert B == 0.82
 
 
-def test_chi5_150_is_half_weyl():
+def test_chi5_150_is_complete_one_sided_weyl():
+    """The cache holds gamma > 0 only: compare with the one-sided count (T/2pi) log(qT/2pi e).
+    The two-sided (T/pi) formula reads ~0.5 on a complete list (report/weyl-density-check.md)."""
     z = _zeros("zeros_chi5_150.pkl")
-    T = z[-1]
-    q = 5
-    expected = (T / math.pi) * math.log(q * T / (2 * math.pi * math.e))
+    q, T = 5, z[-1]
+    expected = (T / (2 * math.pi)) * math.log(q * T / (2 * math.pi * math.e))
     ratio = len(z) / expected
     assert 80 < len(z) < 100
-    assert 0.45 < ratio < 0.55
-
+    assert 0.9 < ratio < 1.1, ratio
 
 def test_chi29_prereg_s_pred_locked():
     z = _zeros("zeros_chi29.pkl")
