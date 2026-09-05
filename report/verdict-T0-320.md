@@ -26,3 +26,5 @@ deserts).
 The law as a + b is one term short. That term is the sampling constant
 of a hole followed by a sub-Nyquist prefix, as one set. a and b stay
 frozen. No further character, no μ = 86.
+
+The missing term is written in report/one-set-sampling.md: E_L as one set.
