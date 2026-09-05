@@ -15,6 +15,10 @@ import math
 LOG2 = math.log(2)
 SQRT2 = math.sqrt(2)
 
+def twisted_mass(p: int) -> float:
+    """Twisted shell mass at λ=p and λ=1/p. Connes units."""
+    return p ** -0.5
+
 
 def shell_weight(n: int) -> tuple[float, float]:
     """Raw Connes weight and twisted (λ^{1/2}) weight on the shell 2^n Z2*.
