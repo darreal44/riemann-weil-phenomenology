@@ -38,6 +38,11 @@ def assemble(name, mu, NB, dps, DEG=12):
         raise SystemExit(
             f"{name} is GL(2): use  python3 code/scan_gl2.py {name} 22 36 50"
         )
+    if name == "zeta":
+        raise SystemExit(
+            "zeta has a pole: use  python3 code/spectro_zeta.py MU NB DPS DEG"
+            "   e.g. python3 code/spectro_zeta.py 22 36 50 12"
+        )
     cf = CHARS[name]
     q, a = cf['q'], cf['a']
     tab = chi_tab(cf['d'], q)
