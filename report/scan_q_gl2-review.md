@@ -45,3 +45,19 @@ Frobenius error against the 11a1 zero Gram **4.0% → 1.7%** (N = 17 and 25), (5
 lag (the silence law), so λ_min is blind to tower errors and sees only the archimedean part. The remaining
 ~1.7% residual is therefore archimedean, of size ≈ 0.02 in the ground direction (Q_pr(v₀) = −0.017 against a
 PSD zero Gram), concentrated on the lowest modes. Unidentified; localized. No positivity statement yet.
+
+
+## Addendum 2 (6 September): the Frullani tail — Grok's `cut` was right, my FIX had dropped it
+
+An independent frequency-domain evaluation of the archimedean term (∫|ĉ|²·Re ψ with `digamma`, no Frullani)
+matched the panel implementation only up to a smooth 1–2% low-mode deviation. Cause: the term
+`cut = log(1 − e^{−2L})`, which the FIX path had removed as unexplained, is the **tail of the Frullani integral
+beyond y = L**: Θ(y) vanishes there but F₀e^{−2y}/(1−e^{−2y}) does not, and ∫_L^∞ equals −(F₀/2) log(1−e^{−2L})
+per panel — +0.0083 each with F₀ = 2, +0.0166 on the diagonal for the two panels: exactly the missing λ_min.
+Restored. **Result against the 11a1 zero Gram (422 zeros to 320):** λ_min(Q_pr) = +5.39×10⁻⁶ vs +5.11×10⁻⁶
+(N = 17), +5.18 vs +4.95×10⁻⁶ (N = 25) — the smallest eigenvalue agrees to 5%; diagonal ratios all ≥ 1
+(1.043, 1.036, 1.010, 1.007, 1.005, …), the excess being the zero tail beyond 320 (≈3.3% estimated on (0,0));
+Frobenius 1.8%, entirely the tail. **The GL₂ prime-side form is validated**; 11a1 at µ = 11 is positive with
+λ_min ≈ 5×10⁻⁶, for the right reason. The GL2_FIX path (Γ arguments (½,1), Λ_f by power sums with the filter
+on Λ_f, ½ log N per panel, Frullani tail kept) is the correct one; the original path remains for reference.
+Other curves need a_p tables (gp) — server.
