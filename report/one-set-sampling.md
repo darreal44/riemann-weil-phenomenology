@@ -100,3 +100,5 @@ What remains unproved: \(c_L \ge \exp(-C\,\mathrm{dim}(E_L))\) with an
 absolute C, or a Landau–Widom expansion of \(\chi_E P_\tau\chi_E\)
 with Dirichlet conditions. The count is the statement. The bound is
 not.
+
+Lemmas: report/one-set-lemmas.md. Lemma 1 proved (interlacing). Lemma 2 (multiplier) open.
