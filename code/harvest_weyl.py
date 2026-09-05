@@ -22,8 +22,21 @@ sys.path.insert(0, HERE)
 from kronecker import chi_tab  # noqa: E402
 
 CHARS = {
+    "chi3": dict(q=3, d=-3, a=1),
+    "chi4": dict(q=4, d=-4, a=1),
     "chi5": dict(q=5, d=5, a=0),
+    "chi7": dict(q=7, d=-7, a=1),
+    "chi8": dict(q=8, d=8, a=0),
+    "chi11": dict(q=11, d=-11, a=1),
+    "chi12": dict(q=12, d=12, a=0),
+    "chi13": dict(q=13, d=13, a=0),
+    "chi15": dict(q=15, d=-15, a=1),
     "chi17": dict(q=17, d=17, a=0),
+    "chi19": dict(q=19, d=-19, a=1),
+    "chi21": dict(q=21, d=21, a=0),
+    "chi23": dict(q=23, d=-23, a=1),
+    "chi24e": dict(q=24, d=24, a=0),
+    "chi24o": dict(q=24, d=-24, a=1),
     "chi29": dict(q=29, d=29, a=0),
 }
 
