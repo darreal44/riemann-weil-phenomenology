@@ -32,7 +32,21 @@ flat ≈ 0.45 and crosses τ/π at **μ≈18**.
 That is A(μ)→0 and the break of the one-hole
 bound. Sampling thread closed.
 
+## Weil on the window (numerical)
+
+Rank-1 projection of G−Q: G/Q 0.929→0.997,
+F-norm 0.23 %. The 7 % was hat tails.
+T=320 discrete: Frel 1.3 %, λ0(G)=0.298
+vs Q=0.303. Weyl tail s≈0.65 hits Q.
+
+Q on v0: ARCH +1.68, PRIMES −1.38, of
+which n=5 and n=7 carry the cancellation.
+Not p=2.
+
+|Q−Gram|<λ_min remains RH. After the tail,
+the *numerical* identity on this window
+is at the percent level.
+
 ## What is not next
 
-Another Slepian matrix, another L, Li, Maass.
-The remaining wall is Weil: |Q−Gram|<λ_min.
+Another Slepian, another L, Li, Maass.
