@@ -192,6 +192,12 @@ voting prime is necessary; 17 and 19 are mute (a_p=0). Control
 at μ=38 matches the journal (+0.38 vs +0.37). 19 processes,
 216 s. Judge: `tests/test_gl2_37a1_drop3.py`.
 
+**67a1 μ=74, preregistered §113.** Executed
+(`notes/gl2-67a1-mu74.md`): full λ₀ = 4.92×10⁻⁸, ℓ = 16.83;
+drop 2, 5, 13 all negative (−0.42, −1.02, −0.14). Quorum stays
+complete. SURVIVE. 22 processes, 219 s. Judge:
+`tests/test_gl2_67a1_mu74.py`.
+
 ---
 
 ## 7. Maass Q
