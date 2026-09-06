@@ -226,11 +226,17 @@ on [0,1] (`notes/av-gauss.md`), 8+8 trapezoid of a=½wg, Leibniz
 (`report/gppp-isolation.md`, `report/gpp-positive-half.md`).
 Arb path still in `notes/av-witness.md`.
 
+**Even family.** Same integral transfers to all eight a=0
+characters (`code/av_enclose_even.py`); χ₅ is the tight window.
+
+**Odd family.** Different integrand (s₀=3/4). Ball on [1,L]
+with Leibniz M (`code/av_enclose_odd_ball.py`): χ₃ Q ∈
+[0.00490, 0.00724] termwise. χ₃ is the tight odd window.
+
 **Not a hand comparison.** I_{[0,1]} is a Gauss check, not a
-majorant of a^{(6)}. The slab θ_v values and the two |g''|
-ceilings are evaluated elementary functions, not inequalities.
-This is a finite-window certificate for one vector, one
-conductor, one μ. It is not (∀ L) Q_L ≥ 0.
+majorant of a^{(6)}. This is a finite-window certificate for
+one vector at one μ. It is not (∀ L) Q_L ≥ 0.
+Index: `report/witness-status.md`.
 
 ---
 
