@@ -65,3 +65,8 @@ two O(0.03) pieces.
 
 The remaining work is
 [0,1], not the far tail.
+
+Arb enclosure of I_{[0,1]}, I_{[1,L]},
+A(v) and Q(v)>0: `notes/av-witness.md`,
+`tests/test_av_witness.py`. Comparison
+estimate of I_{[0,1]} still open.
