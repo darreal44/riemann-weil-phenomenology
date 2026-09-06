@@ -56,6 +56,9 @@ def eval_mu(mu: float, dps: int = 40) -> dict:
         p23 = float(v @ P23 @ v)
         prest = float(v @ Prest @ v)
         Q = Av - p23 - prest
+        a = [float(v @ evecs[:, k]) for k in range(3)]
+        if a[0] < 0:
+            a = [-x for x in a]
         rows.append(
             {
                 "name": name,
@@ -67,6 +70,7 @@ def eval_mu(mu: float, dps: int = 40) -> dict:
                 "A_minus_P23": Av - p23,
                 "Q": Q,
                 "overlap_vmin": abs(float(v @ vmin)),
+                "alpha": a,
             }
         )
     lam0 = float(evals[0])
@@ -75,6 +79,8 @@ def eval_mu(mu: float, dps: int = 40) -> dict:
         "mu": float(mu),
         "seconds": round(time.time() - t0, 2),
         "lam_min": lam0,
+        "evals": [float(x) for x in evals],
+        "evecs": [[float(x) for x in evecs[:, k]] for k in range(3)],
         "vmin": [float(x) for x in vmin],
         "Q_vmin": Qmin,
         "overlap_rat_vmin": abs(float(vrat @ vmin)),
