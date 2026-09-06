@@ -292,6 +292,16 @@ from μ=16 to 37. A linear model of Q
 would cross 0 and is the wrong
 remainder. Not (∀ μ).
 
+## 8c. Q(v) band versus unfinished limits
+
+Q(v) ∈ [0.003, 0.009] for μ=16..80
+(`report/Q-convergence.md`). Split
+Q = (A−P₂−P₃) − P_rest: both sides
+shrink together (`report/Q-split-23.md`).
+P₂+P₃ → −2.25 (Θ→2I). A has not
+frozen. Two readings, not resolved
+at μ=80. Not (∀ μ).
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
