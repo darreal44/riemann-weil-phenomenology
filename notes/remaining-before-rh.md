@@ -216,6 +216,25 @@ grid.
 
 ---
 
+## 8a. Rational witness v = (4, −3, 1)/√26 at χ₅ μ=16
+
+**Shipped.** `code/av_enclose.py` (no flint) returns A(v) ∈
+[−0.82939, −0.82692] and Q(v) ∈ [0.00402, 0.00649], inside the
+room that keeps Q>0 after ±0.003 on P_rest. Judge
+`tests/test_av_enclose.py`. Pieces: elementary CST, 3-point Gauss
+on [0,1] (`notes/av-gauss.md`), 8+8 trapezoid of a=½wg, Leibniz
+|a''| from endpoint envelopes of w and catalogued extrema of g''
+(`report/gppp-isolation.md`, `report/gpp-positive-half.md`).
+Arb path still in `notes/av-witness.md`.
+
+**Not a hand comparison.** I_{[0,1]} is a Gauss check, not a
+majorant of a^{(6)}. The slab θ_v values and the two |g''|
+ceilings are evaluated elementary functions, not inequalities.
+This is a finite-window certificate for one vector, one
+conductor, one μ. It is not (∀ L) Q_L ≥ 0.
+
+---
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
