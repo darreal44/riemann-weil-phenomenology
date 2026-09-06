@@ -82,6 +82,17 @@ def main() -> None:
             f"drop3={d3['lam0']:.4e}",
             flush=True,
         )
+    if name == "67a1" and int(mu) == 74:
+        # journal §113: quorum remains complete (2, 5, 13 stay necessary).
+        by = {r["drop"]: r for r in rows}
+        keys = (2, 5, 13)
+        complete = full["lam0"] > 0 and all(by[p]["lam0"] < 0 for p in keys)
+        print(
+            "SURVIVE" if complete else "KILL",
+            f"full={full['lam0']:.4e}",
+            " ".join(f"drop{p}={by[p]['lam0']:.4e}" for p in keys),
+            flush=True,
+        )
 
 
 if __name__ == "__main__":

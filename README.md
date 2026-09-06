@@ -79,6 +79,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   \(>0\). \(c_L^*\ge0\) not taken. Not RH.
 - `notes/gl2-37a1-drop3.md` — 37a1 μ=62, retrait de 3: preregistered
   negative, executed positive (+0.093). KILL. Not RH.
+- `notes/gl2-67a1-mu74.md` — 67a1 μ=74: quorum stays complete (2, 5, 13
+  necessary). SURVIVE. Not RH.
 - `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
   sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
   \(\hat\psi=\) jump \(+\,r\). Not RH.
