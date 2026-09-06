@@ -20,6 +20,11 @@ def test_maass_inputs_exist_and_q_path_does_not():
     assert "maass" not in scan_q_gl2.CURVES
     src = open(os.path.join(CODE, "scan_s.py"), encoding="utf-8").read()
     assert "maass" not in src.lower()
+    import scan_q_maass
+    assert hasattr(scan_q_maass, "assemble")
+    rec = scan_q_maass.load_form("maass1")
+    assert rec["R"] > 9
+
     # harvest_maass_zenodo: coefficients feed Γ_R(s±iR), not scan_gl2
     hz = open(os.path.join(CODE, "harvest_maass_zenodo.py"), encoding="utf-8").read()
     assert "Γ_R(s±iR)" in hz or "Gamma_R(s±iR)" in hz or "s±iR" in hz
