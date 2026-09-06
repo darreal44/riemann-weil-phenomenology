@@ -130,6 +130,25 @@ def _filter_drop(an: dict[int, int], drop) -> dict[int, int]:
     return {n: a for n, a in an.items() if n % d != 0}
 
 
+def prime_power_prime(n: int) -> int | None:
+    """If n = p^k, k≥1, return p. Else None. Needed for μ > 67."""
+    if n < 2:
+        return None
+    x = n
+    if x % 2 == 0:
+        while x % 2 == 0:
+            x //= 2
+        return 2 if x == 1 else None
+    p = 3
+    while p * p <= x:
+        if x % p == 0:
+            while x % p == 0:
+                x //= p
+            return p if x == 1 else None
+        p += 2
+    return x
+
+
 def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
     Ncond = CURVES[name]
     mp.mp.dps = dps
@@ -225,8 +244,6 @@ def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
         f"{'' if drop is None else f' drop={int(drop)}'}",
         flush=True,
     )
-    small = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
-
     def ppts_of(an_use):
         ppts = []
         for n, a in an_use.items():
@@ -234,14 +251,8 @@ def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
                 continue
             if a == 0 and not FIX:
                 continue          # original path keys on a_n; the FIX path keys on Lambda_f (a_8 = 0 but Lambda_f(8) = 4 log 2 for 11a1)
-            y2, p = n, None
-            for qq in small:
-                if y2 % qq == 0:
-                    p = qq
-                    while y2 % qq == 0:
-                        y2 //= qq
-                    break
-            if p and y2 == 1:
+            p = prime_power_prime(n)
+            if p is not None:
                 if FIX:
                     # Lambda_f(p^k) = (alpha^k + beta^k) log p, alpha+beta = a_p, alpha*beta = p (good p) or 0 (p | N)
                     k = 0; nn = n
