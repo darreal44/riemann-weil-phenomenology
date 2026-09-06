@@ -71,6 +71,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   \(\hat\psi=\) jump \(+\,r\). Not RH.
 - `notes/av-witness.md` — rational witness (4,−3,1)/√26 at χ₅ μ=16: Arb enclosure
   of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
+- `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
+  1/y cancelled; remainder estimate inside ±0.003 but not a majorant. Not RH.
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 

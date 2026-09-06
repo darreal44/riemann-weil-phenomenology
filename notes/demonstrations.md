@@ -192,4 +192,5 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | \(\|CT^{-1}C^T\|<\lambda_{\min}(H)\) | not proved |
 | \(\det(A-P)>0\) by estimates keeping every \(n\le\mu\) | not proved |
 | edge remainder sum dominated by the jump, uniformly in \(v_0\) | not proved |
+| 3-point Gauss of A(v) on [0,1] | arithmetic check (`notes/av-gauss.md`); remainder majorant not written |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
