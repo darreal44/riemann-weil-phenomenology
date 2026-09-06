@@ -51,6 +51,14 @@ def main():
         print(f"{name:<8} {Qlo:10.5f} {Qhi:10.5f}")
         ok = ok and Qlo > 0
     print("Qlo>0", ok)
+    rem60 = 2.0 * C2_HALF * 60.0
+    print(f"Markov M4=60 rem {rem60:.9f}")
+    for name in ("chi3",):
+        c, p = cst(CHARS[name]["q"]), p_of(name)
+        Qlo = c + (I - rem60) + t1 + t2 - rL - p
+        Qhi = c + (I + rem60) + t1 + t2 + rL - p
+        print(f"chi3 Markov60  [{Qlo:.5f}, {Qhi:.5f}]")
+        ok = ok and Qlo > 0
     return 0 if ok else 1
 
 
