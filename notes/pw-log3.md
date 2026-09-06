@@ -77,3 +77,12 @@ infinite \(N\). It is not the step.
 | prime-side ladder at \(\mu=3\), nested, \(>0\) | judged, this note |
 | \(c_L^*\ge0\) on \(W_{\log3}\) | **open; not taken** |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
+
+## 4. A alone, by character
+
+On V₄, no primes (`report/A-by-chi-mu3.md`):
+λ_min(A) is positive iff χ(2)=0 (χ₄ +0.073, χ₈ +0.247)
+and negative iff χ(2)=−1 (χ₅ −0.223, χ₃ −0.215).
+When χ(2)=−1 the ladder Q>0 is T₂ cancelling that
+mode, not A dominating T₂ (`report/Cstar-dead.md`).
+Still not c_L^*≥0.
