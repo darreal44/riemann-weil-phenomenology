@@ -26,16 +26,10 @@ digit, not at the sign,
 inside this 3-plane at
 μ=16. At μ=150 the same
 v still gives Q=0.004
-(#45). That does not
-say every nearby v
-survives μ=150 — only
-this one was run.
-
-The impact of v on
-(∀ μ) is open: a vector
-fitted at 16 can ride
-the A−P tracking
-(#45) or not. One
-rational choice is not
-the ground state of
-every window.
+(#45). The rest of the
+pencil was run
+(`notes/av-other-v-mu150.md`):
+all five stay Q>0, and
+v_min is still on the
+pencil (overlap 0.995).
+One window, not (∀ μ).
