@@ -7,6 +7,9 @@ The suite is split in two. The light part (~170 tests, ~15 s) runs anywhere:
       --ignore=tests/test_gl2_eight_curves.py --ignore=tests/test_gl2_quorum_laws.py --ignore=tests/test_gl2_conventions.py \
       --ignore=tests/test_depth_law.py --ignore=tests/test_orphans_wrapped.py
 
+Requirements on the server: `pip install python-flint` (Arb bindings, used by the two certificate tests;
+without it those two tests are skipped with a message, not failed), plus mpmath, numpy, scipy.
+
 The heavy part (eight files, 6–10 minutes total, each recomputing a certificate or a live assembly) is
 meant for the server. Run them one file per line so a failure is attributable:
 
