@@ -1,5 +1,18 @@
 # Freeze
 
+Living index: `README.md`. This freeze is a dated record of the
+Slepian / Gram-vs-Q thread. It does not supersede GL2 prime-side
+work, discrete Landau, or the judged calculations in
+`notes/equivalents-judged.md`. “What is not next” below is that
+thread’s next-step list, not the repository’s.
+
+The last sentence stands: the repo is a phenomenology of Weil’s
+formula and of the desert. It is not a proof of RH.
+
+---
+
+# Freeze (original)
+
 Weil explicit formula on the cosine window of length
 L = log μ:
 

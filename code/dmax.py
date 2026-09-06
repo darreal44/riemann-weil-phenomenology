@@ -17,6 +17,8 @@ import os
 import pickle
 import sys
 
+import numpy as np
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 
@@ -70,6 +72,31 @@ def D_max_kernel(zeros: list[float], mu: float, NB: int) -> int:
     omax = 2 * math.pi * NB / L
     cuts = [g for g in zeros if g < omax] + [omax]
     return max(kernel_lower(zeros, mu, NB, w) for w in cuts)
+
+
+def gram_ells(zeros, mu, NB):
+    """Depths −ln λ_k of the truncated zero Gram (positive eigenvalues)."""
+    L = math.log(mu)
+    om = np.array([2 * math.pi * n / L for n in range(NB + 1)])
+    zz = [g for g in zeros if 0 < g < om[-1] * 1.1]
+    if not zz:
+        return np.array([])
+    rows = []
+    sL = math.sqrt(L)
+    for g in zz:
+        s = math.sin(g * L / 2)
+        v = np.empty_like(om)
+        v[0] = 2 * s / (g * sL)
+        v[1:] = math.sqrt(2 / L) * s * 2 * g / (g * g - om[1:] ** 2)
+        rows.append(v)
+    Ph = np.array(rows)
+    ev = np.linalg.eigvalsh(2 * Ph.T @ Ph)
+    pos = ev[ev > 0]
+    return np.array([-math.log(x) for x in pos])  # ells[0] = −ln λ_min
+
+
+def count_above(ells, thresh):
+    return int(sum(1 for e in ells if e > thresh))
 
 
 def main() -> None:
