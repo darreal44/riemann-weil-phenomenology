@@ -46,3 +46,15 @@ g(L)=1/2, g''(L)=1/8 exact.
   (even and odd)
 - comparison estimate of I_{[0,1]}
 - (∀ L) Q_L ≥ 0   (= RH)
+
+## Tail of v (hats n=3,4,5)
+
+Q_head = 0.00551. Schur
+correction vᵀ C T⁻¹ Cᵀ v
+= 0.00403. Left 0.00148.
+Elementary lower bound
+Q_head − ‖Cᵀv‖²/λ_min(T)
+= 0.0002 > 0
+(`report/schur-v.md`).
+Higher hats do not eat
+the sign.
