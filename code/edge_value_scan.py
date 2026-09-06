@@ -94,12 +94,16 @@ def write_md():
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
-    ap.add_argument('--workers', type=int, default=int(os.environ.get('JOBS', '1')))
+    ncpu = os.cpu_count() or 8
+    ap.add_argument('--workers', type=int, default=int(os.environ.get('JOBS', str(min(16, ncpu)))))
+    ap.add_argument('--force', action='store_true', help='rerun windows already in the jsonl')
     ap.add_argument('windows', nargs='*', default=['all'])
     opt = ap.parse_args()
     windows = DEFAULT if opt.windows == ['all'] else opt.windows
+    import multiprocessing as _mp
+    _mp.freeze_support()
     done = set()
-    if os.path.exists(OUT_JSONL):
+    if os.path.exists(OUT_JSONL) and not opt.force:
         done = {json.loads(l)['window'] for l in open(OUT_JSONL, encoding='utf-8')}
     todo = [w for w in windows if w not in done]
     for w in windows:
