@@ -1,40 +1,61 @@
-# Lemma Θ_v — consolidated (ζ + Dirichlet + GL₂)
+# Lemma Θ_v — current state
 
-Let v be the ground state of the prime-side truncated
-Weil form Q_L on the hat basis of [0, L], L = log µ,
-and ψ the cosine reconstruction of v.
+v = ground state of prime-side truncated Weil
+Q_L on hats of [0, L], L = log µ.
+ψ = cosine reconstruction of v.
 
-## What holds
+## Holds
 
-1. **Bulk.** ψ is even about L/2. When N_eff ≳ 3
-   (ζ at these windows),
-   ψ(t) ≈ ψ_mid exp(− a (t−L/2)²) with a L² = −ln λ₀.
+1. **Even bulk.** ψ(L−t)=ψ(t). On ζ (N_eff ≳ 3)
+   ψ(t) ≈ ψ_mid exp(−a (t−L/2)²) with
+   a L² = −ln λ₀. Quartic b/a² = 0.06 → 0.03.
 2. **ONB ratio.** Once −ln λ₀ ≳ 20,
    v₀/|v₁| = 2^{−1/2} exp(π²/(−ln λ₀))
-   to a few percent (ζ, χ₃, χ₅; χ₄ a bit worse).
-   This is a delta at L/2 against (η₀, η₁), times
-   the Gaussian form factor. Not a Weil number.
-3. **Edge doubling.** −ln λ₀ = 2 (−ln|ψ(0)|) + O(1)
-   with ratio in [2.09, 2.21] for ζ, χ₃, χ₄, χ₅
-   and 11a1. Q sees φ ⊗ φ.
-4. **Axes.** On ζ the signs +−+− are the mix of
-   an archimedean n=1 spike and a tower ≈ e₀,
-   almost orthogonal. 2×2 gives the first two
-   signs and λ ∼ 10⁻³; rungs n=2,3 take the
-   remaining decades. Characters live at N_eff ≈ 2
-   in dim 9: only the first two signs.
-5. **Θ_v** is the autocorrelation of ψ. y² is the
-   bulk; y e^y is the Dirichlet wall near y → L.
-   A desert Slepian is the same class, not the
-   same function.
+   to a few percent on ζ, χ₃, χ₅. It is
+   ⟨δ_{L/2}, η₀⟩ / ⟨δ_{L/2}, η₁⟩ times the
+   Gaussian form factor. Not a Weil number.
+3. **Edge doubling.** −ln λ₀ = 2(−ln|ψ(0)|)+R
+   with R = 2.40 ± 0.05 nats on ζ
+   (ratio 2.09–2.21 on χ₃, χ₄, χ₅, 11a1).
+   Q sees φ ⊗ φ. The spatial Gaussian tail
+   a L²/4 is not the edge.
+4. **C = λ₀ / ψ(0)² = L λ₀ / ε²**,
+   ε = v₀ + √2 ∑ vₙ.
+   On ζ, C → 1/(4e) after four modes.
+   Off ζ, C stays at the two-mode size 0.12–0.16.
+   C_bump ≠ C_Riesz = L/(wᵀ Q⁻¹ w): the
+   ground state is not the representer of δ₀.
+   ε_Q is 10³–10⁴ times smaller than a
+   truncated-Gaussian ε. Q kills the edge.
+5. **Axes.** Signs +−+− on ζ = arch n=1
+   spike mixed with a tower ≈ e₀, 81° apart.
+   2×2 of that plane: first two signs, λ ∼ 10⁻³.
+   Rungs n=2,3 take the remaining decades on ζ.
+6. **N_eff.** ζ: 3.1–3.4. χ₅: frozen 2.14
+   past NB=8. χ₃: creeps to 2.32 at NB=16,
+   dps=30, v₂=0.28, a L² still only 62 % of
+   −ln λ₀. Four-mode curvature needs N_eff ≳ 3.
 
-## What this does not prove
+## Does not hold / not proved
 
 - Spectral gap after n=3, uniform in µ.
+- a L² = −ln λ₀ off ζ (χ₃ not there yet).
 - Positivity of Q on a dense class (RH).
-- The same curvature law a L² = −ln λ₀ off ζ
-  (needs N_eff ≳ 3, so larger NB or larger µ).
+- Identification of R or 1/(4e) with a
+  named constant of the explicit formula.
+
+## Reduction
+
+dim 9 is enough to assemble. Keep hats
+n=0..3 on ζ, n=0,1 off ζ for interpretation.
+`code/reduce_Q.py NAME µ NB dps`.
+Do not invert Q on w to get C.
 
 ## Files
 
-`theta_v_qpr.py`, `lemma-theta-{profile,weight,modes,signs,who,2x2,phi,edge,bulk,curvature,factor2,deficit,sqrt2,chi5,chi3,chars,edge-chars,11a1}.md`.
+profile, weight, modes, signs, who, 2x2,
+phi, edge, bulk, curvature, factor2, deficit,
+sqrt2, higher, C, C-2x2, C-derivation, C-riesz,
+eps, dimred, reduce, Neff-scan,
+chi5, chi5-Neff, chi3, chi3-dps30, chars,
+edge-chars, 11a1.
