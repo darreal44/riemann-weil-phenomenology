@@ -9,7 +9,7 @@ then one mpmath eigsy — not a rebuild.
 
 --workers   parallel windows (separate processes; mpmath holds the GIL)
 --inner     parallel leave-one-out / fills inside a window
-On a 32c/64GB Threadripper: --workers 4 --inner 8. Peak RAM is a few GB
+On a 3975WX (32c/64t, 64GB): --workers 4 --inner 8 (32 processes). Peak RAM a few GB
 (copies of one 40-67 mpmath Gram per inner worker). The A6000 does not
 help: eigenvalues are 10^{-20}…10^{-60}, float64 eigh is unusable.
 
