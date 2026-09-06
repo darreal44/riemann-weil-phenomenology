@@ -62,12 +62,13 @@ def Arch_pair(e, f, L, q, s0):
     return F / 2 * CST + I / 2
 
 
-def P_pair(e, f, mu, d, q):
+def P_pair(e, f, mu, d, q, nmax=None):
     L = mp.log(mu)
     tab = chi_tab(d, q)
     small = [2, 3, 5, 7, 11, 13, 17, 19, 23]
     acc = mp.mpf(0)
-    for n in range(2, int(mu) + 1):
+    cap = int(mu) if nmax is None else int(nmax)
+    for n in range(2, cap + 1):
         y2, p = n, None
         for qq in small:
             if y2 % qq == 0:
@@ -82,7 +83,7 @@ def P_pair(e, f, mu, d, q):
     return acc
 
 
-def H2(name, mu=16, dps=28):
+def H2(name, mu=16, dps=28, nmax=None):
     mp.mp.dps = dps
     d, q, a = CHARS[name]
     L = mp.log(mu)
@@ -93,7 +94,7 @@ def H2(name, mu=16, dps=28):
     for i, ei in enumerate((e1, e2)):
         for j, ej in enumerate((e1, e2)):
             A = Arch_pair(ei, ej, L, q, s0)
-            P = P_pair(ei, ej, mu, d, q)
+            P = P_pair(ei, ej, mu, d, q, nmax=nmax)
             H[i, j] = A - P
             parts[(i, j)] = (A, P)
     det = H[0, 0] * H[1, 1] - H[0, 1] * H[1, 0]
