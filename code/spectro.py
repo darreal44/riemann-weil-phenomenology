@@ -51,12 +51,22 @@ def run(mu, NB, dps, DEG, K=8, q=1, tab=None, apar=0):
         if n==m: return 2*((L-y)*mp.cos(om[n]*y)/L-mp.sin(om[n]*y)/(2*mp.pi*n))
         return 2*(n*mp.sin(om[n]*y)-m*mp.sin(om[m]*y))/(mp.pi*(m*m-n*n))
 
-    # tours par premier
-    primes = [p for p in [2,3,5,7,11,13,17,19,23,29,31,37] if p <= int(mp.e**L+1e-9)]
+    # All prime powers n = p^k ≤ μ. A hardcoded list ending at 37
+    # misses 41..79 at μ=80 and makes λ₀ = −0.82 (O(1) hole, not a
+    # basis wall). Sieve up to cap.
+    cap = int(mp.e**L + 1e-9)
+    sv = [False, False] + [True] * (cap - 1)
+    for i in range(2, int(cap**0.5) + 1):
+        if sv[i]:
+            step = i
+            start = i * i
+            for j in range(start, cap + 1, step):
+                sv[j] = False
+    primes = [p for p in range(2, cap + 1) if sv[p]]
     towers = {p: [] for p in primes}
     for p in primes:
         n = p
-        while n <= int(mp.e**L+1e-9):
+        while n <= cap:
             w = mp.log(p)/mp.sqrt(n) if tab is None else (tab[n % q]*mp.log(p)/mp.sqrt(n))
             if w != 0: towers[p].append((mp.log(n), w))
             n *= p
