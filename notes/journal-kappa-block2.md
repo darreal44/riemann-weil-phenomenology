@@ -32,8 +32,11 @@ Threadripper, 64 GB. One
 process: Fmat is two
 N_out×N_in float64.
 Do **not** pass --workers
-on this script (single
-job). RAM:
+inside one Fmat (that
+duplicates the matrix).
+`--ladder` is five single
+jobs, one process each.
+RAM:
 
     Λ=8  cpu=40    ~0.02 GB
     Λ=16 cpu=80    ~0.3 GB
@@ -41,20 +44,27 @@ job). RAM:
     Λ=16 cpu=400   ~6.6 GB
     Λ=24 cpu=200   ~3.7 GB
 
-    export PATH="$PATH:/c/Program Files (x86)/Pari64-2-17-4"
-    git pull
-    python code/kappa_block2.py 8 40
-    python code/kappa_block2.py 16 80
-    python code/kappa_block2.py 16 160
-    python code/kappa_block2.py 16 400
-    python code/kappa_block2.py 24 200
+    python code/kappa_block2.py --ladder
 
-Copy the five lines into
-this note. Kill if κ at
-Λ=16 cpu=400 is still
-wandering by >0.3 versus
-cpu=160. Survive if it
-sits at 2±0.2 or 4±0.2.
+Five jobs, 32 cores,
+~9 GB, 10.3 s wall.
+
+    Λ    cpu      m      κ
+    8     40   1.514   4.284
+   16     80   2.008   5.680
+   16    160   2.091   5.914
+   16    400   2.116   5.984
+   24    200   2.567   7.260
+
+h-grid at Λ=16: |5.984−5.914|=0.070
+< 0.3, frozen in h. Corrected
+targets (module κ=2, inverse κ=4):
+5.984 is neither. Old 4/8
+targets: neither. **KILL.**
+
+Λ=8 looked like 4; Λ=24 is 7.26.
+A line through Λ, not a freeze.
+Not Thm 4. Not RH.
 
 ## Not on this probe
 
