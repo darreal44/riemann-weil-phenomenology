@@ -312,7 +312,11 @@ Q = (A−P₂−P₃) − P_rest: both sides
 shrink together (`report/Q-split-23.md`).
 P₂+P₃ → −2.25 (Θ→2I). A has not
 frozen. Two readings, not resolved
-at μ=80. Not (∀ μ).
+at μ=80. One point at μ=150
+(`notes/av-mu150.md`): A−P₂₃ = −0.020
+went through 0; P_rest = −0.024 went
+with it. They did not cross. Q=0.0041.
+Not a sixth slope. Not (∀ μ).
 
 ## 9. What this list is not
 
