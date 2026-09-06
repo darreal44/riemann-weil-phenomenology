@@ -20,7 +20,7 @@ import mpmath as mp
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 OUT_JSONL = os.path.join(ROOT, 'report', 'marginal-weights.jsonl'); OUT_MD = os.path.join(ROOT, 'report', 'marginal-weights.md')
 DEFAULT = ['zeta:8:40:60', 'zeta:11:40:60', 'zeta:16:40:65', 'zeta:11:60:90', 'chi3:16:46:65', 'chi5:16:46:65', 'chi4:16:46:65',
-           'chi8:16:46:65', 'chi13:16:46:60', 'chi3:38:66:80', 'chi5:38:66:80', 'chi29:22:52:60', '11a1:11:24:50', '11a1:22:36:60']
+           'chi8:16:46:65', 'chi13:16:46:60', 'chi3:38:66:80', 'chi5:38:66:80', 'chi3:80:24:50', 'chi29:22:52:60', '11a1:11:24:50', '11a1:22:36:60']
 FILLS = {'zeta': [4.0, 7.0, 10.0], 'default_frac': [0.3, 0.55, 0.8]}
 
 def zeros_of(name):
@@ -129,7 +129,10 @@ def write_md():
     rows = [json.loads(l) for l in open(OUT_JSONL)] if os.path.exists(OUT_JSONL) else []
     seen = {r['window']: r for r in rows}
     out = ["# Marginal weights of in-band zeros (notebook 128-130)", "",
-           "w(gamma) = ln lambda_0(G) - ln lambda_0(G \\ gamma) ; gamma_c = Nyquist crossing (gamma L/2pi = N(gamma)) ; fit w = w0 (1 - gamma/gamma_c).", "",
+           "w(gamma) = ln lambda_0(G) - ln lambda_0(G \\ gamma) ; gamma_c = Nyquist crossing (gamma L/2pi = N(gamma)) ; fit w = w0 (1 - gamma/gamma_c).",
+           "",
+           "`chi3:80:24:50` is a small-basis flag (omax=34, 10 zeros), not a peer of the N=46-66 rows (omax~110, w0=10-11.5).",
+           "",
            "| window | ell | in-band / places | omega_max | gamma_1 | w(gamma_1) | w(mid) | gamma_c (cross) | fit w0 | fit gamma_c | fills (gamma: nats) |",
            "|---|---|---|---|---|---|---|---|---|---|---|"]
     for w in sorted(seen):

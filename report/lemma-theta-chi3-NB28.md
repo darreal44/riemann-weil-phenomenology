@@ -1,25 +1,37 @@
-# χ₃ µ=80, the hat wall at NB=28
+# χ₃ µ=80: certified window, and what is not a wall
 
-    NB=24 dps=48   λ₀ = +5.60×10⁻⁴⁹   N_eff=3.00
-    NB=25 dps=56   λ₀ = +2.34×10⁻⁵⁰   N_eff=3.01
-    NB=26 dps=56   λ₀ = +9.30×10⁻⁵²   N_eff=3.01
-    NB=28 dps=52   λ₀ = −6.66×10⁻⁵³   N_eff=3.03
-    NB=28 dps=64   λ₀ = −1.18×10⁻⁵²   N_eff=3.03
+The −0.82 at every NB was a truncated
+Euler product in `spectro.py` (primes
+hardcoded to 37). After the sieve:
 
-Raising dps does not flip the sign
-back. This is not a 52-digit rounding
-of a 10⁻⁵⁵ positive value. Hats n≳27
-oscillate at ω ≈ 2π n / log 80 ≈ 39
-and see the prime cutoff µ=80 as a
-hard wall; the Galerkin form picks
-up a negative direction.
+    scan_s   NB=24 dps=48   λ₀ = +5.60×10⁻⁴⁹   ℓ = 111.1   N_eff = 3.00
+    edge     NB=24 dps=50   λ₀ = +4.18×10⁻⁴⁹   ℓ = 111.4   edge = 108.93
+                            R = +2.47   ℓ/edge = 1.023
 
-Last certified SPD window: **NB=26**.
-N_eff has already sat at 3.00–3.01.
-C was 0.113 at NB=24; the extra two
-hats do not take it to 1/(4e).
+That is the same family as χ₃ µ=38
+(ℓ/edge = 1.024, R = 3.32). Do not
+compare raw ℓ = 111 to ℓ(µ=38) = 140:
+the latter used 66 hats. Here N_eff
+has just reached 3; ℓ is still
+climbing with NB (52 → 69 → 85 → 98
+→ 111 from NB=8 to 24).
 
-Do not raise µ (breaks at 90) and
-do not raise NB past 26 at µ=80.
-The χ₃ four-mode state is measured.
-C stays off the ζ limit.
+## What remains delicate
+
+Older rows before the sieve:
+
+    NB=26 dps=56   λ₀ = +9.3×10⁻⁵²
+    NB=28 dps=64   λ₀ = −1.2×10⁻⁵²
+
+Those signs were taken on an
+incomplete prime list or on a
+quadrature that is not the current
+`scan_s`. Production window:
+
+    **NB=24, dps=50.**
+
+µ=90 is no longer forbidden by an
+assembly axiom; it still needs a
+sieve up to 90 and dps above −ln λ₀.
+Default in `edge_value_scan` for
+µ≥60 is NB=24 dps=50.

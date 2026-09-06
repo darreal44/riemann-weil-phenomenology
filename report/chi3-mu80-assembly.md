@@ -31,8 +31,7 @@ assembly at larger NB.
 
 spectro.py now sieves all primes
 ≤ µ and builds the towers p^k ≤ µ.
-edge_value_scan no longer caps
-NB at 26 for µ ≥ 60.
+edge_value_scan default for µ≥60 is NB=24 dps=50.
 
 Re-run after pull:
 
