@@ -82,10 +82,11 @@ precision glitch at `ζ:16`. A cheap judge
 `R = O(1)` and `edge/ℓ` in `(0.70, 1.15)`.
 
 **Not a proof.** The extremal problem is harmonic analysis (linear
-constraints on a window). The jump heuristic
-`∑_{γ_k > ω_max} 8 ψ(0)² sin²(γ_k L/2)/γ_k²` matches `λ₀` to a
-factor `∼1.5` on `ζ` at `μ=11`. That is evidence, not an estimate
-with an `O(1)` remainder derived from first principles.
+constraints on a window). At μ=16 (`report/edge-ratio-mu16.md`)
+edge/ℓ is 0.73–0.90 except χ₃=0.37 (R=44, not O(1) relative to ℓ).
+The jump sum matches λ₀ to 7% (χ₁₃) and 2% (χ₄) when λ₀ is
+above 10^{-16} (`report/jump-heuristic-mu16.md`); χ₅/χ₃ underflow.
+S uses the measured ψ(0). Evidence, not an a priori O(1).
 
 ---
 
