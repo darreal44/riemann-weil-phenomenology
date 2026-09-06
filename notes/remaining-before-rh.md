@@ -277,6 +277,18 @@ by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
 
 ---
 
+## 8b. A(v) versus P(v) as μ grows
+
+Same v. Both diverge like −c L with
+c ≈ 0.33 (table `report/Av-Pv-divergence.md`).
+The φ₀ piece is v₀² A₀₀ ∼ −4L/13; the
+measured slope is a bit steeper
+(`report/why-L3.md`, `report/A-4L13.md`).
+Q = A−P sits in a 0.004–0.009 band
+from μ=16 to 37. A linear model of Q
+would cross 0 and is the wrong
+remainder. Not (∀ μ).
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
