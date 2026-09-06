@@ -73,7 +73,7 @@ def one(window, nsZ, nsC):
     return rec
 
 def write_md():
-    rows = [json.loads(l) for l in open(OUT_JSONL)] if os.path.exists(OUT_JSONL) else []
+    rows = [json.loads(l) for l in open(OUT_JSONL, encoding='utf-8')] if os.path.exists(OUT_JSONL) else []
     seen = {}
     for r in rows: seen[r['window']] = r
     lines = ["# Edge value of the ground state vs depth (notebook 125-126)", "",
@@ -87,7 +87,7 @@ def write_md():
         tg = r['tau_g1']
         lines.append(f"| {w} | {r['NB']} | {r['dps']} | {r['lambda0_str']} | {r['ell']:.2f} | {r['edge']:.2f} | {r['ell']/r['edge']:.3f} | {r['R']:+.2f} | "
                      + (f"{tg:.2f} | {r['ell']/tg:.2f} | {r['edge']/tg:.2f} |" if tg else "— | — | — |"))
-    open(OUT_MD, 'w').write("\n".join(lines) + "\n")
+    open(OUT_MD, 'w', encoding='utf-8').write("\n".join(lines) + "\n")
 
 if __name__ == '__main__':
     args = sys.argv[1:] or ['all']
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     nsZ = load_module('spectro_zeta.py'); nsC = load_module('spectro.py')
     done = set()
     if os.path.exists(OUT_JSONL):
-        done = {json.loads(l)['window'] for l in open(OUT_JSONL)}
+        done = {json.loads(l)['window'] for l in open(OUT_JSONL, encoding='utf-8')}
     for w in windows:
         if w in done:
             print(f"[{w}] deja fait, saute"); continue
