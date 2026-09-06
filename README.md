@@ -66,6 +66,9 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - `notes/remaining-before-rh.md` — judged status of Landau matching, the edge lemma,
   det(A−P) by estimates, Schur T⁻¹, χ₃ μ=80 assemblies, 37a1 Q vs Gram, Maass Q,
   CC sub-shells and the 2-adic mass. Not RH. Read before any covering lemma.
+- `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
+  sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
+  \(\hat\psi=\) jump \(+\,r\). Not RH.
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
