@@ -32,8 +32,11 @@ def _primes(n: int) -> list[int]:
     return [i for i in range(2, n + 1) if sv[i]]
 
 
-def split_AP(mu: float, dps: int = 40, DEG: int = 12) -> dict:
-    """A(v), P23, Prest, Q on χ₅, three hats. Unconditional pairing."""
+def assemble_AP(mu: float, dps: int = 40, DEG: int = 12):
+    """A, P23, Prest as 3×3 on χ₅, three hats. Unconditional pairing.
+
+    P23 is n=2 and n=3 only. One assemble serves every v.
+    """
     cf = CHARS["chi5"]
     q, a = cf["q"], cf["a"]
     tab = chi_tab(cf["d"], q)
@@ -116,11 +119,10 @@ def split_AP(mu: float, dps: int = 40, DEG: int = 12) -> dict:
                 * mp.fsum(D2[k] * (F0 * EC[k] - th[k]) for k in range(K))
             )
             A[n, m] = A[m, n] = arch
-    Av = float(V @ A @ V)
 
+    P23 = np.zeros((3, 3))
+    Prest = np.zeros((3, 3))
     primes = _primes(int(mu))
-    p23 = 0.0
-    prest = 0.0
     for p in primes:
         n = p
         while n <= mu + 1e-12:
@@ -131,12 +133,22 @@ def split_AP(mu: float, dps: int = 40, DEG: int = 12) -> dict:
                 for i in range(3):
                     for j in range(3):
                         Th[i, j] = float(th_at(i, j, lg))
-                term = float(V @ Th @ V) * w
                 if n in (2, 3):
-                    p23 += term
+                    P23 += w * Th
                 else:
-                    prest += term
+                    Prest += w * Th
             n *= p
+    return A, P23, Prest
+
+
+def split_AP(mu: float, dps: int = 40, DEG: int = 12, v=None) -> dict:
+    """A(v), P23, Prest, Q on χ₅, three hats. Unconditional pairing."""
+    A, P23, Prest = assemble_AP(mu, dps=dps, DEG=DEG)
+    vec = V if v is None else np.asarray(v, dtype=float)
+    vec = vec / np.linalg.norm(vec)
+    Av = float(vec @ A @ vec)
+    p23 = float(vec @ P23 @ vec)
+    prest = float(vec @ Prest @ vec)
     gap = Av - p23
     Q = gap - prest
     return {
