@@ -47,9 +47,11 @@ windows we ran. On the K*-plane itself (`report/ker-ells.md`,
 `‖G|_ker‖ ≈ 3.4`, so C = −ln‖‖ is negative. The hypothesis
 `‖G|_ker‖ ≤ e^{−2}` that would force #{ℓ>2} ≥ K* fails by two
 orders of magnitude. The extra kernel directions are real and
-shallow. The cut `ℓ>2` is a choice that keeps only the deep
-block. It is not RH. (`ζ` `μ=11` needs mpmath:
-`test_depth_law.py`.)
+shallow (`report/anti-well.md`). They are sampling, not a
+wrong time-norm: the hats are already an L²[0,L] ONB
+(`report/anti-well-norm.md`). The cut `ℓ>2` is a choice that
+keeps only the deep block. It is not RH. (`ζ` `μ=11` needs
+mpmath: `test_depth_law.py`.)
 
 **The constant 11.** One-interval Slepian on a desert of length
 `|I|` gives `−ln λ_min = π τ |I| + log(1/A) + o(1)`. Writing
