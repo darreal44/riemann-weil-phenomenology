@@ -198,6 +198,12 @@ drop 2, 5, 13 all negative (−0.42, −1.02, −0.14). Quorum stays
 complete. SURVIVE. 22 processes, 219 s. Judge:
 `tests/test_gl2_67a1_mu74.py`.
 
+**Drop 3 at μ=74 and 80.** Preregistered linear crossing ~70
+(`report/prereg-37a1-mu74.md`). Executed
+(`notes/gl2-37a1-mu74.md`): drop-3 λ₀ = **+0.090** at both
+windows (full ℓ = 16.82 and 17.37). Plateau, not a delay.
+KILL. Judge: `tests/test_gl2_37a1_mu74.py`.
+
 ---
 
 ## 7. Maass Q

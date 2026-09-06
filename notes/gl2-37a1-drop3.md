@@ -57,4 +57,5 @@ multiplicative, `ellap`). Invisible at μ=11 (N>11); required at
 | μ=62, drop 3 → negative | **false** (KILL) |
 | 17, 19 mute at μ=62 | judged (a_p=0, drop = full) |
 | quorum complete at μ=62 | false; 3 still out |
+| μ=74 / 80, drop 3 → negative | false; plateau +0.09 (`gl2-37a1-mu74.md`) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
