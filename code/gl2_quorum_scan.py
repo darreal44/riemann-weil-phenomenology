@@ -74,9 +74,7 @@ def main() -> None:
     print(f"wrote {dest}", flush=True)
     full = next(r for r in rows if r["drop"] is None)
     d3 = next((r for r in rows if r["drop"] == 3), None)
-    if name == "37a1" and d3 is not None and int(mu) in (62, 74, 80):
-        # §116: drop 3 → negative at μ=62 (killed). Next: μ=74, linear
-        # 0.38→0.093 crosses ~70.
+    if name == "37a1" and d3 is not None:
         print(
             "KILL" if d3["lam0"] > 0 else "SURVIVE",
             f"mu={int(mu)}",
