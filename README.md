@@ -50,6 +50,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   hat f(rho) hat f(1-rho), measured on V_9 at µ=11 (crosses at γ_1, invisible at
   height 80). PW-de Branges is not the ξ-space. No RH claim.
 
+- `notes/discrete-landau.tex` — discrete Landau on the cosine window: evaluation kernel $\ge D_{\max}$ for any nodes; mean rung $11=\pi^2+\log(1/A)/D$. Companion to `the-well`.
+
 - `notes/the-well.pdf` (v3) — *The well, and the depth law.* The ground state of the windowed Weil
   form as one object seen from five sides (desert, hyper-nullity and edge budget, spectral mass in the
   desert, super-exponential collapse of the autocorrelation — the "silence at the primes", not about
@@ -59,7 +61,18 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   of the window's Nyquist count over the zero count (discrete Landau: 10/10, 5/5, 3/3, 1/1) — hence
   **ℓ ≈ 11.0·D_max**: within 3% on eight of twelve degree-1 windows, 10% on GL₂, no fitted parameter but
   the mean rung. Marginal weight of each zero w(γ) ≈ 11(1 − γ/γ_c), γ_c the Nyquist crossing (fourteen
-  windows). Open: the proof of the count and the origin of the constant 11. Nothing here bears on RH.
+  windows). Open: the $O(\log c)$ matching of the count, and the $1$~nat/mode remainder above $\pi^2$. Lower bound of the count and the identification $11=\pi^2+\log(1/A)/D$ are in `notes/discrete-landau.tex`. Nothing here bears on RH.
+
+- `notes/remaining-before-rh.md` — judged status of Landau matching, the edge lemma,
+  det(A−P) by estimates, Schur T⁻¹, χ₃ μ=80 assemblies, 37a1 Q vs Gram, Maass Q,
+  CC sub-shells and the 2-adic mass. Not RH. Read before any covering lemma.
+- `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
+  sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
+  \(\hat\psi=\) jump \(+\,r\). Not RH.
+- `notes/av-witness.md` — rational witness (4,−3,1)/√26 at χ₅ μ=16: Arb enclosure
+  of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
+- `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
+  1/y cancelled; remainder estimate inside ±0.003 but not a majorant. Not RH.
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 

@@ -1,5 +1,19 @@
 # Status after the Slepian thread
 
+Living index: `README.md`. This file is a dated campaign log of
+the Slepian thread. It does not supersede later judged calculations
+(`notes/equivalents-judged.md`, `notes/remaining-before-rh.md`)
+nor the GL2 prime-side note. Dated claims left in place below:
+
+- “χ₂₉ is the only paired window” — superseded by eight elliptic
+  curves (notebook 105–116, `notes/gl2-prime-side.pdf`).
+- “What is not next: Li, Maass” — Li’s finite prefix is judged
+  and is not a proof; Maass Gram exists, prime-side Q does not.
+
+---
+
+# Status after the Slepian thread (original)
+
 ## Weil (unchanged)
 
 Q = Gram under RH. χ₂₉ G/Q = 0.93→0.88→0.83.

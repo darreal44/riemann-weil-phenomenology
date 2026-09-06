@@ -1,26 +1,27 @@
-# Eigenmodes Q vs Gram — χ₂₉ μ=11
+# Eigenmodes of G — χ₂₉ μ=11 N=24 T=320
 
-Overlap |⟨v_Q, v_G⟩| after sign alignment.
+Coefficients in the Laplace (hat) basis.
+IPR = 1/∑|c_n|⁴ : 1 = one mode, 25 = white.
 
-| i | overlap | ||Δv|| | k̄_Q | k̄_G |
-|---|---------|--------|------|------|
-| 0 | 0.999 | 0.046 | 0.53 | 0.50 |
-| 1 | 0.999 | 0.032 | 0.69 | 0.72 |
-| 2 | 0.933 | 0.37 | 10.8 | 11.8 |
-| 3 | 0.924 | 0.39 | 6.2 | 5.1 |
-| 4 | 0.971 | 0.24 | 5.7 | 5.2 |
-| 5 | 0.993 | 0.12 | 4.7 | 5.3 |
-| 6 | 0.754 | 0.70 | 21.6 | 17.8 |
-| 7 | 0.788 | 0.65 | 14.0 | 16.8 |
+| k | λ | IPR | S_ent | |c₀| | |c₁| | |c₂| | |ψ(0)| |
+|---|---|---|---|---|---|---|---|
+| 0 | 0.298 | 2.16 | 2.50 | 0.764 | 0.587 | 0.250 | 0.569 |
+| 1 | 1.749 | 2.32 | 2.62 | 0.642 | 0.712 | 0.256 | 0.179 |
+| 2 | 2.593 | 1.66 | 2.68 | 0.020 | 0.034 | 0.060 | 0.827 |
+| 4 | 3.203 | 5.23 | 7.04 | 0.017 | 0.136 | 0.178 | 0.600 |
+| 18 | 6.084 | 1.33 | — | peak n=11 at 0.93 | | | |
+| 24 | 7.438 | 4.08 | — | peak n=22 | | | |
 
-v0 is the same vector: mass on n=0,1
-(0.76, 0.59), then a small n=2. That is the
-two-bar mode already named. Gram and Q see
-the same singlet.
+v₀ is a two-mode IR state φ₀+φ₁ (99 % in
+n≤2). Large edge |ψ(0)|: the well is an
+edge jump.
 
-Mode 6 is where the bases mix (overlap 0.75).
-It is also the eigenvalue that was 0.937.
-High-k junk, not the desert.
+v₁ is the orthogonal IR mix, small edge.
+The gap 0.30→1.75 is that 2-level split.
 
-The 7 % on λ0 is a scale, not a rotation:
-the mode is found, the value is 7 % off.
+From k≥2 the modes leave the IR. Some
+(k=18) lock onto one Laplace number —
+almost eigenfunctions of Δ. Those are
+the T-block of Schur: already positive.
+
+The dangerous direction is only v₀.
