@@ -1,92 +1,76 @@
 # Lemma 2 — status
 
-## What is stable
+## Stable facts
 
 1. **Edge.** −2 ln|ψ(0)| / ell ∈ [0.82, 0.98]
-   (`lemma2-edge-psi0.md`). λ₀ lives
-   at the endpoint of the window.
+   (`lemma2-edge-psi0.md`).
 
-2. **RH identification.** Two-sided
-   Eval of the hats at ±γ gives
-   σ_min² / λ₀ = 0.85–0.93
-   (`lemma2-RH-eval.md`). On Q's
-   own vector, 2∑ |F(γ)|² / λ₀ =
-   0.91–0.93 (`lemma2-RH-tail.md`).
-   The 7–9 % is T>320 + Γ.
+2. **RH.** 2∑ |F(γ)|² / λ₀ = 0.91–0.93
+   on Q's vector (`lemma2-RH-tail.md`).
+   Two-sided Eval: 0.85–0.93
+   (`lemma2-RH-eval.md`). Leftover
+   = T>320 + Γ.
 
-3. **Not the desert Slepian.**
-   That test function is 10⁶–10¹⁵
-   above λ₀ (`lemma2-slepian-testfn.md`).
-   F of the ground state vanishes
-   on the first zeros and peaks
-   past the last hat
-   (`lemma2-F-at-zeros.md`).
+3. **3 hats.** Mass of the ground
+   state on n=0,1,2 is 0.99998.
+   Shape (+,−,+) in ker ψ(0)
+   (`lemma2-three-hats.md`).
+   λ₀ = λ_min(H − C T⁻¹ Cᵀ)
+   to 0.4 % (`lemma2-schur-3.md`).
 
-4. **Not PW_τ Beurling.** The Gram
-   of reproducing kernels on Λ_L
-   has λ_min = O(1)
-   (`lemma2-cartwright-gram.md`).
-   Depth is σ_min of Eval on the
-   *hat subspace*.
+4. **H|ker = Arch − Primes.**
+   Two O(1) terms. On a wide
+   desert they agree to 6–8
+   digits; that agreement is
+   λ_min(H) (`lemma2-H-arch-primes.md`).
+   Primes 2 and 3 carry P
+   (`lemma2-primes-on-ker.md`).
+   The Schur then subtracts
+   another 10⁴–10¹⁴
+   (`lemma2-H-on-ker.md`).
 
-5. **Not a fitted C₀ τγ₁.**
-   ell/(τγ₁) spans 2.3–6.3;
-   jackknife moves a from 4.5 to
-   6.5 (`lemma2-ell-robust.md`).
-   log det of Slepian(E) tracks
-   ell only on χ₅
-   (`lemma2-Q-vs-det.md`).
-
-6. **C = λ₀/ψ(0)²** sits in
-   0.11–0.25. ∑ 2(1−cos(γL))/γ²
-   is 0.12–0.61. Their ratio is
-   not 1 (0.3–1.4). The endpoint
-   model is the right *shape*,
-   not a sharp prefactor.
+5. **Not** the desert Slepian
+   (10⁶–10¹⁵ too big), not
+   PW_τ Beurling (Gram O(1)),
+   not a universal C₀
+   (`lemma2-slepian-testfn.md`,
+   `lemma2-cartwright-gram.md`,
+   `lemma2-ell-robust.md`).
 
 ## What Lemma 2 is
 
-Under RH:
+    λ₀(Q) = λ_min( H − C T⁻¹ Cᵀ )
+          = (1+O(10⁻¹)) σ_min²(Eval_±)
 
-    λ₀(Q) = (1 + O(10⁻¹)) σ_min²(Eval_±).
+and
 
-The inequality to prove is
+    −ln|ψ(0)| = ell/2 + O(1).
 
-    σ_min(Eval : V_{N_B} → ℂ^{±Γ})
-    ≥ exp(−C₀ τ γ₁ − C₁)
+To prove: a lower bound on
+λ_min(Δ) or on |Arch(k)−Primes(k)|
+after the Schur, of the shape
+exp(−C₀ τγ₁ − C₁).
 
-or the equivalent
+## What a hand proof can reach
 
-    −ln|ψ(0)| ≤ C₀ τ γ₁ + C₁.
+- 3-hat |A−P| without zeros:
+  truncated Weil on one test
+  function. Gives λ_min(H),
+  which is 10⁶–10¹⁴ above λ₀
+  on χ₅/χ₃, ~40× on χ₁₃.
+- The Schur factor has no
+  comparison function yet.
 
-C₀ is of order one, not measured
-as a universal number.
+## Files (25)
 
-## What is not proved
-
-A comparison function, written
-by hand, whose Eval Rayleigh is
-within a constant of λ₀. The
-Slepian of [0,γ₁], the tent, the
-finite Blaschke, Jensen, Landau–
-Widom on E, all miss a factor
-in the *exponent*. The object
-that matches is Q's ground
-state — circular as a proof.
-
-## Files
-
-`lemma2-proof.md`,
-`lemma2-logdet-split.md`,
-`lemma2-Q-vs-det.md`,
-`lemma2-ell-fit.md`,
-`lemma2-ell-robust.md`,
-`lemma2-edge-psi0.md`,
-`lemma2-psi0-predictors.md`,
-`lemma2-slepian-testfn.md`,
-`lemma2-F-at-zeros.md`,
-`lemma2-finite-interpolant.md`,
-`lemma2-cartwright-gram.md`,
-`lemma2-eval-svd.md`,
-`lemma2-RH-eval.md`,
-`lemma2-RH-tail.md`.
+edge, RH-eval, RH-tail,
+three-hats, schur-3, H-on-ker,
+H-arch-primes, primes-on-ker,
+F-at-zeros, eval-svd,
+slepian-testfn, cartwright-gram,
+finite-interpolant, ell-fit,
+ell-robust, Q-vs-det,
+logdet-split, psi0-predictors,
+sampling-constant, isoperimetric,
+spectral-tail, three-tests,
+filled, proof, STATUS.
