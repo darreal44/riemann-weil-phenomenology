@@ -12,8 +12,11 @@ cross, mass in d*λ.
 Asks: 4 or 8.
 Sandbox: κ=1.67→3.14
 at Λ=2..4, toward 4.
-Not frozen. Server
-ladder not yet run.
+Server ladder: h-grid
+at Λ=16 freezes at
+κ≈5.98 (wander 0.07),
+not 4 or 8. Λ=24 is
+7.26. KILL. Not Thm 4.
 
 *Unlike* #46 this
 throws away B_{1/2},
