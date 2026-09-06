@@ -135,13 +135,19 @@ def write_md():
 
 if __name__ == '__main__':
     ap = argparse.ArgumentParser()
+    ncpu = os.cpu_count() or 8
     ap.add_argument('--quick', action='store_true')
-    ap.add_argument('--workers', type=int, default=int(os.environ.get('JOBS', '1')))
-    ap.add_argument('--inner', type=int, default=int(os.environ.get('INNER', '1')))
+    ap.add_argument('--workers', type=int, default=int(os.environ.get('JOBS', str(min(4, ncpu)))))
+    ap.add_argument('--inner', type=int, default=int(os.environ.get('INNER', str(min(8, ncpu)))))
+    ap.add_argument('--force', action='store_true', help='rerun windows already in the jsonl')
     ap.add_argument('windows', nargs='*', default=['all'])
     opt = ap.parse_args()
     windows = DEFAULT if opt.windows == ['all'] else opt.windows
-    done = {json.loads(l)['window'] for l in open(OUT_JSONL)} if os.path.exists(OUT_JSONL) else set()
+    import multiprocessing as _mp
+    _mp.freeze_support()
+    done = set()
+    if os.path.exists(OUT_JSONL) and not opt.force:
+        done = {json.loads(l)['window'] for l in open(OUT_JSONL)}
     jobs = []
     for w in windows:
         parts = w.split(':'); name = parts[0]; mu = float(parts[1]); NB = int(parts[2]) if len(parts) > 2 else 46; dps = int(parts[3]) if len(parts) > 3 else 60
