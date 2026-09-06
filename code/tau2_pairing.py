@@ -18,23 +18,17 @@ already twisted in tau2_local (mass p^{-1/2} at λ = p^{±1}, here p=2):
 from __future__ import annotations
 
 import math
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from tau2_local import twisted_module as w_shell  # noqa: E402
+
 
 def h_Lam(lam: float, Lam: float) -> float:
     if lam <= 0:
         return 0.0
     return Lam * lam ** -0.5 * min(1.0, lam)
-
-
-def w_shell(n: int) -> float:
-    """Twisted Connes mass on shell n, vol(Z2*)=1."""
-    lam = 2.0 ** (-n)
-    if n > 0:
-        raw = 1.0
-    elif n < 0:
-        raw = 1.0 / lam
-    else:
-        return 0.0
-    return raw * math.sqrt(lam)
 
 
 def pairing(Lam: float, nmin: int = -8, nmax: int = 8) -> dict:
