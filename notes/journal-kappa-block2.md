@@ -2,7 +2,7 @@
 
 Locked before the server
 run. Not RH. Not Thm 4
-until κ freezes at 4 or 8
+until κ freezes at 2 or 4
 (`report/block2-coefficient.md`).
 
     m = ∫_{|λ−2|<0.24} τ_lin(λ) d*λ
