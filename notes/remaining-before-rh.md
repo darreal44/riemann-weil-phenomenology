@@ -38,13 +38,17 @@ discrete Landau density lower bound (`code/dmax.py`,
 
 **Not proved: equality of the well-count without a threshold.**
 The Gram of in-band hats has `#{ℓ_k > 2} = round(D_max)` on the
-windows we ran. The cut `ℓ > 2` sits in the Landau–Widom plunge
-(eigenvalues of a time-frequency limiter between `δ` and `1−δ`,
-width `O(log c)`, `c ∼ τ L ∼ N`). Removing the cut, the count
-`#{ℓ_k > 1/2}` is strictly larger (`test_landau_matching` on
-`χ₁₃` `μ=16`, float64). The `O(log c)` matching of that plunge
-for the *hat* Gram — not for `χ_E P χ_E` — is the remaining
-analytic step. It is not RH. (`ζ` `μ=11` needs mpmath:
+windows we ran. On the K*-plane itself (`report/ker-ells.md`,
+`report/G-on-ker.md`) the spectrum splits deep / plunge / anti:
+
+    χ₅  K*=5:  26.1, 14.9, 5.3, 1.18, −1.23     (3+1+1)
+    χ₁₃ K*=3:  8.82, 1.46, −1.30                 (1+1+1)
+
+`‖G|_ker‖ ≈ 3.4`, so C = −ln‖‖ is negative. The hypothesis
+`‖G|_ker‖ ≤ e^{−2}` that would force #{ℓ>2} ≥ K* fails by two
+orders of magnitude. The extra kernel directions are real and
+shallow. The cut `ℓ>2` is a choice that keeps only the deep
+block. It is not RH. (`ζ` `μ=11` needs mpmath:
 `test_depth_law.py`.)
 
 **The constant 11.** One-interval Slepian on a desert of length
