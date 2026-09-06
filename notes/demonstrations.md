@@ -193,4 +193,5 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | \(\det(A-P)>0\) by estimates keeping every \(n\le\mu\) | not proved |
 | edge remainder sum dominated by the jump, uniformly in \(v_0\) | not proved |
 | 3-point Gauss of A(v) on [0,1] | arithmetic check (`notes/av-gauss.md`); remainder majorant not written |
+| flint-free A(v), Q(v)>0 ball | judged (`code/av_enclose.py`, `report/Q-v-ball.md`); comparison still open |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
