@@ -310,9 +310,13 @@ Q(v) ∈ [0.003, 0.009] for μ=16..80
 (`report/Q-convergence.md`). Split
 Q = (A−P₂−P₃) − P_rest: both sides
 shrink together (`report/Q-split-23.md`).
-P₂+P₃ → −2.25 (Θ→2I). A has not
-frozen. Two readings, not resolved
-at μ=80. One point at μ=150
+P₂+P₃ → −2.25 is only n=2,3.
+The 2–3 *towers* sum to −1.40
+(`report/P23-all-powers.md`). All
+prime towers together do not
+converge (`report/all-towers.md`).
+A has not frozen. Two readings,
+not resolved at μ=80. One point at μ=150
 (`notes/av-mu150.md`): A−P₂₃ = −0.020
 went through 0; P_rest = −0.024 went
 with it. They did not cross. Q=0.0041.
