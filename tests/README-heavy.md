@@ -27,6 +27,7 @@ meant for the server. Run them one file per line so a failure is attributable:
     python -m pytest tests/test_gl2_37a1_Q_vs_gram.py  -q --tb=short     # 37a1 prime Q vs Gram, not identified
     python -m pytest tests/test_gl2_37a1_drop3.py      -q --tb=short     # 37a1 μ=62 drop 3 (prereg §116), json
     python -m pytest tests/test_gl2_67a1_mu74.py       -q --tb=short     # 67a1 μ=74 quorum complete (prereg §113), json
+    python -m pytest tests/test_gl2_37a1_mu74.py       -q --tb=short     # 37a1 μ=74/80 drop 3 plateau, json
 
 Or all at once (be patient):
 

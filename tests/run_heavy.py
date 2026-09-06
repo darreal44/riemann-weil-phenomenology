@@ -13,7 +13,7 @@ from concurrent.futures import ThreadPoolExecutor
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 HEAVY = ['test_cert_mu3.py', 'test_orphans_wrapped.py', 'test_chi5_mu62.py', 'test_chi3_mu80_assembly.py',
          'test_gl2_conventions.py', 'test_gl2_eight_curves.py', 'test_gl2_quorum_laws.py', 'test_depth_law.py',
-         'test_gl2_37a1_drop3.py', 'test_gl2_67a1_mu74.py']
+         'test_gl2_37a1_drop3.py', 'test_gl2_67a1_mu74.py', 'test_gl2_37a1_mu74.py']
 
 def run_file(f):
     os.makedirs(os.path.join(HERE, 'logs'), exist_ok=True)
