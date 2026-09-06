@@ -1,11 +1,8 @@
 # The depth law ell ~ 11 D_max and the discrete Landau count (notebook 133-134). Recomputing; ~30 s.
-import os, math, pickle, numpy as np, mpmath as mp
+import os, sys, math, pickle, numpy as np, mpmath as mp
 CODE = os.path.join(os.path.dirname(__file__), '..', 'code')
-def _zeros(f): return sorted(float(str(x)) for x in pickle.load(open(os.path.join(CODE, f), 'rb')))
-def _Dmax(Z, mu, NB):
-    L = math.log(mu); nyq = L/(2*math.pi); omax = 2*math.pi*NB/L
-    inb = [g for g in Z if g < omax]
-    return max([g*nyq - (k+1) for k, g in enumerate(inb)] + [omax*nyq - len(inb)])
+sys.path.insert(0, CODE)
+from dmax import D_max as _Dmax, load_zeros as _zeros  # noqa: E402
 def _ladder(Z, mu, NB, dps, kmax=12):
     mp.mp.dps = dps; NP = NB+1; L = mp.log(mu); om = [2*mp.pi*n/L for n in range(NP)]
     G = mp.matrix(NP, NP)
