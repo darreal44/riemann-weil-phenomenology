@@ -4,7 +4,10 @@ CURVES = {  # Cremona labels; models as recalled — the zero Gram check is the 
     '37a1': ([0, 0, 1, -1, 0], 37),     '43a1': ([0, 1, 1, 0, 0], 43),      '53a1': ([1, -1, 1, 0, 0], 53),
     '61a1': ([1, 0, 0, -2, 1], 61),     '67a1': ([0, 1, 1, -12, -21], 67),
 }
-BAD_AP = {'11a1': {11: 1}, '19a1': {19: 1}, '32a1': {2: 0}, '37a1': {37: 1}, '43a1': {43: 1}, '53a1': {53: 1}, '61a1': {61: 1}, '67a1': {67: 1}}
+# a_p at p | N: Atkin–Lehner / ellap. Rank-1 curves here are split
+# multiplicative (a_N = −1). Used to be +1, which is invisible at μ=11
+# (N > 11) and wrong at μ=62 for 37a1.
+BAD_AP = {'11a1': {11: 1}, '19a1': {19: 1}, '32a1': {2: 0}, '37a1': {37: -1}, '43a1': {43: -1}, '53a1': {53: -1}, '61a1': {61: -1}, '67a1': {67: 1}}
 def count_points(a, p):
     a1, a2, a3, a4, a6 = [x % p for x in a]; n = 1  # point at infinity
     for x in range(p):
