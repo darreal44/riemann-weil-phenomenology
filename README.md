@@ -50,15 +50,16 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   hat f(rho) hat f(1-rho), measured on V_9 at µ=11 (crosses at γ_1, invisible at
   height 80). PW-de Branges is not the ξ-space. No RH claim.
 
-- `notes/the-well.pdf` — *The well:* the ground state of the windowed Weil form as one object seen
-  from five sides — desert (sampling floor), hyper-nullity and edge budget, spectral mass in the
-  desert, super-exponential collapse of the autocorrelation (the "silence at the primes", which is
-  not about primes), and the edge value: −ln λ₀ = 2(−ln|ψ(0)|) + O(1) (Grok), derived as the
-  leakage of the edge jump onto the zeros beyond the band edge and verified on thirteen windows
-  (82–103% of the depth). Two independent chains (space side, zero side) agree. What is open is one
-  approximation lemma: how the minimal edge value depends on the in-band zero configuration — the
-  desert alone leaves a factor 3, the gap correction is O(1) per cluster, its form unknown. Nothing
-  here bears on RH.
+- `notes/the-well.pdf` (v3) — *The well, and the depth law.* The ground state of the windowed Weil
+  form as one object seen from five sides (desert, hyper-nullity and edge budget, spectral mass in the
+  desert, super-exponential collapse of the autocorrelation — the "silence at the primes", not about
+  primes — and the edge value: −ln λ₀ = 2(−ln|ψ(0)|) + O(1), derived as jump leakage, thirteen windows
+  at 86–103%). The law that holds them: the zero Gram's eigenvalues form a plunge ladder with
+  near-universal rungs (16 → 5 nats), their number is D_max = max_γ(γL/2π − N_Γ(γ)) — the maximal lead
+  of the window's Nyquist count over the zero count (discrete Landau: 10/10, 5/5, 3/3, 1/1) — hence
+  **ℓ ≈ 11.0·D_max**: within 3% on eight of twelve degree-1 windows, 10% on GL₂, no fitted parameter but
+  the mean rung. Marginal weight of each zero w(γ) ≈ 11(1 − γ/γ_c), γ_c the Nyquist crossing (fourteen
+  windows). Open: the proof of the count and the origin of the constant 11. Nothing here bears on RH.
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
@@ -193,9 +194,9 @@ visible at µ = 3 (c_log3 ≈ 5.55×10⁻⁸ from N = 9…61), a decelerating tr
 (3.59 → 1.86 → 1.54×10⁻⁴⁸ for N = 47, 57, 67). The depth law −ln c_L = s(χ)µ + b is
 thereby a *geometric* property of the zeros: −ln c_L ≈ 1.69·L(γ₁−2π/L)₊ +
 0.82·L·Σ(gap−2π/L)₊, the two coefficients fitted on four scales of ζ alone, predicts s(χ)
-as a structure; its two-term formula, fitted on ζ, predicted s(χ) for the fast characters
-within 20% at mixed cutoffs but overpredicts most L-functions (0.57–0.93) once all zero lists are
-cut at a common T₀ = 320 (§92–94) — the constant is the one-set sampling constant, open;
+as a structure; its two-term formula died at a common cutoff (§92–94) and is replaced by a count:
+**ℓ ≈ 11.0·D_max**, D_max the maximal lead of the window's Nyquist count over the zero count (§133–135,
+`notes/the-well.pdf`), within 3% on most degree-1 windows and 10% on GL₂, no fitted parameter;
 at µ = 3 / 11 / 16. *(No zeros)* the quorum has a mechanism: an unconditional 2×2
 interlacing lemma — Q_S = Q + T_M is indefinite as soon as (ε + vᵀT_Mv)·d < κ², depth ×
 coupling — whose three quantities are certified at µ = 11 (all 15 proper sub-products

@@ -32,7 +32,7 @@ def default_NB_dps(mu):
     if mu <= 16: return 46, 60
     if mu <= 22: return 52, 65
     if mu <= 38: return 66, 75
-    return 40, 70   # mu>=60: spectro now sieves all p<=mu (was truncated at 37)
+    return 24, 50   # mu>=60: NB=24 stable (ell=111 at chi3:80); NB=40/dps=70 underflows eigsy
 
 def load_module(fname):
     src = open(os.path.join(HERE, fname)).read()
