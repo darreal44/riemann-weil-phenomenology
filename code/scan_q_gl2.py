@@ -10,6 +10,10 @@ panel (two Gamma_R ~ Gamma(s)): treat as experimental.
 
 Needs gp on PATH for a_n. 11a1 has a built-in table for n<=30
 so a smoke runs without gp.
+
+Default path is the validated conventions (Re s = 1, Λ_f
+power sums, ½ log N per panel, Frullani tail). The original
+wrong path is GL2_LEGACY=1.
 """
 from __future__ import annotations
 
@@ -112,7 +116,11 @@ def assemble(name, mu, NB, dps, DEG=12):
     t0 = time.time()
     L = mp.log(mp.mpf(mu))
     # Gamma_C(s) = Gamma_R(s) Gamma_R(s+1): both Dirichlet panels.
-    FIX = os.environ.get("GL2_FIX", "0") == "1"
+    # Default = validated path. GL2_FIX=0 or GL2_LEGACY=1 restores the old conventions.
+    if os.environ.get("GL2_LEGACY") == "1":
+        FIX = False
+    else:
+        FIX = os.environ.get("GL2_FIX", "1") != "0"
     # critical line Re s = 1: Gamma_R(s) Gamma_R(s+1) has arguments (1+it)/2, (2+it)/2 -> s0 = 1/2, 1
     s0s = (mp.mpf(1) / 2, mp.mpf(1)) if FIX else (mp.mpf(1) / 4, mp.mpf(3) / 4)
     om = [2 * mp.pi * n / L for n in range(NB + 1)]
@@ -155,7 +163,9 @@ def assemble(name, mu, NB, dps, DEG=12):
         # N^{s/2} contributes (1/2) log N once, i.e. (1/4) log N... in this convention: half of log N per panel
         CST = (mp.log(mp.mpf(Ncond)) / 2 - mp.log(mp.pi) - mp.euler) if FIX else (mp.log(mp.mpf(Ncond) / mp.pi) - mp.euler)
         if FIX:
-            pass
+            # Frullani tail beyond y = L: the F0 e^{-2y}/(1-e^{-2y}) term does not vanish there; its integral is
+            # -(F0/2) log(1 - e^{-2L}) per panel (Grok's original 'cut', correct; wrongly dropped in an earlier FIX)
+            CST -= cut
         elif ncut >= 2:
             CST -= cut
         elif ncut == 1 and s0 == s0s[0]:
@@ -191,8 +201,10 @@ def assemble(name, mu, NB, dps, DEG=12):
     small = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
     ppts = []
     for n, a in an.items():
-        if n < 2 or a == 0:
+        if n < 2:
             continue
+        if a == 0 and not FIX:
+            continue          # original path keys on a_n; the FIX path keys on Lambda_f (a_8 = 0 but Lambda_f(8) = 4 log 2 for 11a1)
         y2, p = n, None
         for qq in small:
             if y2 % qq == 0:
@@ -211,7 +223,8 @@ def assemble(name, mu, NB, dps, DEG=12):
                 for _ in range(k - 1):
                     c0, c1 = c1, ap * c1 - pb * c0
                 lam_f = mp.mpf(c1) * mp.log(p)
-                ppts.append((mp.log(n), lam_f / n))
+                if c1 != 0:
+                    ppts.append((mp.log(n), lam_f / n))
             else:
                 # Re=1: a_n log p / n   (original: wrong for k >= 2 at good primes)
                 ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
