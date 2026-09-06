@@ -2,8 +2,10 @@
 
 Demonstrations that closed after this note: `notes/demonstrations.md`
 (Courant, Schur sign, θ_{f₁}, edge split), `notes/av-gauss.md`
-(Gauss of A(v)), and `notes/landau-depth.md` (kernel count, rungs
-sum to ℓ₀, (16+5)/2=11). The covering lemma is not among them.
+(Gauss of A(v)), `notes/landau-depth.md` (kernel count, rungs
+sum to ℓ₀, (16+5)/2=11), and `notes/log2-log3-step.md` (1999
+finite part vs Sonin remainder; the Paley–Wiener step itself
+is not taken). The covering lemma is not among them.
 
 This note records what is proved, what is an identity of matrices,
 what is measured with a shipped judge, and what is still open — on
@@ -203,13 +205,21 @@ semi-local remainder is predominantly *positive* on the test
 functions where CC's is essentially negative. That is a negative
 result, measured. It is not a replacement pairing.
 
+**The other mechanism** is Connes 1999, not a second remainder
+(`notes/log2-log3-step.md`, `code/log2_log3_step.py`): subtract
+`2 h(1) log' Λ` first. That volume vanishes at the Sonin cutoff
+`Λ=1`. The HS logarithm is in `1/h`, not in `Λ`. Interior primes
+on `(log 2, log 3]` are `{2}`. Theorem 4 says the finite part
+*is* the S-local Weil pairing — no positivity for free. The
+Paley–Wiener step is not taken. Judge:
+`tests/test_log2_log3_step.py`.
+
 **2-adic mass at `λ=2`.** Exact shell pairing
 (`notes/2adic-shells.md`, `code/tau2_local.py`): module twist
 gives 1/√2; inverse twist and the Lebesgue Jacobian both give √2;
 Bombieri (log 2)/√2 is a different Haar. The Fmat grid is not
 that Dirac. Sub-shells: Fg = ∑_n ½ ĝ(2^n ·) − ½ ĝ(·/2)
-(`code/subshells.py`). The (log 2, log 3] step remains a
-measured negative (`notes/semilocal-step.pdf`).
+(`code/subshells.py`).
 
 ---
 
@@ -237,6 +247,20 @@ now a quadrature with a coefficient bound
 on a derivative, not a comparison estimate
 of the integrand. (∀ L) Q_L ≥ 0 is still
 the covering lemma.
+
+---
+
+## 8b. What remains of the (log 2, log 3] step
+
+The Paley–Wiener class of type \(\log 3\) is not certified.
+\(Q(\mu=3)>0\) on \(V_{31}\) is a Galerkin pairing Arch\(-T_2\),
+not a Sonin remainder, and not the step
+(`code/positivite_certifiee_mu3.py`). Operator-level \(\int'\)
+by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
+\(D_S\circ Q\) is still a construction, not a sign measurement
+(journal §108, `report/subshell-ops.md`).
+
+---
 
 ## 9. What this list is not
 

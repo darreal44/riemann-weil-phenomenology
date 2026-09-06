@@ -194,4 +194,7 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | edge remainder sum dominated by the jump, uniformly in \(v_0\) | not proved |
 | 3-point Gauss of A(v) on [0,1] | arithmetic check (`notes/av-gauss.md`); remainder majorant not written |
 | flint-free A(v), Q(v)>0 ball | judged (`code/av_enclose.py`, `report/Q-v-ball.md`); comparison still open |
+| identity orbit vanishes at \(\Lambda=1\); two logarithms | proved (`notes/log2-log3-step.md`) |
+| interior primes on \((\log 2,\log 3]\) = \(\{2\}\) | proved (`notes/log2-log3-step.md`) |
+| (log 2, log 3] for the whole PW class | open; not taken |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
