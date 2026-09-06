@@ -90,6 +90,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
 - `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
   1/y cancelled; remainder estimate inside ±0.003 but not a majorant. Not RH.
+- `notes/av-mu150.md` — one point at μ=150: A−P₂₃ went through 0, P_rest with
+  it; they did not cross. Q=0.0041. Not a sixth slope. Not RH.
 - `report/Q-v-ball.md` — flint-free ball Q(v)∈[0.00402, 0.00649] via
   `code/av_enclose.py`. Comparison estimate still open. Not RH.
 
