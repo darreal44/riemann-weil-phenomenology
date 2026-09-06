@@ -127,3 +127,8 @@ particular 2-plane.
     identity           λ₀(Q) = λ_min(Δ)  (measured)
     missing lemma      ‖C T⁻¹ Cᵀ‖ < λ_min(H)
     not RH             one window, finite hats
+
+Exact sign reduction \(Q>0\Leftrightarrow\Delta>0\) (given \(T>0\)),
+Courant \(\lambda_{\min}(H)\ge\lambda_0\), and the graph Rayleigh
+\(\lambda_0\le\lambda_{\min}(\Delta)\): `notes/demonstrations.md`.
+The missing bound on \(\|CT^{-1}C^T\|\) is unchanged.
