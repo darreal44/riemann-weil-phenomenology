@@ -65,17 +65,37 @@ This is an identity of 2×2 matrices, not a proof that det(A−P)>0
 by estimates. A hand bound would have to keep every n ≤ μ: 2 and 3
 dominate the *size* of P, not the *sign* of the determinant.
 
-## 5. Discrete Landau (already written)
+## 5. Discrete Landau (inequality written; matching not)
 
-`notes/discrete-landau.tex`: dim ker Eval_ω ≥ n(ω) − N_Γ(ω) for
-arbitrary nodes. Mean rung 11 = π² + log(1/A)/D, not derived to
-the digit.
+`code/dmax.py`: dim ker Eval_ω ≥ n(ω) − N_Γ(ω) for arbitrary
+nodes. The count #{ℓ_k > 2} = round(D_max) uses a threshold
+through the plunge (`tests/test_landau_matching.py`). Mean rung
+11 = π² + log(1/A)/D, remainder O(1) per cell, A not derived.
 
-## 6. What remains a demonstration, not a scan
+## 6. det(A−P), Schur, edge, 2-adic — judged as far as they go
+
+- Truncating P at n≤11 flips det H on χ₅; the full n≤16 matrix
+  is SPD (`tests/test_P_truncation_det.py`). An Arb ball excluding
+  0 (`tests/test_H2_arb.py`) is a verification, not an estimate.
+- λ₀(Q) = λ_min(H − C T⁻¹ Cᵀ) is an identity
+  (`tests/test_schur_head.py`). No bound on T⁻¹. The 2-plane does
+  not transfer to λ₀.
+- edge/ℓ = O(1) on a cheap window (`tests/test_edge_remainder.py`).
+  The extremal lemma −ln|ψ(0)|_min = ℓ/2+O(1) is not proved.
+- 2-adic mass at λ=2 climbs through (log 2)/√2 and does not stop
+  (`tests/test_cc_2adic_status.py`). Peak unresolved.
+
+Details: `notes/remaining-before-rh.md`.
+
+## 7. What remains a demonstration, not a scan
 
 - (∀ L) Q_L ≥ 0, or W(h) ≥ 0 on the full class: RH.
-- det(A−P) > 0 by estimates that do not drop n > 8.
-- The O(log c) matching of the Landau count for hats.
+- det(A−P) > 0 by estimates that keep every n ≤ μ.
+- The O(log c) matching of the Landau count for hats, without a
+  threshold ℓ>2.
+- A bound on ‖T⁻¹‖ that turns H≳10⁻⁶ into λ₀>0.
+- The edge extremal lemma.
+- Maass prime-side Q (Γ_R(s±iR)): inputs exist, path does not.
 - Nyman–Beurling / Báez–Duarte: ‖χ − ∑ c_n φ_{θ_n}‖_{L²(0,1)} → 0
   ⇔ RH. A decaying residual up to N=30 is the same finite-prefix
   phenomenon as Li's λ_n. Not implemented here; not a proof either.

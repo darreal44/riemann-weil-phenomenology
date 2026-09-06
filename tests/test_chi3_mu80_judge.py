@@ -17,3 +17,14 @@ def test_scan_s_chi3_mu80_NB8_positive():
     lam, ell, dt = assemble("chi3", 80.0, 8, 28)[:3]
     assert lam > 0, lam
     assert ell[0] > 40, ell[0]
+
+
+def test_scan_s_chi3_mu80_NB32_unsaturated_negative():
+    """Galerkin/quadrature unsaturated on scan_s at NB=32 dps=70.
+
+    spectro/edge_value at the same (NB,dps) gave λ₀>0 and ℓ=135 — a
+    different assembly (see test_chi3_assemblies). Do not harvest ℓ=135.
+    The negative scan_s eigenvalue is not a sign of Q_L.
+    """
+    lam, ell, dt = assemble("chi3", 80.0, 32, 70)[:3]
+    assert lam < 0, lam

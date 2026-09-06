@@ -3,7 +3,9 @@ import os, pytest, mpmath as mp
 
 @pytest.fixture(autouse=True)
 def _reset_global_state():
-    saved = {k: os.environ.get(k) for k in ('GL2_FIX', 'GL2_KMAX', 'GL2_LEGACY')}
+    keys = ('GL2_FIX', 'GL2_KMAX', 'GL2_LEGACY', 'GL2_NCUT', 'GL2_USE_GP',
+            'RETURN_S', 'DUMP_MODE')
+    saved = {k: os.environ.get(k) for k in keys}
     mp.mp.dps = 15
     yield
     mp.mp.dps = 15
