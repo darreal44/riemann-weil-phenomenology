@@ -50,6 +50,16 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   hat f(rho) hat f(1-rho), measured on V_9 at µ=11 (crosses at γ_1, invisible at
   height 80). PW-de Branges is not the ξ-space. No RH claim.
 
+- `notes/the-well.pdf` — *The well:* the ground state of the windowed Weil form as one object seen
+  from five sides — desert (sampling floor), hyper-nullity and edge budget, spectral mass in the
+  desert, super-exponential collapse of the autocorrelation (the "silence at the primes", which is
+  not about primes), and the edge value: −ln λ₀ = 2(−ln|ψ(0)|) + O(1) (Grok), derived as the
+  leakage of the edge jump onto the zeros beyond the band edge and verified on thirteen windows
+  (82–103% of the depth). Two independent chains (space side, zero side) agree. What is open is one
+  approximation lemma: how the minimal edge value depends on the in-band zero configuration — the
+  desert alone leaves a factor 3, the gap correction is O(1) per cluster, its form unknown. Nothing
+  here bears on RH.
+
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
 - `notes/landau-bounds.pdf --- Landau necessary density: early zeros subcritical by 4-90 modes; no constant A.
