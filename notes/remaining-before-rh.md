@@ -322,6 +322,16 @@ went through 0; P_rest = −0.024 went
 with it. They did not cross. Q=0.0041.
 Not a sixth slope. Not (∀ μ).
 
+## 8d. P is an arrival process
+
+A prime enters at y=L (kick 0)
+then drifts toward 2w (`report/arrival.md`).
+Eventual flux per unit L is 2e^{L/2},
+the same divergence as the tower walk
+(`report/arrival-flux.md`). A saturates
+via D₂. There is no P_∞ to subtract
+from A_∞. Not (∀ μ).
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
