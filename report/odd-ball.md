@@ -33,3 +33,13 @@ Not RH. Next: Leibniz
 endpoint M for a_odd,
 as `av_app.py` did for
 a_even.
+
+## Termwise M (catalogued extrema)
+
+    M₁ ≤ 1.680    M₂ ≤ 0.334
+    Q₃ ∈ [0.00490, 0.00724]
+
+Still positive. This is
+the Leibniz + endpoint
+version; the sampled-M
+ball above is tighter.

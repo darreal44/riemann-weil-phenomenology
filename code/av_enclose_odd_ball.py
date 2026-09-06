@@ -8,6 +8,7 @@ import math
 from scan_s import CHARS, chi_tab
 from av_gauss import theta_v, GAUSS_NODES, GAUSS_WEIGHTS, L16
 from av_enclose import trap
+from av_odd_app import termwise_M
 
 GAMMA = 0.5772156649015329
 
@@ -76,6 +77,13 @@ def main():
         Qlo, Qhi = c + Ilo - p, c + Ihi - p
         print(f"{name:<8} {Qlo:10.5f} {Qhi:10.5f}")
         ok = ok and Qlo > 0
+
+    MT1 = termwise_M(1.0, 0.7190, 0.6138, 1.4006)
+    MT2 = termwise_M(1.59, 0.7222, 0.2764, 0.6516)
+    et1 = 8.0 * (h1 ** 3) / 12.0 * MT1
+    et2 = 8.0 * (h2 ** 3) / 12.0 * MT2
+    print(f"termwise M    {MT1:.4f} {MT2:.4f}  err={et1+et2:.6f}")
+    print(f"chi3 termwise Q [{cst(CHARS['chi3']['q'])+g3+t1+t2-et1-et2-p_of('chi3'):.5f}, {cst(CHARS['chi3']['q'])+g3+t1+t2+et1+et2-p_of('chi3'):.5f}]")
     print("tight odds Qlo>0", ok)
     return 0 if ok else 1
 
