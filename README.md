@@ -70,6 +70,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   that linear rungs 16→5 average to 11. Not RH.
 - `notes/2adic-shells.md` — exact Connes Thm 4 shell masses (1/√2 vs √2 vs
   (log 2)/√2) and the semi-local Fourier as a sum of 2-adic sub-shells. Not RH.
+- `notes/gl2-37a1-drop3.md` — 37a1 μ=62, retrait de 3: preregistered
+  negative, executed positive (+0.093). KILL. Not RH.
 - `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
   sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
   \(\hat\psi=\) jump \(+\,r\). Not RH.

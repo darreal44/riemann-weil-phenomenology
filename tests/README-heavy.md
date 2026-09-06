@@ -25,6 +25,7 @@ meant for the server. Run them one file per line so a failure is attributable:
     python -m pytest tests/test_chi3_mu80_judge.py     -q --tb=short     # chi3 mu=80 scan_s NB=8/24/32 (~20 s)
     python -m pytest tests/test_chi3_assemblies.py     -q --tb=short     # scan_s vs spectro quadrature, cheap window
     python -m pytest tests/test_gl2_37a1_Q_vs_gram.py  -q --tb=short     # 37a1 prime Q vs Gram, not identified
+    python -m pytest tests/test_gl2_37a1_drop3.py      -q --tb=short     # 37a1 μ=62 drop 3 (prereg §116), ~400 s
 
 Or all at once (be patient):
 
