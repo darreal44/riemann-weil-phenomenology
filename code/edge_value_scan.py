@@ -4,18 +4,19 @@
 For each window (L-function, mu): assemble the prime-side Q (spectro / spectro_zeta), take the
 ground state v, and record
     ell_Q   = -ln lambda_0
-    edge    = -2 ln |psi(0)|,   psi(0) = (v_0 + sqrt2 * sum_{n>=1} v_n) / sqrt(L)   (value at the window edge)
-    R       = ell_Q - edge                                  (Grok's edge-doubling residual)
-    tau*g1  = (L/2) * gamma_1                                (Slepian parameter of the desert)
-Question (notebook 126): does the edge value alone follow tau*gamma_1 with the dispersion of ell_Q?
+    edge    = -2 ln |psi(0)|,   psi(0) = (v_0 + sqrt2 * sum_{n>=1} v_n) / sqrt(L)
+    R       = ell_Q - edge
+    tau*g1  = (L/2) * gamma_1
 
-Resumable: appends one JSON line per window to report/edge-value-scan.jsonl and rewrites
-report/edge-value-scan.md from all lines. Heavy windows (mu >= 38) take minutes each: run on the server.
+Windows are independent: --workers N runs them in separate processes (mpmath holds the GIL).
+Memory per worker is a few hundred MB (quadrature + one (NB+1) matrix). On a 32c/64GB
+Threadripper, --workers 16 is the intended setting. The A6000 does not help: eigsy is
+mpmath on a 40-67 matrix.
 
-usage:  python3 code/edge_value_scan.py [window ...]      window = name:mu[:NB:dps], e.g. chi5:16 chi3:38:66:70
-        python3 code/edge_value_scan.py all               (the eleven windows of lemma2-ell-fit.md + zeta 11, 16)
+usage:  python3 code/edge_value_scan.py [--workers N] [window ...]
+        python3 code/edge_value_scan.py --workers 16 all
 """
-import os, sys, io, json, time, pickle, contextlib
+import os, sys, io, json, time, pickle, contextlib, argparse
 import mpmath as mp
 HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
 sys.path.insert(0, HERE)
@@ -31,7 +32,7 @@ def default_NB_dps(mu):
     if mu <= 16: return 46, 60
     if mu <= 22: return 52, 65
     if mu <= 38: return 66, 75
-    return 26, 70   # mu >= 60: assembly wall beyond NB ~ 26-28 (Grok, chi3 at mu=80); larger NB gives lambda_0 < 0
+    return 26, 70   # mu >= 60: assembly wall beyond NB ~ 26-28 (Grok, chi3 at mu=80)
 
 def load_module(fname):
     src = open(os.path.join(HERE, fname)).read()
@@ -47,13 +48,15 @@ def gamma1(name):
             return Z[0]
     return None
 
-def one(window, nsZ, nsC):
+def one(window):
+    """Process-safe: loads spectro modules inside the worker."""
     parts = window.split(':'); name = parts[0]; mu = float(parts[1])
     NB, dps = default_NB_dps(mu)
     if len(parts) > 2: NB = int(parts[2])
     if len(parts) > 3: dps = int(parts[3])
     mp.mp.dps = dps; NP = NB + 1; L = mp.log(mu)
     import builtins
+    nsZ = load_module('spectro_zeta.py'); nsC = load_module('spectro.py')
     t0 = time.time()
     with contextlib.redirect_stdout(io.StringIO()):
         if name == 'zeta':
@@ -90,17 +93,37 @@ def write_md():
     open(OUT_MD, 'w', encoding='utf-8').write("\n".join(lines) + "\n")
 
 if __name__ == '__main__':
-    args = sys.argv[1:] or ['all']
-    windows = DEFAULT if args == ['all'] else args
-    nsZ = load_module('spectro_zeta.py'); nsC = load_module('spectro.py')
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--workers', type=int, default=int(os.environ.get('JOBS', '1')))
+    ap.add_argument('windows', nargs='*', default=['all'])
+    opt = ap.parse_args()
+    windows = DEFAULT if opt.windows == ['all'] else opt.windows
     done = set()
     if os.path.exists(OUT_JSONL):
         done = {json.loads(l)['window'] for l in open(OUT_JSONL, encoding='utf-8')}
+    todo = [w for w in windows if w not in done]
     for w in windows:
         if w in done:
-            print(f"[{w}] deja fait, saute"); continue
-        rec = one(w, nsZ, nsC)
-        with open(OUT_JSONL, 'a') as f: f.write(json.dumps(rec) + "\n")
-        print(f"[{w}] NB={rec['NB']} dps={rec['dps']} lambda0={rec['lambda0_str']} ell={rec['ell'] if rec['ell'] is None else round(rec['ell'],2)} edge={rec['edge']:.2f} R={rec['R'] if rec['R'] is None else round(rec['R'],2)} tau*g1={rec['tau_g1'] and round(rec['tau_g1'],2)} [{rec['seconds']}s]", flush=True)
-        write_md()
+            print(f"[{w}] deja fait, saute")
+    workers = max(1, opt.workers)
+    print(f"edge_value_scan: {len(todo)} windows, workers={workers}", flush=True)
+    recs = []
+    if workers == 1 or len(todo) <= 1:
+        for w in todo:
+            rec = one(w)
+            recs.append(rec)
+            print(f"[{w}] NB={rec['NB']} dps={rec['dps']} lambda0={rec['lambda0_str']} ell={rec['ell'] if rec['ell'] is None else round(rec['ell'],2)} edge={rec['edge']:.2f} R={rec['R'] if rec['R'] is None else round(rec['R'],2)} tau*g1={rec['tau_g1'] and round(rec['tau_g1'],2)} [{rec['seconds']}s]", flush=True)
+    else:
+        from concurrent.futures import ProcessPoolExecutor, as_completed
+        with ProcessPoolExecutor(max_workers=min(workers, len(todo))) as ex:
+            futs = {ex.submit(one, w): w for w in todo}
+            for fut in as_completed(futs):
+                w = futs[fut]
+                rec = fut.result()
+                recs.append(rec)
+                print(f"[{w}] NB={rec['NB']} dps={rec['dps']} lambda0={rec['lambda0_str']} ell={rec['ell'] if rec['ell'] is None else round(rec['ell'],2)} edge={rec['edge']:.2f} R={rec['R'] if rec['R'] is None else round(rec['R'],2)} tau*g1={rec['tau_g1'] and round(rec['tau_g1'],2)} [{rec['seconds']}s]", flush=True)
+    with open(OUT_JSONL, 'a', encoding='utf-8') as f:
+        for rec in recs:
+            f.write(json.dumps(rec) + "\n")
+    write_md()
     print("table :", OUT_MD)
