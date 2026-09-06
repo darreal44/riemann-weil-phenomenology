@@ -8,8 +8,8 @@ until κ freezes at 4 or 8
     m = ∫_{|λ−2|<0.24} τ_lin(λ) d*λ
     τ_lin from W = ½ (B₂ A_∞ + F_∞ (P B₂ P))
     κ = m · 2√2
-    κ → 4  module  (1/√2)
-    κ → 8  inverse (√2)
+    κ → 2  module  (1/√2)
+    κ → 4  inverse (√2)
 
 ## Here (sandbox)
 
@@ -54,7 +54,7 @@ this note. Kill if κ at
 Λ=16 cpu=400 is still
 wandering by >0.3 versus
 cpu=160. Survive if it
-sits at 4±0.2 or 8±0.2.
+sits at 2±0.2 or 4±0.2.
 
 ## Not on this probe
 

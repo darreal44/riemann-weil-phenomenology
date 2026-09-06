@@ -71,13 +71,14 @@ cell averaging of Si.
         (n=+1, |u|_2=½, raw 1,
          inverse twist)
 
-    m_lin / (1/√2) = κ/4
-    m_lin / √2     = κ/8
+    m_lin / (1/√2) = κ/2
+    m_lin / √2     = κ/4
 
-Equality with either
-target is the statement
-κ=4 (module) or κ=8
-(inverse). κ is *not*
+Equality: κ=2 (module)
+or κ=4 (inverse).
+(The earlier 4/8 split
+was an arithmetic slip:
+κ/(2√2) × √2 = κ/2.) κ is *not*
 1: it is the matrix
 element of B₂ on the
 archimedean compression.
@@ -101,8 +102,8 @@ to 4·(1/√2)=2√2 or to
 8·(1/√2) wait no:
 
 m_lin = κ/(2√2).
-Set m_lin = 1/√2 ⇒ κ=4.
-Set m_lin = √2     ⇒ κ=8.
+Set m_lin = 1/√2 ⇒ κ=2.
+Set m_lin = √2     ⇒ κ=4.
 
 A freeze of that
 single-block probe

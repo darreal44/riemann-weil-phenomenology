@@ -161,3 +161,21 @@ by four Jacobians ».
 If κ→4: inverse
 Jacobians are the
 wrong chain.
+
+## Correction of the 4/8 split
+
+m = κ / (2√2).
+Targets:
+
+    1/√2  ⇒  κ = 2
+    √2    ⇒  κ = 4
+
+The 4/8 numbers in
+`block2-coefficient.md`
+and the first journal
+were κ/2 written as
+κ/4. Smoke κ=1.67→3.14
+is then *between* 2
+and 4, closer to
+module after Λ=2,
+undecided at Λ=4.

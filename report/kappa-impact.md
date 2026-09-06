@@ -13,9 +13,9 @@ d*λ
 Three exits on the
 server ladder.
 
-## A. Freeze at 4±0.2
+## A. Freeze at 2±0.2
 
-m_lin → 1/√2.
+m_lin → 1/√2.  (κ=2)
 The linearised
 slice is the
 **module** shell
@@ -45,9 +45,9 @@ of `peak_2adic.py`
 Do not rerun
 Λ=64.
 
-## B. Freeze at 8±0.2
+## B. Freeze at 4±0.2
 
-m_lin → √2.
+m_lin → √2.  (κ=4)
 Linearised slice
 is the **inverse**
 shell. Then
