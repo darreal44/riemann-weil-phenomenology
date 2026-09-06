@@ -203,15 +203,13 @@ semi-local remainder is predominantly *positive* on the test
 functions where CC's is essentially negative. That is a negative
 result, measured. It is not a replacement pairing.
 
-**2-adic mass at `λ=2`.** Connes 1999 Thm 4 predicts
-`(log 2)/√2 ≈ 0.490` after the `|u⁻¹|` twist used here
-(`weights_2adic.EXPECTED`). The campaign at `Λ=16` has `w(λ=2)`
-strictly increasing in the cell size and *already past* 0.490
-(`tests/test_cc_2adic_status.py`,
-`report/campaign_2adic_large.jsonl`). The peak width is
-`∼ Λ⁻²`; the peak is not resolved. Closing the mass is a change
-of measure on paper (`report/2adic-mass-now.md`), not a finer
-grid.
+**2-adic mass at `λ=2`.** Exact shell pairing
+(`notes/2adic-shells.md`, `code/tau2_local.py`): module twist
+gives 1/√2; inverse twist and the Lebesgue Jacobian both give √2;
+Bombieri (log 2)/√2 is a different Haar. The Fmat grid is not
+that Dirac. Sub-shells: Fg = ∑_n ½ ĝ(2^n ·) − ½ ĝ(·/2)
+(`code/subshells.py`). The (log 2, log 3] step remains a
+measured negative (`notes/semilocal-step.pdf`).
 
 ---
 
