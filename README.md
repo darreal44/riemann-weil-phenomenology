@@ -65,11 +65,15 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 
 - `notes/remaining-before-rh.md` — judged status of Landau matching, the edge lemma,
   det(A−P) by estimates, Schur T⁻¹, χ₃ μ=80 assemblies, 37a1 Q vs Gram, Maass Q,
-  CC sub-shells and the 2-adic mass. Not RH. Read before any covering lemma.
+  CC sub-shells, the 2-adic mass, and the (log 2, log 3] step. Not RH. Read before any covering lemma.
 - `notes/landau-depth.md` — discrete Landau count (any nodes, no RH) and the identity
   that linear rungs 16→5 average to 11. Not RH.
 - `notes/2adic-shells.md` — exact Connes Thm 4 shell masses (1/√2 vs √2 vs
   (log 2)/√2) and the semi-local Fourier as a sum of 2-adic sub-shells. Not RH.
+- `notes/log2-log3-step.md` — the (log 2, log 3] step: CC remainder at Λ=1 does
+  not transport; the other mechanism is Connes 1999 (subtract 2h(1)log'Λ first).
+  Identity orbit vanishes at Λ=1; two logarithms (Λ vs 1/h); interior primes {2}.
+  The Paley–Wiener step is not taken. Not RH.
 - `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
   sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
   \(\hat\psi=\) jump \(+\,r\). Not RH.
