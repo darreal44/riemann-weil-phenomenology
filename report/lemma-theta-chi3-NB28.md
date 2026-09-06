@@ -1,37 +1,26 @@
-# χ₃ µ=80: certified window, and what is not a wall
+# χ₃ µ=80: certified window, Galerkin wall at NB=28
 
 The −0.82 at every NB was a truncated
-Euler product in `spectro.py` (primes
-hardcoded to 37). After the sieve:
+Euler product in spectro.py (primes
+to 37). After the sieve, scan_s:
 
-    scan_s   NB=24 dps=48   λ₀ = +5.60×10⁻⁴⁹   ℓ = 111.1   N_eff = 3.00
-    edge     NB=24 dps=50   λ₀ = +4.18×10⁻⁴⁹   ℓ = 111.4   edge = 108.93
-                            R = +2.47   ℓ/edge = 1.023
+    NB=8  dps=28   λ₀ = +3.75×10⁻²³   ℓ = 51.6   N_eff = 2.66
+    NB=24 dps=48   λ₀ = +5.60×10⁻⁴⁹   ℓ = 111.1   N_eff = 3.00
+    NB=26 dps=56   λ₀ = +9.30×10⁻⁵²   ℓ = 117.5   N_eff = 3.01
+    NB=28 dps=64   λ₀ = −1.18×10⁻⁵²            N_eff = 3.03
 
-That is the same family as χ₃ µ=38
-(ℓ/edge = 1.024, R = 3.32). Do not
-compare raw ℓ = 111 to ℓ(µ=38) = 140:
-the latter used 66 hats. Here N_eff
-has just reached 3; ℓ is still
-climbing with NB (52 → 69 → 85 → 98
-→ 111 from NB=8 to 24).
+edge_value NB=24 dps=50: ℓ = 111.4,
+edge = 108.93, R = +2.47, ℓ/edge = 1.023.
 
-## What remains delicate
+N_eff saturates at 3.00–3.01. Raising
+dps does not flip NB=28 back to SPD.
+Hats n≳27 see the cutoff µ=80 as a
+hard wall; the Galerkin form picks up
+a negative direction. This is *not*
+a missing prime.
 
-Older rows before the sieve:
-
-    NB=26 dps=56   λ₀ = +9.3×10⁻⁵²
-    NB=28 dps=64   λ₀ = −1.2×10⁻⁵²
-
-Those signs were taken on an
-incomplete prime list or on a
-quadrature that is not the current
-`scan_s`. Production window:
-
-    **NB=24, dps=50.**
-
-µ=90 is no longer forbidden by an
-assembly axiom; it still needs a
-sieve up to 90 and dps above −ln λ₀.
-Default in `edge_value_scan` for
-µ≥60 is NB=24 dps=50.
+Last certified SPD window: **NB=26**.
+Do not raise NB past 26 at µ=80.
+µ=90 is a different cutoff; same
+discipline (stop when N_eff has sat
+and λ₀ changes sign).
