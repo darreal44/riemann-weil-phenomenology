@@ -82,7 +82,10 @@ of shells equals F, and F equals `semilocal.F_cell`.
 The first semi-local step (log 2, log 3] still cannot be taken by
 transporting CC’s Λ=1 Sonin remainder: that remainder changes
 sign (`notes/semilocal-step.pdf`). The sub-shells are the
-*construction* of F, not a substitute positivity.
+*construction* of F, not a substitute positivity. The other
+mechanism is the 1999 finite part (`notes/log2-log3-step.md`):
+subtract 2h(1)log'Λ first; it vanishes at Λ=1. The Paley–Wiener
+step is not taken.
 
 ## 4. Status
 
@@ -96,4 +99,5 @@ sign (`notes/semilocal-step.pdf`). The sub-shells are the
 | F = ∑ sub-shells | theorem / identity |
 | Fmat integral = one of those Diracs | false (unresolved peak) |
 | (log 2, log 3] by CC remainder | negative, measured |
+| (log 2, log 3] by 1999 finite part | named, not taken (`log2-log3-step`) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
