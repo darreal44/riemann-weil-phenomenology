@@ -50,3 +50,12 @@ is at the percent level.
 ## What is not next
 
 Another Slepian, another L, Li, Maass.
+
+
+## GL2 on the prime side (Claude, notebook 105-116, 6 September)
+
+Eight elliptic curves: Q built from a_p alone (`scan_q_gl2.py`, validated conventions) agrees with
+each curve's zero Gram to the tail (Frobenius 1.4-1.8%, lambda_min to 1-6%) at mu = 11, 22, 38;
+the four rank-1 curves need the central zero once on the constant mode, rank 0 refuses it;
+depth desert-dominated, s decreasing with conductor and rank; quorum complete once l >~ 10,
+progressive before. "chi29 is the only paired window" no longer holds. See notes/gl2-prime-side.pdf.
