@@ -70,6 +70,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   that linear rungs 16→5 average to 11. Not RH.
 - `notes/2adic-shells.md` — exact Connes Thm 4 shell masses (1/√2 vs √2 vs
   (log 2)/√2) and the semi-local Fourier as a sum of 2-adic sub-shells. Not RH.
+- `notes/2adic-peak-lamge16.md` — Fmat peak at Λ=24 and 32 still climbs
+  through 0.49 toward √2. Same Gibbs, not a Dirac. Not RH.
 - `notes/log2-log3-step.md` — the (log 2, log 3] step: CC remainder at Λ=1 does
   not transport; the other mechanism is Connes 1999 (subtract 2h(1)log'Λ first).
   Identity orbit vanishes at Λ=1; two logarithms (Λ vs 1/h); interior primes {2}.
