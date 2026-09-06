@@ -32,7 +32,8 @@ catalogued g_odd'' extrema.
 
     χ₃   Q ∈ [0.00574, 0.00639]   sampled M
          Q ∈ [0.00490, 0.00724]   termwise M
-         Q ∈ [0.00441, 0.00743]   G2∘G2 + Leibniz [1,L]
+         Q ∈ [0.00441, 0.00743]   G2∘G2 M4=23.5 + Leibniz
+         Q ∈ [0.00388, 0.00796]   G2∘G2 M4=60 Markov + Leibniz
     χ₄   Q ∈ [0.01754, 0.01819]
     χ₇   Q ∈ [0.11661, 0.11726]
     χ₃ is the tight odd window.
