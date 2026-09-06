@@ -63,3 +63,22 @@ Saturation check past NB=24 (dps up):
 
     python code/scan_s.py chi3 80 26 56
     python code/scan_s.py chi3 80 28 64
+
+## Saturation after the server run
+
+    scan_s  NB=26 dps=56   λ₀ = +9.30×10⁻⁵²   ℓ = 117.5   N_eff = 3.01
+    scan_s  NB=28 dps=64   λ₀ = −1.18×10⁻⁵²   N_eff = 3.03
+    marginal NB=72 dps=80  λ₀ ≤ 0  (Gram underflow)
+
+N_eff has sat at 3.00–3.01. Six more nats
+from NB=24 to 26, then the Galerkin form
+goes indefinite. That sign flip is *not*
+the p≤37 hole (scan_s has every prime ≤80).
+Hats n≳27 oscillate at ω ≈ 2πn/log 80 ≈ 39
+and see µ=80 as a hard wall.
+
+Production window remains **NB=24–26**.
+Do not raise NB past 26 at this µ.
+A matched-omax marginal (NB≈72) is out
+of reach: the zero-side Gram is already
+indefinite at dps=80.
