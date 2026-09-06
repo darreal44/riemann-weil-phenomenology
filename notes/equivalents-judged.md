@@ -84,12 +84,18 @@ through the plunge (`tests/test_landau_matching.py`). Mean rung
   The extremal lemma −ln|ψ(0)|_min = ℓ/2+O(1) is not proved.
 - 2-adic mass at λ=2 climbs through (log 2)/√2 and does not stop
   (`tests/test_cc_2adic_status.py`). Peak unresolved.
+- (log 2, log 3] by CC remainder is a measured negative; the
+  other mechanism is Connes 1999 (subtract 2h(1)log'Λ), named
+  in `notes/log2-log3-step.md`. The Paley–Wiener step is not taken.
 
 Details: `notes/remaining-before-rh.md`.
 
 ## 7. What remains a demonstration, not a scan
 
 - (∀ L) Q_L ≥ 0, or W(h) ≥ 0 on the full class: RH.
+- (log 2, log 3] for the whole Paley–Wiener class: the other
+  mechanism is named (`notes/log2-log3-step.md`); the step is
+  not taken.
 - det(A−P) > 0 by estimates that keep every n ≤ μ.
 - The O(log c) matching of the Landau count for hats, without a
   threshold ℓ>2.
