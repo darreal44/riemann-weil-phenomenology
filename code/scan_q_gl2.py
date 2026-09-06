@@ -7,6 +7,8 @@ panel (two Gamma_R ~ Gamma(s)): treat as experimental.
 
     python code/scan_q_gl2.py 11a1 11 24 40
     python code/scan_q_gl2.py 11a1 22 36 50
+    python code/scan_q_gl2.py 37a1 62 80 50 --drop 3
+    python code/gl2_quorum_scan.py 37a1 62 80 50
 
 Needs gp on PATH for a_n. 11a1 has a built-in table for n<=30
 so a smoke runs without gp.
@@ -17,7 +19,9 @@ wrong path is GL2_LEGACY=1.
 """
 from __future__ import annotations
 
+import concurrent.futures
 import math
+import multiprocessing
 import os
 import shutil
 import subprocess
@@ -110,7 +114,23 @@ for(i=1, #v, print(i, " ", v[i]));
     return out
 
 
-def assemble(name, mu, NB, dps, DEG=12):
+def an_points(name: str, cap: int) -> dict[int, int]:
+    """a_n from Weierstrass point counting (`gl2_curves.ap_table`). No gp."""
+    from gl2_curves import CURVES as GC, ap_table
+
+    _, Ncond = GC[name]
+    return hecke_an(dict(ap_table(name, cap)), Ncond, cap)
+
+
+def _filter_drop(an: dict[int, int], drop) -> dict[int, int]:
+    """Remove the p-tower: every n divisible by p."""
+    if drop is None:
+        return an
+    d = int(drop)
+    return {n: a for n, a in an.items() if n % d != 0}
+
+
+def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
     Ncond = CURVES[name]
     mp.mp.dps = dps
     t0 = time.time()
@@ -196,76 +216,188 @@ def assemble(name, mu, NB, dps, DEG=12):
 
     cap_mul = float(os.environ.get("GL2_CAP_MUL", "1"))
     cap = int(float(mp.e ** L) * cap_mul + 1e-9)
-    an = ellan(name, cap)
-    print(f"  cap={cap} ncut={os.environ.get('GL2_NCUT','2')} n_an={len(an)}", flush=True)
-    small = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
-    ppts = []
-    for n, a in an.items():
-        if n < 2:
-            continue
-        if a == 0 and not FIX:
-            continue          # original path keys on a_n; the FIX path keys on Lambda_f (a_8 = 0 but Lambda_f(8) = 4 log 2 for 11a1)
-        y2, p = n, None
-        for qq in small:
-            if y2 % qq == 0:
-                p = qq
-                while y2 % qq == 0:
-                    y2 //= qq
-                break
-        if p and y2 == 1:
-            if FIX:
-                # Lambda_f(p^k) = (alpha^k + beta^k) log p, alpha+beta = a_p, alpha*beta = p (good p) or 0 (p | N)
-                k = 0; nn = n
-                while nn > 1:
-                    nn //= p; k += 1
-                ap = an.get(p, 0); pb = 0 if Ncond % p == 0 else p
-                c0, c1 = 2, ap
-                for _ in range(k - 1):
-                    c0, c1 = c1, ap * c1 - pb * c0
-                lam_f = mp.mpf(c1) * mp.log(p)
-                if c1 != 0:
-                    ppts.append((mp.log(n), lam_f / n))
-            else:
-                # Re=1: a_n log p / n   (original: wrong for k >= 2 at good primes)
-                ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
-
-    S = mp.matrix(NB + 1)
-    for n in range(NB + 1):
-        for m in range(n, NB + 1):
-            th, F0 = th_nodes(n, m)
-            arch = mp.mpf(0)
-            for D2, EC, CST in panels:
-                arch += F0 / 2 * CST + mp.mpf("0.5") * mp.fsum(
-                    D2[k] * (F0 * EC[k] - th[k]) for k in range(K)
-                )
-            v = arch - mp.fsum(w * th_at(n, m, lg) for lg, w in ppts)
-            S[n, m] = v
-            S[m, n] = v
-    E, V = mp.eigsy(S)
-    pairs = sorted([(E[i], i) for i in range(NB + 1)], key=lambda z: float(z[0]))
-    lam = [p[0] for p in pairs[:8]]
-    ell = [float(-mp.log(abs(l))) if l != 0 else float("inf") for l in lam]
-    i0 = pairs[0][1]
-    v0 = [float(V[n, i0]) for n in range(NB + 1)]
-    p2 = [x * x for x in v0]
-    s2 = sum(p2) or 1.0
-    p2 = [x / s2 for x in p2]
-    neff = 1.0 / sum(x * x for x in p2)
-    kbar = sum(k * p2[k] for k in range(NB + 1))
-    ratio = float(abs(pairs[1][0] / pairs[0][0])) if pairs[0][0] != 0 else float("inf")
+    if an is None:
+        an = ellan(name, cap)
+    an_full = an
+    an = _filter_drop(an_full, drop)
     print(
-        f"[{name} Q mu={mu} N={NB+1} dps={dps}] lam0={mp.nstr(lam[0],4)}  "
-        f"ell={[round(x, 2) for x in ell[:6]]}  "
-        f"N_eff={neff:.2f} kbar={kbar:.2f} l1/l0={ratio:.2e}  "
+        f"  cap={cap} ncut={os.environ.get('GL2_NCUT','2')} n_an={len(an)}"
+        f"{'' if drop is None else f' drop={int(drop)}'}",
+        flush=True,
+    )
+    small = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67]
+
+    def ppts_of(an_use):
+        ppts = []
+        for n, a in an_use.items():
+            if n < 2:
+                continue
+            if a == 0 and not FIX:
+                continue          # original path keys on a_n; the FIX path keys on Lambda_f (a_8 = 0 but Lambda_f(8) = 4 log 2 for 11a1)
+            y2, p = n, None
+            for qq in small:
+                if y2 % qq == 0:
+                    p = qq
+                    while y2 % qq == 0:
+                        y2 //= qq
+                    break
+            if p and y2 == 1:
+                if FIX:
+                    # Lambda_f(p^k) = (alpha^k + beta^k) log p, alpha+beta = a_p, alpha*beta = p (good p) or 0 (p | N)
+                    k = 0; nn = n
+                    while nn > 1:
+                        nn //= p; k += 1
+                    ap = an_use.get(p, 0); pb = 0 if Ncond % p == 0 else p
+                    c0, c1 = 2, ap
+                    for _ in range(k - 1):
+                        c0, c1 = c1, ap * c1 - pb * c0
+                    lam_f = mp.mpf(c1) * mp.log(p)
+                    if c1 != 0:
+                        ppts.append((mp.log(n), lam_f / n))
+                else:
+                    # Re=1: a_n log p / n   (original: wrong for k >= 2 at good primes)
+                    ppts.append((mp.log(n), mp.mpf(a) * mp.log(p) / n))
+        return ppts
+
+    ppts = ppts_of(an)
+
+    def fill(ppts_use):
+        S = mp.matrix(NB + 1)
+        for n in range(NB + 1):
+            for m in range(n, NB + 1):
+                th, F0 = th_nodes(n, m)
+                arch = mp.mpf(0)
+                for D2, EC, CST in panels:
+                    arch += F0 / 2 * CST + mp.mpf("0.5") * mp.fsum(
+                        D2[k] * (F0 * EC[k] - th[k]) for k in range(K)
+                    )
+                v = arch - mp.fsum(w * th_at(n, m, lg) for lg, w in ppts_use)
+                S[n, m] = v
+                S[m, n] = v
+        return S
+
+    def report(S, tag=""):
+        E, V = mp.eigsy(S)
+        pairs = sorted([(E[i], i) for i in range(NB + 1)], key=lambda z: float(z[0]))
+        lam = [p[0] for p in pairs[:8]]
+        ell = [float(-mp.log(abs(l))) if l != 0 else float("inf") for l in lam]
+        i0 = pairs[0][1]
+        v0 = [float(V[n, i0]) for n in range(NB + 1)]
+        p2 = [x * x for x in v0]
+        s2 = sum(p2) or 1.0
+        p2 = [x / s2 for x in p2]
+        neff = 1.0 / sum(x * x for x in p2)
+        kbar = sum(k * p2[k] for k in range(NB + 1))
+        ratio = float(abs(pairs[1][0] / pairs[0][0])) if pairs[0][0] != 0 else float("inf")
+        print(
+            f"[{name} Q{tag} mu={mu} N={NB+1} dps={dps}] lam0={mp.nstr(lam[0],4)}  "
+            f"ell={[round(x, 2) for x in ell[:6]]}  "
+            f"N_eff={neff:.2f} kbar={kbar:.2f} l1/l0={ratio:.2e}  "
+            f"{time.time()-t0:.0f}s",
+            flush=True,
+        )
+        return float(lam[0]), ell
+
+    S = fill(ppts)
+    return report(S, tag="" if drop is None else f" drop={int(drop)}")
+
+
+def _assemble_worker(payload):
+    """Spawn-safe worker: (name, mu, NB, dps, drop, DEG, an) → (drop, lam0, ell)."""
+    name, mu, NB, dps, drop, DEG, an = payload
+    os.environ["GL2_FIX"] = os.environ.get("GL2_FIX", "1")
+    lam, ell = assemble(name, mu, NB, dps, DEG=DEG, drop=drop, an=an)
+    return drop, lam, ell
+
+
+def assemble_drops(name, mu, NB, dps, drops, DEG=12, an=None, workers=None, include_full=True):
+    """Full Q and one Q per dropped p-tower, in parallel processes.
+
+    Returns dict drop → (lam0, ell), with drop=None for the full form.
+    Wall time is one assemble, not N, when workers ≥ 1+|drops|.
+    """
+    if an is None:
+        try:
+            an = an_points(name, int(float(mu)))
+        except Exception:
+            an = None
+    jobs = []
+    if include_full:
+        jobs.append((name, mu, NB, dps, None, DEG, an))
+    for d in drops:
+        jobs.append((name, mu, NB, dps, int(d), DEG, an))
+    ncpu = os.cpu_count() or 4
+    workers = max(1, min(int(workers or len(jobs)), ncpu, len(jobs)))
+    t0 = time.time()
+    out = {}
+    if workers == 1 or len(jobs) == 1:
+        for job in jobs:
+            drop, lam, ell = _assemble_worker(job)
+            out[drop] = (lam, ell)
+    else:
+        ctx = multiprocessing.get_context("spawn")
+        with concurrent.futures.ProcessPoolExecutor(
+            max_workers=workers, mp_context=ctx
+        ) as pool:
+            futs = [pool.submit(_assemble_worker, job) for job in jobs]
+            for fut in concurrent.futures.as_completed(futs):
+                drop, lam, ell = fut.result()
+                out[drop] = (lam, ell)
+                tag = "full" if drop is None else f"drop={drop}"
+                print(
+                    f"  collected {tag} lam0={lam:.4e}  {time.time()-t0:.0f}s",
+                    flush=True,
+                )
+    print(
+        f"[{name} drops mu={mu} n={len(jobs)} workers={workers}] "
         f"{time.time()-t0:.0f}s",
         flush=True,
     )
-    return float(lam[0]), ell
+    return out
+
+
+def assemble_pair(name, mu, NB, dps, drop=3, DEG=12, an=None, parallel=None):
+    """Full prime-side Q and Q without one p-tower.
+
+    Parallel on NB≥40 (one wall-clock assemble). Sequential on small
+    windows where spawn overhead dominates. Returns
+    (lam_full, ell_full, lam_drop, ell_drop).
+    """
+    t0 = time.time()
+    if parallel is None:
+        parallel = int(NB) >= 40
+    if parallel:
+        out = assemble_drops(
+            name, mu, NB, dps, drops=(drop,), DEG=DEG, an=an, include_full=True
+        )
+        lam_full, ell_full = out[None]
+        lam_drop, ell_drop = out[int(drop)]
+    else:
+        lam_full, ell_full = assemble(name, mu, NB, dps, DEG=DEG, drop=None, an=an)
+        lam_drop, ell_drop = assemble(name, mu, NB, dps, DEG=DEG, drop=drop, an=an)
+    print(
+        f"[{name} pair mu={mu} drop={drop}] full lam0={lam_full:.4e}  "
+        f"drop lam0={lam_drop:.4e}  {time.time()-t0:.0f}s",
+        flush=True,
+    )
+    return lam_full, ell_full, lam_drop, ell_drop
 
 
 if __name__ == "__main__":
+    multiprocessing.freeze_support()
     name = sys.argv[1]
     if name not in CURVES:
         sys.exit(f"unknown {name}")
     mu, NB, dps = float(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4])
-    assemble(name, mu, NB, dps)
+    drop = None
+    if "--drop" in sys.argv:
+        drop = int(sys.argv[sys.argv.index("--drop") + 1])
+    if "--drops" in sys.argv:
+        raw = sys.argv[sys.argv.index("--drops") + 1]
+        drops = [int(x) for x in raw.split(",") if x.strip()]
+        assemble_drops(name, mu, NB, dps, drops=drops)
+    elif "--pair" in sys.argv:
+        p = 3 if drop is None else drop
+        assemble_pair(name, mu, NB, dps, drop=p)
+    else:
+        assemble(name, mu, NB, dps, drop=drop)
