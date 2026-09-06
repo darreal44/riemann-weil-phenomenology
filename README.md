@@ -69,6 +69,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
   sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
   \(\hat\psi=\) jump \(+\,r\). Not RH.
+- `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
+  1/y cancelled; remainder estimate inside ±0.003 but not a majorant. Not RH.
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
