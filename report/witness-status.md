@@ -72,3 +72,12 @@ Six characters at μ=16
 0.0059, χ₅ 0.0055, others
 0.018–0.39. Both parities.
 Not (∀ χ)(∀ μ).
+
+## H-budget at μ=16
+
+∂Q/∂H₀₁ = −0.92. Killing
+Q needs |ΔH₀₁|≳0.006
+(`report/H-impact.md`,
+`report/H-sensitivity.md`).
+cond(H)=1.6×10⁴ is the
+well, not entry noise.
