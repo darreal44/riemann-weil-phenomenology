@@ -2,6 +2,8 @@
 # (pytest.ini enumerated files; they also define no test_* function). They pass when run,
 # but nothing enforced that. Wrapped here so the suite actually guards them (notebook 82).
 import os, subprocess, sys
+import pytest
+pytest.importorskip('flint', reason="Arb certificates need python-flint: pip install python-flint")
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 def _run(name):
