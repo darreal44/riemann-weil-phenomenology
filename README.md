@@ -63,6 +63,10 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   the mean rung. Marginal weight of each zero w(γ) ≈ 11(1 − γ/γ_c), γ_c the Nyquist crossing (fourteen
   windows). Open: the $O(\log c)$ matching of the count, and the $1$~nat/mode remainder above $\pi^2$. Lower bound of the count and the identification $11=\pi^2+\log(1/A)/D$ are in `notes/discrete-landau.tex`. Nothing here bears on RH.
 
+- `notes/remaining-before-rh.md` — judged status of Landau matching, the edge lemma,
+  det(A−P) by estimates, Schur T⁻¹, χ₃ μ=80 assemblies, 37a1 Q vs Gram, Maass Q,
+  CC sub-shells and the 2-adic mass. Not RH. Read before any covering lemma.
+
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 
 - `notes/landau-bounds.pdf --- Landau necessary density: early zeros subcritical by 4-90 modes; no constant A.

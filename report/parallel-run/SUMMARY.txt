@@ -1,0 +1,17 @@
+done in 201s ; 0 failed / 16
+PASS cert-2plane 2s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\cert-2plane.log
+PASS edge-extra 60s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\edge-extra.log
+PASS gram-gl2-37a1-38 0s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\gram-gl2-37a1-38.log
+PASS gram-gl2-37a1-62 0s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\gram-gl2-37a1-62.log
+PASS gram-maass1 0s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\gram-maass1.log
+PASS gram-maass2 0s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\gram-maass2.log
+PASS gram-maass3 0s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\gram-maass3.log
+PASS heavy-tests 77s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\heavy-tests.log
+PASS mw-extra 34s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\mw-extra.log
+PASS q-gl2-32a1-mu38 116s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\q-gl2-32a1-mu38.log
+PASS q-gl2-37a1-mu62 201s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\q-gl2-37a1-mu62.log
+PASS q-gl2-67a1-mu38 118s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\q-gl2-67a1-mu38.log
+PASS scan-s-chi3-80-24 6s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\scan-s-chi3-80-24.log
+PASS scan-s-chi3-80-26 8s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\scan-s-chi3-80-26.log
+PASS scan-s-chi3-80-28 9s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\scan-s-chi3-80-28.log
+PASS scan-s-chi3-80-32 13s C:\Users\admin\riemann-weil-phenomenology\report\parallel-run\scan-s-chi3-80-32.log

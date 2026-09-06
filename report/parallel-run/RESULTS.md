@@ -50,3 +50,13 @@ Zero-Gram λ₀>0, ℓ∈(10,40). Rank-1 well, central zero in the Gram.
 Prime-side Q from `scan_q_gl2` (ℓ=14.46) is a different matrix
 (no central zero on the prime side until the rank is read).
 Do not identify the two numbers.
+
+## After the remaining-before-RH list (same protocol)
+
+Judges in `tests/test_chi3_assemblies.py`, `test_chi3_mu80_judge.py`
+(NB=32 scan_s λ₀<0), `test_gl2_37a1_Q_vs_gram.py`, `test_maass_q.py`,
+`test_H2_arb.py`, `test_P_truncation_det.py`, `test_schur_head.py`,
+`test_edge_remainder.py`, `test_landau_matching.py`,
+`test_cc_2adic_status.py`. Write-up: `notes/remaining-before-rh.md`.
+
+Not harvested: spectro ℓ=135 at χ₃ μ=80 NB=32. Not a covering lemma.
