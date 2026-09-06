@@ -48,7 +48,3 @@ live on the O(1) coordinates of v.
 The bulk {λ₂,…,λ₈} ⊂ [0.3, 5] is the
 Haar median ∼ 2. The lemma is the two
 (sometimes three) eigenvalues below 10⁻³.
-EOF
-cd /tmp/rwdiag
-# wait don't put token in file - the END is in write only
-true
