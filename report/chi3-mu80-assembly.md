@@ -38,3 +38,14 @@ Re-run after pull:
 
     python code/edge_value_scan.py --workers 8 --force chi3:80
     python code/scan_s.py chi3 80 24 48
+
+## After the sieve (2026-09-06)
+
+    scan_s   chi3 80 NB=24 dps=48   λ₀ = 5.60×10⁻⁴⁹   ℓ = 111.1   N_eff = 3.00
+    edge     chi3 80 NB=40 dps=70   λ₀ = −1.6×10⁻⁵⁷   (eigsy underflow)
+
+The O(1) hole is gone. ℓ = 111.1 is Grok’s
+number. N_eff = 3.00 at 25 hats: the fourth
+mode is on. NB=40 at dps=70 asks for
+λ₀ ≲ 10⁻⁶⁰; mpmath eigsy crosses zero.
+Default window for µ≥60 is now NB=24 dps=50.
