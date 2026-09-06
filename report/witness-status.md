@@ -58,3 +58,17 @@ Q_head − ‖Cᵀv‖²/λ_min(T)
 (`report/schur-v.md`).
 Higher hats do not eat
 the sign.
+
+## Other windows, same v
+
+μ-scan on χ₅ (`v-vs-mu.md`,
+`v-prime-jumps.md`): Q>0
+from μ=7 to 31, minimum
+0.0049 at μ=17, then a
+0.005–0.009 band.
+
+Six characters at μ=16
+(`v-across-chi.md`): χ₃
+0.0059, χ₅ 0.0055, others
+0.018–0.39. Both parities.
+Not (∀ χ)(∀ μ).
