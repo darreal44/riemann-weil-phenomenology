@@ -183,6 +183,14 @@ Judged without identifying the two matrices
 A 201 s prime-side run at `μ=62` (`report/parallel-run/`) is an
 artifact of that assembly, not a second name for the Gram.
 
+**Drop p=3, preregistered §116.** Executed
+(`notes/gl2-37a1-drop3.md`, `code/gl2_quorum_scan.py`): full
+prime-side λ₀ = 5.258×10⁻⁷, ℓ = 14.46; drop-3 λ₀ = **+0.093**.
+The last recalcitrant is still dispensable. KILL. Every other
+voting prime is necessary; 17 and 19 are mute (a_p=0). Control
+at μ=38 matches the journal (+0.38 vs +0.37). 19 processes,
+216 s. Judge: `tests/test_gl2_37a1_drop3.py`.
+
 ---
 
 ## 7. Maass Q
