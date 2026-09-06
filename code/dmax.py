@@ -99,6 +99,25 @@ def count_above(ells, thresh):
     return int(sum(1 for e in ells if e > thresh))
 
 
+def well_depths(ells, thresh=2.0):
+    """ℓ_k > thresh, already sorted descending."""
+    return [float(e) for e in ells if e > thresh]
+
+
+def rungs(ells, thresh=2.0):
+    """Successive drops of the well, including the last drop to 0.
+
+    If the well is ℓ_0 > … > ℓ_{m-1} > thresh, rungs are
+    ℓ_0−ℓ_1, …, ℓ_{m-2}−ℓ_{m-1}, ℓ_{m-1}. Their sum is ℓ_0
+    and their mean is ℓ_0 / m.
+    """
+    w = well_depths(ells, thresh)
+    if not w:
+        return []
+    return [w[i] - w[i + 1] for i in range(len(w) - 1)] + [w[-1]]
+
+
+
 def main() -> None:
     if len(sys.argv) >= 4:
         name, mu, NB = sys.argv[1], float(sys.argv[2]), int(sys.argv[3])

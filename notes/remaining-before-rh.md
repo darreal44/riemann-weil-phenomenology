@@ -1,10 +1,9 @@
 # Remaining demonstrations (before any RH covering lemma)
 
 Demonstrations that closed after this note: `notes/demonstrations.md`
-(Courant on the 2-plane, Schur sign identity \(Q>0\Leftrightarrow\Delta>0\),
-closed \(\theta_{f_1}\), exact edge split) and `notes/av-gauss.md`
-(3-point Gauss of explicit A(v) on [0,1]; 1/y cancelled). The covering
-lemma is not among them.
+(Courant, Schur sign, θ_{f₁}, edge split), `notes/av-gauss.md`
+(Gauss of A(v)), and `notes/landau-depth.md` (kernel count, rungs
+sum to ℓ₀, (16+5)/2=11). The covering lemma is not among them.
 
 This note records what is proved, what is an identity of matrices,
 what is measured with a shipped judge, and what is still open — on
