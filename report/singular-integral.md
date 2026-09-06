@@ -69,3 +69,8 @@ is nothing singular
 left to handle; the
 1/y was a false alarm
 once θ_v(0)=F₀ is used.
+
+Shipped: `kernel_limit_0()` in
+`code/av_gauss.py` is −3 − θ_v'(0)
+= −2.9619. `a_integrand(0)` is
+finite. Not RH.
