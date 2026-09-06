@@ -47,7 +47,11 @@ def run(mu, NB, dps, DEG, K=8):
         return 2*(n*mp.sin(om[n]*y)-m*mp.sin(om[m]*y))/(mp.pi*(m*m-n*n))
 
     # tours par premier
-    primes = [p for p in [2,3,5,7,11,13,17,19,23,29,31,37] if p <= int(mp.e**L+1e-9)]
+    cap = int(mp.e**L + 1e-9); sv = [True]*(cap+1)
+    for i in range(2, int(cap**0.5)+1):
+        if sv[i]:
+            for j in range(i*i, cap+1, i): sv[j] = False
+    primes = [p for p in range(2, cap+1) if sv[p]]   # all primes <= mu (was hardcoded to 37: a hole above mu=41)
     towers = {p: [] for p in primes}
     for p in primes:
         n = p
