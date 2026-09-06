@@ -321,7 +321,10 @@ not resolved at μ=80. One point at μ=150
 (`notes/av-mu150.md`): A−P₂₃ = −0.020
 went through 0; P_rest = −0.024 went
 with it. They did not cross. Q=0.0041.
-Not a sixth slope. Not (∀ μ).
+The μ=16 pencil at the same window
+(`notes/av-other-v-mu150.md`): five of
+five still Q>0, v_min still on the
+pencil. Not a sixth slope. Not (∀ μ).
 
 ## 8d. P is an arrival process
 
