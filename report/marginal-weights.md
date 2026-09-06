@@ -2,6 +2,8 @@
 
 w(gamma) = ln lambda_0(G) - ln lambda_0(G \ gamma) ; gamma_c = Nyquist crossing (gamma L/2pi = N(gamma)) ; fit w = w0 (1 - gamma/gamma_c).
 
+`chi3:80:24:50` is not a peer of the N=46–66 rows: omega_max=34 (10 in-band zeros) versus 104–114. Its w0=6.4 is a small-basis number. A matched-omax run needs NB≈72 and dps well above 50 (eigsy underflow at NB=40 dps=70 on the prime-side Q). Row kept as a flag, not as a point on the w0=10–11.5 law.
+
 | window | ell | in-band / places | omega_max | gamma_1 | w(gamma_1) | w(mid) | gamma_c (cross) | fit w0 | fit gamma_c | fills (gamma: nats) |
 |---|---|---|---|---|---|---|---|---|---|---|
 | 11a1:11:24:50 | 12.2 | 50 / 24 | 62.9 | 6.36 | 5.46 | 0.01 | 16.1 | 8.71 | 16.2 | 1.909: +8.5, 3.499: +6.5, 5.09: +4.5 |
@@ -10,6 +12,7 @@ w(gamma) = ln lambda_0(G) - ln lambda_0(G \ gamma) ; gamma_c = Nyquist crossing 
 | chi29:22:52:60 | 5.5 | 87 / 52 | 105.7 | 1.79 | 9.52 | 0.00 | 10.6 | 10.69 | 11.5 | 0.538: +5.3, 0.987: +5.1, 1.435: +3.8 |
 | chi3:16:46:65 | 56.2 | 48 / 46 | 104.2 | 8.04 | 11.38 | 1.64 | 88.9 | 9.98 | 78.1 | 2.412: +16.0, 4.422: +14.0, 6.432: +12.3 |
 | chi3:38:66:80 | 143.2 | 54 / 66 | 114.0 | 8.04 | 13.87 | 4.62 | none (sub-Nyquist) | 11.55 | 122.0 | 2.412: +18.5, 4.422: +16.5, 6.432: +14.8 |
+| chi3:80:24:50 | 112.0 | 10 / 24 | 34.4 | 8.04 | 5.57 | 5.07 | none (sub-Nyquist) | 6.38 | 80.9 | 2.412: +14.8, 4.422: +12.5 |
 | chi4:16:46:65 | 40.0 | 53 / 46 | 104.2 | 6.02 | 11.77 | 0.18 | 64.0 | 10.63 | 58.4 | 1.806: +15.2, 3.312: +13.6, 4.817: +12.0 |
 | chi5:16:46:65 | 34.1 | 57 / 46 | 104.2 | 6.65 | 10.48 | 0.10 | 52.1 | 10.38 | 48.0 | 1.995: +14.4, 3.657: +12.5, 5.319: +10.8 |
 | chi5:38:66:80 | 89.6 | 63 / 66 | 114.0 | 6.65 | 13.84 | 3.85 | none (sub-Nyquist) | 11.18 | 106.0 | 1.995: +17.9, 3.657: +15.9, 5.319: +14.2 |
