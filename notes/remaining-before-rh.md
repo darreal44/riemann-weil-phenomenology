@@ -246,8 +246,9 @@ Paley–Wiener step is not taken. Judge:
 (`notes/2adic-shells.md`, `code/tau2_local.py`): module twist
 gives 1/√2; inverse twist and the Lebesgue Jacobian both give √2;
 Bombieri (log 2)/√2 is a different Haar. The Fmat grid is not
-that Dirac. Sub-shells: Fg = ∑_n ½ ĝ(2^n ·) − ½ ĝ(·/2)
-(`code/subshells.py`).
+that Dirac. At Λ=24 and 32 it still climbs through 0.49 toward
+√2 (`notes/2adic-peak-lamge16.md`). Sub-shells:
+Fg = ∑_n ½ ĝ(2^n ·) − ½ ĝ(·/2) (`code/subshells.py`).
 
 ---
 

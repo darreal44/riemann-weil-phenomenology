@@ -77,6 +77,13 @@ JOBS = {
     ],
     "smoke": [(16, 32), (16, 48)],
     "taper16": [(16, 80), (16, 112), (16, 160)],
+    # Λ≥16, coarser h than Λ=16/cpu=400. Same Gibbs climb, not a Dirac.
+    "lamge16": [
+        (24, 160),
+        (24, 200),
+        (32, 128),
+        (32, 160),
+    ],
 }
 
 
@@ -243,4 +250,7 @@ def main():
 
 
 if __name__ == "__main__":
+    from multiprocessing import freeze_support
+
+    freeze_support()
     main()

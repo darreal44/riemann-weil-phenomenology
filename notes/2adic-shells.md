@@ -98,6 +98,7 @@ step is not taken.
 | Bombieri (log 2)/√2 | different Haar, not a third integral |
 | F = ∑ sub-shells | theorem / identity |
 | Fmat integral = one of those Diracs | false (unresolved peak) |
+| Fmat at Λ=24, 32 sits at 0.707 | false; same climb (`2adic-peak-lamge16`) |
 | (log 2, log 3] by CC remainder | negative, measured |
 | (log 2, log 3] by 1999 finite part | named, not taken (`log2-log3-step`) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
