@@ -29,16 +29,26 @@ def zeros_of(name):
             return sorted(float(str(x)) for x in pickle.load(open(os.path.join(HERE, f), 'rb'))), f
     raise FileNotFoundError(name)
 
-def _rank1_eigs(G, c, sign, dps):
-    """Smallest eig of G + sign * 2 c c^T. sign=-1 removes a zero, +1 fills."""
+def _mat_to_lists(M):
+    """Pickle-safe: list of lists of decimal strings."""
+    return [[mp.nstr(M[i, j], mp.mp.dps + 8) for j in range(M.cols)] for i in range(M.rows)]
+
+def _vec_to_list(c):
+    n = c.rows if hasattr(c, 'rows') else len(c)
+    return [mp.nstr(c[i], mp.mp.dps + 8) for i in range(n)]
+
+def _rank1_eigs(G_lists, c_list, sign, dps):
+    """Smallest eig of G + sign * 2 c c^T. Inputs are pickle-safe lists of strings."""
     mp.mp.dps = dps
-    NP = G.rows
+    NP = len(G_lists)
     G2 = mp.matrix(NP)
     two = mp.mpf(2) * sign
+    cv = [mp.mpf(x) for x in c_list]
     for i in range(NP):
-        ci = two * c[i]
+        ci = two * cv[i]
+        Gi = G_lists[i]
         for j in range(i, NP):
-            G2[i, j] = G[i, j] + ci * c[j]
+            G2[i, j] = mp.mpf(Gi[j]) + ci * cv[j]
         for j in range(i):
             G2[i, j] = G2[j, i]
     e = mp.eigsy(G2, eigvals_only=True)[0]
@@ -75,11 +85,12 @@ def analyse(name, mu, NB, dps, quick, inner=1):
     fills = FILLS['zeta'] if name == 'zeta' else [round(f*inb[0], 3) for f in FILLS['default_frac']]
     if quick: fills = fills[:2]
 
-    jobs = [('w', inb[k], csv[inb[k]], -1) for k in ks] + [('f', g, cvec(g), +1) for g in fills]
+    G_lists = _mat_to_lists(G)
+    jobs = [('w', inb[k], _vec_to_list(csv[inb[k]]), -1) for k in ks] + [('f', g, _vec_to_list(cvec(g)), +1) for g in fills]
 
     def run_job(job):
-        kind, g, c, sign = job
-        e = _rank1_eigs(G, c, sign, dps)
+        kind, g, cl, sign = job
+        e = _rank1_eigs(G_lists, cl, sign, dps)
         return kind, g, float(e) if e > 0 else None
 
     results = []
@@ -87,9 +98,8 @@ def analyse(name, mu, NB, dps, quick, inner=1):
         results = [run_job(j) for j in jobs]
     else:
         from concurrent.futures import ProcessPoolExecutor
-        # spawn workers that receive (G, c, sign, dps) — G is the same object pickled once per task
         with ProcessPoolExecutor(max_workers=min(inner, len(jobs))) as ex:
-            futs = [ex.submit(_rank1_eigs, G, j[2], j[3], dps) for j in jobs]
+            futs = [ex.submit(_rank1_eigs, G_lists, j[2], j[3], dps) for j in jobs]
             for j, fut in zip(jobs, futs):
                 e = fut.result()
                 results.append((j[0], j[1], float(e) if e > 0 else None))
