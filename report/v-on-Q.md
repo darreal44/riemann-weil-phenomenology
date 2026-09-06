@@ -1,65 +1,49 @@
-# How v hits Q
+# Impact of v on Q
 
-On the 3-plane, Q(v)
-is a Rayleigh
-quotient of H.
+Q is a quadratic form
+on the 3-plane. On an
+eigenvector q_i of H,
 
-    Q(v) = λ_min +
-           ∑_{k≥2} λ_k ⟨v,u_k⟩²
+    Q(v) = λ₀ α₀² + λ₁ α₁² + λ₂ α₂²
 
-Near v_min,
-Q ≈ λ_min + gap · θ²
-(θ = angle to v_min).
-
-μ=16, overlap and Q:
-
-    v          ov     1−ov²      Q
-    (5,−4,1)  0.9985  0.0030   0.00139
-    (4,−3,1)  0.9944  0.0112   0.00551
-    (4,−3,0)  0.9925  0.0150   0.00051
-    (1,−1,0)  0.9907  0.0186   0.00942
-    (3,−2,1)  0.9806  0.0384   0.01900
-    e₀        0.759   0.424    0.092
-    e₂        0.108   0.988    0.239
-
-(5,−4,1) is the
-closest ray and has
-the smallest Q among
-the open-hat vectors
-with a 3rd component.
-(4,−3,0) is closer
-to the floor than
-its overlap suggests
-— it sits nearer the
-2-plane kernel of
-ψ(0). e₀,e₁,e₂ are
-off-pencil: Q jumps
-to the diagonal
+λ₀ = λ_min ≪ λ₁,λ₂.
+A vector close to
+v_min is dominated
+by λ₀; a vector
+orthogonal to v_min
+sees only the bulk
 O(0.1).
 
-μ=150: same order.
-v_min itself moved
-a little
-(0.759,−0.642,0.108)
-→ (0.733,−0.665,0.147)
-and the rational
-ray stayed at
-overlap 0.995. So
-v controls the
-*digit* of Q
-(10^{-3} vs 10^{-2})
-and does not flip
-the sign on this
-pencil, at either
-μ.
+μ=16 and μ=150,
+overlap with v_min:
 
-The sign risk is
-leaving the pencil
-(pure hats still
-positive here) or
-leaving the 3-plane
-(Courant: λ_min of
-a larger space can
-be smaller — that
-is the well, not
-these five rays).
+    v          ov16    Q16      ov150   Q150
+    (5,−4,1)   0.999   0.0014   ~1      0.0010
+    (4,−3,1)   0.994   0.0055   0.995   0.0041
+    (4,−3,0)   0.992   0.0005   ~0.99   0.0003
+    (1,−1,0)   0.98    0.0094          0.0070
+    (3,−2,1)   0.97    0.019           0.014
+    e₁, e₂     low     0.19–0.24       0.15–0.17
+
+Q tracks 1−⟨v,v_min⟩²
+times the bulk, plus
+λ₀. That is why
+(4,−3,0) is the
+smallest Q in the
+pencil (almost
+v_min) and (3,−2,1)
+the largest, and why
+all five stay
+positive: they all
+have a bulk piece
+λ₁α₁² > |λ₀|α₀² on
+this window.
+
+Moving v by 1%
+toward v_min cuts Q
+sharply (`v-sensitivity`);
+moving along the
+pencil keeps the
+sign. The dangerous
+direction is onto
+v_min, not along it.
