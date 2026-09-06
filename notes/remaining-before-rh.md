@@ -213,30 +213,30 @@ measured negative (`notes/semilocal-step.pdf`).
 
 ---
 
-## 8a. Rational witness v = (4, −3, 1)/√26 at χ₅ μ=16
+## 8a. Rational witness v = (4, −3, 1)/√26 at μ=16
 
-**Shipped.** `code/av_enclose.py` (no flint) returns A(v) ∈
-[−0.82939, −0.82692] and Q(v) ∈ [0.00402, 0.00649], inside the
-room that keeps Q>0 after ±0.003 on P_rest. Judge
-`tests/test_av_enclose.py`. Pieces: elementary CST, 3-point Gauss
-on [0,1] (`notes/av-gauss.md`), 8+8 trapezoid of a=½wg, Leibniz
-|a''| from endpoint envelopes of w and catalogued extrema of g''
-(`report/gppp-isolation.md`, `report/gpp-positive-half.md`).
-Arb path still in `notes/av-witness.md`.
-
-**Even family.** Same integral transfers to all eight a=0
-characters (`code/av_enclose_even.py`); χ₅ is the tight window.
-
-**Odd family.** Different integrand (s₀=3/4). Ball on [1,L]
-with Leibniz M (`code/av_enclose_odd_ball.py`): χ₃ Q ∈
-[0.00490, 0.00724] termwise. χ₃ is the tight odd window.
-
-**Not a hand comparison.** I_{[0,1]} is a Gauss check, not a
-majorant of a^{(6)}. This is a finite-window certificate for
-one vector at one μ. It is not (∀ L) Q_L ≥ 0.
+One vector, three hats, no eigensolver.
 Index: `report/witness-status.md`.
 
----
+**Even (s₀=1/4).** Same integrand for all a=0.
+G₃ + 8+8 + Leibniz |a''|. a^{(6)} Markov
+M≤1370 from verified c_n (`report/a6-markov.md`).
+χ₅ Q ∈ [0.00334, 0.00717] after that remainder.
+Eight even characters: `code/av_enclose_even.py`,
+all Qlo>0, χ₅ tightest.
+
+**Odd (s₀=3/4).** a^{(6)} does not freeze.
+a^{(4)} does (23.5 sampled, ≤60 Markov).
+Composite 2-point Gauss on two halves
+(`code/av_odd_gauss2.py`) + Leibniz [1,L]:
+χ₃ Q ∈ [0.00388, 0.00795] with M₄=60.
+χ₃ is the tight odd window.
+
+**Not RH.** Finite μ, one v. I_{[0,1]} is
+now a quadrature with a coefficient bound
+on a derivative, not a comparison estimate
+of the integrand. (∀ L) Q_L ≥ 0 is still
+the covering lemma.
 
 ## 9. What this list is not
 
