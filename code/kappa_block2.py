@@ -7,7 +7,7 @@
     m    <- int_{window at 2} tau d*lambda
 
 Preregistered: if m freezes, kappa = m * 2 * sqrt(2);
-kappa=4 -> module 1/sqrt(2); kappa=8 -> inverse sqrt(2).
+kappa=2 -> module 1/sqrt(2); kappa=4 -> inverse sqrt(2).
 Not RH.
 
     python code/kappa_block2.py 4 32          # sandbox smoke
