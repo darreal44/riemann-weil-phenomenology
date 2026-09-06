@@ -196,5 +196,6 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | flint-free A(v), Q(v)>0 ball | judged (`code/av_enclose.py`, `report/Q-v-ball.md`); comparison still open |
 | identity orbit vanishes at \(\Lambda=1\); two logarithms | proved (`notes/log2-log3-step.md`) |
 | interior primes on \((\log 2,\log 3]\) = \(\{2\}\) | proved (`notes/log2-log3-step.md`) |
+| Galerkin \(V_N\) takes \(W_{\log 3}\) | false (Courant, `notes/pw-log3.md`) |
 | (log 2, log 3] for the whole PW class | open; not taken |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |

@@ -93,9 +93,8 @@ Details: `notes/remaining-before-rh.md`.
 ## 7. What remains a demonstration, not a scan
 
 - (∀ L) Q_L ≥ 0, or W(h) ≥ 0 on the full class: RH.
-- (log 2, log 3] for the whole Paley–Wiener class: the other
-  mechanism is named (`notes/log2-log3-step.md`); the step is
-  not taken.
+- (log 2, log 3] for the whole Paley–Wiener class: Galerkin is
+  the wrong direction (`notes/pw-log3.md`); the step is not taken.
 - det(A−P) > 0 by estimates that keep every n ≤ μ.
 - The O(log c) matching of the Landau count for hats, without a
   threshold ℓ>2.

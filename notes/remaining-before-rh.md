@@ -4,8 +4,9 @@ Demonstrations that closed after this note: `notes/demonstrations.md`
 (Courant, Schur sign, θ_{f₁}, edge split), `notes/av-gauss.md`
 (Gauss of A(v)), `notes/landau-depth.md` (kernel count, rungs
 sum to ℓ₀, (16+5)/2=11), and `notes/log2-log3-step.md` (1999
-finite part vs Sonin remainder; the Paley–Wiener step itself
-is not taken). The covering lemma is not among them.
+finite part vs Sonin remainder), and `notes/pw-log3.md` (Galerkin
+is Courant the wrong way for \(W_{\log3}\); the class step is
+not taken). The covering lemma is not among them.
 
 This note records what is proved, what is an identity of matrices,
 what is measured with a shipped judge, and what is still open — on
@@ -268,12 +269,14 @@ the covering lemma.
 ## 8b. What remains of the (log 2, log 3] step
 
 The Paley–Wiener class of type \(\log 3\) is not certified.
-\(Q(\mu=3)>0\) on \(V_{31}\) is a Galerkin pairing Arch\(-T_2\),
-not a Sonin remainder, and not the step
-(`code/positivite_certifiee_mu3.py`). Operator-level \(\int'\)
-by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
-\(D_S\circ Q\) is still a construction, not a sign measurement
-(journal §108, `report/subshell-ops.md`).
+Courant on nested hats: \(\lambda_{\min}(V_N)\ge c_L^*\), so
+\(Q>0\) on \(V_{31}\) is the wrong direction for the class
+(`notes/pw-log3.md`). Prime-side ladder at \(\mu=3\) is nested
+and positive (\(\zeta\): \(1.026\times10^{-7}\to6.27\times10^{-8}\)
+at \(N=9,17,25\), tracking the Gram floor). That is not
+\(c_L^*\ge0\). Operator-level \(\int'\) by subtracting the
+sub-shells \(1+2^k\mathbb Z_2\) from \(D_S\circ Q\) is still a
+construction (journal §108, `report/subshell-ops.md`).
 
 ---
 
