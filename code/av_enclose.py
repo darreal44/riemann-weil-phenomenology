@@ -54,7 +54,23 @@ def main():
     print(f"A(v)         [{Alo:.6f}, {Ahi:.6f}]")
     print(f"window       [{WINDOW[0]}, {WINDOW[1]}]")
     print(f"inside window {Alo >= WINDOW[0] and Ahi <= WINDOW[1]}")
-    return 0 if (Alo >= WINDOW[0] and Ahi <= WINDOW[1]) else 1
+    P = p_of_v()
+    print(f"P(v)         {P:.9f}")
+    print(f"Q(v)         [{Alo-P:.6f}, {Ahi-P:.6f}]")
+    print(f"Q lower>0    {Alo-P > 0}")
+    return 0 if (Alo >= WINDOW[0] and Ahi <= WINDOW[1] and Alo-P > 0) else 1
+
+
+def p_of_v():
+    from av_gauss import theta_v
+    import math
+    acc = 0.0
+    for n, p, chi in (
+        (2, 2, -1), (3, 3, -1), (4, 2, 1), (7, 7, -1), (8, 2, -1),
+        (9, 3, 1), (11, 11, 1), (13, 13, -1), (16, 2, 1),
+    ):
+        acc += chi * math.log(p) / math.sqrt(n) * theta_v(math.log(n))
+    return acc
 
 
 if __name__ == "__main__":
