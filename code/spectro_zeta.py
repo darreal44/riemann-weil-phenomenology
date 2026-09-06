@@ -88,6 +88,9 @@ def run(mu, NB, dps, DEG, K=8):
             vals.append(mp.fsum(v[i]*Cv[i] for i in range(NP)))
         tot = mp.fsum(vals)
         print(f"{k:2d} {mp.nstr(E[k],3):>11s} | " + " ".join(f"{float(x):+9.3f}" for x in vals) + f" | {mp.nstr(tot/E[k],4)}")
+    lam0 = float(E[0])
+    ell = [float(-mp.log(abs(E[k]))) if E[k] != 0 else float("inf") for k in range(min(8, NP))]
+    return lam0, ell
 
 if __name__ == '__main__':
     run(mp.mpf(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))

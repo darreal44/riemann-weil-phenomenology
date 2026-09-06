@@ -156,6 +156,6 @@ Paley–Wiener class of type \(\log 3\).
 | Thm 4 finite part = \(S\)-local Weil | Connes 1999, cited |
 | (log 2, log 3] by transporting CC remainder | negative, measured |
 | profile subtraction \(c\log\) makes \(D^{\mathrm{ren}}\circ Q\) compact | false (journal §107) |
-| Q\((\mu=3)>0\) on \(V_{31}\) | Galerkin certificate, not the step |
-| (log 2, log 3] for the whole PW class | **open; not taken** |
+| Q\((\mu=3)>0\) on \(V_{31}\) | Galerkin certificate, not the class (`notes/pw-log3.md`) |
+| (log 2, log 3] for the whole PW class | **open; not taken** (`notes/pw-log3.md`) |
 | \((\forall L)\,Q_L\ge 0\) | RH; not this note |
