@@ -76,7 +76,8 @@ infinite \(N\). It is not the step.
 | interior primes \(\{2\}\) | theorem (`log2-log3-step`) |
 | prime-side ladder at \(\mu=3\), nested, \(>0\) | judged, this note |
 | Bochner \(\alpha_{\mathrm{line}}\ge0\) | **false** (`ql-operator-bound`) |
-| \(c_L^*\ge0\) on \(W_{\log3}\) | **open; not taken** |
+| Schur tail takes χ₈ | judged (`ql-schur-tail`) |
+| \(c_L^*\ge0\) on \(W_{\log3}\) for every χ | **open; not taken** |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
 
 ## 4. A alone, by character
