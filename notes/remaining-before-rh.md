@@ -304,6 +304,8 @@ cutoff kernel is negative on χ₅, χ₈, χ₄, χ₃
 (`notes/ql-operator-bound.md`: α_line = −0.418 on χ₅);
 no windowed cosine kills the class. The Schur tail at
 h=2 takes χ₈ (β=+0.055) and not χ₅ (`notes/ql-schur-tail.md`).
+‖Θ(log 2)‖≤1, not 2 (`notes/ql-theta-tail.md`); χ₅ still
+δ<0.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
