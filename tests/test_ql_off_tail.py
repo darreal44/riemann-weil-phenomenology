@@ -74,7 +74,7 @@ def test_hankel_near_is_hs():
 def test_dyadic_off_uniform_union_not_hartman():
     data = json.load(open(JSON, encoding="utf-8"))
     offs = [r["off"] for r in data["dyadic"]]
-    assert len(offs) == 3
+    assert len(offs) == 5
     assert max(offs) - min(offs) < 0.02
     assert all(0.40 < x < 0.55 for x in offs)
     u = data["union"]
@@ -83,12 +83,27 @@ def test_dyadic_off_uniform_union_not_hartman():
     assert u["off"] < HALF_PI / 2.0
 
 
+def test_long_tail_off_climbs_past_cran():
+    data = json.load(open(JSON, encoding="utf-8"))
+    longu = data["long"]
+    by = {r["n1"]: r for r in longu}
+    assert by[128]["off"] < 0.55
+    assert by[256]["off"] > 0.60
+    assert by[512]["off"] > by[256]["off"]
+    assert by[512]["hankel"] > by[128]["hankel"]
+    assert by[512]["theta"] < 1.0
+    assert data["cross_check"]["abs_diff"] < 1e-6
+    assert data["trial_slo_long"]["s_lo"] < 0.01
+    assert data["verdict"] == "KILL"
+
+
 def test_note_does_not_claim_rh_or_take():
     text = open(NOTE, encoding="utf-8").read()
     assert "Not\nRH." in text or "Not RH" in text
     assert "take" in text.lower()
     assert "Hankel" in text
     assert "cancelled" in text or "cancels" in text
-    assert "0.474" in text or "0.47" in text
+    assert "0.719" in text or "0.72" in text
+    assert "256" in text
     assert "Nehari" in text
     assert "not a theorem" in text.lower() or "Not\ntaken" in text

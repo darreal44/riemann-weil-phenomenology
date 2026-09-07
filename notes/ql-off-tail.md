@@ -253,44 +253,86 @@ s₁(P_{n≥32} Off P_{n≥32}).
 
 ## Dyadic blocks vs union
 
-    [32,64)   Off=0.467  H=0.168  Θ=0.943  B₁=0.397
-    [64,128)  Off=0.465  H=0.170  Θ=0.946  B₁=0.397
-    [96,160)  Off=0.466  H=0.125  Θ=0.946  B₁=0.397
-    [32,128)  Off=0.502  H=0.332  Θ=0.946
+    [32,64)    Off=0.467  H=0.168  Θ=0.943  B₁=0.397
+    [64,128)   Off=0.465  H=0.170  Θ=0.946  B₁=0.397
+    [96,160)   Off=0.466  H=0.125  Θ=0.946  B₁=0.397
+    [128,256)  Off=0.465  H=0.171  Θ=0.946  B₁=0.397
+    [256,512)  Off=0.465  H=0.171  Θ=0.947  B₁=0.397
 
 Off
 is
 uniform
 on
 dyadics
-(Θ-local).
-The
-union
-climbs
-only
+(Θ-local)
+out
 to
-0.502
-while
-H
-doubles
-0.17→0.33.
-Cross-scale
-Hankel
-coherence
-is
-real
-and
-still
-far
-from
-π/2
+512.
+
+## Long truncated tail [32,M)
+
+Closed
+form
+Off=½/(n+m)−w₂Θ
+(Gauss
+cross-check
 on
-this
-union.
-Not
+[32,48):
+d=4×10⁻¹⁰).
+
+    M    dim  Off    H      Θ      tri    rev
+    128   96  0.502  0.332  0.946  0.796  0.131
+    192  160  0.561  0.421  0.946  0.885  0.043
+    256  224  0.608  0.480  0.947  0.944  0.016
+    384  352  0.673  0.558  0.947  1.022  0.094
+    512  480  0.719  0.609  0.947  1.073  0.145
+
+Off
+climbs
+0.50→0.72
+and
+already
+exceeds
+0.6
+at
+M=256.
+H
+climbs
+toward
+π/2;
+Θ
+is
+flat.
+The
+0.47
+window
+is
 an
-essential-norm
-bound.
+artefact
+of
+not
+joining
+scales.
+s₁≤0.6
+on
+the
+truncated
+tail
+is
+dead.
+This
+is
+still
+not
+‖P_{n≥32} Off P_{n≥32}‖
+on
+ℓ²
+(Hartman
+on
+H
+alone
+is
+π/2).
 
 ## Trial substitute (not a take)
 
@@ -309,35 +351,34 @@ drops
 and
 gives
 S_lo=+0.0007.
+At
+M=512,
+Off=0.719
+still
+gives
+S_lo=+0.0001
+because
+ρ
+is
+mostly
+ρ_N.
+Neither
+number
+is
+s₁
+of
+the
+infinite
+tail.
 The
 cran
 of
 `report/true-tail-s1.md`
-(s₁≤0.6
-would
-flip)
-is
-numerically
-live
+(s₁≤0.6)
+fails
+already
 on
-this
-window.
-It
-is
-not
-a
-theorem
-on
-the
-infinite
-tail,
-and
-ρ_B
-still
-carries
-the
-Hilbert
-row-remainder.
+[32,256).
 Not
 taken.
 
