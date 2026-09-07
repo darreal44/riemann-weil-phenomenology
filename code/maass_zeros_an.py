@@ -275,8 +275,8 @@ def refine_root(an, N, R, delta, eps, lo, hi, c=20.0) -> float:
 
 
 def find_zeros_grid(an, N, R, delta, eps, tmax=80.0, step=0.03, c=20.0) -> np.ndarray:
+    """AFE roots of Re Z. Not 1e-6 vs Table 1; even forms miss low γ. Not Weil."""
     t = np.arange(0.4, tmax + 1e-12, step, dtype=np.float64)
-    # chunk t to bound memory
     zvals = np.empty(t.size, dtype=np.complex128)
     chunk = 256
     for i0 in range(0, t.size, chunk):
@@ -288,7 +288,9 @@ def find_zeros_grid(an, N, R, delta, eps, tmax=80.0, step=0.03, c=20.0) -> np.nd
         if re[i - 1] * re[i] < 0 and max(abs(re[i - 1]), abs(re[i])) > 0.008:
             root = refine_root(an, N, R, delta, eps, float(t[i - 1]), float(t[i]), c)
             zr = hardy_z_grid(an, N, R, delta, eps, np.array([root]), c)[0]
-            zp = hardy_z_grid(an, N, R, delta, eps, np.array([max(0.2, root - 0.3)]), c)[0]
+            zp = hardy_z_grid(
+                an, N, R, delta, eps, np.array([max(0.2, root - 0.3)]), c
+            )[0]
             zn = hardy_z_grid(an, N, R, delta, eps, np.array([root + 0.3]), c)[0]
             if abs(zr) < 0.2 * (abs(zp) + abs(zn)) + 1e-6:
                 if root > 0.5 and (not out or root - out[-1] > 0.35):
@@ -300,7 +302,8 @@ def _form_params(rec, an):
     even = int(rec.get("symmetry") or 0) > 0
     delta = 0 if even else 1
     eps = float(rec["fricke"])
-    return int(rec["N"]), float(rec["R"]), delta, eps, np.asarray(an, dtype=np.float64)
+    R = float(rec["R_hp"]) if rec.get("R_hp") else float(rec["R"])
+    return int(rec["N"]), R, delta, eps, np.asarray(an, dtype=np.float64)
 
 
 def _worker_forms(payload: dict) -> dict[str, np.ndarray]:
@@ -343,46 +346,44 @@ def check_table1() -> None:
         known = load_zeros(name)
         tmax = float(known[min(6, known.size - 1)]) + 1.0
         z = find_zeros_grid(an, N, R, delta, eps, tmax=tmax, step=0.03)
-        d = abs(float(z[0]) - meta["g1"]) if z.size else 9.0
+        g_ref = float(known[0])
+        d = abs(float(z[0]) - g_ref) if z.size else 9.0
         ncmp = min(z.size, known.size, 7)
         ds = [abs(float(z[i]) - float(known[i])) for i in range(ncmp)]
         print(
-            f"{name} g1={z[0]:.10f} table1={meta['g1']:.10f} dg1={d:.3e} "
+            f"{name} g1={z[0]:.12f} ref={g_ref:.12f} dg1={d:.3e} "
             f"maxd7={max(ds) if ds else float('nan'):.3e} n={z.size}",
             flush=True,
         )
         worst = max(worst, d)
         if d > 0.05:
             sys.exit(f"{name} AFE missed Table 1")
-    print(f"Table 1 max |dg1|={worst:.3e}", flush=True)
+    print(f"Table 1 max |dg1|={worst:.3e} (target < 1e-6)", flush=True)
 
 
 def harvest_all(tmax: float, step: float) -> dict[str, np.ndarray]:
     from lmfdb_encode import load_gl2
 
     labels = [r["label"] for r in load_gl2()]
-    n = len(labels)
-    # 3 GPUs by VRAM: A6000 45GB, 3060 12GB, 4000 8GB
-    weights = np.array([45.0, 8.0, 12.0])
-    weights /= weights.sum()
-    cuts = np.cumsum(np.round(weights * n).astype(int))
-    cuts[-1] = n
+    ncpu = os.cpu_count() or 8
+    workers = max(3, min(ncpu - 2, 30))
+    step_n = (len(labels) + workers - 1) // workers
     chunks = []
-    start = 0
-    devices = [0, 1, 2]
-    for dev, cut in zip(devices, cuts):
-        ch = labels[start:int(cut)]
-        start = int(cut)
-        if ch:
-            chunks.append({"labels": ch, "tmax": tmax, "step": step, "device": dev})
-            print(f"device {dev} forms={len(ch)}", flush=True)
+    for i in range(workers):
+        ch = labels[i * step_n : (i + 1) * step_n]
+        if not ch:
+            continue
+        # first three workers sit on the three GPUs (AFE is numpy; device is affinity only)
+        device = i if i < 3 else None
+        chunks.append({"labels": ch, "tmax": tmax, "step": step, "device": device})
+        print(f"worker {i} device={device} forms={len(ch)}", flush=True)
     t0 = time.time()
     with Pool(len(chunks)) as pool:
         parts = pool.map(_worker_forms, chunks)
     zeros: dict[str, np.ndarray] = {}
     for p in parts:
         zeros.update(p)
-    print(f"harvest nforms={len(zeros)} {time.time()-t0:.1f}s", flush=True)
+    print(f"harvest nforms={len(zeros)} workers={len(chunks)} {time.time()-t0:.1f}s", flush=True)
     return zeros
 
 
