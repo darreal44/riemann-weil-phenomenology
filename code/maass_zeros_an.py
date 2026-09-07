@@ -6,16 +6,20 @@
 # LICENSE.md (section 3).
 """Maass GL2 L-zeros from rigor a_n, plus high-prec coefficients.
 
-Replica coefficients are PostgreSQL numeric (~70 digits). Tools see:
+Replica coefficients and R are PostgreSQL numeric (keep every digit).
+Tools see:
   load_an(label)     -> numpy float64
-  load_an_hp(label)  -> list of mpmath.mpf (dps=70)
-  load_zeros(label)  -> numpy float64 γ
+  load_an_hp(label)  -> list of mpmath.mpf (dps = digit count, ~70–100)
+  load_R_hp(label)   -> mpf (full spectral_parameter text)
+  load_zeros(label)  -> numpy float64 γ (IEEE 64-bit, error < 1e-6)
 Indexed catalog: gitignored data/lmfdb_mirror.sqlite (maass_an_prec)
 and code/lmfdb_maass_gl2.pkl (metadata, L-search row, zeros).
 
-    python code/maass_zeros_an.py --fetch          # 2 replica conns
-    python code/maass_zeros_an.py --check          # Table 1 vs Booker–Then
-    python code/maass_zeros_an.py --all --tmax 320 # 3 GPUs
+    python code/maass_zeros_an.py --fetch-R
+    python code/maass_zeros_an.py --fetch                 # all a_n, 2 replica conns
+    python code/maass_zeros_an.py --fetch 1.0.1.1.1 maass2
+    python code/maass_zeros_an.py --check                 # Table 1 vs Booker–Then
+    python code/maass_zeros_an.py --all --tmax 320        # 3 GPUs
 
 AFE, not a certified Weyl harvest. Not Weil.
 """
@@ -41,7 +45,7 @@ DSN = os.environ.get(
     "host=devmirror.lmfdb.xyz port=5432 dbname=lmfdb user=lmfdb password=lmfdb",
 )
 N_FETCH = max(1, min(2, int(os.environ.get("LMFDB_WORKERS", "2"))))
-HP_DPS = 70
+# a_n / R: keep every replica digit (see lmfdb_encode.mpf_keep). γ: float64.
 
 sys.path.insert(0, HERE)
 
@@ -99,6 +103,87 @@ def _fetch_an_slice(bounds: tuple[int, int]) -> list[tuple]:
         out.append((lab, int(arr.size), arr.tobytes(), hp))
     conn.close()
     return out
+
+
+def fetch_R_hp() -> dict[str, tuple[str, str]]:
+    """Replica spectral_parameter / spectral_error as numeric text (~70–100 digits)."""
+    conn = pg()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        SELECT maass_label, spectral_parameter::text, spectral_error::text
+        FROM maass_rigor
+        """
+    )
+    out = {lab: (R, err) for lab, R, err in cur}
+    conn.close()
+    print(f"fetch R_hp n={len(out)}", flush=True)
+    return out
+
+
+def attach_R_into_gl2(Rmap: dict[str, tuple[str, str]] | None = None) -> None:
+    """Put replica numeric R on every rigor row: R_hp text + float64 R."""
+    from lmfdb_encode import GL2_PKL
+
+    if Rmap is None:
+        Rmap = fetch_R_hp()
+    with open(GL2_PKL, "rb") as f:
+        blob = pickle.load(f)
+    n = 0
+    missing = 0
+    for r in blob["rows"]:
+        pair = Rmap.get(r["label"])
+        if pair is None:
+            missing += 1
+            continue
+        hp, err = pair
+        r["R_hp"] = hp
+        r["spectral_error_hp"] = err
+        r["R"] = float(hp)
+        n += 1
+    with open(GL2_PKL, "wb") as f:
+        pickle.dump(blob, f, protocol=4)
+    print(
+        f"R_hp on gl2 n={n} missing={missing} {os.path.getsize(GL2_PKL)} bytes",
+        flush=True,
+    )
+
+
+def _upsert_an_prec(rows: list[tuple]) -> int:
+    os.makedirs(DATA, exist_ok=True)
+    db = sqlite3.connect(SQLITE)
+    ensure_prec_table(db)
+    db.executemany(
+        "INSERT OR REPLACE INTO maass_an_prec VALUES (?,?,?,?)",
+        rows,
+    )
+    db.commit()
+    n = db.execute("SELECT COUNT(*) FROM maass_an_prec").fetchone()[0]
+    db.close()
+    return n
+
+
+def fetch_an_labels(labels: list[str]) -> int:
+    """float8[] + numeric::text for named forms only (Table 1 / checks)."""
+    conn = pg()
+    cur = conn.cursor()
+    cur.execute(
+        """
+        SELECT maass_label, coefficients::float8[], coefficients::text
+        FROM maass_rigor_coefficients
+        WHERE maass_label = ANY(%s)
+        """,
+        (list(labels),),
+    )
+    rows = []
+    for lab, f8, raw in cur:
+        arr = np.asarray(f8, dtype=np.float64)
+        hp = _parse_hp_array(raw)
+        rows.append((lab, int(arr.size), arr.tobytes(), hp))
+    conn.close()
+    n = _upsert_an_prec(rows)
+    print(f"maass_an_prec labels={len(rows)} table_n={n} -> {SQLITE}", flush=True)
+    return len(rows)
 
 
 def fetch_an_prec() -> int:
@@ -346,8 +431,17 @@ def attach_zeros_into_gl2(zeros: dict[str, np.ndarray]) -> None:
 
 def main() -> int:
     args = sys.argv[1:]
+    if "--fetch-R" in args:
+        attach_R_into_gl2()
+        return 0
     if "--fetch" in args:
-        fetch_an_prec()
+        rest = [a for a in args[args.index("--fetch") + 1 :] if not a.startswith("--")]
+        if rest:
+            from maass_table1 import resolve
+
+            fetch_an_labels([resolve(x) for x in rest])
+        else:
+            fetch_an_prec()
         return 0
     if "--check" in args:
         check_table1()

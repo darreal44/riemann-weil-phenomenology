@@ -62,6 +62,12 @@ are the same row; χ on the L-row is Conrey `3.2`. Bare `3.2` is
 the Maass short label `3.0.1.2.1` — do not use it for the
 character. GL3/DIR/CMF stay in `lmfdb_lfunc_*.pkl`.
 `python code/lmfdb_encode.py --reconcile`.
+R and a_n keep the replica numeric digits (`load_R_hp`, `load_an_hp`,
+mpf at the digit count: R is ~100 decimals, a_n ~70). γ are IEEE
+float64 (computing more is expensive); Table 1 also stores the
+Booker–Then decimal strings as `zeros_hp` because those digits
+are already on disk. `python code/maass_zeros_an.py --fetch-R`
+and `--fetch` (gitignored sqlite for a_n). Not Weil.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 

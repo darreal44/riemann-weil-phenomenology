@@ -13,7 +13,9 @@
     load_lfunc("11.0.1.1.1")                 # L-search columns, reconstructed
     load_lfunc("chi3")                       # lab name
     load_lfunc("Character/Dirichlet/3/2")    # LMFDB Origin (this is the χ)
-    load_an("11.0.1.1.1")                    # 1000 a_n from replica
+    load_an("11.0.1.1.1")                    # 1000 a_n float64
+    load_an_hp("1.0.1.1.1")                  # replica numeric, every digit
+    load_R_hp("maass1")                      # spectral R, every digit
 
 L-search columns on rec["lfunc"] (same names as LMFDB /L/ table):
   alpha, A, d, N, chi, mu, nu, w, prim, arith, rational,
@@ -134,6 +136,11 @@ ARBITRAGE = [
         "gl2_maass": "ModularForm/GL2/Q/Maass/{N.k.a.m.d}",
         "collision": "Conrey 3.2 vs Maass short 3.2 = 3.0.1.2.1. Tools look up Origin.",
     },
+    {
+        "topic": "precision: keep cheap digits",
+        "R_an": "replica numeric text as mpf (every digit; R is ~100 decimals, a_n ~70). float64 copy for scans.",
+        "gamma": "IEEE float64 (computing extra bits is expensive). If a source already has more digits (Booker–Then txt), also store zeros_hp strings.",
+    },
 ]
 
 
@@ -152,7 +159,7 @@ def analytic_conductor_gammaR(N: int, mus: list[tuple[float, float]]) -> float:
 def lfunc_from_rigor(r: dict, zeros) -> dict:
     """L-search row rebuilt from maass_rigor. stored_in_lmfdb is False."""
     even = int(r.get("symmetry") or 0) > 0
-    R = float(r["R"])
+    R = float(r["R_hp"]) if r.get("R_hp") else float(r["R"])
     N = int(r["N"])
     if even:
         mu = [(0.0, R), (0.0, -R)]
@@ -201,16 +208,26 @@ def attach_zeros_lfunc(rows: list[dict]) -> None:
             sorted(float(x) for x in pickle.load(open(path, "rb"))),
             dtype=np.float64,
         )
-        have[lab] = ("booker-then-table1", z)
+        txt = os.path.join(HERE, f"zeros_{name}.txt")
+        hp = None
+        if os.path.exists(txt):
+            hp = [
+                ln.strip()
+                for ln in open(txt, encoding="utf-8")
+                if ln.strip() and ln.strip()[0].isdigit()
+            ]
+        have[lab] = ("booker-then-table1", z, hp)
     for r in rows:
         lab = r["label"]
         if lab in have:
-            src, z = have[lab]
+            src, z, hp = have[lab]
             r["zeros"] = z
             r["zeros_source"] = src
+            r["zeros_hp"] = hp
         else:
             r["zeros"] = np.zeros(0, dtype=np.float64)
             r["zeros_source"] = None
+            r["zeros_hp"] = None
         r["lfunc"] = lfunc_from_rigor(r, r["zeros"])
         r["origin"] = r["lfunc"]["origin"]
         r["lfunc_note"] = r["lfunc"]["source"]
@@ -256,6 +273,25 @@ def _zeros_of(rec: dict | None):
     if z is None:
         return np.zeros(0, dtype=np.float64)
     return np.asarray(z, dtype=np.float64)
+
+
+def load_zeros_hp(label: str):
+    """γ as mpf when a cheap high-prec source exists (Booker–Then txt)."""
+    from maass_table1 import is_maass_name, resolve
+
+    s = label.strip()
+    rec = None
+    if s.startswith("Character/Dirichlet/") or s.startswith("ModularForm/"):
+        rec = by_origin().get(s)
+    elif s == "zeta" or s.startswith("chi") or s.startswith("chim"):
+        rec = by_chi().get(s)
+    else:
+        rec = by_label_gl2()[resolve(s) if is_maass_name(s) else s]
+    hp = None if rec is None else rec.get("zeros_hp")
+    if not hp:
+        z = _zeros_of(rec)
+        return [mpf_keep(repr(float(x))) for x in z] if z.size else []
+    return [mpf_keep(s) for s in hp]
 
 
 def load_zeros(label: str):
@@ -608,11 +644,35 @@ def load_mf_newforms() -> list[dict]:
 
 _AN = None
 _AN_HP_DB = None
-HP_DPS = 70
 
 
 def _sqlite_path() -> str:
     return os.path.join(ROOT, "data", "lmfdb_mirror.sqlite")
+
+
+def mpf_keep(s: str):
+    """Parse LMFDB numeric text without dropping digits (dps = digit count)."""
+    from mpmath import mp, mpf
+
+    t = (s or "").strip()
+    if not t:
+        raise ValueError("empty numeric")
+    nd = sum(ch.isdigit() for ch in t)
+    with mp.workdps(max(16, nd + 8)):
+        return mpf(t)
+
+
+def load_R_hp(label: str):
+    """Spectral R as mpf at the replica's full decimal count (~100 digits)."""
+    from maass_table1 import resolve
+
+    rec = by_label_gl2()[resolve(label)]
+    hp = rec.get("R_hp")
+    if not hp:
+        raise KeyError(
+            f"no R_hp for {label}; run python code/maass_zeros_an.py --fetch-R"
+        )
+    return mpf_keep(hp)
 
 
 def load_an(label: str | None = None):
@@ -632,11 +692,14 @@ def load_an(label: str | None = None):
             if "maass_an_prec" in tables:
                 for lab, blob in db.execute("SELECT maass_label, f64 FROM maass_an_prec"):
                     _AN[lab] = np.frombuffer(blob, dtype=np.float64).copy()
-            if not _AN and "maass_an" in tables:
+            if "maass_an" in tables:
                 for lab, blob in db.execute("SELECT maass_label, coeffs FROM maass_an"):
-                    _AN[lab] = np.frombuffer(blob, dtype=np.float32).astype(np.float64)
+                    if lab not in _AN:
+                        _AN[lab] = np.frombuffer(blob, dtype=np.float32).astype(
+                            np.float64
+                        )
             db.close()
-        if not _AN:
+        if len(_AN) < 35416:
             import glob
 
             for path in sorted(glob.glob(os.path.join(HERE, "lmfdb_maass_an_N*.pkl"))):
@@ -649,13 +712,11 @@ def load_an(label: str | None = None):
 
 
 def load_an_hp(label: str):
-    """Rigor a_n as mpmath.mpf at 70 decimal digits (replica numeric)."""
+    """Rigor a_n as mpf, one coefficient per replica numeric (keep every digit)."""
     import sqlite3
 
     from maass_table1 import resolve
-    from mpmath import mp, mpf
 
-    mp.dps = HP_DPS
     lab = resolve(label)
     db = sqlite3.connect(_sqlite_path())
     row = db.execute(
@@ -663,8 +724,10 @@ def load_an_hp(label: str):
     ).fetchone()
     db.close()
     if not row:
-        raise KeyError(f"no high-prec a_n for {lab}; run python code/maass_zeros_an.py --fetch")
-    return [mpf(s) for s in row[0].split(",")]
+        raise KeyError(
+            f"no high-prec a_n for {lab}; run python code/maass_zeros_an.py --fetch"
+        )
+    return [mpf_keep(s) for s in row[0].split(",") if s]
 
 
 if __name__ == "__main__":

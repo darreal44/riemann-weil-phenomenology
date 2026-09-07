@@ -9,6 +9,8 @@ import json
 import os
 import sys
 
+import numpy as np
+
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "code"))
 from lmfdb_encode import by_label_gl2  # noqa: E402
 from maass_table1 import parse_label, resolve  # noqa: E402
@@ -125,7 +127,8 @@ def test_gl2_rigor_zeros_and_lfunc_slot():
 
     by = by_label_gl2()
     z1 = load_zeros("1.0.1.1.1")
-    assert abs(float(z1[0]) - 17.0249) < 0.01
+    assert z1.dtype == np.float64 and z1.dtype.itemsize == 8
+    assert abs(float(z1[0]) - 17.0249420759926) < 1e-12
     assert load_zeros("maass1").size == z1.size
     rec = by["1.0.1.1.1"]
     assert rec["zeros_source"] == "booker-then-table1"
@@ -252,3 +255,43 @@ def test_quorum_chi_origin_is_lmfdb_instance():
     assert ix["Character/Dirichlet/3/2"]["name"] == "chi3"
     assert ix["ModularForm/GL2/Q/Maass/1.0.1.1.1"]["kind"] == "gl2"
     assert cat["chi"][ix["Character/Dirichlet/5/4"]["i"]]["name"] == "chi5"
+
+
+def test_mpf_keep_full_replica_digits():
+    """R and a_n keep every LMFDB numeric digit. γ are IEEE float64."""
+    from lmfdb_encode import load_R_hp, load_an_hp, load_zeros, mpf_keep
+    from mpmath import nstr
+
+    s = (
+        "9.5336952613535575543442352359287703238212563951072519823757"
+        "9046413534899129834778176925550997525395"
+    )
+    x = mpf_keep(s)
+    nd = sum(c.isdigit() for c in s)
+    got = nstr(x, n=nd, strip_zeros=False).replace(".", "")
+    want = s.replace(".", "")
+    assert got[: nd - 2] == want[: nd - 2]
+
+    rec = by_label_gl2()["1.0.1.1.1"]
+    assert rec.get("R_hp"), "run python code/maass_zeros_an.py --fetch-R"
+    assert rec["R_hp"].startswith("9.53369526135355755434423523592877")
+    assert sum(c.isdigit() for c in rec["R_hp"]) >= 90
+    Rh = load_R_hp("maass1")
+    assert nstr(Rh, n=30, strip_zeros=False).startswith("9.533695261353557")
+    assert abs(float(Rh) - rec["R"]) < 1e-15
+
+    z = load_zeros("maass1")
+    assert z.dtype == np.float64 and z.itemsize == 8
+    assert abs(float(z[0]) - 17.0249420759926) < 1e-12
+
+    an = load_an_hp("1.0.1.1.1")
+    a2 = nstr(an[1], n=50, strip_zeros=False)
+    assert a2.startswith("-1.068333551223570806669")
+    assert sum(c.isdigit() for c in a2) >= 40
+
+    from lmfdb_encode import load_zeros_hp
+
+    ghp = load_zeros_hp("maass1")
+    assert str(ghp[0]).startswith("17.0249420759926")
+    rec = by_label_gl2()["1.0.1.1.1"]
+    assert rec["zeros_hp"][0] == "17.0249420759926"
