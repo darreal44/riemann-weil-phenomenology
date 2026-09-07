@@ -298,8 +298,12 @@ bound of g misses by 0.224 and Q_lo<0
 (`notes/av-I01-compare.md`). A tangent/floor
 switch at y_sw=g_min/g'(0)=0.1786 misses
 by 0.088, Q_lo=−0.082, still outside
-±0.003 (`notes/av-I01-switch.md`).
-(∀ L) Q_L ≥ 0 is still the covering lemma.
+±0.003 (`notes/av-I01-switch.md`). A
+three-tangent envelope (t0, floor, tinf)
+misses by 0.068, Q_lo=−0.062
+(`notes/av-I01-envelope.md`). Still one
+v, not Weil. (∀ L) Q_L ≥ 0 is still
+the covering lemma.
 
 ---
 
