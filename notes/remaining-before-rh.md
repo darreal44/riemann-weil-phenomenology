@@ -538,6 +538,23 @@ limsup cap \(0.572\) is not \(0.45\). Not RH.
 
 ---
 
+## 8f. \(S_T\): Schur of the computed \(T_{\mathrm{near}}\)
+
+\(S_{\mathrm{diag}}\) is the Schur of \(\mathrm{diag}(T)\),
+not of \(T\) (`report/S-diag-derivation.md`). Inverting the
+Gauss \(T\) on hats \(2\ldots31\) gives
+\(S_T=H-C T_{\mathrm{near}}^{-1}C^*\) (`code/ql_schur_Tnear.py`).
+χ₃: \(\lambda_H=+0.0185\), \(S_{\mathrm{diag}}=+0.0076\),
+\(S_T=+0.0097>0\), \(S_{\mathrm{lo}}=-0.0086\). \(T_{\mathrm{near}}\)
+is SPD (\(t_{\min}=1.55\)). Near Off *returns* ~0.002 versus
+\(D^{-1}\). χ₃ does not die on the computed block: the drop
+to \(S_{\mathrm{lo}}\) is the far envelope (0.018). Haynsworth
+on this truncation is Courant on \(V_{32}\), the wrong
+direction for \(W_{\log 3}\). Still not \(S\) of the infinite
+tail. Not taken. Not RH.
+
+---
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
