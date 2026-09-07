@@ -98,9 +98,11 @@ and not χ₅ (T₂).
 not Hilbert 2; χ₅
 still δ<0. χ₄ taken at h=20
 (`ql-schur-chi4-h.md`).
-χ(2)=0 taken; χ(2)=−1
-not. Class not taken
-for every χ.
+χ(2)=0 taken. Neumann
+takes χ₅ (S_lo=+0.029,
+`ql-schur-neumann.md`);
+χ₃ not. Class not
+taken for every χ.
 
 A matrix bound
 on S_N is not
