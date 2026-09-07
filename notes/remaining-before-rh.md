@@ -610,6 +610,17 @@ No GL CSV. Does not exhibit \(1.081\).
 Does not license \(s_1\le 0.8\). Not taken.
 Not RH.
 
+## 8j. Double-limit \(e_H(N,M/N)\)
+
+8i left \(b(N)\to 0\) open. On \(N\in\{16,32,64,128\}\)
+and \(M/N\in\{4,8,16\}\) (`code/ql_hankel_weyl_N.py`),
+\(e_\sigma\) at matched ratio is independent of \(N\)
+to \(0.005\) (ratio 4: \(1.232\)–\(1.236\)). Raising
+the floor \(N\) at fixed span does nothing. Per-\(N\)
+intercepts *rise* \(0.530\to 0.709\) (fit artefact:
+larger \(N\), smaller max \(M/N\) under \(M=2048\)).
+Hartman not exhibited. Not taken. Not RH.
+
 ---
 
 ## 9. What this list is not
