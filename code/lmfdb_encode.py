@@ -6,19 +6,21 @@
 # LICENSE.md (section 3).
 """One catalog for GL2 Maass rigor, for scanners and other code.
 
-    from lmfdb_encode import by_label_gl2, load_zeros, load_an
+    from lmfdb_encode import by_label_gl2, load_zeros, load_an, load_lfunc
     rec = by_label_gl2()["1.0.1.1.1"]
-    rec["R"], rec["zeros"], rec["lfunc"]
-    load_zeros("maass1")          # same as 1.0.1.1.1
-    load_zeros("11.0.1.1.1")      # empty: LMFDB did not compute L(s,f)
-    load_an("11.0.1.1.1")         # 1000 a_n, those are in the replica
+    rec["R"], rec["zeros"], rec["lfunc"]["z1"]
+    load_zeros("maass1")
+    load_lfunc("11.0.1.1.1")   # L-search columns, reconstructed
+    load_an("11.0.1.1.1")      # 1000 a_n from replica
 
-Each GL2 row: label N.k.a.m.d, N, weight, degree, character, R,
-symmetry, fricke, zeros (array), zeros_source, lfunc, lfunc_note.
-
-LMFDB page for a rigor form: "L-function not computed". type=MaassGL2
-is two leftover N=101 URLs, not the 35416 rigor labels. GL3/DIR/CMF
-L-functions live in lmfdb_lfunc_*.pkl. Not Weil.
+L-search columns on rec["lfunc"] (same names as LMFDB /L/ table):
+  alpha, A, d, N, chi, mu, nu, w, prim, arith, rational,
+  self_dual, arg_eps, r, z1, origin
+GL2 rigor L-functions are not stored in lfunc_search (0 rows at
+N=1 and N=11, degree 2, w=0). Completeness: 15659 *dynamic* GL2
+Maass L. Columns are rebuilt from maass_rigor; A is the LMFDB
+analytic conductor (verified on GL3 CSV). z1 from Booker–Then
+Table 1 when we have zeros. Not Weil.
 
     python code/lmfdb_encode.py --reconcile
 """
@@ -88,11 +90,89 @@ def encode() -> None:
     print(f"gl3 n={len(rows3)} -> {GL3_PKL} ({os.path.getsize(GL3_PKL)} bytes)", flush=True)
 
 
+# LMFDB /L/ table: Label, α, A, d, N, χ, μ, ν, w, prim, arith, ℚ,
+# self-dual, Arg(ε), r, First zero, Origin.
+LFUNC_COLUMNS = (
+    "label", "alpha", "A", "d", "N", "chi", "mu", "nu", "w",
+    "prim", "arith", "rational", "self_dual", "arg_eps", "r", "z1", "origin",
+)
+ARBITRAGE = [
+    {
+        "topic": "GL2 rigor L-functions not in lfunc_search",
+        "lfunc_search": "0 rows for degree=2, motivic_weight=0, conductor 1 and 11",
+        "lfunc_lfunctions": "origin ModularForm/GL2/Q/Maass/ empty; type=MaassGL2 is two N=101 leftovers",
+        "lmfdb_completeness": "15659 dynamically computed GL2 Maass L (not stored)",
+        "lmfdb_page_11.0.1.1.1": "L-function not computed",
+        "action": "reconstruct L-search columns from maass_rigor; z1 from Booker–Then Table 1 when present",
+    },
+    {
+        "topic": "analytic conductor A and alpha",
+        "formula": "A = N exp(2 Re L_inf'(1/2)/L_inf(1/2)), alpha = A^(1/d), L_inf = product Gamma_R(s+mu)",
+        "verified_on": "GL3 first CSV row A=0.048865567236632115, alpha=0.3655956178456336",
+    },
+    {
+        "topic": "Arg(epsilon)",
+        "action": "self-dual: root_angle 0 if Fricke=+1 else 1/2 (units of 2π). Not stored by LMFDB for these forms.",
+    },
+]
+
+
+def analytic_conductor_gammaR(N: int, mus: list[tuple[float, float]]) -> float:
+    """LMFDB A for Gamma_R factors. mus are (real, imag) shifts."""
+    import mpmath as mp
+
+    def dlog_gr(z):
+        return -mp.log(mp.pi) / 2 + mp.digamma(z / 2) / 2
+
+    s = mp.mpf("0.5")
+    tot = sum(dlog_gr(s + a + 1j * b) for a, b in mus)
+    return float(N * mp.exp(2 * mp.re(tot)))
+
+
+def lfunc_from_rigor(r: dict, zeros) -> dict:
+    """L-search row rebuilt from maass_rigor. stored_in_lmfdb is False."""
+    even = int(r.get("symmetry") or 0) > 0
+    R = float(r["R"])
+    N = int(r["N"])
+    if even:
+        mu = [(0.0, R), (0.0, -R)]
+    else:
+        mu = [(1.0, R), (1.0, -R)]
+    A = analytic_conductor_gammaR(N, mu)
+    z1 = float(zeros[0]) if zeros is not None and getattr(zeros, "size", len(zeros)) else None
+    fr = r.get("fricke")
+    arg_eps = None if fr is None else (0.0 if int(fr) > 0 else 0.5)
+    src = "reconstructed from maass_rigor"
+    if z1 is not None:
+        src += "; z1 from booker-then-table1"
+    return {
+        "label": None,
+        "alpha": A ** 0.5,
+        "A": A,
+        "d": 2,
+        "N": N,
+        "chi": r["character"],
+        "mu": mu,
+        "nu": [],
+        "w": 0,
+        "prim": True,
+        "arith": False,
+        "rational": False,
+        "self_dual": True,
+        "arg_eps": arg_eps,
+        "r": 0 if z1 is not None else None,
+        "z1": z1,
+        "origin": f"ModularForm/GL2/Q/Maass/{r['label']}",
+        "stored_in_lmfdb": False,
+        "source": src,
+    }
+
+
 def attach_zeros_lfunc(rows: list[dict]) -> None:
-    """Put Table 1 γ on the rigor rows. lfunc is empty: LMFDB has none."""
+    """Table 1 γ + reconstructed L-search columns on every rigor row."""
     from maass_table1 import ALIAS
 
-    have: dict[str, tuple[str, "np.ndarray"]] = {}
+    have: dict[str, tuple[str, np.ndarray]] = {}
     for name, lab in ALIAS.items():
         path = os.path.join(HERE, f"zeros_{name}_weyl.pkl")
         if not os.path.exists(path):
@@ -111,8 +191,8 @@ def attach_zeros_lfunc(rows: list[dict]) -> None:
         else:
             r["zeros"] = np.zeros(0, dtype=np.float64)
             r["zeros_source"] = None
-        r["lfunc"] = None
-        r["lfunc_note"] = "LMFDB: L-function not computed"
+        r["lfunc"] = lfunc_from_rigor(r, r["zeros"])
+        r["lfunc_note"] = r["lfunc"]["source"]
 
 
 def reconcile_gl2() -> None:
@@ -120,6 +200,8 @@ def reconcile_gl2() -> None:
         blob = pickle.load(f)
     attach_zeros_lfunc(blob["rows"])
     blob["kind"] = "gl2_maass_rigor"
+    blob["lfunc_columns"] = ",".join(LFUNC_COLUMNS)
+    blob["arbitrage"] = ARBITRAGE
     with open(GL2_PKL, "wb") as f:
         pickle.dump(blob, f, protocol=4)
     n_z = sum(1 for r in blob["rows"] if r["zeros"].size)
@@ -145,7 +227,7 @@ def by_label_gl2() -> dict[str, dict]:
 
 
 def load_zeros(label: str):
-    """γ > 0 for one rigor form. Empty if LMFDB has no L-function.
+    """γ > 0 for one rigor form. Empty if we have no list.
 
     Accepts maass1, 1.2, 1.0.1.1.1.
     """
@@ -156,6 +238,17 @@ def load_zeros(label: str):
     if z is None:
         return np.zeros(0, dtype=np.float64)
     return np.asarray(z, dtype=np.float64)
+
+
+def load_lfunc(label: str) -> dict:
+    """L-search columns for one rigor form (reconstructed if not stored)."""
+    from maass_table1 import resolve
+
+    rec = by_label_gl2()[resolve(label)]
+    lf = rec.get("lfunc")
+    if lf is None:
+        return lfunc_from_rigor(rec, rec.get("zeros"))
+    return lf
 
 
 def load_dirichlet() -> list[dict]:

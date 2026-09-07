@@ -120,7 +120,8 @@ def test_lfunc_zeros_conjugate_and_holomorphic():
 
 
 def test_gl2_rigor_zeros_and_lfunc_slot():
-    from lmfdb_encode import by_label_gl2, load_an, load_zeros
+    from lmfdb_encode import by_label_gl2, load_an, load_lfunc, load_zeros
+    from maass_table1 import TABLE1
 
     by = by_label_gl2()
     z1 = load_zeros("1.0.1.1.1")
@@ -128,12 +129,56 @@ def test_gl2_rigor_zeros_and_lfunc_slot():
     assert load_zeros("maass1").size == z1.size
     rec = by["1.0.1.1.1"]
     assert rec["zeros_source"] == "booker-then-table1"
-    assert rec["lfunc"] is None
+    lf = load_lfunc("1.0.1.1.1")
+    assert lf["d"] == 2 and lf["N"] == 1 and lf["chi"] == "1.1" and lf["w"] == 0
+    assert lf["prim"] and not lf["arith"] and lf["self_dual"]
+    assert lf["stored_in_lmfdb"] is False
+    assert abs(lf["z1"] - 17.0249) < 0.01
+    assert abs(lf["mu"][0][1] - rec["R"]) < 1e-9
+    assert lf["origin"].endswith("1.0.1.1.1")
+    for name, meta in TABLE1.items():
+        g = float(load_zeros(name)[0])
+        assert abs(g - meta["g1"]) < 0.01, name
+        assert abs(load_lfunc(name)["z1"] - meta["g1"]) < 0.01, name
 
     rec11 = by["11.0.1.1.1"]
     assert rec11["N"] == 11
     assert abs(rec11["R"] - 2.03309) < 1e-4
     assert load_zeros("11.0.1.1.1").size == 0
-    assert rec11["lfunc"] is None
-    assert "not computed" in rec11["lfunc_note"].lower()
+    lf11 = load_lfunc("11.0.1.1.1")
+    assert lf11["N"] == 11 and lf11["chi"] == "11.1" and lf11["z1"] is None
+    assert lf11["stored_in_lmfdb"] is False
+    assert abs(lf11["mu"][0][1] - rec11["R"]) < 1e-9
     assert len(load_an("11.0.1.1.1")) == 1000
+
+
+def test_lfunc_A_matches_gl3_csv_and_every_gl2_row():
+    from lmfdb_encode import (
+        analytic_conductor_gammaR,
+        by_label_gl2,
+        load_gl2,
+        load_gl3,
+        load_lfunc,
+    )
+
+    g3 = load_gl3()[0]
+    mus = [(0.0, m) for m in g3["mu"]]
+    A = analytic_conductor_gammaR(g3["N"], mus)
+    assert abs(A - 0.048865567236632115) < 1e-15
+    assert abs(A ** (1 / 3) - 0.3655956178456336) < 1e-15
+    rows = load_gl2()
+    assert len(rows) == 35416
+    by = by_label_gl2()
+    for r in rows:
+        lf = r["lfunc"]
+        assert lf["d"] == 2 and lf["N"] == r["N"] and lf["chi"] == r["character"]
+        assert lf["w"] == 0 and lf["nu"] == []
+        assert abs(abs(lf["mu"][0][1]) - r["R"]) < 1e-9
+        even = r["symmetry"] > 0
+        assert lf["mu"][0][0] == (0.0 if even else 1.0)
+        assert abs(lf["alpha"] ** 2 - lf["A"]) < 1e-8
+        assert by[r["label"]]["label"] == r["label"]
+    for lab in ("1.0.1.1.1", "1.0.1.3.1", "11.0.1.1.1", "105.0.1.1.1"):
+        lf = by[lab]["lfunc"]
+        assert abs(lf["A"] - analytic_conductor_gammaR(lf["N"], lf["mu"])) < 1e-9
+    assert load_lfunc("11.0.1.1.1")["A"] == by["11.0.1.1.1"]["lfunc"]["A"]
