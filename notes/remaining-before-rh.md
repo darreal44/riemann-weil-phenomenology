@@ -304,7 +304,11 @@ misses by 0.068, Q_lo=−0.062
 (`notes/av-I01-envelope.md`). A quadratic
 support near 0 (m=g''(y_min), named in
 `report/g-convexity.md`) misses by 0.047,
-Q_lo=−0.042 (`notes/av-I01-quad.md`).
+Q_lo=−0.042 (`notes/av-I01-quad.md`). An
+N=4 quadratic mesh (named in
+`report/quadratic-mesh.md`) misses by
+0.0053, Q_lo=+0.0002; the I-gap is still
+outside ±0.003 (`notes/av-I01-mesh.md`).
 Still one v, not Weil. (∀ L) Q_L ≥ 0
 is still the covering lemma.
 
