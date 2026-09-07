@@ -374,7 +374,11 @@ does not extend
 H_n at μ=7 and μ=8 through n=48 stays +;
 H₄₈/H₁₆≈0.7, so the well is L
 not missing modes
-(`notes/ql-Hn-mu78.md`). Not (∀ L).
+(`notes/ql-Hn-mu78.md`). H₁₆ on
+(5, 7]: T₅ Δλ=−2.2×10⁻⁶, then
+5 drifts and L cut λ_min by ~10
+per 0.5 in μ; H₀₀ rises
+(`notes/ql-H16-mu57.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
