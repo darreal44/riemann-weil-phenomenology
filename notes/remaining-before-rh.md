@@ -246,6 +246,12 @@ on the rigor pkl (`load_zeros`,
 `load_lfunc`). `11.0.1.1.1` has a_n;
 LMFDB did not store its L-function
 (columns reconstructed from rigor).
+Origin is the LMFDB instance name:
+for quorum χ it is
+`Character/Dirichlet/{q}/{n}`
+(`lmfdb_quorum_chi.pkl`,
+`lmfdb_catalog.pkl`; `chi3` =
+`Character/Dirichlet/3/2`).
 Checked against Zenodo JSON and the
 GL3 analytic conductor
 (`tests/test_lmfdb_zenodo.py`).
