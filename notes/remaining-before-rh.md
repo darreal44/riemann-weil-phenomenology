@@ -237,8 +237,15 @@ CSV). Not lex `1.0.1.10.1`.
 `code/lmfdb_maass_gl2.pkl` (35416 rows,
 levels 1–105), `lmfdb_maass_an_N*.pkl`
 (all a_n), `lmfdb_dirichlet.pkl`
-(modulus ≤ 1000). Checked against
-Zenodo JSON (`tests/test_lmfdb_zenodo.py`).
+(modulus ≤ 1000), L-function zeros
+and `{χ,χ̄}` in `lmfdb_lfunc_*.pkl`,
+holomorphic newforms in
+`lmfdb_mf_newforms.pkl` (N≤100, k≤12).
+MaassGL2 rigor zeros are not in the
+replica L-functions. Two replica
+connections, indexed joins. Checked
+against Zenodo JSON
+(`tests/test_lmfdb_zenodo.py`).
 LMFDB `symmetry=0` is odd (s₀=3/4).
 
 Gamma is `Γ_R(s±iR)`, not `scan_q_gl2`.

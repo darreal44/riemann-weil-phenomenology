@@ -37,7 +37,16 @@ LMFDB `symmetry=0` is odd (s0=3/4). CSV gitignored; scanners load
 `code/lmfdb_maass_gl2.pkl` (35416 rows, levels 1–105).
 All rigor `a_n` (1000 coeffs) live in `lmfdb_maass_an_N*.pkl` and in
 gitignored `data/lmfdb_mirror.sqlite`. Dirichlet orbits with modulus
-≤ 1000: `lmfdb_dirichlet.pkl`. Replica dumps use at most 2 connections.
+≤ 1000: `lmfdb_dirichlet.pkl`. Replica dumps use at most 2 connections
+on indexed `type` / `url` / `Lhash` / `level` (no `ILIKE` on
+`lfunc_lfunctions`). L-function zeros and conjugate orbits:
+`lmfdb_lfunc_maass.pkl` (MaassGL3 = 1554, MaassGL2 join empty — the
+35416 rigor forms are not in `lfunc_lfunctions`),
+`lmfdb_lfunc_dirichlet.pkl` (Conrey `q.n` with q≤200, `{χ,χ̄}` in `conjugate`;
+character orbits stay at q≤1000),
+`lmfdb_lfunc_cmf.pkl` and `lmfdb_mf_newforms.pkl` (holomorphic, level
+≤ 100, weight ≤ 12). `positive_zeros` is the LMFDB short list, not a
+Weyl harvest. `python code/lmfdb_dump.py --lfunc`.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 

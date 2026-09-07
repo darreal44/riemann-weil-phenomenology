@@ -74,3 +74,46 @@ def test_an_all_levels_and_zenodo_a2():
     assert len(chi) >= 20000
     five = next(r for r in chi if r["label"] == "5.b")
     assert five["is_primitive"] and five["modulus"] == 5
+
+
+def test_lfunc_zeros_conjugate_and_holomorphic():
+    from lmfdb_encode import (
+        load_lfunc_cmf,
+        load_lfunc_dirichlet,
+        load_lfunc_maass,
+        load_mf_newforms,
+    )
+
+    maass = load_lfunc_maass()
+    gl3 = [r for r in maass if r["type"] == "MaassGL3"]
+    gl2 = [r for r in maass if r["type"] == "MaassGL2"]
+    assert len(gl3) == 1554
+    assert gl3[0]["zeros"].size >= 1
+    assert any(r.get("conjugate") for r in gl3)
+    # rigor GL2 zeros are not in lfunc_lfunctions
+    assert len(gl2) <= 2
+    assert all(r["zeros"].size == 0 for r in gl2) or len(gl2) == 0
+
+    dL = load_lfunc_dirichlet()
+    assert len(dL) >= 3
+    by_url = {r["url"]: r for r in dL}
+    chi52 = by_url["Character/Dirichlet/5/2"]
+    assert chi52["conjugate"] == "dirichlet_L_5.3"
+    assert chi52["zeros"].size >= 100
+    chi53 = by_url["Character/Dirichlet/5/3"]
+    assert chi53["conjugate"] == "dirichlet_L_5.2"
+    chi54 = by_url["Character/Dirichlet/5/4"]
+    assert chi54["self_dual"] is True
+
+    mf = load_mf_newforms()
+    by_mf = {r["label"]: r for r in mf}
+    assert by_mf["11.2.a.a"]["level"] == 11
+    assert by_mf["11.2.a.a"]["weight"] == 2
+    assert by_mf["1.12.a.a"]["weight"] == 12
+    assert by_mf["11.2.a.a"]["is_self_dual"] is True
+
+    cmf = load_lfunc_cmf()
+    by_cmf = {r["url"]: r for r in cmf}
+    rec = by_cmf["ModularForm/GL2/Q/holomorphic/11/2/a/a"]
+    assert rec["zeros"].size >= 1
+    assert rec["label"].startswith("2-11-")

@@ -100,6 +100,30 @@ def load_dirichlet() -> list[dict]:
         return pickle.load(f)["rows"]
 
 
+def load_lfunc_maass() -> list[dict]:
+    path = os.path.join(HERE, "lmfdb_lfunc_maass.pkl")
+    with open(path, "rb") as f:
+        return pickle.load(f)["rows"]
+
+
+def load_lfunc_dirichlet() -> list[dict]:
+    path = os.path.join(HERE, "lmfdb_lfunc_dirichlet.pkl")
+    with open(path, "rb") as f:
+        return pickle.load(f)["rows"]
+
+
+def load_lfunc_cmf() -> list[dict]:
+    path = os.path.join(HERE, "lmfdb_lfunc_cmf.pkl")
+    with open(path, "rb") as f:
+        return pickle.load(f)["rows"]
+
+
+def load_mf_newforms() -> list[dict]:
+    path = os.path.join(HERE, "lmfdb_mf_newforms.pkl")
+    with open(path, "rb") as f:
+        return pickle.load(f)["rows"]
+
+
 _AN = None
 
 
