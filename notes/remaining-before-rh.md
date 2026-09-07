@@ -310,7 +310,11 @@ h=2 takes χ₈ (β=+0.055) and not χ₅ (`notes/ql-schur-tail.md`).
 Neumann T^{-1} takes χ₅ (S_lo=+0.029);
 χ₃ at h=4 (`notes/ql-schur-chi3-h.md`);
 χ₇ (χ(2)=+1) at h=2
-(`notes/ql-schur-chi7-h.md`).
+(`notes/ql-schur-chi7-h.md`);
+χ₁₇ (even +1) at h=2
+(`notes/ql-schur-chi17-h.md`).
+The six (s₀, χ(2)) cells each have
+one representative.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
