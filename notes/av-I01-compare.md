@@ -58,7 +58,10 @@ The comparison estimate of I_{[0,1]}
 is still open. One-line chords and
 a 3-piece tangent/floor/chord fail
 by the same 0.22 in opposite
-directions. Gauss-3 is the arithmetic
-check. One v, finite μ. Not RH.
+directions. A later switch at
+y_sw=g_min/g'(0) misses 0.088
+(`notes/av-I01-switch.md`). Gauss-3
+is the arithmetic check. One v,
+finite μ. Not RH.
 
 Judge: `tests/test_av_I01_compare.py`.
