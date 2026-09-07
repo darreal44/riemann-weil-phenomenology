@@ -50,3 +50,10 @@ Closing a^{(6)} for a_odd
 needs a different strip
 or a cutoff away from
 y=1, not this sum.
+
+Executed: Cauchy r=2, two
+panels (`notes/av-cauchy-odd.md`).
+Elementary rem 2.01×10^{-4}.
+χ₃ Qlo=0.00469>0. The
+Chebyshev sum is not the
+majorant; Cauchy is.
