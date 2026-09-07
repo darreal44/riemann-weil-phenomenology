@@ -132,7 +132,10 @@ windows, including `χ₅` `μ=38` where `κ(T) ∼ 10⁸`.
 `O(10⁻⁶)`; `λ₀` is `10⁻⁸` to `10⁻⁴⁹`. The factor is
 `C T⁻¹ Cᵀ`. A lower bound on `λ₀` from a lower bound on `H`
 requires an upper bound on `‖T⁻¹‖` (or a spectral gap of `T`)
-and a bound on `C`. None is proved. The identity does not
+and a bound on `C`. On the small window \(W_{\log 3}\), a
+Hilbert–Hankel bound on the infinite tail takes χ₈
+(`notes/ql-schur-tail.md`, β=+0.055) and fails for χ₅/χ₃
+(T₂ eats δ). That is not Lemma 2 at μ=16. The identity does not
 transfer 2-plane positivity to `λ₀`
 (`test_two_plane_does_not_transfer_to_lambda0`: `λ_min(H)/λ₀ > 10`
 already on the narrow desert `χ₁₃`).
@@ -299,8 +302,10 @@ at \(N=9,17,25\), tracking the Gram floor). That is not
 \(c_L^*\ge0\). The Bochner / Fourier sufficient bound of the
 cutoff kernel is negative on χ₅, χ₈, χ₄, χ₃
 (`notes/ql-operator-bound.md`: α_line = −0.418 on χ₅);
-no windowed cosine kills the class. Bernstein vs Â is
-infinite for χ(2)=−1 (A(constant)<0). Operator-level \(\int'\)
+no windowed cosine kills the class. The Schur tail at
+h=2 takes χ₈ (β=+0.055) and not χ₅ (`notes/ql-schur-tail.md`).
+Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
+Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
 \(D_S\circ Q\) is still a construction (journal §108,
 `report/subshell-ops.md`).
