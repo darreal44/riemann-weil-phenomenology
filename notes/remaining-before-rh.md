@@ -340,7 +340,11 @@ still the covering lemma.
 
 ## 8b. What remains of the (log 2, log 3] step
 
-The Paley–Wiener class of type \(\log 3\) is not certified.
+The Paley–Wiener class of type \(\log 3\) is not certified
+for every χ. Every primitive χ already in `scan_s`
+takes at μ=3 by Neumann (`notes/ql-class-mu3.md`,
+13 extra, all S_lo(h=2)>0.64). That is a finite
+list. Bochner α_line still fails.
 Courant on nested hats: \(\lambda_{\min}(V_N)\ge c_L^*\), so
 \(Q>0\) on \(V_{31}\) is the wrong direction for the class
 (`notes/pw-log3.md`). Prime-side ladder at \(\mu=3\) is nested
