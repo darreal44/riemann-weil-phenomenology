@@ -293,8 +293,10 @@ Chebyshev a^{(6)} still does not freeze.
 odd are Gauss+Cauchy on [0,1] and [1,L]
 (`notes/av-enclose-cauchy-tail.md`). The
 chord comparison of I_{[0,1]} is still
-open. (∀ L) Q_L ≥ 0 is still the covering
-lemma.
+open: Gauss-3 = −0.700661; a 3-piece
+bound of g misses by 0.224 and Q_lo<0
+(`notes/av-I01-compare.md`). (∀ L) Q_L ≥ 0
+is still the covering lemma.
 
 ---
 
