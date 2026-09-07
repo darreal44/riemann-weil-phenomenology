@@ -323,6 +323,9 @@ not (∀ L).
 (`notes/ql-schur-mu5.md`). This
 construction is not ≥0 on W_{log 5}
 for χ₃. Not a disproof of RH.
+μ* of that sign change is in (4.75, 5];
+μ=4 (Θ-jump) is not the crossing
+(`notes/ql-chi3-H4-mu.md`).
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
