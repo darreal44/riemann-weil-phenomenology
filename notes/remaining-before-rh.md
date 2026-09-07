@@ -278,11 +278,12 @@ Composite 2-point Gauss on two halves
 χ₃ Q ∈ [0.00388, 0.00795] with M₄=60.
 χ₃ is the tight odd window.
 
-**Not RH.** Finite μ, one v. I_{[0,1]} is
-now a quadrature with a coefficient bound
-on a derivative, not a comparison estimate
-of the integrand. (∀ L) Q_L ≥ 0 is still
-the covering lemma.
+**Not RH.** Finite μ, one v. Even I_{[0,1]}
+is now Gauss two-panel plus a Cauchy
+majorant of |a^{(6)}| (`notes/av-cauchy-a6.md`).
+The chord comparison of the integrand is
+still open. (∀ L) Q_L ≥ 0 is still the
+covering lemma.
 
 ---
 
