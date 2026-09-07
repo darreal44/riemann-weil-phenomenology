@@ -559,7 +559,6 @@ tail. Not taken. Not RH.
 
 ---
 
-<<<<<<< HEAD
 ## 8g. Hankel only: strip \(B_1^\Theta\) (\(w_2=0\))
 
 Forced \(w_2=0\) rebuilds \(H,C,T\) from the archimedean
@@ -570,8 +569,8 @@ piece alone and drops \(|w_2|\|\Theta\|\) from Off_far
 \(-0.24\). The 2-tower *carries* λ_H through zero; it is
 not what kills χ₃ in the far envelope. Hankel-only is not
 the form of χ₃. Not taken. Not RH.
-=======
-## 8g. Proved \(s_1(\mathrm{Off}_Q)\): triangle, not 0.8
+
+## 8h. Proved \(s_1(\mathrm{Off}_Q)\): triangle, not 0.8
 
 `report/drop-half-pi.md` asks to replace the Hankel+Θ
 split by a certified \(s_1(\mathrm{Off}_Q)\). That split
@@ -586,7 +585,7 @@ unchanged. \(s_1\le 0.6\), \(0.8\), \(1.0\) lie *below*
 the essential lower bound, hence false. Dropping \(\tfrac\pi2\)
 flips \(S_{\mathrm{lo}}\) by \(+0.0005\) and is false.
 \(\tfrac\pi2\) stays. Not taken. Not RH.
->>>>>>> pr96
+
 
 ---
 
