@@ -1,51 +1,119 @@
-# Critical thresholds, as judged
+# Critical thresholds for takes
 
-Not a sixth slope.
-Each line is a sign
-change that was
-measured, or a
-window that still
-contains one.
+Identified
+Q_pk,
+S_lo>0
+with
+T
+infinite,
+cap
+√2.
+A
+threshold
+is
+the
+last
+μ
+on
+the
+grid
+where
+a
+take
+still
+exists,
+then
+the
+event
+that
+kills
+it.
 
-## 37a1, prime-side Q
+    χ     last take           killed by
+    χ₃    μ=5  (h=16)         T₅ at 5.1
+    χ₇    μ=5.1 sliver h=24   then dead on (5.1,7]
+    χ₄    μ=7 sliver h=24     T₇ / μ=8
+    χ₅    μ=7 sliver h=24     T₇ / μ=8
+    χ₁₇   μ=7  (h=4)          T₇ / μ=8
+    χ₈    μ=8  (h=24)         2³ at 8.1
 
-    object              window           notes
-    drop-3 >0           μ≤84             +0.087 at 82, +0.048 at 84
-    drop-3 =0           μ* ∈ (84, 86]    sampled (`gl2-37a1-mu-star.md`)
-    drop-3 <0           μ≥86             −0.029 … −1.02 at 250
-    drop-83 mute        μ≤82             83 not in the sum
-    drop-83 dispensable μ=84             +3×10⁻⁹
-    drop-83 =0          μ** ∈ (84, 86]   sampled (`gl2-37a1-mu-star83.md`)
-    drop-83 <0          μ≥86             −4×10⁻¹⁰ at 86, −0.080 at 100
+No
+quorum
+take
+is
+tracked
+past
+8.
+The
+even
+comfortable
+cell
+(χ₈)
+lasted
+longest
+and
+died
+on
+a
+prime
+power,
+not
+on
+T₇.
+The
+odd
+hard
+cell
+(χ₃)
+died
+first,
+on
+T₅.
 
-Two crossings in
-the same 2-unit
-bin. Unlike amplitudes
-(3 is −0.029, 83 is
-−10⁻¹⁰ at 86). The
-threshold is not
-y/L=1 (arrival)
-and not a fixed
-y/L of 3 (0.25→0.24).
+These
+are
+thresholds
+of
+*this
+certificate*
+(Neumann
++
+√2
+cap),
+not
+of
+Q̂_L
+itself.
+H_n
+can
+stay
++
+after
+S_lo
+dies
+(#73–#75).
+c_L^*
+may
+still
+be
+positive
+and
+tiny.
+The
+critical
+line
+in
+μ
+is
+the
+line
+where
+the
+tail
+bound
+loses
+ρ<1.
 
-## χ₅ / χ₃ 3-plane
-
-    Q(v) on the pencil     no zero on [16, 150]
-    λ_min(H)               stays >0, falls 10⁻⁶→10⁻⁹
-    A−P₂₃                  zero *per ray*, not per μ
-                           rat crosses in (16,150]
-                           (1,−1,0) still + at 150
-
-## Fmat / κ
-
-    w₂ freeze at 0.49      none (#46)
-    κ at 2 or 4            none (#48)
-    κ freeze in h, Λ=16    yes, at ~6 — wrong number
-
-## What a threshold is not
-
-A line through two
-μ. #44, #47, κ(Λ).
-The digits: μ* and μ**
-both ∈ (84, 86].
-It does not change the taxonomy.
+Not
+(∀ L).
+Not RH.
