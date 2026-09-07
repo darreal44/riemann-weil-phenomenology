@@ -75,7 +75,10 @@ drop-3 +0.087 at 82,
 +0.048 at 84, −0.418
 at 100. Drop-83 mute
 at 82, dispensable at
-84, **necessary at 100**
+84, **necessary from 86**
+(#56; −0.080 is the
+value at 100, not
+the onset)
 (−0.080). 83 is a voter
 on the cliff window.
 Its arrival is not the
