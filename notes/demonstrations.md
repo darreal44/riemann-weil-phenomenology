@@ -197,5 +197,6 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | identity orbit vanishes at \(\Lambda=1\); two logarithms | proved (`notes/log2-log3-step.md`) |
 | interior primes on \((\log 2,\log 3]\) = \(\{2\}\) | proved (`notes/log2-log3-step.md`) |
 | Galerkin \(V_N\) takes \(W_{\log 3}\) | false (Courant, `notes/pw-log3.md`) |
+| Bochner \(\alpha_{\mathrm{line}}\ge0\) on \(W_{\log 3}\) | false (`notes/ql-operator-bound.md`) |
 | (log 2, log 3] for the whole PW class | open; not taken |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |

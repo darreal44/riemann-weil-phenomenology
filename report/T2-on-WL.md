@@ -42,12 +42,19 @@ evaluation estimate
 on PW_{L/2} at one
 point y=log 2 can
 (Bernstein /
-Plancherel). That
-estimate is the
-concrete missing
-line for *this*
-window.
+Plancherel).
 
-Not written. Not the
-class step. One point,
-one prime.
+Written
+(`ql-operator-bound.md`):
+A(constant) is −0.159
+on χ₅ and −0.134 on
+χ₃, both in W_L, so
+C_* is infinite.
+Bernstein vs Â does
+not produce C. The
+joint form is the
+Bochner m_Q, whose
+inf is negative.
+
+Not the class step.
+One point, one prime.
