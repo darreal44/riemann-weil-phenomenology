@@ -75,7 +75,7 @@ Isolated
 (`gl2-37a1-drop83.md`,
 `gl2-37a1-drop89-97.md`):
 drop-3 still + at 84;
-drop-83 < 0 at 100;
+drop-83 < 0 already at 86 (#56);
 drop-89 and drop-97
 > 0. 83 votes, 89 and
 97 do not. The join of

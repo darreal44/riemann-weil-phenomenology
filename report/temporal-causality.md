@@ -8,12 +8,10 @@
            drop-3 = +0.048   ← moved
            drop-83 = +10⁻⁹   ← mute/dispensable
 
-    (84,100]  not sampled
-              both signs change
-              somewhere in here
-
-    μ=100  drop-3 = −0.418
-           drop-83 = −0.080
+    μ=86   drop-3 = −0.029
+           drop-83 = −4e-10
+           (#56; was the dark
+           interval)
 
 What 83’s arrival
 *did*: a 0.04 dent

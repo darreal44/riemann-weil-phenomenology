@@ -17,10 +17,11 @@ Judged pairs, 37a1:
   100    −0.418    −0.080     (not dropped)
 
 3 and 83 flip in the
-*same* interval
-(84,100]. That is
-one co-occurrence,
-not a coefficient.
+*same* 2-unit bin
+(84,86] (#56). Co-
+threshold at that
+grain, not a
+coefficient.
 The amplitudes are
 not proportional
 (−0.42 vs −0.08).
