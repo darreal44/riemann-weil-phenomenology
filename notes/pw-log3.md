@@ -79,6 +79,7 @@ infinite \(N\). It is not the step.
 | Schur tail takes χ₈ | judged (`ql-schur-tail`) |
 | Schur tail takes χ₄ at h=20 | judged (`ql-schur-chi4-h`) |
 | ‖Θ(log 2)‖ ≤ 2 | **false** (≤1, `ql-theta-tail`) |
+| Neumann Schur takes χ₅ | judged (`ql-schur-neumann`) |
 | \(c_L^*\ge0\) on \(W_{\log3}\) for every χ | **open; not taken** |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
 

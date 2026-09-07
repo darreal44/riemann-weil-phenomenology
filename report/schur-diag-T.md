@@ -45,6 +45,14 @@ is a number,
 not a
 certificate.
 
+Executed
+(`ql-schur-neumann.md`):
+Neumann bound
+gives S_lo=+0.029
+on χ₅. Certificate,
+not the diagonal
+number.
+
 χ₈: S_diag stays
 well above 0,
 consistent with

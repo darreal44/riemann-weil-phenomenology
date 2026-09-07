@@ -307,6 +307,8 @@ h=2 takes χ₈ (β=+0.055) and not χ₅ (`notes/ql-schur-tail.md`).
 ‖Θ(log 2)‖≤1, not 2 (`notes/ql-theta-tail.md`); χ₅ still
 δ<0. χ₄ at larger h: first β>0 at h=20
 (`notes/ql-schur-chi4-h.md`). Both χ(2)=0 are taken.
+Neumann T^{-1} takes χ₅ (S_lo=+0.029); χ₃ still not
+(`notes/ql-schur-neumann.md`).
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from

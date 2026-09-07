@@ -36,10 +36,14 @@ Judges live in `tests/`.
   (`ql-schur-tail`).
 - ‖Θ(log 2)‖≤2: false,
   ≤1 (`ql-theta-tail`);
-  χ₅ still δ<0.
+  χ₅ still δ<0 on Frob.
 - Schur χ₄ at h≤16:
   β<0; takes at h=20
   (`ql-schur-chi4-h`).
+- Neumann S_lo=+0.029
+  (`ql-schur-neumann`);
+  takes χ₅; χ₃ still
+  S_lo<0.
 - 37a1 drop-3 → − at
   μ=62 (#41), μ=74, μ=80
   (#44). Linear μ≈70
