@@ -1,28 +1,104 @@
-# Error convergence
+# Convergence of the error
 
-## Slepian Nyström (χ₂₉, μ=11)
+Observed
+I_true−I_lo
+and
+the
+leftover
+cap:
 
-| M | λ₊ | Δ |
-|---|-----|---|
-| 40 | 0.6180 | |
-| 80 | 0.6120 | −6.0e-3 |
-| 160 | 0.6091 | |
-| 240 | 0.6081 | |
-| 320 | 0.6076 | −5e-4 |
+    stage            gap      Σ leftover h³/6
+    N=1 well         0.047
+    N=2              0.024
+    N=4 well         0.0053
+    N=4 + rise       0.00315
+    + tailq          0.00279  0.00151
 
-Δ ∼ 1/M. M=240 is enough for two digits of
-1−λ₊=0.392. A≈0.72 is not a discretisation
-artefact.
+The
+score
+and
+the
+cap
+stay
+in
+a
+factor
+~2
+(the
+½w).
+Both
+should
+drop
+as
+O(h²)
+while
+leftover
+is
+O(1),
+then
+O(h³)
+once
+leftover=O(h).
+N=8
+is
+the
+test
+of
+that
+bend.
+The
+estimator
+can
+be
+rerun
+without
+claiming
+Weil:
+if
+Σ cap
+does
+not
+fall
+by
+at
+least
+2,
+the
+rate
+has
+not
+set
+in.
 
-## G−Q (already)
+Circular
+use
+of
+the
+gap
+as
+a
+step
+size
+is
+forbidden
+in
+the
+hand
+bound
+(`error-estimators.md`).
+The
+cap
+from
+g_pp
+is
+the
+only
+legal
+driver
+for
+an
+adaptive
+h.
 
-Frel 6.5→5.4→4.1 %. σ₀ of D grows 1.62→1.88.
-Relative bulk error falls; operator residual
-does not. Different from the Slepian grid error
-(that one *does* go to 0).
-
-## Lemma slack
-
-ell_Gram − (−log(1−λ₊)) = 1.27−0.94 = 0.33
-at μ=11 = log(1/A) with A≈0.72. That slack
-is stable if A is; we have one window only.
+Not
+(∀ L).
