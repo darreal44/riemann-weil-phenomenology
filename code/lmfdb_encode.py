@@ -4,15 +4,23 @@
 # or the Creative Commons Attribution-ShareAlike 4.0 International
 # License, subject to the binding interpretation in
 # LICENSE.md (section 3).
-"""Re-encode LMFDB Maass CSVs as slim pickles for the scanners.
+"""One catalog for GL2 Maass rigor, for scanners and other code.
 
-    python code/lmfdb_encode.py
+    from lmfdb_encode import by_label_gl2, load_zeros, load_an
+    rec = by_label_gl2()["1.0.1.1.1"]
+    rec["R"], rec["zeros"], rec["lfunc"]
+    load_zeros("maass1")          # same as 1.0.1.1.1
+    load_zeros("11.0.1.1.1")      # empty: LMFDB did not compute L(s,f)
+    load_an("11.0.1.1.1")         # 1000 a_n, those are in the replica
 
-Writes code/lmfdb_maass_gl2.pkl and code/lmfdb_maass_gl3.pkl.
-CSV stays local (gitignored). Scanners load the pkl. Not Weil.
+Each GL2 row: label N.k.a.m.d, N, weight, degree, character, R,
+symmetry, fricke, zeros (array), zeros_source, lfunc, lfunc_note.
 
-Cite: The LMFDB Collaboration, https://www.lmfdb.org, 2026,
-[Online; accessed 7 September 2026]. notes/lmfdb.bib.
+LMFDB page for a rigor form: "L-function not computed". type=MaassGL2
+is two leftover N=101 URLs, not the 35416 rigor labels. GL3/DIR/CMF
+L-functions live in lmfdb_lfunc_*.pkl. Not Weil.
+
+    python code/lmfdb_encode.py --reconcile
 """
 from __future__ import annotations
 
@@ -80,6 +88,48 @@ def encode() -> None:
     print(f"gl3 n={len(rows3)} -> {GL3_PKL} ({os.path.getsize(GL3_PKL)} bytes)", flush=True)
 
 
+def attach_zeros_lfunc(rows: list[dict]) -> None:
+    """Put Table 1 γ on the rigor rows. lfunc is empty: LMFDB has none."""
+    from maass_table1 import ALIAS
+
+    have: dict[str, tuple[str, "np.ndarray"]] = {}
+    for name, lab in ALIAS.items():
+        path = os.path.join(HERE, f"zeros_{name}_weyl.pkl")
+        if not os.path.exists(path):
+            continue
+        z = np.array(
+            sorted(float(x) for x in pickle.load(open(path, "rb"))),
+            dtype=np.float64,
+        )
+        have[lab] = ("booker-then-table1", z)
+    for r in rows:
+        lab = r["label"]
+        if lab in have:
+            src, z = have[lab]
+            r["zeros"] = z
+            r["zeros_source"] = src
+        else:
+            r["zeros"] = np.zeros(0, dtype=np.float64)
+            r["zeros_source"] = None
+        r["lfunc"] = None
+        r["lfunc_note"] = "LMFDB: L-function not computed"
+
+
+def reconcile_gl2() -> None:
+    with open(GL2_PKL, "rb") as f:
+        blob = pickle.load(f)
+    attach_zeros_lfunc(blob["rows"])
+    blob["kind"] = "gl2_maass_rigor"
+    with open(GL2_PKL, "wb") as f:
+        pickle.dump(blob, f, protocol=4)
+    n_z = sum(1 for r in blob["rows"] if r["zeros"].size)
+    print(
+        f"reconcile {GL2_PKL} n={blob['n']} with_zeros={n_z} "
+        f"{os.path.getsize(GL2_PKL)} bytes",
+        flush=True,
+    )
+
+
 def load_gl2() -> list[dict]:
     with open(GL2_PKL, "rb") as f:
         return pickle.load(f)["rows"]
@@ -92,6 +142,20 @@ def load_gl3() -> list[dict]:
 
 def by_label_gl2() -> dict[str, dict]:
     return {r["label"]: r for r in load_gl2()}
+
+
+def load_zeros(label: str):
+    """γ > 0 for one rigor form. Empty if LMFDB has no L-function.
+
+    Accepts maass1, 1.2, 1.0.1.1.1.
+    """
+    from maass_table1 import resolve
+
+    rec = by_label_gl2()[resolve(label)]
+    z = rec.get("zeros")
+    if z is None:
+        return np.zeros(0, dtype=np.float64)
+    return np.asarray(z, dtype=np.float64)
 
 
 def load_dirichlet() -> list[dict]:
@@ -152,4 +216,8 @@ def load_an(label: str | None = None):
 
 
 if __name__ == "__main__":
-    encode()
+    if "--reconcile" in sys.argv:
+        reconcile_gl2()
+    else:
+        encode()
+        reconcile_gl2()

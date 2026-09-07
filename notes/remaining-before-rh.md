@@ -241,10 +241,10 @@ levels 1–105), `lmfdb_maass_an_N*.pkl`
 and `{χ,χ̄}` in `lmfdb_lfunc_*.pkl`,
 holomorphic newforms in
 `lmfdb_mf_newforms.pkl` (N≤100, k≤12).
-MaassGL2 rigor zeros are not in the
-replica L-functions. Two replica
-connections, indexed joins. Checked
-against Zenodo JSON
+Table 1 γ are on the rigor pkl
+(`load_zeros`). `11.0.1.1.1` has a_n;
+LMFDB did not compute its L-function.
+Checked against Zenodo JSON
 (`tests/test_lmfdb_zenodo.py`).
 LMFDB `symmetry=0` is odd (s₀=3/4).
 

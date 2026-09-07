@@ -23,8 +23,9 @@ Writes gitignored data/lmfdb_mirror.sqlite (indexed) and scanner pkls:
 
 python code/lmfdb_dump.py --lfunc
   only the L-function / holomorphic tables (2 replica conns, indexed
-  type/url/Lhash/level; no ILIKE). MaassGL2 rigor zeros are not in
-  lfunc_lfunctions (join is empty). Not Weil.
+  type/url/Lhash/level; no ILIKE). GL2 rigor L-functions are not in
+  LMFDB ('L-function not computed'). Table 1 γ go on the rigor pkl.
+  Not Weil.
 """
 from __future__ import annotations
 
@@ -541,7 +542,7 @@ def index_sqlite(db: sqlite3.Connection) -> None:
 def emit_pkls(db: sqlite3.Connection) -> None:
     sys.path.insert(0, HERE)
     from lmfdb_encode import CITE as CSV_CITE
-    from lmfdb_encode import GL2_PKL, GL3_PKL
+    from lmfdb_encode import GL2_PKL, GL3_PKL, attach_zeros_lfunc
 
     cite = dict(CSV_CITE)
     cite.update(CITE)
@@ -566,6 +567,7 @@ def emit_pkls(db: sqlite3.Connection) -> None:
                 "fricke": fr,
             }
         )
+    attach_zeros_lfunc(gl2)
     blob = {"cite": cite, "kind": "gl2_maass_rigor", "n": len(gl2), "rows": gl2}
     with open(GL2_PKL, "wb") as f:
         pickle.dump(blob, f, protocol=4)
