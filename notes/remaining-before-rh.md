@@ -403,7 +403,14 @@ dies at 2³ μ=8.1 (`notes/ql-chi8-mu81.md`).
 (`notes/ql-chi45-mu8.md`). χ₇ survives
 T₅ as a sliver, dead by μ=7
 (`notes/ql-chi7-mu.md`). No tracked
-quorum take past 8. Not (∀ L).
+quorum take past 8. χ₇ sliver
+flickers on (5.1, 6.5]
+(`notes/ql-chi7-mu57.md`). 2³ does
+not jump χ₈ t_atoms (χ₈(8)=0);
+death is a head well
+(`notes/ql-chi8-far.md`, KILL).
+T₅ at 5.1 kills only χ₃ of the six
+(`notes/ql-quorum-mu51.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
