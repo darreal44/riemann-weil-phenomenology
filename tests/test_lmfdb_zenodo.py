@@ -59,3 +59,18 @@ def test_every_zenodo_json_matches_lmfdb_pkl():
         assert cat["character"] == parsed["character"]
         assert cat["degree"] == 2
         assert cat["weight"] == parsed["weight"]
+
+
+def test_an_all_levels_and_zenodo_a2():
+    from lmfdb_encode import load_an, load_dirichlet
+
+    an = load_an()
+    assert len(an) == 35416
+    rec = json.load(open(os.path.join(CODE, "maass_an_1.0.1.1.1.json"), encoding="utf-8"))
+    assert abs(float(an["1.0.1.1.1"][1]) - rec["a_n"][1]) < 1e-5
+    assert "105.0.1.1.1" in an
+    assert len(an["105.0.1.1.1"]) == 1000
+    chi = load_dirichlet()
+    assert len(chi) >= 20000
+    five = next(r for r in chi if r["label"] == "5.b")
+    assert five["is_primitive"] and five["modulus"] == 5

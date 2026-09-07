@@ -235,9 +235,10 @@ index `m`. Short `1.2` = `1.0.1.2.1`
 CSV). Not lex `1.0.1.10.1`.
 `code/maass_table1.py`. Scanners load
 `code/lmfdb_maass_gl2.pkl` (35416 rows,
-accessed 7 September 2026), checked
-against Zenodo JSON
-(`tests/test_lmfdb_zenodo.py`).
+levels 1–105), `lmfdb_maass_an_N*.pkl`
+(all a_n), `lmfdb_dirichlet.pkl`
+(modulus ≤ 1000). Checked against
+Zenodo JSON (`tests/test_lmfdb_zenodo.py`).
 LMFDB `symmetry=0` is odd (s₀=3/4).
 
 Gamma is `Γ_R(s±iR)`, not `scan_q_gl2`.

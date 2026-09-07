@@ -20,6 +20,8 @@ import os
 import pickle
 import sys
 
+import numpy as np
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 GL2_PKL = os.path.join(HERE, "lmfdb_maass_gl2.pkl")
@@ -90,6 +92,39 @@ def load_gl3() -> list[dict]:
 
 def by_label_gl2() -> dict[str, dict]:
     return {r["label"]: r for r in load_gl2()}
+
+
+def load_dirichlet() -> list[dict]:
+    path = os.path.join(HERE, "lmfdb_dirichlet.pkl")
+    with open(path, "rb") as f:
+        return pickle.load(f)["rows"]
+
+
+_AN = None
+
+
+def load_an(label: str | None = None):
+    """All rigor a_n (every level). Prefers local sqlite, else N-shards."""
+    global _AN
+    if _AN is None:
+        _AN = {}
+        sqlite = os.path.join(ROOT, "data", "lmfdb_mirror.sqlite")
+        if os.path.exists(sqlite):
+            import sqlite3
+
+            db = sqlite3.connect(sqlite)
+            for lab, blob in db.execute("SELECT maass_label, coeffs FROM maass_an"):
+                _AN[lab] = np.frombuffer(blob, dtype=np.float32).copy()
+            db.close()
+        else:
+            import glob
+
+            for path in sorted(glob.glob(os.path.join(HERE, "lmfdb_maass_an_N*.pkl"))):
+                blob = pickle.load(open(path, "rb"))
+                _AN.update(blob["an"])
+    if label is None:
+        return _AN
+    return _AN[label]
 
 
 if __name__ == "__main__":

@@ -34,7 +34,10 @@ on the GL2 dump (the CSV had no degree column).
 
 `scan_gl2.py 1.2` and `scan_q_maass 1.2` resolve to `1.0.1.2.1`.
 LMFDB `symmetry=0` is odd (s0=3/4). CSV gitignored; scanners load
-`code/lmfdb_maass_gl2.pkl` (35416 rows, accessed 7 September 2026).
+`code/lmfdb_maass_gl2.pkl` (35416 rows, levels 1–105).
+All rigor `a_n` (1000 coeffs) live in `lmfdb_maass_an_N*.pkl` and in
+gitignored `data/lmfdb_mirror.sqlite`. Dirichlet orbits with modulus
+≤ 1000: `lmfdb_dirichlet.pkl`. Replica dumps use at most 2 connections.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 
