@@ -1,9 +1,16 @@
 Scope of licenses in this repository
 
-Files that carry the Joubert Formal License header are licensed
-under LICENSE.md (GPL-3.0-or-later OR CC-BY-SA-4.0, with the
-binding interpretation in COPYING.interpretation).
+The entire repository is offered under the Joubert Formal License:
+GPL-3.0-or-later OR CC-BY-SA-4.0, with the binding interpretation
+in LICENSE.md (section 3) and COPYING.interpretation.
 
 https://github.com/djoubertthot/joubert-formal-license
 
-Other files remain under LICENSE (MIT).
+Copyright © 2026 Denis Joubert.
+
+This repository is no longer offered under the MIT License.
+Copies obtained under MIT before that change keep that grant
+for those copies. New copies follow LICENSE.md.
+
+GitHub may display the license as Other (dual license plus
+an interpretation, not a single SPDX identifier).
