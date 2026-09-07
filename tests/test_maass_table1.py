@@ -73,3 +73,7 @@ def test_pair_json_and_note():
     hz = open(HZ, encoding="utf-8").read()
     assert "--labels" in hz
     assert "from scan_s import assemble" not in src
+    src_s = open(os.path.join(ROOT, "code", "scan_s.py"), encoding="utf-8").read()
+    assert "scan_q_maass" in src_s
+    src_g = open(os.path.join(ROOT, "code", "scan_gl2.py"), encoding="utf-8").read()
+    assert "scan_q_maass" in src_g
