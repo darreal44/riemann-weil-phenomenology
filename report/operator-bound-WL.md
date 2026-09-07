@@ -93,8 +93,11 @@ Schur tail at h=2
 (`ql-schur-tail.md`)
 takes χ₈ (β=+0.055)
 and not χ₅ (T₂).
-Class not taken for
-every χ.
+‖Θ(log 2)‖≤1
+(`ql-theta-tail.md`),
+not Hilbert 2; χ₅
+still δ<0. Class not
+taken for every χ.
 
 A matrix bound
 on S_N is not

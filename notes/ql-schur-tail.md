@@ -53,6 +53,7 @@ Judge: `tests/test_ql_schur_tail.py`.
 |---|---|
 | β>0 on χ₈ (takes W_L for χ₈) | judged, this note |
 | β>0 on χ₅ | **false** (T₂, δ<0) |
+| ‖Θ(log 2)‖ ≤ 2 | **false** (≤1, `ql-theta-tail`) |
 | Galerkin takes the class | false (`pw-log3.md`) |
 | Bochner α_line ≥ 0 | false (`ql-operator-bound`) |
 | c_L^* ≥ 0 on W_{log 3} for every χ | **open; not taken** |
