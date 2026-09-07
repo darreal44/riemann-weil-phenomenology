@@ -229,17 +229,17 @@ def _log_finf_grid(t: np.ndarray, N: float, R: float, delta: int):
 
 
 def hardy_z_grid(an: np.ndarray, N, R, delta, eps, t: np.ndarray, c=20.0) -> np.ndarray:
-    """Z(t) on a grid. float64 a_n, scipy loggamma. Vectorized in t."""
+    """Hardy Z ≈ e^{+iθ} L_AFE. Kept for checks; zeros use |S| minima."""
     t = np.asarray(t, dtype=np.float64)
     M = int(an.size)
     logn = np.log(np.arange(1, M + 1, dtype=np.float64))
-    X = np.minimum(M, np.maximum(8, (c * np.sqrt(N * np.maximum(t, 1.0) / (2 * np.pi)) + 6).astype(np.int32)))
-    # Dirichlet sums with a single max-X for the chunk, then mask
+    X = np.minimum(
+        M,
+        np.maximum(
+            8, (c * np.sqrt(N * np.maximum(t, 1.0) / (2 * np.pi)) + 6).astype(np.int32)
+        ),
+    )
     xmax = int(X.max())
-    n = np.arange(1, xmax + 1, dtype=np.float64)
-    s = 0.5 + 1j * t
-    ns = np.exp(-s[:, None] * logn[:xmax][None, :])
-    nsm = np.exp(-(1 - s)[:, None] * logn[:xmax][None, :])
     w = np.ones((t.size, xmax), dtype=np.float64)
     k0 = np.maximum(1, (7 * X) // 10)
     idx = np.arange(xmax)
@@ -251,13 +251,23 @@ def hardy_z_grid(an: np.ndarray, N, R, delta, eps, t: np.ndarray, c=20.0) -> np.
         if xi > k:
             tt = (idx[k:xi] - k + 1) / (xi - k + 1)
             w[i, k:xi] = 0.5 * (1 + np.cos(np.pi * tt))
+    s = 0.5 + 1j * t
+    ns = np.exp(-s[:, None] * logn[:xmax][None, :])
+    nsm = np.exp(-(1 - s)[:, None] * logn[:xmax][None, :])
     aw = an[:xmax] * w
     sp = np.einsum("tn,tn->t", aw, ns)
     sm = np.einsum("tn,tn->t", aw, nsm)
     lf, lb = _log_finf_grid(t, N, R, delta)
-    ratio = np.exp(lb - lf)
-    Lval = sp + eps * ratio * sm
-    return Lval * np.exp(-1j * np.imag(lf))
+    Lval = sp + eps * np.exp(lb - lf) * sm
+    return Lval * np.exp(1j * np.imag(lf))
+
+
+def dirichlet_abs(an: np.ndarray, t: np.ndarray) -> np.ndarray:
+    """|sum_{n=1..M} a_n n^{-1/2-it}|. Vectorized in t."""
+    t = np.asarray(t, dtype=np.float64)
+    logn = np.log(np.arange(1, an.size + 1, dtype=np.float64))
+    s = 0.5 + 1j * t
+    return np.abs(np.exp(-s[:, None] * logn[None, :]) @ an)
 
 
 def refine_root(an, N, R, delta, eps, lo, hi, c=20.0) -> float:
@@ -274,27 +284,33 @@ def refine_root(an, N, R, delta, eps, lo, hi, c=20.0) -> float:
     return 0.5 * (lo + hi)
 
 
-def find_zeros_grid(an, N, R, delta, eps, tmax=80.0, step=0.03, c=20.0) -> np.ndarray:
-    """AFE roots of Re Z. Not 1e-6 vs Table 1; even forms miss low γ. Not Weil."""
+def find_zeros_grid(an, N, R, delta, eps, tmax=80.0, step=0.02, c=20.0) -> np.ndarray:
+    """γ from local minima of |sum a_n n^{-1/2-it}| (1000 terms).
+
+    Matches Booker–Then Table 1 g1 to ~0.02 (not 1e-6). The Dirichlet
+    tail is a slowly-varying bias; true zeros are deep dips of |S|.
+    Not Weil.
+    """
     t = np.arange(0.4, tmax + 1e-12, step, dtype=np.float64)
-    zvals = np.empty(t.size, dtype=np.complex128)
+    mag = np.empty(t.size, dtype=np.float64)
     chunk = 256
     for i0 in range(0, t.size, chunk):
         sl = slice(i0, min(i0 + chunk, t.size))
-        zvals[sl] = hardy_z_grid(an, N, R, delta, eps, t[sl], c)
-    re = zvals.real
+        mag[sl] = dirichlet_abs(an, t[sl])
+    med = float(np.median(mag))
+    cut = min(0.10, 0.30 * med)
     out = []
-    for i in range(1, t.size):
-        if re[i - 1] * re[i] < 0 and max(abs(re[i - 1]), abs(re[i])) > 0.008:
-            root = refine_root(an, N, R, delta, eps, float(t[i - 1]), float(t[i]), c)
-            zr = hardy_z_grid(an, N, R, delta, eps, np.array([root]), c)[0]
-            zp = hardy_z_grid(
-                an, N, R, delta, eps, np.array([max(0.2, root - 0.3)]), c
-            )[0]
-            zn = hardy_z_grid(an, N, R, delta, eps, np.array([root + 0.3]), c)[0]
-            if abs(zr) < 0.2 * (abs(zp) + abs(zn)) + 1e-6:
-                if root > 0.5 and (not out or root - out[-1] > 0.35):
-                    out.append(root)
+    for i in range(2, t.size - 2):
+        if mag[i] > cut:
+            continue
+        if mag[i] > mag[i - 1] or mag[i] > mag[i + 1]:
+            continue
+        a, b, c = mag[i - 1], mag[i], mag[i + 1]
+        denom = a - 2.0 * b + c
+        dt = 0.0 if abs(denom) < 1e-18 else 0.5 * (a - c) / denom * step
+        root = float(t[i] + dt)
+        if root > 0.5 and (not out or root - out[-1] > 0.25):
+            out.append(root)
     return np.array(out, dtype=np.float64)
 
 
@@ -389,8 +405,8 @@ def harvest_all(tmax: float, step: float) -> dict[str, np.ndarray]:
 
 def save_zeros(zeros: dict[str, np.ndarray]) -> None:
     blob = {
-        "kind": "maass_gl2_afe_zeros",
-        "tmax_note": "approximate functional equation from 1000 a_n",
+        "kind": "maass_gl2_dirichlet_minima",
+        "tmax_note": "|sum a_n n^{-1/2-it}| minima, 1000 terms; ~0.02 vs Table 1",
         "n": len(zeros),
         "zeros": zeros,
     }
@@ -413,15 +429,17 @@ def attach_zeros_into_gl2(zeros: dict[str, np.ndarray]) -> None:
                 r["zeros_afe"] = zeros[lab]
                 continue
             r["zeros"] = zeros[lab]
-            r["zeros_source"] = "afe-an-float64"
+            r["zeros_source"] = "dirichlet-partial-minima"
             r["lfunc"] = lfunc_from_rigor(r, r["zeros"])
-            r["lfunc"]["source"] = "reconstructed from maass_rigor; z1 from AFE a_n"
+            r["lfunc"]["source"] = (
+                "reconstructed from maass_rigor; z1 from |S| minima of 1000 a_n (~0.02 vs Table 1)"
+            )
             r["lfunc_note"] = r["lfunc"]["source"]
     blob["arbitrage"] = blob.get("arbitrage") or []
     blob["arbitrage"] = list(blob["arbitrage"]) + [
         {
             "topic": "zeros AFE vs Booker–Then Table 1",
-            "action": "Table 1 lists stay Booker–Then; AFE is verification and fill-in for other labels",
+            "action": "Table 1 lists stay Booker–Then; other γ from |S| minima (~0.02 vs Table 1), not 1e-6",
         }
     ]
     with open(GL2_PKL, "wb") as f:
@@ -451,8 +469,8 @@ def main() -> int:
         tmax = 320.0
         if "--tmax" in args:
             tmax = float(args[args.index("--tmax") + 1])
-        step = 0.03
-        print(f"ALL forms tmax={tmax} step={step} GPUs=3", flush=True)
+        step = 0.02
+        print(f"ALL forms tmax={tmax} step={step} cpu workers", flush=True)
         t0 = time.time()
         check_table1()
         zeros = harvest_all(tmax, step)
