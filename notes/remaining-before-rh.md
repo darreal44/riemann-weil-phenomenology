@@ -317,9 +317,12 @@ N=4 quadratic mesh (named in
 outside ±0.003 (`notes/av-I01-mesh.md`).
 Extending the mesh through the convex
 rise [y_min, y_inf] misses by 0.00315
-(`notes/av-I01-rise.md`). Still one v,
-not Weil. (∀ L) Q_L ≥ 0 is still the
-covering lemma.
+(`notes/av-I01-rise.md`). Uniform N=8
+well+rise (the named rate test) has
+gap 0.000405, leftover cap ratio
+0.123 (`notes/av-I01-n8.md`). Still
+one v, not Weil. (∀ L) Q_L ≥ 0 is
+still the covering lemma.
 
 ---
 
