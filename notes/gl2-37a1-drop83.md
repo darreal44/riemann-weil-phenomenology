@@ -26,8 +26,10 @@ kill did not fire.
 
 **83's arrival does not isolate the join of 3.**
 Drop-3 is still +0.048 at μ=84. The sign change
-is on (84, 100], where 83 drifts in and 89, 97
-arrive. Arrival of 83 already moved the plateau
+is on (84, 100], where 83 drifts in. 89 and 97
+arrive too but do not vote
+(`notes/gl2-37a1-drop89-97.md`). Arrival of 83
+already moved the plateau
 0.087 → 0.048, a hit of 0.04, not through 0 —
 as `term-83.md` said, θ≈0 at y/L=1.
 
