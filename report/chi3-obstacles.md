@@ -78,6 +78,19 @@ h alone may
 not copy.
 
 Judged
+(`ql-schur-chi3-h.md`):
+β at larger h
+does not copy
+χ₄ (T₂, ‖C‖
+climbs). Neumann
+at h=4 does:
+S_lo=+0.007.
+The well sits
+in H; ρ_N drops
+because n=2,3
+leave T.
+
+Judged
 (`ql-chi3-rhofar.md`):
 larger N_NEAR
 through 80 and
