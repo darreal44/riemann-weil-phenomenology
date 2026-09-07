@@ -23,4 +23,8 @@ e₀ has no convex well; v101 has a well the
 N=4 mesh does not resolve. v110 is a cousin
 of the rational witness.
 
+Odd Bose s₀=3/4 on this v still has
+a well (`notes/av-I01-odd.md`). The
+failure of e₀ is the vector, not χ.
+
 Verdict SURVIVE. Not Weil. Not RH. LICENSE.md

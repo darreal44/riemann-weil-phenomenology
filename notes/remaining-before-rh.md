@@ -288,6 +288,10 @@ tightest.
 and [1,L]: χ₃ Q ∈ [0.00570, 0.00610]
 (`notes/av-enclose-cauchy-tail.md`).
 Chebyshev a^{(6)} still does not freeze.
+The convex well of g survives at s₀=3/4
+on the same v (ymin=0.180, N=4 gap
+0.00284); g_lo is not a χ₅ artefact
+(`notes/av-I01-odd.md`).
 
 **Not RH.** Finite μ, one v. A(v) even and
 odd are Gauss+Cauchy on [0,1] and [1,L]
