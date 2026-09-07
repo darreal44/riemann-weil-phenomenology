@@ -24,7 +24,7 @@ Five intervals, disjoint, union \(I\):
     I_C  [y, L/2]             C
 
 Lengths: \(|A|=|C|=L/2-y\),
-\(|M_2|=L-2y\), \(|M_1|=3y-L\),
+\(|M_2|=L/2-y\), \(|M_1|=3y-L\),
 sum \(L-y=|I|\). On \([0,L/2]\)
 the four pieces \(A,M_1,M_2,C\)
 partition the half-window
