@@ -572,9 +572,10 @@ the form of χ₃. Not taken. Not RH.
 
 ## 8h. Proved \(s_1(\mathrm{Off}_Q)\): triangle, not 0.8
 
-`report/drop-half-pi.md` asks to replace the Hankel+Θ
+`report/drop-half-pi.md` asked to replace the Hankel+Θ
 split by a certified \(s_1(\mathrm{Off}_Q)\). That split
-*was* the triangle. Written (`code/ql_off_s1.py`):
+*was* the triangle. Written (`code/ql_off_s1.py`).
+The cran is closed: \(s_1\le 0.8\) is false, ½π stays.
 
     \(\tfrac\pi2-|w_2| \le s_1^{\mathrm{ess}}(\mathrm{Off})
       \le \tfrac\pi2 + r_N + |w_2|\).
