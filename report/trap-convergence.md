@@ -42,8 +42,6 @@ Gauss+Cauchy on
 panels is two
 orders under
 the current trap.
-Replacing the
-tail is a
-rewrite of
-enclose_cauchy,
-not a larger n.
+Executed: rewrite
+(`notes/av-enclose-cauchy-tail.md`).
+Not a larger n.

@@ -25,11 +25,10 @@ on P_rest.
 
 Exit status 0 iff the
 A-ball sits in that room.
-Not RH. The remaining
-analytic obligations are
-the two |g''| ceilings
-(critical points of g''
-already catalogued) and
-the fourteen θ_v samples
-at the slab nodes, all
-the same six kernels.
+The trap tail is superseded
+for the Cauchy enclose
+(`notes/av-enclose-cauchy-tail.md`):
+8-panel G₃ ± 1.25×10^{-5},
+no |g''|. `av_enclose.py`
+keeps this trap path.
+Not RH.

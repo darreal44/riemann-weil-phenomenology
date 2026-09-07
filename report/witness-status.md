@@ -16,11 +16,13 @@ CST = log(q/π)−γ−log(1−1/256).
     …    all eight Qlo>0
     χ₅ is the tight even window.
 
-Pieces: elementary CST, G₃ of a,
-8+8 trapezoid, Leibniz |a''| from
-endpoint w and catalogued g''
-extrema. G₃ remainder (a^{(6)})
-is still a check, not a majorant.
+Pieces: elementary CST, two-panel
+G₃ + Cauchy on [0,1], 8-panel G₃
++ Cauchy on [1,L]
+(`notes/av-enclose-cauchy-tail.md`).
+No trapezoid, no |g''| catalogue
+in that enclose. `av_enclose.py`
+still has the trap path.
 
 ## Odd (s₀=3/4), enclosed on [1,L]
 
