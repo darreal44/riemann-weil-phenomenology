@@ -1,73 +1,11 @@
 # Quantum walks
 
-A
-discrete-time
-quantum
-walk
-is
-a
-unitary
-on
-ℓ²(vertices)×coins.
-Its
-spectrum
-lives
-on
-the
-unit
-circle.
-Continuous-time
-walks
-are
-e^{itA}
-for
-a
-graph
-adjacency
-A.
+A discrete-time quantum walk is a unitary on ℓ²(vertices)×coins. Its
+spectrum lives on the unit circle. Continuous-time walks are e^{itA} for
+a graph adjacency A.
 
-θ(y)
-is
-not
-a
-time
-parameter
-of
-a
-walk
-and
-T_y
-is
-not
-a
-coin-shift
-on
-a
-graph.
-Identifying
-y
-with
-t
-and
-Θ
-with
-a
-walk
-operator
-would
-again
-be
-a
-slogan
-for
-Hilbert–Pólya.
+θ(y) is not a time parameter of a walk and T_y is not a coin-shift on a
+graph. Identifying y with t and Θ with a walk operator would again be a
+slogan for Hilbert–Pólya.
 
-The
-lab
-does
-not
-simulate
-walks.
-Not
-a
-campaign.
+The lab does not simulate walks. Not a campaign.

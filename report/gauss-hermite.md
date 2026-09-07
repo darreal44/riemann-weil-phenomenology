@@ -1,69 +1,11 @@
 # Gauss–Hermite
 
-Gauss–Hermite
-integrates
-f(x) e^{−x²}
-on
-ℝ,
-nodes
-= zeros
-of
-Hermite
-polynomials.
-The
-weight
-is
-not
-Lebesgue
-on
-[0,1]
-and
-not
-½w
-on
-the
+Gauss–Hermite integrates f(x) e^{−x²} on ℝ, nodes = zeros of Hermite
+polynomials. The weight is not Lebesgue on [0,1] and not ½w on the
 witness.
 
-There
-is
-no
-e^{−y²}
-in
-g
-or
-in
-a.
-The
-Bose
-factor
-is
-e^{−3y/2}
-on
-a
-finite
-interval.
-Mapping
-[0,1]
-to
-ℝ
-to
-force
-Hermite
-nodes
-adds
-a
-Jacobian
-and
-destroys
-the
-elementary
-comparison.
+There is no e^{−y²} in g or in a. The Bose factor is e^{−3y/2} on a
+finite interval. Mapping [0,1] to ℝ to force Hermite nodes adds a
+Jacobian and destroys the elementary comparison.
 
-Not
-the
-Hermite
-*interpolant*
-(`hermite-error.md`).
-Not
-a
-campaign.
+Not the Hermite *interpolant* (`hermite-error.md`). Not a campaign.

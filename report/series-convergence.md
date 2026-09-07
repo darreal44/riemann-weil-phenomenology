@@ -1,102 +1,17 @@
 # Series convergence
 
-Three
-series,
-three
-tests.
+Three series, three tests.
 
-    Neumann
-      ∑ A^k
-      converges
-      in
-      operator
-      norm
-      iff
-      ρ<1.
-    Prime
-      side
-      of
-      Weil
-      ∑_p χ(p) log p · θ(log p)
-      / √p
-      (or
-      /p^{s0})
-      converges
-      as
-      soon
-      as
-      θ
-      is
-      bounded
-      and
-      the
-      prime
-      theorem
-      holds;
-      the
-      issue
-      is
-      the
-      size
-      of
-      the
-      partial
-      sum
-      inside
-      the
-      window,
-      not
-      absolute
-      convergence
-      at
-      infinity.
-    Chebyshev
-      of
-      a
-      on
-      [0,1]
-      converges
-      faster
-      than
-      any
-      polynomial
-      (a
-      is
-      C^∞
-      on
-      (0,1]);
-      termwise
-      sixth
-      derivatives
-      need
-      not.
+    Neumann ∑ A^k converges in operator norm iff ρ<1.
+    Prime side of Weil ∑_p χ(p) log p · θ(log p) / √p (or /p^{s0})
+    converges as soon as θ is bounded and the prime theorem holds; the
+    issue is the size of the partial sum inside the window, not absolute
+    convergence at infinity.
+    Chebyshev of a on [0,1] converges faster than any polynomial (a is
+    C^∞ on (0,1]); termwise sixth derivatives need not.
 
-Absolute
-convergence
-of
-the
-prime
-series
-does
-not
-give
-S_lo>0.
-Operator
-convergence
-of
-Neumann
-does
-not
-give
-(∀L).
-Do
-not
-quote
-one
-test
-for
-the
+Absolute convergence of the prime series does not give S_lo>0. Operator
+convergence of Neumann does not give (∀L). Do not quote one test for the
 other.
 
-Not
-RH.
+Not RH.

@@ -1,146 +1,18 @@
 # Adamyan–Arov–Krein
 
-AAK:
-the
-k-th
-singular
-value
-of
-a
-Hankel
-operator
-H_φ
-is
-the
-distance
-from
-φ
-to
-rational
-symbols
-of
-degree
-< k
-in
-L^∞
-on
-the
-circle
-(or
-the
-distance
-to
-Hankel
-operators
-of
-rank
-< k).
+AAK: the k-th singular value of a Hankel operator H_φ is the distance
+from φ to rational symbols of degree < k in L^∞ on the circle (or the
+distance to Hankel operators of rank < k).
 
-If
-the
-tail
-Off
-were
-exactly
-Hankel,
-AAK
-would
-say
-how
-well
-a
-rank-k
-cut
-approximates
-it —
-a
-finer
-bound
-than
-‖Off‖≤π.
-The
-scripts
-use
-k=0
-(the
-operator
-norm)
-plus
-an
-HS
-remainder.
+If the tail Off were exactly Hankel, AAK would say how well a rank-k cut
+approximates it — a finer bound than ‖Off‖≤π. The scripts use k=0 (the
+operator norm) plus an HS remainder.
 
-T
-is
-not
-pure
-Hankel
-(lags
-log p
-are
-rank-one
-updates
-at
-specific
-y,
-not
-a
-symbol
-φ(e^{iθ})).
-Applying
-AAK
-literally
-would
-require
-writing
-the
-smooth
-archimedean
-piece
-as
-H_φ
-and
-treating
-atoms
-separately.
-That
-might
-shave
-ρ_far
-a
-little.
-It
-does
-not
-remove
-t_atoms
-jumping
-1.04→1.76
-when
-T₅
-enters
-(#76).
-The
-wall
-at
-μ=5.5
-is
-the
-atoms,
-not
-the
-Hankel
-norm
-sitting
-at
-π.
+T is not pure Hankel (lags log p are rank-one updates at specific y, not
+a symbol φ(e^{iθ})). Applying AAK literally would require writing the
+smooth archimedean piece as H_φ and treating atoms separately. That
+might shave ρ_far a little. It does not remove t_atoms jumping 1.04→1.76
+when T₅ enters (#76). The wall at μ=5.5 is the atoms, not the Hankel
+norm sitting at π.
 
-Not
-implemented.
-Not
-a
-take
-of
-μ=7
-for
-χ₃.
+Not implemented. Not a take of μ=7 for χ₃.

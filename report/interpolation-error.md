@@ -1,183 +1,26 @@
 # Interpolation error of the mesh
 
-q_i
-is
-not
-the
-Hermite
-interpolant
-of
-g
-on
-I_i
-(that
-would
-match
-g
-and
-g'
-at
-both
-ends
-and
-need
-a
-cubic).
-It
-is
-a
-one-sided
-jet
-at
-y_i
-plus
-a
-safe
-curvature
-m_i ≤ g''.
+q_i is not the Hermite interpolant of g on I_i (that would match g and
+g' at both ends and need a cubic). It is a one-sided jet at y_i plus a
+safe curvature m_i ≤ g''.
 
-Pointwise
-on
-I_i,
-if
-g'''
-is
-bounded
-by
-M₃,
+Pointwise on I_i, if g''' is bounded by M₃,
 
-    0
-      ≤
-    g(y)−q_i(y)
-      ≤
-    (g''(η)−m_i) (y−y_i)² / 2
-      ≤
-    (osc_{I_i} g'') h_i² / 2
-    ≤
-    |M₃| h_i³ / 2.
+    0 ≤
+    g(y)−q_i(y) ≤
+    (g''(η)−m_i) (y−y_i)² / 2 ≤
+    (osc_{I_i} g'') h_i² / 2 ≤ |M₃| h_i³ / 2.
 
-The
-integral
-error
-on
-I_i
-is
-then
-O(h_i⁴)
-times
-the
-weight
-½w.
-Summing
-N
-pieces
-of
-length
-h=O(1/N)
-gives
-O(1/N³)
-for
-the
-whole
-well
-if
-osc g'' = O(h)
-(g'''
-bounded).
-That
-is
-why
-N=4
-was
-said
-to
-halve
-a
-0.047
-gap
-rather
-than
-kill
-it:
-the
-constant
-in
-front
-of
-1/N³
-is
-not
-tiny
-(osc g''∼5,
-h∼0.1,
-h³/2∼5×10⁻⁴
-pointwise,
-integrated
-against
-a
-weight
-of
-size
-1
-on
-length
-0.4
-→
-a
-few
-10⁻⁴
-to
-10⁻³
-ideally,
-plus
-the
-safe
-m_i
-gap
-and
-the
-tail).
+The integral error on I_i is then O(h_i⁴) times the weight ½w. Summing N
+pieces of length h=O(1/N) gives O(1/N³) for the whole well if osc g'' =
+O(h) (g''' bounded). That is why N=4 was said to halve a 0.047 gap
+rather than kill it: the constant in front of 1/N³ is not tiny (osc
+g''∼5, h∼0.1, h³/2∼5×10⁻⁴ pointwise, integrated against a weight of size
+1 on length 0.4 → a few 10⁻⁴ to 10⁻³ ideally, plus the safe m_i gap and
+the tail).
 
-A
-true
-Hermite
-cubic
-matching
-both
-ends
-would
-have
-remainder
-g^{(4)} h⁴/384
-and
-would
-require
-a
-bound
-on
-g^{(4)}
-to
-stay
-a
-*lower*
-bound
-(Hermite
-is
-not
-automatically
-below
-g).
-The
-mesh
-of
-`quadratic-mesh.md`
-prefers
-a
-legal
-under-estimator
-to
-a
-smaller
-unsigned
-interpolation
+A true Hermite cubic matching both ends would have remainder g^{(4)}
+h⁴/384 and would require a bound on g^{(4)} to stay a *lower* bound
+(Hermite is not automatically below g). The mesh of `quadratic-mesh.md`
+prefers a legal under-estimator to a smaller unsigned interpolation
 error.

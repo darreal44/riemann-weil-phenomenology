@@ -99,11 +99,11 @@ def test_long_tail_off_climbs_past_cran():
 
 def test_note_does_not_claim_rh_or_take():
     text = open(NOTE, encoding="utf-8").read()
-    assert "Not\nRH." in text or "Not RH" in text
+    assert "Not RH" in text
     assert "take" in text.lower()
     assert "Hankel" in text
     assert "cancelled" in text or "cancels" in text
     assert "0.719" in text or "0.72" in text
     assert "256" in text
     assert "Nehari" in text
-    assert "not a theorem" in text.lower() or "Not\ntaken" in text
+    assert "not a theorem" in text.lower() or "Not taken" in text or "Not\ntaken" in text

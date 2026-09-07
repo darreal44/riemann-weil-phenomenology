@@ -1,134 +1,20 @@
 # Decay of θ_nm
 
-From
-the
-closed
-form
-(`theta_hat`):
+From the closed form (`theta_hat`):
 
-    n=m=0:
-      2(L−y)/L
-      (no
-      decay
-      in
-      n).
-    n=0, m≥1:
-      |θ|
-      ≤ √2 /(π m)
-      (times
-      a
-      bounded
-      sin).
-    n=m≥1:
-      O(1)
-      +
-      O(1/n)
-      (the
-      (L−y)/L
-      cos
-      term
-      does
-      not
-      decay
-      in
-      n).
-    n≠m,
-      both
-      ≥1:
-      |θ|
-      ≤ 2 max(n,m) / (π |m²−n²|)
-      = O(1 / |n−m|)
-      after
-      |m²−n²|=|m−n||m+n|.
+    n=m=0: 2(L−y)/L (no decay in n).
+    n=0, m≥1: |θ| ≤ √2 /(π m) (times a bounded sin).
+    n=m≥1: O(1) + O(1/n) (the (L−y)/L cos term does not decay in n).
+    n≠m, both ≥1: |θ| ≤ 2 max(n,m) / (π |m²−n²|) = O(1 / |n−m|) after
+    |m²−n²|=|m−n||m+n|.
 
-So
-the
-worst
-off-diagonal
-is
-1/|n−m|,
-the
-difference
-kernel
-already
-capped
-by
-#89
-on
-one
-band
-as
-an
-operator.
-The
-diagonal
-does
-not
-decay.
-A
-weight
-n^α
-with
-α>0
-makes
-the
-diagonal
-of
-A_near
-worse
-(D
-grows
-or
-shrinks
-depending
-on
-the
-arch
-piece),
-not
-automatically
-better.
+So the worst off-diagonal is 1/|n−m|, the difference kernel already
+capped by #89 on one band as an operator. The diagonal does not decay. A
+weight n^α with α>0 makes the diagonal of A_near worse (D grows or
+shrinks depending on the arch piece), not automatically better.
 
-Far
-from
-the
-diagonal,
-O(1/(n+m))
-is
-true
-as
-well
-(|m²−n²|∼n²
-if
-m≪n).
-That
-is
-why
-a
-Hankel
-π
-is
-a
-legal
-majorant
-for
-the
-far
-block
-and
-why
-it
-is
-loose
-near
-the
-diagonal
-(already
-in
-ρ_N,
-computed).
+Far from the diagonal, O(1/(n+m)) is true as well (|m²−n²|∼n² if m≪n).
+That is why a Hankel π is a legal majorant for the far block and why it
+is loose near the diagonal (already in ρ_N, computed).
 
-Not
-a
-new
-cap.
+Not a new cap.

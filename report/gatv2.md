@@ -1,43 +1,7 @@
 # GATv2
 
-GATv2
-moves
-the
-attention
-nonlinearity
-so
-that
-every
-query-key
-pair
-can
-be
-maximal
-(Brody
-et
-al.).
-That
-fixes
-a
-ranking
-defect
-of
-GAT.
-It
-does
-not
-create
-a
-graph
-in
-this
-lab
-and
-does
-not
-bound
-θ.
+GATv2 moves the attention nonlinearity so that every query-key pair can
+be maximal (Brody et al.). That fixes a ranking defect of GAT. It does
+not create a graph in this lab and does not bound θ.
 
-Not
-a
-campaign.
+Not a campaign.
