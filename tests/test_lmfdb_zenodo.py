@@ -182,3 +182,73 @@ def test_lfunc_A_matches_gl3_csv_and_every_gl2_row():
         lf = by[lab]["lfunc"]
         assert abs(lf["A"] - analytic_conductor_gammaR(lf["N"], lf["mu"])) < 1e-9
     assert load_lfunc("11.0.1.1.1")["A"] == by["11.0.1.1.1"]["lfunc"]["A"]
+    assert load_lfunc("1.0.1.1.1")["origin"] == "ModularForm/GL2/Q/Maass/1.0.1.1.1"
+
+
+def test_quorum_chi_origin_is_lmfdb_instance():
+    """LMFDB Origin names the χ. Lab chi3 is Character/Dirichlet/3/2."""
+    import harvest_weyl
+    import ql_class_mu3
+    import scan_s
+    from lmfdb_encode import (
+        by_chi,
+        by_origin,
+        load_catalog,
+        load_chi,
+        load_lfunc,
+        load_zeros,
+        write_catalog,
+        write_quorum_chi,
+    )
+
+    write_quorum_chi()
+    write_catalog()
+    names = set(scan_s.CHARS) | set(harvest_weyl.CHARS) | set(ql_class_mu3.MORE)
+    names.add("zeta")
+    chi = by_chi()
+    assert names <= set(chi)
+    assert len(chi) == len(names)
+    orig = by_origin()
+    for name in names:
+        rec = chi[name]
+        url = rec["origin"]
+        assert url.startswith("Character/Dirichlet/"), name
+        assert rec["lfunc"]["origin"] == url
+        assert rec["lfunc"]["chi"] == rec["conrey"]
+        assert rec["lfunc"]["d"] == 1
+        assert rec["conrey"] and "." in rec["conrey"]
+        assert orig[url]["name"] == name
+        assert load_chi(url)["name"] == name
+        assert load_lfunc(url)["origin"] == url
+        assert load_lfunc(name)["origin"] == url
+        z_name = load_zeros(name)
+        z_url = load_zeros(url)
+        assert z_name.size == z_url.size
+        if z_name.size:
+            assert abs(float(z_name[0]) - float(z_url[0])) < 1e-15
+
+    assert chi["chi3"]["origin"] == "Character/Dirichlet/3/2"
+    assert chi["chi3"]["conrey"] == "3.2"
+    assert chi["chi5"]["origin"] == "Character/Dirichlet/5/4"
+    assert chi["chi5"]["conrey"] == "5.4"
+    assert chi["chim8"]["origin"] == "Character/Dirichlet/8/3"
+    assert chi["chi8"]["origin"] == "Character/Dirichlet/8/5"
+    assert chi["chi20"]["origin"] == "Character/Dirichlet/20/19"
+    assert chi["zeta"]["origin"] == "Character/Dirichlet/1/1"
+    assert chi["zeta"]["conrey"] == "1.1"
+    assert chi["chi3"]["lfunc"]["stored_in_lmfdb"] is True
+    assert chi["zeta"]["lfunc"]["stored_in_lmfdb"] is True
+    assert load_zeros("chi3").size >= 1
+    assert abs(float(load_zeros("zeta")[0]) - 14.1347) < 0.01
+    # Conrey 3.2 collides with Maass short 3.2 = 3.0.1.2.1. Origin is the χ.
+    lf_maass = load_lfunc("3.2")
+    assert lf_maass["origin"] == "ModularForm/GL2/Q/Maass/3.0.1.2.1"
+    assert lf_maass["d"] == 2
+    assert load_lfunc("Character/Dirichlet/3/2")["d"] == 1
+
+    cat = load_catalog()
+    ix = cat["index"]["origin"]
+    assert ix["Character/Dirichlet/3/2"]["kind"] == "chi"
+    assert ix["Character/Dirichlet/3/2"]["name"] == "chi3"
+    assert ix["ModularForm/GL2/Q/Maass/1.0.1.1.1"]["kind"] == "gl2"
+    assert cat["chi"][ix["Character/Dirichlet/5/4"]["i"]]["name"] == "chi5"

@@ -49,8 +49,19 @@ completeness lists 15659 *dynamic* GL2 Maass L). Those columns are
 rebuilt from `maass_rigor`. `A` is LMFDB’s analytic conductor
 (checked on the GL3 CSV). Table 1 γ and `z1` come from
 Booker–Then (`load_zeros("maass1")`). `11.0.1.1.1` has `a_n` and a
-reconstructed L-row with no `z1`. GL3/DIR/CMF stay in
-`lmfdb_lfunc_*.pkl`. `python code/lmfdb_encode.py --reconcile`.
+reconstructed L-row with no `z1`.
+
+Origin is LMFDB’s instance name (`instance_urls[0]`). For a
+Dirichlet L-function it *is* the character:
+`Character/Dirichlet/{q}/{n}` (Conrey). Quorum χ (union of
+`scan_s`, `harvest_weyl`, `ql_class_mu3`, plus zeta) live in
+`lmfdb_quorum_chi.pkl`; the indexed catalog
+`lmfdb_catalog.pkl` keys GL2 / χ / GL3 by that Origin. So
+`load_lfunc("chi3")` and `load_lfunc("Character/Dirichlet/3/2")`
+are the same row; χ on the L-row is Conrey `3.2`. Bare `3.2` is
+the Maass short label `3.0.1.2.1` — do not use it for the
+character. GL3/DIR/CMF stay in `lmfdb_lfunc_*.pkl`.
+`python code/lmfdb_encode.py --reconcile`.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 
