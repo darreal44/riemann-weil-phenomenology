@@ -330,7 +330,14 @@ Q_pk adds 2² at μ=5 (ΔH₀₀=−0.096);
 the 4-plane becomes **positive**
 (`notes/ql-chi3-H4-pk.md`). CST+Gauss
 on φ₀ is not C_A_lo
-(`notes/ql-cst-gamma.md`). Still not
+(`notes/ql-cst-gamma.md`).
+The 4-plane sign disagrees under
+2 m_Q(ω_n) on the diagonal
+(`notes/ql-arch-4plane.md`). Neumann
+Q_pk does not take χ₃ at h=2,4
+(`notes/ql-schur-pk-mu5.md`). T₅ at
+5.1 does not jump λ_min
+(`notes/ql-T5-H4.md`). Still not
 Weil. Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
