@@ -64,7 +64,13 @@ The assembled matrix element is
 This is exact on the window: the
 Γ-tail beyond L is absorbed into
 the last log, which is 1/256 at
-µ=16.
+µ=16. Judged
+(`notes/ql-arch-weil.md`): CST+Gauss
+equals the digamma writing
+(C_A_lo plus ∫ D₂(F₀−θ)) to 10⁻¹⁴
+on W_L. Mixing ψ(s₀) into CST
+while keeping EC is not the
+classical term.
 
 ## Size
 
