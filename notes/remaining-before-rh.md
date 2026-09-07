@@ -227,17 +227,28 @@ and drop-97 stay positive. 83 is the only new voter on
 
 ## 7. Maass Q
 
-Inputs exist: `zeros_maass{1..5}_weyl.pkl`,
-`code/maass_an_*.json` (Zenodo 15490636), Laplace parameters `R`.
-The completed Gamma is `Γ_R(s+iR) Γ_R(s−iR)`, not `Γ(s)` and not
-the weight-2 pair `Γ_R(s) Γ_R(s+1)` of `scan_q_gl2`.
+`zeros_maass{1..5}` are Booker–Then Table 1.
+LMFDB label `N.k.a.m.d`: level, weight,
+Conrey `N.a` (two numbers), spectral
+index `m`. Short `1.2` = `1.0.1.2.1`
+(character 1.1). Degree 2 (not in the
+CSV). Not lex `1.0.1.10.1`.
+`code/maass_table1.py`. Scanners load
+`code/lmfdb_maass_gl2.pkl` (35416 rows,
+accessed 7 September 2026), checked
+against Zenodo JSON
+(`tests/test_lmfdb_zenodo.py`).
+LMFDB `symmetry=0` is odd (s₀=3/4).
 
-Shipped path: the zero Gram (`scan_gl2.gram`). `maass1` at `μ=16`
-is INDEF (desert / short list). Booker–Then Table 1 at `μ=8`
-`N=25` has `ℓ≈35` (`λ∼10⁻¹⁵`): float64 reports INDEF. A slightly
-smaller window `μ=6` `NB=12` is isolated with `ℓ ∈ (20, 40)`
-(`tests/test_maass_q.py`). There is no prime-side `assemble` for
-Maass. Building one is a code path, not a covering lemma.
+Gamma is `Γ_R(s±iR)`, not `scan_q_gl2`.
+Shipped path: zero Gram. `maass1` at μ=16
+is INDEF (desert). At μ=6 NB=12 all five
+Table 1 Grams are isolated
+(`tests/test_maass_q.py`,
+`code/maass_table1_pair.py`). Prime-side
+`assemble` exists and is the wrong scale
+(Q00=1.71 vs G00=0.066 on maass1). Not
+a take. Not RH.
 
 ---
 

@@ -23,6 +23,8 @@ import sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+from maass_table1 import ALIAS, LABEL_TO_SHORT, resolve  # noqa: E402
+
 CURVES = (
     "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
     "zeta",
@@ -37,12 +39,16 @@ CURVES = (
     "maass3",
     "maass4",
     "maass5",
+    *ALIAS.values(),
     "11.0.1.1.1",
 )
 
 
 def zeros(name):
-    p = os.path.join(HERE, f"zeros_{name}_weyl.pkl")
+    # LMFDB Table 1 labels share the Booker–Then pkl (zeros_maass2, not
+    # zeros_1.0.1.2.1). Lexicographic 1.0.1.10.1 is a different form.
+    short = LABEL_TO_SHORT.get(resolve(name), name)
+    p = os.path.join(HERE, f"zeros_{short}_weyl.pkl")
     return np.array(sorted(float(x) for x in pickle.load(open(p, "rb"))))
 
 
