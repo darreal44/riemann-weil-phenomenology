@@ -309,8 +309,11 @@ N=4 quadratic mesh (named in
 `report/quadratic-mesh.md`) misses by
 0.0053, Q_lo=+0.0002; the I-gap is still
 outside ±0.003 (`notes/av-I01-mesh.md`).
-Still one v, not Weil. (∀ L) Q_L ≥ 0
-is still the covering lemma.
+Extending the mesh through the convex
+rise [y_min, y_inf] misses by 0.00315
+(`notes/av-I01-rise.md`). Still one v,
+not Weil. (∀ L) Q_L ≥ 0 is still the
+covering lemma.
 
 ---
 

@@ -74,4 +74,5 @@ Judge: `tests/test_av_cauchy.py`.
 | three-tangent envelope of I_{[0,1]} | still open (misses 0.068) |
 | quadratic support of I_{[0,1]} | still open (misses 0.047) |
 | N=4 quadratic mesh of I_{[0,1]} | still open (misses 0.0053) |
+| rise mesh of I_{[0,1]} | still open (misses 0.00315) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
