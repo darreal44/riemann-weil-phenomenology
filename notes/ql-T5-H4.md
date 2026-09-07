@@ -1,3 +1,10 @@
+<!--
+Copyright © 2026 Denis Joubert.
+This file may be distributed under the GNU GPL v3 or later,
+or the Creative Commons Attribution-ShareAlike 4.0 International
+License, subject to the binding interpretation in
+LICENSE.md (section 3).
+-->
 # T₅ on H₄ at μ=5.1: no jump of λ_min
 
 Preregistered (`report/prereg-ql-T5-H4.md`):

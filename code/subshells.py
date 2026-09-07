@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Semi-local Fourier on the ord₂=0 slice, as a sum of 2-adic sub-shells.
 
     Fg(ρ) = ½ [ ∑_{n≥0} ĝ(2^n ρ) − ĝ(ρ/2) ]

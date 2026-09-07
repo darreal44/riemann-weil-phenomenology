@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Edge value of the ground state of a hat-basis matrix Q.
 
     ψ(0) = L^{−1/2} (v₀ + √2 ∑_{n≥1} v_n)

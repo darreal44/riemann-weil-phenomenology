@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Cauchy majorant of |a_odd^{(6)}| on [0,1] (s₀=3/4).
 
 Same poles kπi as the even side. w_odd = e^{-z/2}/sinh z.

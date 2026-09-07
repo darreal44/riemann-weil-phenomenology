@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Eight elliptic curves: corrected prime-side Q vs each zero Gram at mu=11 (notebook 111).
 # The prime side detects the analytic rank: the central zero (once) is needed for rank 1 and wrong for rank 0.
 import os, sys, io, pickle, contextlib, importlib.util, numpy as np, mpmath as mp

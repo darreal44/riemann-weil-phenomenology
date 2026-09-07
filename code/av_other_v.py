@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Other v at χ₅ μ=150. Pencil from v-impact.md, plus v_min.
 
 Assemble A, P23, Prest once per μ (3×3), then every v is a sandwich.

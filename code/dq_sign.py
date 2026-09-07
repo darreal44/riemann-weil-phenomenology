@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Signe de D o Q sur L^2(I), I=[-a,a] : D o Q(xi_i * xi_j~) = int (Q_+ f)(v) delta(e^{|v|}) dv, f = correlation.
 # Q_+ = -d^2/dv^2 + 1/4 applique a la fonction test lisse ; delta : archimedien (forme close) ou semi-local (remainder.py).
 import numpy as np, sys, io, contextlib

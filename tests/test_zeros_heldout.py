@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # First zeros of chi_-8, chi_-20, chi_-23: Hurwitz-cross-checked in notebook 18.
 # Usage: python3 -m pytest tests/test_zeros_heldout.py -q
 import os, pickle

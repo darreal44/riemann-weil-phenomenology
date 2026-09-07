@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # B1/B2 on a depth-adequate Dirichlet window: chi_{-8} at mu=16.
 # Usage: python3 lemma_B_chi.py [name] [mu] [NB]
 import os, sys, time

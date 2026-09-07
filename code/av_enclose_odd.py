@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Point transfer of the odd integrand (s0=3/4) at mu=16.
 
 Not a remainder ball: G3 + 8+8 trap of a_odd, no |a''| majorant yet.

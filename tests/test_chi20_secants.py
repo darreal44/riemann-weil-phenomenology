@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # chi_-20 secants through mu=50 (notebook 23). Kill-from-above not fired.
 SECANTS = {
     (16, 22): 0.534,

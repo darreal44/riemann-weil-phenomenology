@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Schur Neumann at μ=5, L=log 5. log2 < L/2 so ‖Θ(log 2)‖≤2.
 
 Q = A − ∑_{p<μ} χ(p)(log p)/√p Θ(log p). Six-character quorum.
