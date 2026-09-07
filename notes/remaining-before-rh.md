@@ -319,6 +319,10 @@ one representative.
 χ₅ and χ₄; raise-h at h=4 restores
 (`notes/ql-schur-mu35.md`). One extra L,
 not (∀ L).
+μ=5: χ₃ has λ_min(H_4)<0
+(`notes/ql-schur-mu5.md`). This
+construction is not ≥0 on W_{log 5}
+for χ₃. Not a disproof of RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
