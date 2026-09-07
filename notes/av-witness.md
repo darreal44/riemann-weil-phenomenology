@@ -67,6 +67,7 @@ there is secondary once [0,1] is enclosed.
 | CST | elementary (origin) |
 | θ_v, P | elementary finite sum (origin + `theta_vec`) |
 | I_{[0,1]}, I_{[1,L]}, A, Q | Arb balls, Q>0 (this note) |
-| comparison estimate of I_{[0,1]} | open |
+| Cauchy |a^{(6)}| on [0,1], two panels | judged (`notes/av-cauchy-a6.md`) |
+| comparison estimate of I_{[0,1]} | open (chord misses 0.22) |
 | det(A−P) by max-norm rest | fails (`det-hand-chi5-mu16.md`) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |

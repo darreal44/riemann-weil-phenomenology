@@ -47,6 +47,6 @@ check; Q(v)>0 is not closed as a hand proof by this remainder.
 | θ_v closed, six elementary functions | identity (`av_gauss.theta_v`) |
 | integrand regular at 0 | identity (`kernel_limit_0`) |
 | 3-point Gauss of a on [0,1] | arithmetic check, agrees with ∫ a |
-| rigorous |a^{(6)}| majorant | not written |
+| rigorous |a^{(6)}| majorant | Cauchy, two panels (`notes/av-cauchy-a6.md`) |
 | comparison bound of I_{[0,1]} | still open (chord misses by 0.22) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
