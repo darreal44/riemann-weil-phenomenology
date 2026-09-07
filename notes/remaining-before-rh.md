@@ -335,6 +335,14 @@ gap 0.000405, leftover cap ratio
 0.123 (`notes/av-I01-n8.md`). Still
 one v, not Weil. (∀ L) Q_L ≥ 0 is
 still the covering lemma.
+A hand cubic Taylor with proved
+\(|g'''|\le K=50.35\) from lag
+amplitudes (\(|\sin|,|\cos|\le 1\))
+is a legal lower bound and misses
+by \(1.40\), \(Q_{\mathrm{lo}}=-1.40\)
+(`notes/av-I01-gppp.md`). The
+elementary cap is too crude to
+replace the mesh. KILL. One v.
 
 ---
 
