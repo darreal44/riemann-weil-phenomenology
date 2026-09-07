@@ -33,11 +33,14 @@ def parse(path: str) -> list[float]:
 def main() -> None:
     if len(sys.argv) < 3:
         sys.exit("usage: import_maass_zeros.py LABEL FILE")
+    from maass_table1 import LABEL_TO_SHORT, resolve
+
     label, src = sys.argv[1], sys.argv[2]
     z = parse(src)
     if not z:
         sys.exit("no floats in " + src)
-    dest = os.path.join(HERE, f"zeros_{label}_weyl.pkl")
+    short = LABEL_TO_SHORT.get(resolve(label), label)
+    dest = os.path.join(HERE, f"zeros_{short}_weyl.pkl")
     pickle.dump(z, open(dest, "wb"))
     print(f"{label} n={len(z)} g1={z[0]:.4f} T={z[-1]:.2f} -> {dest}")
 

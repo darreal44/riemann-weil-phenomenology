@@ -8,6 +8,10 @@
 
     python code/harvest_maass.py
     python code/harvest_maass.py --level 1 --limit 3
+    python code/harvest_maass.py --labels 1.0.1.1.1,1.0.1.2.1,1.0.1.3.1,1.0.1.4.1,1.0.1.5.1
+
+Default --limit 3 is lexicographic (1.0.1.1.1, 1.0.1.10.1, 1.0.1.100.1),
+not Booker–Then Table 1. Prefer --labels or the shipped pkl zeros_maass{1..5}.
 
 Writes code/zeros_maass_<label>_weyl.pkl and prints g1.
 LMFDB sometimes serves only the first ~20–40 zeros (positive_zeros).

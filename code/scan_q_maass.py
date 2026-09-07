@@ -34,16 +34,11 @@ import numpy.polynomial.legendre as NL
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
-# short names -> zenodo slugs already in the tree
-ALIAS = {
-    "maass1": "1.0.1.1.1",
-    "maass2": "1.0.1.10.1",
-    "maass3": "1.0.1.100.1",
-}
+from maass_table1 import ALIAS, resolve  # noqa: E402
 
 
 def load_form(name: str) -> dict:
-    slug = ALIAS.get(name, name)
+    slug = resolve(name)
     path = os.path.join(HERE, f"maass_an_{slug}.json")
     rec = json.load(open(path))
     rec["slug"] = slug
@@ -87,7 +82,8 @@ def assemble(name, mu, NB, dps, DEG=12):
     # Even Maass: Gamma_R(s±iR) on Re s=1/2 -> s0 = 1/4 ± iR/2.
     # Odd Maass:  Gamma_R(s+1±iR)           -> s0 = 3/4 ± iR/2.
     # MAASS_PAIR=half experiments with 1/2 ± iR/2 (not the textbook pair).
-    even = int(rec.get("symmetry", 1)) >= 0
+    # LMFDB/Zenodo: symmetry 1 = even, 0 = odd. 0 is not "even".
+    even = int(rec.get("symmetry", 1)) > 0
     pair = os.environ.get("MAASS_PAIR", "quarter")
     if pair == "half":
         base = mp.mpf("0.5")

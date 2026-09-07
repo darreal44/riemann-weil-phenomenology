@@ -38,6 +38,8 @@ def arch00(mu, R, Ncond, kind, dps=20, DEG=12, NB=8):
         s0s = (mp.mpf("0.5") + 1j * mp.mpf(R), mp.mpf("0.5") - 1j * mp.mpf(R))
     elif kind == "quarter":
         s0s = (mp.mpf("0.25") + 1j * mp.mpf(R) / 2, mp.mpf("0.25") - 1j * mp.mpf(R) / 2)
+    elif kind == "odd_quarter":
+        s0s = (mp.mpf("0.75") + 1j * mp.mpf(R) / 2, mp.mpf("0.75") - 1j * mp.mpf(R) / 2)
     else:
         s0s = (mp.mpf("0.5"), mp.mpf(1))
     xr0, _ = leggauss(DEG)
