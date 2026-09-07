@@ -366,7 +366,11 @@ it to +5.0×10⁻⁶. Not Weil-positive
 (one L). H₁₆ stays + through 7
 and 8=2³; the sliver collapses
 8×10⁻⁶→5×10⁻¹¹, no sign change
-(`notes/ql-H16-mu.md`). Not (∀ L).
+(`notes/ql-H16-mu.md`). Neumann at
+μ=7 and μ=8: ρ≥1 except (7, h=24)
+where S_lo=−0.45. The W_log5 take
+does not extend
+(`notes/ql-schur-mu78.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
