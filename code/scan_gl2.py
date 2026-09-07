@@ -45,8 +45,16 @@ CURVES = (
 
 
 def zeros(name):
-    # LMFDB Table 1 labels share the Booker–Then pkl (zeros_maass2, not
-    # zeros_1.0.1.2.1). Lexicographic 1.0.1.10.1 is a different form.
+    # Table 1 γ live on the rigor pkl (load_zeros). File fallback
+    # zeros_maass2_weyl.pkl, not zeros_1.0.1.2.1. 1.0.1.10.1 is another form.
+    try:
+        from lmfdb_encode import load_zeros
+
+        z = load_zeros(name)
+        if getattr(z, "size", 0):
+            return np.asarray(z, dtype=float)
+    except (KeyError, FileNotFoundError, OSError):
+        pass
     short = LABEL_TO_SHORT.get(resolve(name), name)
     p = os.path.join(HERE, f"zeros_{short}_weyl.pkl")
     return np.array(sorted(float(x) for x in pickle.load(open(p, "rb"))))

@@ -117,3 +117,23 @@ def test_lfunc_zeros_conjugate_and_holomorphic():
     rec = by_cmf["ModularForm/GL2/Q/holomorphic/11/2/a/a"]
     assert rec["zeros"].size >= 1
     assert rec["label"].startswith("2-11-")
+
+
+def test_gl2_rigor_zeros_and_lfunc_slot():
+    from lmfdb_encode import by_label_gl2, load_an, load_zeros
+
+    by = by_label_gl2()
+    z1 = load_zeros("1.0.1.1.1")
+    assert abs(float(z1[0]) - 17.0249) < 0.01
+    assert load_zeros("maass1").size == z1.size
+    rec = by["1.0.1.1.1"]
+    assert rec["zeros_source"] == "booker-then-table1"
+    assert rec["lfunc"] is None
+
+    rec11 = by["11.0.1.1.1"]
+    assert rec11["N"] == 11
+    assert abs(rec11["R"] - 2.03309) < 1e-4
+    assert load_zeros("11.0.1.1.1").size == 0
+    assert rec11["lfunc"] is None
+    assert "not computed" in rec11["lfunc_note"].lower()
+    assert len(load_an("11.0.1.1.1")) == 1000
