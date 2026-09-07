@@ -271,11 +271,11 @@ M≤1370 from verified c_n (`report/a6-markov.md`).
 Eight even characters: `code/av_enclose_even.py`,
 all Qlo>0, χ₅ tightest.
 
-**Odd (s₀=3/4).** a^{(6)} does not freeze.
-a^{(4)} does (23.5 sampled, ≤60 Markov).
-Composite 2-point Gauss on two halves
-(`code/av_odd_gauss2.py`) + Leibniz [1,L]:
-χ₃ Q ∈ [0.00388, 0.00795] with M₄=60.
+**Odd (s₀=3/4).** a^{(6)} does not freeze
+in Chebyshev. Cauchy two-panel
+(`notes/av-cauchy-odd.md`): rem
+2.01×10^{-4}, χ₃ Q ∈ [0.00469, 0.00743].
+a^{(4)} still used for G₂∘G₂ (M₄=60).
 χ₃ is the tight odd window.
 
 **Not RH.** Finite μ, one v. Even I_{[0,1]}

@@ -42,15 +42,16 @@ g(L)=1/2, g''(L)=1/8 exact.
 
 ## Still open on this vector
 
-- majorant of a^{(6)} on [0,1], odd
 - comparison estimate of I_{[0,1]}
   (chord misses by 0.22)
 - (∀ L) Q_L ≥ 0   (= RH)
 
 Even a^{(6)} on [0,1]: Cauchy
-two-panel majorant
-(`notes/av-cauchy-a6.md`).
-One panel is too crude.
+two-panel (`notes/av-cauchy-a6.md`).
+Odd a^{(6)} on [0,1]: Cauchy
+two-panel (`notes/av-cauchy-odd.md`).
+Chebyshev-Markov of a_odd^{(6)}
+does not freeze; Cauchy does.
 
 ## Tail of v (hats n=3,4,5)
 
