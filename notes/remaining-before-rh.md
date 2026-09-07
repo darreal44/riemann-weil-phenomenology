@@ -326,6 +326,12 @@ for χ₃. Not a disproof of RH.
 μ* of that sign change is in (4.75, 5];
 μ=4 (Θ-jump) is not the crossing
 (`notes/ql-chi3-H4-mu.md`).
+Q_pk adds 2² at μ=5 (ΔH₀₀=−0.096);
+the 4-plane becomes **positive**
+(`notes/ql-chi3-H4-pk.md`). CST+Gauss
+on φ₀ is not C_A_lo
+(`notes/ql-cst-gamma.md`). Still not
+Weil. Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
