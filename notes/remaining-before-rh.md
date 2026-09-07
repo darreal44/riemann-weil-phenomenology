@@ -586,6 +586,28 @@ the essential lower bound, hence false. Dropping \(\tfrac\pi2\)
 flips \(S_{\mathrm{lo}}\) by \(+0.0005\) and is false.
 \(\tfrac\pi2\) stays. Not taken. Not RH.
 
+## 8i. Truncated Weyl trial on Hankel \([32,M)\)
+
+`report/minorant-weyl-error.md` saw \(\|Hx\|\approx 0.22\)
+only on \([32,80)\). Rayleigh of \(x_n=n^{-1/2}\)
+(and Mellin \(n^{-1/2}\cos(\tau\log n)\)) on
+\(H=\tfrac12/(n+m)\) including the diagonal
+(`code/ql_hankel_weyl_cut.py`):
+
+    M      σ       eσ      R      τ*
+    80     0.227   1.343   0.227  0
+    512    0.612   0.959   0.610  0
+    2048   0.818   0.753   0.812  0
+
+τ*=0 always. \(R\) saturates σ of the section
+(the trial is the top mode of the cutoff).
+Fit \(e_\sigma \approx 0.658/\log(M/N)+0.707\)
+(\(R^2=0.868\)). Intercept \(0.707\neq 0\):
+not Hartman. At \(M=2048\) still \(0.75\)
+below \(\pi/2\). No infinite Weyl sequence.
+No GL CSV. Does not exhibit \(1.081\).
+Does not license \(s_1\le 0.8\). Not taken.
+Not RH.
 
 ---
 
