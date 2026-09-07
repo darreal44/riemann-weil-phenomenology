@@ -1,69 +1,137 @@
-# Convergence of the Neumann series
+# Neumann series convergence
 
-    T = D^{1/2}(I+A)D^{1/2}
-    (I+A)^{-1} = ∑_{k≥0} (−A)^k
-    when ρ=‖A‖<1.
-
-    χ     ρ      1/(1−ρ)   ρ²     ρ³
-    χ₈   0.335    1.50    0.112  0.038
-    χ₄   0.388    1.63    0.151  0.058
-    χ₅   0.521    2.09    0.271  0.141
-    χ₃   0.590    2.44    0.348  0.206
-
-All four have
-ρ<1. The
-series
-converges
-everywhere
-we ran it.
-χ₃ is not a
-divergence.
-It is a
-convergent
-bound that
-overshoots
-the sliver
-S_diag=0.008
-once
-multiplied
-by C D⁻¹ C*.
-
-Rate: the
-tail after
-N terms is
-O(ρ^{N+1}/
-(1−ρ)).
-At N=3, χ₅
-has 0.14 of
-A left; χ₃
-has 0.21.
-A tighter
-S would
-sum two or
-three
-explicit
-terms
-instead of
-using
-1/(1−ρ)
-on the
-whole A.
-That is a
-possible
-χ₃ move
-(not a new
-ρ).
+    A^k → 0
+    iff
+    ρ(A)<1.
+    ‖A^k‖ ≤ ρ^k.
 
 The
-certificate
-#61 uses
-the closed
-majorant,
-not a
+remainder
+after
+N
+terms
+is
+A^{N+1}(I−A)^{-1},
+so
+
+    ‖T^{-1} − D^{-1} ∑_{k=0}^N A^k‖
+      ≤ ρ^{N+1} / (1−ρ)
+        ‖D^{-1}‖.
+
+The
+bound
+used
+in
+the
+lab
+is
+the
+N=∞
+envelope
+1/(1−ρ),
+not
+a
 truncated
-sum. It
-does not
-“converge
-to” S; it
-is already
-a bound.
+series.
+Truncating
+would
+need
+a
+sign
+on
+the
+remainder;
+the
+envelope
+does
+not.
+
+ρ
+is
+assembled
+from
+three
+block
+norms
+(near,
+coupling,
+far).
+If
+any
+block
+has
+norm
+≥1
+the
+series
+diverges
+as
+a
+bound,
+even
+if
+the
+true
+T^{-1}
+exists
+(T
+may
+still
+be
+invertible
+on
+ℓ²).
+That
+is
+a
+defect
+of
+the
+majorant,
+the
+same
+class
+as
+Frob/qmin
+eating
+λ_H.
+
+Convergence
+in
+L
+is
+the
+wrong
+question
+for
+this
+series:
+A
+depends
+on
+L
+through
+every
+Q_nm.
+If
+ρ(L)
+crosses
+1
+the
+windowed
+bound
+stops.
+It
+does
+not
+mean
+Q̂_L
+ceased
+to
+be
+positive.
+
+Not
+Weil.
+Not
+RH.
