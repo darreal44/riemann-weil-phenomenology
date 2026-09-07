@@ -18,8 +18,8 @@ a theorem.
    97  100    0.993   0.015
 
 83 leaves “edge” only
-around μ ≈ 148 (y/L=0.95
-→ μ=e^{log 83 / 0.95}≈148).
+around μ ≈ 105 (y/L=0.95
+→ μ=83^{1/0.95}≈105).
 It is already necessary
 at 100, still edge.
 Necessary ∩ edge is
