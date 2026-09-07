@@ -73,4 +73,5 @@ Judge: `tests/test_av_cauchy.py`.
 | tangent/floor switch of I_{[0,1]} | still open (misses 0.088) |
 | three-tangent envelope of I_{[0,1]} | still open (misses 0.068) |
 | quadratic support of I_{[0,1]} | still open (misses 0.047) |
+| two-piece quadratic of I_{[0,1]} | still open (misses 0.024) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
