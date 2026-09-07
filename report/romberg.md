@@ -1,46 +1,119 @@
-# Romberg on [0,1]
+# Romberg
 
-Richardson on the
-trapezoid. Table
-for a even, μ=16:
+Romberg
+is
+Richardson
+extrapolation
+of
+the
+composite
+trapezoid
+rule.
+The
+tableau
+kills
+successive
+even
+powers
+of
+h
+and
+converges
+to
+I_true
+like
+a
+high-order
+Euler–Maclaurin
+sum.
 
-    n      T(h)        T_extr
-    4   −0.706869
-    8   −0.702306    −0.700785
-   16   −0.701175    −0.700799
-   32   −0.700893    −0.700799
-   64   −0.700822    −0.700799
+It
+needs
+the
+values
+of
+g
+(or
+a)
+at
+dyadic
+nodes.
+Those
+are
+elementary
+here.
+The
+output
+is
+again
+I_true=−0.700799,
+already
+known
+to
+more
+digits
+than
+WINDOW.
 
-It hits the
-trap-4000 reference
-immediately. As a
-*number*, Romberg
-is better than
-G₃ 1-panel and
-matches G₃ 2-panel.
+Romberg
+does
+not
+produce
+a
+comparison
+function.
+A
+truncated
+Euler–Maclaurin
+formula
+*with
+a
+bound
+on
+the
+first
+omitted
+Bernoulli
+term*
+can
+be
+turned
+into
+a
+hand
+bound,
+but
+that
+is
+a
+derivative
+bound
+of
+the
+same
+kind
+as
+m_i,
+usually
+worse
+near
+0
+where
+g''
+is
+9.6.
 
-As a *proof*, each
-column j needs a
-bound on a^{(2j)}.
-Column 2 already
-wants a^{(4)};
-column 3 wants
-a^{(6)} — the same
-derivative Gauss
-uses, with a
-different constant,
-plus the lower
-columns’ errors.
-One does not get
-a smaller M₆ for
-free. The
-certificate stays
-G₃ + Cauchy M₆
-(#52), where the
-remainder is one
-term.
-
-Useful to check
-the quadrature.
-Not a second
-majorant.
+Not
+a
+campaign.
+The
+mesh
+already
+uses
+the
+derivatives
+Romberg
+would
+want
+to
+eliminate.
