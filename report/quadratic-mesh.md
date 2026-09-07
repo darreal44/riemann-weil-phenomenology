@@ -135,5 +135,20 @@ the
 hand
 story.
 
+Executed
+N=4
+(`notes/av-I01-mesh.md`):
+gap
+0.0053,
+still
+outside
+±0.003.
+Not
+a
+hand
+proof
+of
+Q(v)>0.
+
 Not
 Weil.
