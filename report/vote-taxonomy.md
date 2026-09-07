@@ -25,9 +25,9 @@ Modifiers:
     p     μ=84           μ=86         μ=100
     3     dispensable    necessary    necessary
           interior       interior     interior
-    83    mute-as-drop   (not dropped (necessary
-          dispensable     at 86)       + edge)
-          + edge
+    83    dispensable    necessary    necessary
+          + edge         + edge       + edge
+          (drop +3e-9)   (−4e-10)     (−0.080)
     89    absent         absent       dispensable
                                       + edge
     97    absent         absent       dispensable
