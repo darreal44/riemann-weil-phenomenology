@@ -200,5 +200,6 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | Bochner \(\alpha_{\mathrm{line}}\ge0\) on \(W_{\log 3}\) | false (`notes/ql-operator-bound.md`) |
 | Schur tail takes χ₈ on \(W_{\log 3}\) | judged (`notes/ql-schur-tail.md`) |
 | ‖Θ(log 2)‖ ≤ 1 on \(W_{\log 3}\) (y≥L/2) | theorem (`notes/ql-theta-tail.md`) |
+| Neumann Schur takes χ₅ on \(W_{\log 3}\) | judged (`notes/ql-schur-neumann.md`) |
 | (log 2, log 3] for the whole PW class | open; not taken |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |

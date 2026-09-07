@@ -78,6 +78,7 @@ infinite \(N\). It is not the step.
 | Bochner \(\alpha_{\mathrm{line}}\ge0\) | **false** (`ql-operator-bound`) |
 | Schur tail takes χ₈ | judged (`ql-schur-tail`) |
 | ‖Θ(log 2)‖ ≤ 2 | **false** (≤1, `ql-theta-tail`) |
+| Neumann Schur takes χ₅ | judged (`ql-schur-neumann`) |
 | \(c_L^*\ge0\) on \(W_{\log3}\) for every χ | **open; not taken** |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |
 
