@@ -105,6 +105,19 @@ CC,
 not
 Laguerre.
 
+Executed
+(`notes/av-I01-adapt.md`):
+eight
+leftover
+bisections,
+gap
+0.000433,
+inside
+±0.003.
+Still
+one
+v.
+
 Not
 Weil.
 One

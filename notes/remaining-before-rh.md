@@ -317,7 +317,12 @@ N=4 quadratic mesh (named in
 outside ±0.003 (`notes/av-I01-mesh.md`).
 Extending the mesh through the convex
 rise [y_min, y_inf] misses by 0.00315
-(`notes/av-I01-rise.md`). Still one v,
+(`notes/av-I01-rise.md`). Tail parabolas
+leave 0.002793 (`notes/av-I01-tailq.md`).
+A leftover-driven adaptive mesh (eight
+bisections on well+rise) has gap
+0.000433, inside ±0.003
+(`notes/av-I01-adapt.md`). Still one v,
 not Weil. (∀ L) Q_L ≥ 0 is still the
 covering lemma.
 
