@@ -74,9 +74,22 @@ Bernstein for the
 lag at one point
 *against Â*
 (not against I).
-None of those
-estimates is in
-the repo.
+
+Shipped
+(`notes/ql-operator-bound.md`):
+Bochner α_line of the
+cutoff kernel is
+negative on χ₅, χ₈,
+χ₄, χ₃ (χ₅ −0.418).
+Young already failed
+by dropping g(0)=0;
+this keeps it and
+still fails. Bernstein
+vs Â: A(constant)<0
+on χ₅, χ₃, so C_*=∞.
+The cosine family in
+W_L stays positive.
+Class not taken.
 
 A matrix bound
 on S_N is not

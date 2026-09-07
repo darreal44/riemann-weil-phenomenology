@@ -28,6 +28,9 @@ Judges live in `tests/`.
 
 ## Killed predictions (not theorems)
 
+- Bochner α_line ≥ 0
+  on W_{log 3}: −0.418
+  on χ₅ (`ql-operator-bound`).
 - 37a1 drop-3 → − at
   μ=62 (#41), μ=74, μ=80
   (#44). Linear μ≈70
