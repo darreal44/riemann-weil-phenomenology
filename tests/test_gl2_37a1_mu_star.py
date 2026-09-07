@@ -15,7 +15,7 @@ def test_preregistration_locked():
     assert "86, 88, 90, 92, 94, 96, 98" in text
     assert "Not RH" in text
     crit = open(CRIT, encoding="utf-8").read()
-    assert "2-unit grid" in crit or "(84, 100]" in crit
+    assert "(84, 86]" in crit
 
 
 def test_driver_grid():
