@@ -296,9 +296,14 @@ Courant on nested hats: \(\lambda_{\min}(V_N)\ge c_L^*\), so
 (`notes/pw-log3.md`). Prime-side ladder at \(\mu=3\) is nested
 and positive (\(\zeta\): \(1.026\times10^{-7}\to6.27\times10^{-8}\)
 at \(N=9,17,25\), tracking the Gram floor). That is not
-\(c_L^*\ge0\). Operator-level \(\int'\) by subtracting the
-sub-shells \(1+2^k\mathbb Z_2\) from \(D_S\circ Q\) is still a
-construction (journal §108, `report/subshell-ops.md`).
+\(c_L^*\ge0\). The Bochner / Fourier sufficient bound of the
+cutoff kernel is negative on χ₅, χ₈, χ₄, χ₃
+(`notes/ql-operator-bound.md`: α_line = −0.418 on χ₅);
+no windowed cosine kills the class. Bernstein vs Â is
+infinite for χ(2)=−1 (A(constant)<0). Operator-level \(\int'\)
+by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
+\(D_S\circ Q\) is still a construction (journal §108,
+`report/subshell-ops.md`).
 
 ---
 

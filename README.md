@@ -79,6 +79,9 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - `notes/pw-log3.md` — Paley–Wiener of type log 3: Galerkin \(V_N\) is Courant
   the wrong way for the class \(W_L\); prime-side ladder at \(\mu=3\) nested and
   \(>0\). \(c_L^*\ge0\) not taken. Not RH.
+- `notes/ql-operator-bound.md` — Bochner multiplier of \(\hat Q_L\) on
+  \(W_{\log 3}\): α_line < 0 on χ₅, χ₈, χ₄, χ₃ (sufficient bound fails);
+  cosine family stays positive; C_*=∞ for χ(2)=−1. Class not taken. Not RH.
 - `notes/gl2-37a1-drop3.md` — 37a1 μ=62, retrait de 3: preregistered
   negative, executed positive (+0.093). KILL. Not RH.
 - `notes/gl2-67a1-mu74.md` — 67a1 μ=74: quorum stays complete (2, 5, 13

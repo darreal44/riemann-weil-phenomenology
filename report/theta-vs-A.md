@@ -49,9 +49,15 @@ an upper bound on
 nothing that proves
 C_* |w₂|<1. A lower
 bound on C_* is easy
-(the witness). A
-*upper* bound on C_*
-is the missing line.
+(the witness). An
+upper bound on C_* is
+the missing line when
+A>0. On χ₅ and χ₃,
+A(constant)<0 in W_L
+(`ql-operator-bound.md`),
+so C_* is already
+infinite. Not a
+comparison.
 
-Not computed. One
-window.
+Not the class step.
+One window.
