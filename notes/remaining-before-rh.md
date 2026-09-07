@@ -311,6 +311,10 @@ Neumann T^{-1} takes χ₅ (S_lo=+0.029);
 χ₃ at h=4 (`notes/ql-schur-chi3-h.md`);
 χ₇ (χ(2)=+1) at h=2
 (`notes/ql-schur-chi7-h.md`).
+μ=3.5, primes {2,3}: T₃ kills h=2 on
+χ₅ and χ₄; raise-h at h=4 restores
+(`notes/ql-schur-mu35.md`). One extra L,
+not (∀ L).
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
