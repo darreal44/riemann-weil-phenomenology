@@ -23,9 +23,9 @@ import sys
 import numpy as np
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ql_off_s1 import s1_off_q_upper  # noqa: E402
 from ql_operator_bound import CHARS, PI, s0_of, w2_of  # noqa: E402
-from ql_schur_tail import HILBERT_HANKEL, Q_nm, r_frob_bound  # noqa: E402
-from ql_theta_tail import theta_op_bound  # noqa: E402
+from ql_schur_tail import Q_nm  # noqa: E402
 
 HEAD = 2
 N_NEAR = 32
@@ -59,12 +59,7 @@ def row_of(name: str) -> dict:
     A = (T - np.diag(d)) * np.outer(1.0 / np.sqrt(d), 1.0 / np.sqrt(d))
     rho_n = float(np.linalg.norm(A, 2))
     qmin_far = min(Q(name, n, n) for n in range(N_NEAR, M_C))
-    off_far = (
-        0.5 * HILBERT_HANKEL
-        + 1.0 / (4.0 * N_NEAR)
-        + r_frob_bound(N_NEAR)
-        + abs(w2) * theta_op_bound()
-    )
+    off_far = s1_off_q_upper(N_NEAR, w2)
     rho_far = off_far / qmin_far
     b2 = 0.0
     for n in range(HEAD, N_NEAR):

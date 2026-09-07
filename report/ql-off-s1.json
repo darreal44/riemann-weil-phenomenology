@@ -1,0 +1,18 @@
+{
+  "step_taken": false,
+  "verdict": "KILL",
+  "why": "The proved s1(Off_Q) is the triangle \u03c0/2+|w2|; the ess lower \u03c0/2-|w2| kills 0.8 and 1.0. \u00bd\u03c0 stays.",
+  "w2": -0.49012907173427356,
+  "n0": 32,
+  "s1_upper": 2.1102159663183873,
+  "s1_lower": 1.0806672550606229,
+  "split": 2.1102159663183873,
+  "half_pi": 1.5707963267948966,
+  "cran_06": 0.6,
+  "cran_08": 0.8,
+  "cran_10": 1.0,
+  "cran_06_below_lower": true,
+  "cran_08_below_lower": true,
+  "cran_10_below_lower": true,
+  "upper_equals_split": true
+}

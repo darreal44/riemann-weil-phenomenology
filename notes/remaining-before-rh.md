@@ -559,6 +559,24 @@ tail. Not taken. Not RH.
 
 ---
 
+## 8g. Proved \(s_1(\mathrm{Off}_Q)\): triangle, not 0.8
+
+`report/drop-half-pi.md` asks to replace the Hankel+Θ
+split by a certified \(s_1(\mathrm{Off}_Q)\). That split
+*was* the triangle. Written (`code/ql_off_s1.py`):
+
+    \(\tfrac\pi2-|w_2| \le s_1^{\mathrm{ess}}(\mathrm{Off})
+      \le \tfrac\pi2 + r_N + |w_2|\).
+
+χ₃: lower \(1.081\), upper \(2.110\) = Off_far.
+`ql_schur_neumann` now calls `s1_off_q_upper`; \(S_{\mathrm{lo}}\)
+unchanged. \(s_1\le 0.6\), \(0.8\), \(1.0\) lie *below*
+the essential lower bound, hence false. Dropping \(\tfrac\pi2\)
+flips \(S_{\mathrm{lo}}\) by \(+0.0005\) and is false.
+\(\tfrac\pi2\) stays. Not taken. Not RH.
+
+---
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
