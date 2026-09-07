@@ -77,6 +77,7 @@ infinite \(N\). It is not the step.
 | prime-side ladder at \(\mu=3\), nested, \(>0\) | judged, this note |
 | Bochner \(\alpha_{\mathrm{line}}\ge0\) | **false** (`ql-operator-bound`) |
 | Schur tail takes χ₈ | judged (`ql-schur-tail`) |
+| Schur tail takes χ₄ at h=20 | judged (`ql-schur-chi4-h`) |
 | ‖Θ(log 2)‖ ≤ 2 | **false** (≤1, `ql-theta-tail`) |
 | \(c_L^*\ge0\) on \(W_{\log3}\) for every χ | **open; not taken** |
 | \((\forall L)\,Q_L\ge0\) | RH; not this note |

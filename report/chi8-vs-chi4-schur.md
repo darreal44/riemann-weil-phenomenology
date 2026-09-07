@@ -38,13 +38,18 @@ finite H, or
 sharpen the
 Hankel
 constant for
-s₀=3/4. That
-is
-`ql_schur_tail`
-with a larger
-head, not
-Krein t=0.
+s₀=3/4.
 
+Executed
+(`ql-schur-chi4-h.md`):
+h=3,4 still
+β<0; first
+positive at
+h=20
+(β=+0.004).
+Hankel C tail,
+not the #58 R
+tail. χ₄ taken.
 χ₈ stays
 taken. χ(2)=−1
 still blocked
