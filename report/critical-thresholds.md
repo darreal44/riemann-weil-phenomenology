@@ -12,17 +12,17 @@ contains one.
     object              window           notes
     drop-3 >0           μ≤84             +0.087 at 82, +0.048 at 84
     drop-3 =0           μ* ∈ (84, 86]    sampled (`gl2-37a1-mu-star.md`)
-    drop-3 <0           μ≥100            −0.42 … −1.02 at 250
+    drop-3 <0           μ≥86             −0.029 … −1.02 at 250
     drop-83 mute        μ≤82             83 not in the sum
     drop-83 dispensable μ=84             +3×10⁻⁹
-    drop-83 <0          μ≥100            −0.080
-    83-join of *itself* μ** ∈ (84, 100]  same window as 3
+    drop-83 =0          μ** ∈ (84, 86]   sampled (`gl2-37a1-mu-star83.md`)
+    drop-83 <0          μ≥86             −4×10⁻¹⁰ at 86, −0.080 at 100
 
 Two crossings in
-the same 16-unit
-interval. No μ
-between 84 and 100
-except 100. The
+the same 2-unit
+bin. Unlike amplitudes
+(3 is −0.029, 83 is
+−10⁻¹⁰ at 86). The
 threshold is not
 y/L=1 (arrival)
 and not a fixed
@@ -46,5 +46,6 @@ y/L of 3 (0.25→0.24).
 
 A line through two
 μ. #44, #47, κ(Λ).
-The digit is in: μ* ∈ (84, 86].
+The digits: μ* and μ**
+both ∈ (84, 86].
 It does not change the taxonomy.
