@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # The two module-level assertion scripts of 31 August were never collected by pytest
 # (pytest.ini enumerated files; they also define no test_* function). They pass when run,
 # but nothing enforced that. Wrapped here so the suite actually guards them (notebook 82).

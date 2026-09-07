@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # MUSIC sur la forme de Weil : les zeros emergent du radical (rapport §16).
 # Le radical est un sous-espace de bruit rigoureux : Q(v)=lambda => |v^(gamma_k)| <= sqrt(lambda/2).
 # CRITERE D'ADMISSION : n'inclure dans le bruit que des barreaux a lambda petit (le vecteur

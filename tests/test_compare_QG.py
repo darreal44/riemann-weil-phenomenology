@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Drive shipped compare_QG / scan_s.assemble + gram.
 # Truncated Gram is NOT within λ_min of Q: the |Q-Gram|<λ_min route is closed as a proof.
 import os

@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # ppts_of must accept p^k for every p, not a hardcoded list capped at 67.
 # Needed for 37a1 drop-3 at μ ≫ 80 (71, 73, …). No RH.
 import os

@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Expand det(A-P) in the Lemma-2 frame {e1, e2}.
 
     python3 code/det_lemma2.py chi5 16

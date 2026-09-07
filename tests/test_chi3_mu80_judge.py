@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Judge for χ₃ μ=80: scan_s at the certified window. Sign at larger NB is NOT settled
 # (scan_s and spectro/edge_value disagreed at NB=32 dps=70 — do not harvest that).
 import os

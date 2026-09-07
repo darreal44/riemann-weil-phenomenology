@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # One-sided Weyl count vs the chi5 cache on (0,30] (report/weyl-density-check.md).
 import os, sys, pickle, numpy as np, mpmath as mp, importlib.util
 CODE = os.path.join(os.path.dirname(__file__), '..', 'code')

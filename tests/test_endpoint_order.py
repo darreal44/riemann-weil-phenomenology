@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Lock C = |vhat(g1)|/lambda0 measured on zeta mu=11 N=21.
 C_ZETA_MU11_N21 = 27.83
 C_WINDOW = (7.0, 40.0)  # published 7-25; short basis sits a little high

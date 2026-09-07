@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Θ_v from the zero-Gram ground state, vs  y e^y.
 
     python3 code/theta_v_profile.py zeta 16 32

@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Two-window slope s(χ) for chim8 / chi20 / chi23.
 # Usage: python3 scan_s.py chim8 [mu NB dps]
 # Default protocol: (5.5, 24, 40) then (11, 32, 45) — depth-adequate for s ≲ 1.5.

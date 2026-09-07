@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Identites de bord de la table de correlation (App. A de la note quorum) + table vs quadrature directe.
 # Usage : python3 tests/test_theta_endpoints.py   (mpmath seul, ~10 s)
 import mpmath as mp

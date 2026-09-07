@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Frozen 3-var successor (notebook 35).
 HOLD_OURS = {'-8': -0.075, '-20': -0.191, '-23': -0.039}
 LOO_MAX = 0.64  # chi17

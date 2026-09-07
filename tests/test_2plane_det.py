@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # det(A-P)>0 on the raised-cosine 2-plane at mu=16, three hats. ~2 s.
 import os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "code"))

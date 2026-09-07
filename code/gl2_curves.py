@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # a_p by point counting on Weierstrass models [a1,a2,a3,a4,a6]; validated against each curve's zero Gram.
 CURVES = {  # Cremona labels; models as recalled — the zero Gram check is the authority
     '11a1': ([0, -1, 1, -10, -20], 11), '19a1': ([0, 1, 1, -9, -15], 19), '32a1': ([0, 0, 0, -1, 0], 32),

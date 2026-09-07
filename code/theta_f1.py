@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Raised-cosine lag kernel θ_{f₁} in closed form.
 
 Unit e₁ = (√2, −1, 0)/√3 in the three-hat frame. For y ∈ [0, L],

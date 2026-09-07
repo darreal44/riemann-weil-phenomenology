@@ -1,3 +1,10 @@
+<!--
+Copyright © 2026 Denis Joubert.
+This file may be distributed under the GNU GPL v3 or later,
+or the Creative Commons Attribution-ShareAlike 4.0 International
+License, subject to the binding interpretation in
+LICENSE.md (section 3).
+-->
 # χ₃ ρ_far: larger N_NEAR / 3-layer do not take
 
 Preregistered (`report/prereg-ql-chi3-rhofar.md`):

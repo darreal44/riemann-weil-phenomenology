@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Verification numerique du Theoreme 4 de Connes (1999) sur la tranche : T(Lambda) = Tr(Phat_L P_L U(h)),
 # U(h) = int h(lambda) theta(lambda) d*lambda, theta(lambda) g(r) = lambda^{-1/2} g(r/lambda). Attendu : T = 4 h(1) log Lambda + sum_v W_v(h) + o(1).
 import numpy as np, sys

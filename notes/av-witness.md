@@ -1,3 +1,10 @@
+<!--
+Copyright © 2026 Denis Joubert.
+This file may be distributed under the GNU GPL v3 or later,
+or the Creative Commons Attribution-ShareAlike 4.0 International
+License, subject to the binding interpretation in
+LICENSE.md (section 3).
+-->
 # A(v) for the rational witness: enclosure of [0, 1]
 
 Origin (`report/rational-witness-chi5-mu16.md`, `A-v-expansion.md`,

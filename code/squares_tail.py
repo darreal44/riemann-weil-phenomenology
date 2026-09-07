@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Explicit tail bound for Q^z - Q^z_cut on the even window at mu=11.
 # hat(eta_0)(g) = 2 sin(g L/2) / (g sqrt(L))  <= 2/(g sqrt(L))
 # hat(eta_n)(g) = 2 sqrt(2/L) g sin(g L/2) / (g^2 - w_n^2)

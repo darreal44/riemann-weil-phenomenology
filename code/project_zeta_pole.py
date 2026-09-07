@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Project out the pole mode of Q_ζ and print the rest.
 
     python code/project_zeta_pole.py 2 6 25 8

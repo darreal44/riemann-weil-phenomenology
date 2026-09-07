@@ -3,6 +3,18 @@
 [![DOI](https://zenodo.org/badge/1351526407.svg)](https://doi.org/10.5281/zenodo.22215278)
 
 
+## License
+
+Dual license **GPL-3.0-or-later** or **CC-BY-SA-4.0**, with the binding
+interpretation of the [Joubert Formal License](https://github.com/djoubertthot/joubert-formal-license)
+(`LICENSE.md`, `COPYING.interpretation`).
+
+Copyright © 2026 Denis Joubert.
+
+Private use does not require publication. Redistribution of a work that
+imports these files is copyleft plus attribution. GitHub may show the
+license as *Other*.
+
 ## Tests
 
 ```

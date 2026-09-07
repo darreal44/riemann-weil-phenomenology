@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # B1/B2 at mu=16: assemble Q, restrict each tower T_p to the first R
 # eigenvectors, print 2x2 minors. mpmath, zeta, even window.
 # Usage: python3 lemma_B_mu16.py [NB] [R]

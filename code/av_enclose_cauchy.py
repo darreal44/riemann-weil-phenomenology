@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """A(v) enclose: Gauss+Cauchy on [0,1] and on [1,L]. No trap, no |g''|.
 
 Even χ₅ and odd χ₃/χ₄/χ₇. Same v, μ=16.

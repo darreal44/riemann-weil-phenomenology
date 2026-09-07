@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Q00 vs G00 for Maass, three s0 conventions × two prime weights.
 
     python code/calibrate_maass_q.py
