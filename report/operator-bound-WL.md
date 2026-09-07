@@ -96,7 +96,11 @@ and not χ₅ (T₂).
 ‖Θ(log 2)‖≤1
 (`ql-theta-tail.md`),
 not Hilbert 2; χ₅
-still δ<0. Class not
+still δ<0 on Frob/δ.
+Neumann takes χ₅
+(S_lo=+0.029,
+`ql-schur-neumann.md`);
+χ₃ not. Class not
 taken for every χ.
 
 A matrix bound

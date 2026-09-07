@@ -46,6 +46,16 @@ a different
 ONB, not a
 smaller Hilbert
 constant.
-SOS remains
-the other
-desk.
+
+Executed
+(`ql-schur-neumann.md`):
+Neumann T^{-1}≤
+D^{-1}/(1−ρ),
+S_lo(χ₅)=+0.029.
+The Frobenius
+majorant was the
+obstruction, not
+C. χ₃ still
+S_lo<0. SOS
+remains for the
+odd χ(2)=−1.
