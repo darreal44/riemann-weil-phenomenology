@@ -96,8 +96,11 @@ and not χ₅ (T₂).
 ‖Θ(log 2)‖≤1
 (`ql-theta-tail.md`),
 not Hilbert 2; χ₅
-still δ<0. Class not
-taken for every χ.
+still δ<0. χ₄ taken at h=20
+(`ql-schur-chi4-h.md`).
+χ(2)=0 taken; χ(2)=−1
+not. Class not taken
+for every χ.
 
 A matrix bound
 on S_N is not
