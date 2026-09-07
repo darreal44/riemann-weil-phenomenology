@@ -346,7 +346,20 @@ digamma writing agrees to 10⁻¹⁴;
 λ_min(Q_pk H₄)=+1.4×10⁻⁵ is a
 4-plane of the identified form,
 neither Weil-positive nor
-Weil-negative (Courant). Not (∀ L).
+Weil-negative (Courant).
+‖Θ(y)‖≤√2 on L/4≤y<L/2
+(`notes/ql-theta-sqrt2.md`); at
+μ=5 this is log 2, t_atoms
+1.33→1.04. S_lo of identified
+Q_pk takes W_{log 5} for χ₃ at
+h=16 with cap 2 already
+(`notes/ql-slo-identified.md`,
++2.5×10⁻⁶); the √2 cap raises
+it to +5.0×10⁻⁶. Not Weil-positive
+(one L). H₁₆ stays + through 7
+and 8=2³; the sliver collapses
+8×10⁻⁶→5×10⁻¹¹, no sign change
+(`notes/ql-H16-mu.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
