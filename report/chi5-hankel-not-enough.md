@@ -56,6 +56,11 @@ The Frobenius
 majorant was the
 obstruction, not
 C. χ₃ still
-S_lo<0. SOS
-remains for the
-odd χ(2)=−1.
+S_lo<0 at h=2.
+Raising h on
+the same Neumann
+takes χ₃
+(`ql-schur-chi3-h.md`).
+SOS is not the
+move on this
+window.
