@@ -79,8 +79,16 @@ def assemble(name, mu, NB, dps, DEG=12):
     mp.mp.dps = dps
     t0 = time.time()
     L = mp.log(mp.mpf(mu))
-    # Gamma((s ± iR)/2) at s = 1/2  ->  s0 = 1/4 ± i R/2
-    s0s = (mp.mpf("0.25") + 1j * mp.mpf(R) / 2, mp.mpf("0.25") - 1j * mp.mpf(R) / 2)
+    # Even Maass: Gamma_R(s±iR) on Re s=1/2 -> s0 = 1/4 ± iR/2.
+    # Odd Maass:  Gamma_R(s+1±iR)           -> s0 = 3/4 ± iR/2.
+    # MAASS_PAIR=half experiments with 1/2 ± iR/2 (not the textbook pair).
+    even = int(rec.get("symmetry", 1)) >= 0
+    pair = os.environ.get("MAASS_PAIR", "quarter")
+    if pair == "half":
+        base = mp.mpf("0.5")
+    else:
+        base = mp.mpf("0.25") if even else mp.mpf("0.75")
+    s0s = (base + 1j * mp.mpf(R) / 2, base - 1j * mp.mpf(R) / 2)
     om = [2 * mp.pi * n / L for n in range(NB + 1)]
     xr0, _ = NL.leggauss(DEG)
     xr, wr = [], []
@@ -108,8 +116,15 @@ def assemble(name, mu, NB, dps, DEG=12):
     SIN = [[mp.sin(om[n] * y) for y in nodes] for n in range(NB + 1)]
     COS = [[mp.cos(om[n] * y) for y in nodes] for n in range(NB + 1)]
     LY = [(L - y) / L for y in nodes]
+    # Same CST construction as scan_q_gl2 GL2_FIX: one (1/2)log N
+    # and one -log π - γ per panel, plus Frullani cut per panel.
     cut = mp.log(1 - mp.e ** (-2 * L))
-    CST = mp.log(mp.mpf(Ncond)) / 2 - mp.log(mp.pi) - mp.euler - cut
+    CST = (
+        mp.log(mp.mpf(Ncond)) / 2
+        - mp.log(mp.pi)
+        - mp.euler
+        - cut
+    )
     panels = []
     for s0 in s0s:
         D2 = [
@@ -143,7 +158,7 @@ def assemble(name, mu, NB, dps, DEG=12):
 
     cap = int(float(mp.e ** L) + 1e-9)
     ppts = [(mp.mpf(y), mp.mpf(w)) for y, w in lambda_pts(rec["an"], cap, Ncond)]
-    print(f"  slug={rec['slug']} N={Ncond} R={R:.4f} cap={cap} n_pts={len(ppts)}", flush=True)
+    print(f"  slug={rec['slug']} N={Ncond} R={R:.4f} pair={pair} base={base} cap={cap} n_pts={len(ppts)}", flush=True)
 
     S = mp.matrix(NB + 1)
     for n in range(NB + 1):
