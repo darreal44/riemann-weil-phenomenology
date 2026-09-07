@@ -1,126 +1,18 @@
 # Impact of the tail chords
 
-#86
-one
-chord
-on
-[y_inf,1]
-left
-gap
-0.00315.
-N=4
-chords
-leave
-0.00280.
-The
-tail
-contributed
-about
-0.00035
-of
-the
-parent
-gap
-— a
-ninth
-of
-0.00315,
-not
-the
-budget.
+#86 one chord on [y_inf,1] left gap 0.00315. N=4 chords leave 0.00280.
+The tail contributed about 0.00035 of the parent gap — a ninth of
+0.00315, not the budget.
 
-Most
-of
-what
-remains
-is
-still
-on
-the
-well
-and
-the
-rise
-(supporting
-parabolas
-with
-m_i=g''(right
-end)).
-Chords
-on
-a
-short
-concave
-interval
-of
-length
-0.23
-with
-small
-|g''|
-cannot
-move
-I
-by
-10⁻².
-N=8
-chords
-would
-eat
-another
-O(10⁻⁴),
-not
-the
-remaining
-0.0028
-if
-that
-remainder
-is
-mostly
-pre-inflection.
+Most of what remains is still on the well and the rise (supporting
+parabolas with m_i=g''(right end)). Chords on a short concave interval
+of length 0.23 with small |g''| cannot move I by 10⁻². N=8 chords would
+eat another O(10⁻⁴), not the remaining 0.0028 if that remainder is
+mostly pre-inflection.
 
-Q_lo
-moved
-+0.0004
-(0.0023→0.0027).
-The
-sign
-was
-already
-plus
-at
-N=4
-on
-the
-well
-(#85).
-The
-A-window
-on
-I
-is
-now
-technically
-met
-(0.00280<0.003)
-and
-still
-meaningless
-as
-Weil:
-one
-v,
-one
-μ,
-I_{[0,1]}
-only,
-I_{1,L}
-is
-the
-Cauchy
-floor
-I1L_LO.
+Q_lo moved +0.0004 (0.0023→0.0027). The sign was already plus at N=4 on
+the well (#85). The A-window on I is now technically met (0.00280<0.003)
+and still meaningless as Weil: one v, one μ, I_{[0,1]} only, I_{1,L} is
+the Cauchy floor I1L_LO.
 
-Not
-(∀ L).
+Not (∀ L).

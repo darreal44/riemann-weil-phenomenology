@@ -1,130 +1,21 @@
 # Selmer groups
 
-A
-Selmer
-group
-is
-a
-subgroup
-of
-Galois
-cohomology
-H^1(G_K, M)
-cut
-out
-by
-local
-conditions
-at
-each
-place
-(the
-image
-of
-K_v-points
-or
-a
-Bloch–Kato
-finite
-subspace).
-For
-an
-elliptic
-curve,
-Sel_p(E/K)
-sits
-in
-the
-exact
+A Selmer group is a subgroup of Galois cohomology H^1(G_K, M) cut out by
+local conditions at each place (the image of K_v-points or a Bloch–Kato
+finite subspace). For an elliptic curve, Sel_p(E/K) sits in the exact
 sequence
 
-    0 → E(K)/p E(K)
-      → Sel_p(E/K)
-      → Sha(E/K)[p]
-      → 0
+    0 → E(K)/p E(K) → Sel_p(E/K) → Sha(E/K)[p] → 0
 
-so
-its
-size
-mixes
-rank
-and
-Sha.
-Iwasawa
-studies
-the
-inverse
-limit
-of
-Sel_{p^n}(E/K_n)
-as
-a
-Λ-module.
+so its size mixes rank and Sha. Iwasawa studies the inverse limit of
+Sel_{p^n}(E/K_n) as a Λ-module.
 
-Structure
-theorems
-say
-that
-module
-is
-finitely
-generated
-over
-Λ,
-often
-torsion
-when
-L(E,1)≠0
-(rank
-0,
-as
-for
-11a1).
-The
-characteristic
-ideal
-is
-what
-IMC
-compares
-to
-L_p(E).
+Structure theorems say that module is finitely generated over Λ, often
+torsion when L(E,1)≠0 (rank 0, as for 11a1). The characteristic ideal is
+what IMC compares to L_p(E).
 
-This
-repo
-never
-computed
-Selmer
-or
-Sha.
-ellanalyticrank=0
-for
-11a1
-suggests
-Sel_p
-is
-finite
-for
-good
-p
-if
-Sha
-is
-finite
-(BSD).
-That
-is
-arithmetic
-of
-E,
-not
-a
-bound
-on
-Q̂_L
-for
-L(E,s).
+This repo never computed Selmer or Sha. ellanalyticrank=0 for 11a1
+suggests Sel_p is finite for good p if Sha is finite (BSD). That is
+arithmetic of E, not a bound on Q̂_L for L(E,s).
 
-No
-Galois-cohomology
-campaign.
+No Galois-cohomology campaign.

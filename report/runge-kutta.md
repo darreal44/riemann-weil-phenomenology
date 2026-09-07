@@ -1,91 +1,15 @@
 # Runge–Kutta
 
-RK
-integrates
-an
-ODE
-y'=F(x,y).
-I_{[0,1]}
-is
-a
-definite
-integral,
-i.e.
-the
-ODE
-Y'=a(y),
-Y(0)=0.
-RK4
-on
-that
-is
-a
-quadrature
-rule
-again
-(Simpson
-on
-each
-step
-if
-F
-does
-not
-depend
-on
-Y).
-It
-computes
-I_true.
+RK integrates an ODE y'=F(x,y). I_{[0,1]} is a definite integral, i.e.
+the ODE Y'=a(y), Y(0)=0. RK4 on that is a quadrature rule again (Simpson
+on each step if F does not depend on Y). It computes I_true.
 
-There
-is
-no
-unknown
-vector
-field.
-g
-is
-elementary.
-RK
-stability
-regions
-and
-adaptive
-step
-control
-are
-for
-stiff
-or
-unknown
-F,
-not
-for
-a
-3×3
-cosine
-sum.
+There is no unknown vector field. g is elementary. RK stability regions
+and adaptive step control are for stiff or unknown F, not for a 3×3
+cosine sum.
 
-Do
-not
-confuse
-with
-Runge
-phenomenon
-(polynomial
-interpolation
-at
-equispaced
-nodes),
-already
-the
-reason
-Chebyshev
-nodes
-exist
+Do not confuse with Runge phenomenon (polynomial interpolation at
+equispaced nodes), already the reason Chebyshev nodes exist
 (`clenshaw-curtis.md`).
 
-Not
-a
-campaign.
+Not a campaign.

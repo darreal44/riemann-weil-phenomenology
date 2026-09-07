@@ -1,196 +1,28 @@
 # Applications of the explicit formula
 
-Classical
-uses,
-not
-new
-computations.
+Classical uses, not new computations.
 
-**Counting
-primes.**
-θ
-a
-smooth
-approximation
-to
-1_{[0,log x]}.
-Left
-side
-~ zeros,
-right
-side
-~ ψ(x).
-Error
-terms
-become
-zero
-sums.
-This
-repo
-runs
-the
-opposite
-direction
-(small
-L,
-no
-zeros
-in
-the
-window).
+**Counting primes.** θ a smooth approximation to 1_{[0,log x]}. Left
+side ~ zeros, right side ~ ψ(x). Error terms become zero sums. This repo
+runs the opposite direction (small L, no zeros in the window).
 
-**Zero-free
-regions
-and
-their
-converse.**
-A
-zero
-off
-the
-line
-produces
-a
-negative
-direction
-for
-Q
-(Weil’s
-criterion
-the
-other
-way).
-That
-is
-the
-only
-application
-that
-is
-the
-goal
-here:
-positivity
-⇒
-no
-such
-zero
-in
-the
-range
-the
-test
-sees.
+**Zero-free regions and their converse.** A zero off the line produces a
+negative direction for Q (Weil’s criterion the other way). That is the
+only application that is the goal here: positivity ⇒ no such zero in the
+range the test sees.
 
-**Explicit
-constants.**
-Choosing
-θ
-to
-optimise
-the
-implied
-constant
-in
-ψ(x)−x
-or
-in
-a
-zero-free
-width.
-Not
-Schur
-on
-cosine
-ONB.
+**Explicit constants.** Choosing θ to optimise the implied constant in
+ψ(x)−x or in a zero-free width. Not Schur on cosine ONB.
 
-**Li
-coefficients.**
-One
-family
-of
-θ
-(or
-of
-moments
-of
-ξ'/ξ).
-Already
+**Li coefficients.** One family of θ (or of moments of ξ'/ξ). Already
 named.
 
-**Guinand /
-Weil
-on
-idèles.**
-The
-same
-identity
+**Guinand / Weil on idèles.** The same identity
  adelically.
-The
-2-adic
-mass
-in
-the
-journal
-is
-that
-language
-for
-the
-place
-2,
-not
-a
-new
-formula.
+The 2-adic mass in the journal is that language for the place 2, not a
+new formula.
 
-After
-#71
-the
-application
-that
-is
-open
-on
-this
-codebase
-is
-still
-the
-same
-one:
-turn
-a
-positive
-4-plane
-into
-a
-bound
-on
-the
-class
-(tail),
-or
-admit
-it
-is
-only
-a
-section.
-Using
-the
-formula
-to
-count
-primes
-at
-x=e^5
-is
-not
-a
-better
-use
-of
-the
-same
-scripts.
+After #71 the application that is open on this codebase is still the
+same one: turn a positive 4-plane into a bound on the class (tail), or
+admit it is only a section. Using the formula to count primes at x=e^5
+is not a better use of the same scripts.

@@ -1,134 +1,17 @@
 # Toeplitz spectral theory, as it hits Q
 
-A
-Toeplitz
-operator
-T_ψ
-on
-H²
-has
-spectrum
-the
-essential
-range
-of
-ψ
-plus
-holes
-filled
-by
-the
-winding
-(Hartman–Wintner,
-Widom).
-‖T_ψ‖
-= ‖ψ‖_∞.
+A Toeplitz operator T_ψ on H² has spectrum the essential range of ψ plus
+holes filled by the winding (Hartman–Wintner, Widom). ‖T_ψ‖ = ‖ψ‖_∞.
 
-θ_nm(y)
-at
-fixed
-y
-is
-not
-exactly
-T_ψ
-on
-the
-Hardy
-space
-of
-the
-disk:
-it
-is
-the
-compression
-of
-the
-shift
-by
-y
-to
-the
-cosine
-ONB
-of
-an
-interval.
-#89
-already
-gives
-‖Θ(y)‖≤√2
-on
-the
-mid-band
-without
-a
-symbol
-ψ.
+θ_nm(y) at fixed y is not exactly T_ψ on the Hardy space of the disk: it
+is the compression of the shift by y to the cosine ONB of an interval.
+#89 already gives ‖Θ(y)‖≤√2 on the mid-band without a symbol ψ.
 
-Szegő’s
-limit
-on
-the
-eigenvalues
-of
-finite
-Toeplitz
-sections
-does
-not
-shrink
-s₁
-of
-the
-infinite
-tail.
-The
-same
-sentence
-as
-Hartman
-for
-Hankel.
+Szegő’s limit on the eigenvalues of finite Toeplitz sections does not
+shrink s₁ of the infinite tail. The same sentence as Hartman for Hankel.
 
-Useful
-fact:
-‖H+T‖
-can
-be
-< ‖H‖+‖T‖.
-That
-is
-the
-cancellation
-the
-16×16
-section
-hints
-at.
-There
-is
-no
-closed
-Toeplitz+Hankel
-norm
-formula
-that
-the
-lab
-can
-quote
-today
-for
-ψ = lag
-at
-log 2
-plus
-1/(n+m).
+Useful fact: ‖H+T‖ can be < ‖H‖+‖T‖. That is the cancellation the 16×16
+section hints at. There is no closed Toeplitz+Hankel norm formula that
+the lab can quote today for ψ = lag at log 2 plus 1/(n+m).
 
-Not
-a
-course.
-Not
-RH.
+Not a course. Not RH.

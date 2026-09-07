@@ -1,151 +1,25 @@
 # Berry’s semiclassical picture
 
-Berry
-(and
-Tabor,
-Keating,
-…):
-the
-statistics
-of
-zeros
-of
-ζ
-look
-like
-GUE
-because
-a
-hypothetical
-chaotic
-Hamiltonian
-would
-have
-that
-form
-factor
-from
-its
-periodic
-orbits.
-The
-diagonal
-orbit
-sum
-gives
-the
-linear
-ramp
-of
-the
-form
-factor;
-off-diagonal
-pairs
-of
-orbits
-are
-the
-hard
-part
-(the
-“Riemann
-sieves
-the
-primes”
-slogan
-the
-other
-way).
+Berry (and Tabor, Keating, …): the statistics of zeros of ζ look like
+GUE because a hypothetical chaotic Hamiltonian would have that form
+factor from its periodic orbits. The diagonal orbit sum gives the linear
+ramp of the form factor; off-diagonal pairs of orbits are the hard part
+(the “Riemann sieves the primes” slogan the other way).
 
-What
-that
-is
-not:
+What that is not:
 
 - A
-  proof
-  of
-  RH.
+  proof of RH.
 - A
-  construction
-  of
-  the
-  Hamiltonian
-  (Berry–Keating
-  xp
-  is
-  a
-  candidate,
-  not
-  a
-  theorem).
+  construction of the Hamiltonian (Berry–Keating xp is a candidate, not
+  a theorem).
 - A
-  bound
-  on
-  S_lo
-  or
-  H₁₆.
+  bound on S_lo or H₁₆.
 
-Sato–Tate
-in
-this
-repo
-is
-a
-different
-semicircle
-(angles
-of
-a_p
-for
-an
-elliptic
-curve),
-not
-GUE
-of
-zeros.
-Pair
-correlation
-of
-the
-harvested
-γ
-was
-not
-the
-running
-branch
-after
-the
-takes
-died.
+Sato–Tate in this repo is a different semicircle (angles of a_p for an
+elliptic curve), not GUE of zeros. Pair correlation of the harvested γ
+was not the running branch after the takes died.
 
-The
-explicit
-formula
-already
-*is*
-the
-orbit
-sum
-(primes).
-Berry
-asks
-for
-a
-H
-whose
-Gutzwiller
-series
-reproduces
-it.
-Q̂_L
-is
-the
-quadratic
-form,
-not
-that
-H.
+The explicit formula already *is* the orbit sum (primes). Berry asks for
+a H whose Gutzwiller series reproduces it. Q̂_L is the quadratic form,
+not that H.

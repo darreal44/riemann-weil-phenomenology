@@ -56,10 +56,20 @@ def test_neumann_uses_s1_upper():
 
 def test_note_does_not_claim_take():
     text = open(NOTE, encoding="utf-8").read()
-    assert "Not\nRH." in text or "Not RH" in text
-    assert "Not\ntaken" in text or "not a take" in text.lower()
+    assert "Not RH" in text
+    assert "not a take" in text.lower() or "Not taken" in text
     assert "1.081" in text or "π/2" in text
     assert "false" in text.lower()
     src = open(SRC, encoding="utf-8").read()
     assert "from scan_s import assemble" not in src
     assert "ProcessPool" not in src
+
+
+def test_drop_half_pi_cran_is_closed():
+    drop = open(os.path.join(ROOT, "report", "drop-half-pi.md"), encoding="utf-8").read()
+    assert "Until it is" not in drop
+    assert "1.081" in drop
+    assert "2.110" in drop
+    assert "false" in drop.lower()
+    assert "Not taken" in drop
+    assert "Not RH" in drop

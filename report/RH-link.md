@@ -1,166 +1,27 @@
 # Link to the Riemann hypothesis
 
-Weil:
-RH
-for
-ζ
-(resp.
-GRH
-for
-L(s,χ))
-is
-equivalent
-to
-Q(θ)≥0
-for
-every
-admissible
-θ
-(every
-L,
-identified
-A_∞,
-all
-lags).
+Weil: RH for ζ (resp. GRH for L(s,χ)) is equivalent to Q(θ)≥0 for every
+admissible θ (every L, identified A_∞, all lags).
 
-What
-this
-repo
-has
-is
-not
-that
-equivalence
-run
-to
-the
-end.
+What this repo has is not that equivalence run to the end.
 
 - A
-  is
-  identified
-  with
-  A_∞
-  on
-  W_L
-  (#71).
+  is identified with A_∞ on W_L (#71).
 - Finite
-  cosine
-  sections
-  of
-  the
-  identified
-  Q_pk
-  stay
-  +
-  for
-  χ₃
-  through
-  μ=8,
-  n=48
-  (#74).
-  Courant:
-  that
-  is
-  an
-  upper
-  bound
-  on
-  the
-  bottom,
-  not
-  RH.
+  cosine sections of the identified Q_pk stay + for χ₃ through μ=8, n=48
+  (#74). Courant: that is an upper bound on the bottom, not RH.
 - Takes
-  (S_lo>0,
-  T
-  infinite)
-  exist
-  at
-  small
-  L
-  and
-  die
-  by
-  μ=8.1
-  on
-  the
-  quorum
-  (#78–#80).
-  A
-  dead
-  take
-  is
-  not
-  a
-  disproof
-  (the
-  bound
-  failed,
-  not
-  Q).
+  (S_lo>0, T infinite) exist at small L and die by μ=8.1 on the quorum
+  (#78–#80). A dead take is not a disproof (the bound failed, not Q).
 - No
-  negative
-  identified
-  section
-  ⇒
-  no
-  disproof.
+  negative identified section ⇒ no disproof.
 - Li
-  coefficients
-  of
-  ζ
-  are
-  another
-  encoding
-  of
-  the
-  same
-  equivalence;
-  not
-  computed
-  here.
+  coefficients of ζ are another encoding of the same equivalence; not
+  computed here.
 
-Iwasawa,
-L_p,
-Selmer,
-Deligne,
-Dwork
-are
-other
-theorems
-about
-other
-L-functions
-or
-other
-places.
-They
-do
-not
-substitute
-for
-(∀L) Q_L≥0
-on
-the
-archimedean
-line.
+Iwasawa, L_p, Selmer, Deligne, Dwork are other theorems about other
+L-functions or other places. They do not substitute for (∀L) Q_L≥0 on
+the archimedean line.
 
-Status:
-the
-link
-is
-the
-classical
-equivalence.
-The
-lab
-has
-windows
-and
-a
-dictionary.
-It
-does
-not
-have
-RH.
+Status: the link is the classical equivalence. The lab has windows and a
+dictionary. It does not have RH.

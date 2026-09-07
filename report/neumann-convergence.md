@@ -1,137 +1,22 @@
 # Neumann series convergence
 
-    A^k → 0
-    iff
-    ρ(A)<1.
-    ‖A^k‖ ≤ ρ^k.
+    A^k → 0 iff ρ(A)<1. ‖A^k‖ ≤ ρ^k.
 
-The
-remainder
-after
-N
-terms
-is
-A^{N+1}(I−A)^{-1},
-so
+The remainder after N terms is A^{N+1}(I−A)^{-1}, so
 
-    ‖T^{-1} − D^{-1} ∑_{k=0}^N A^k‖
-      ≤ ρ^{N+1} / (1−ρ)
-        ‖D^{-1}‖.
+    ‖T^{-1} − D^{-1} ∑_{k=0}^N A^k‖ ≤ ρ^{N+1} / (1−ρ) ‖D^{-1}‖.
 
-The
-bound
-used
-in
-the
-lab
-is
-the
-N=∞
-envelope
-1/(1−ρ),
-not
-a
-truncated
-series.
-Truncating
-would
-need
-a
-sign
-on
-the
-remainder;
-the
-envelope
-does
+The bound used in the lab is the N=∞ envelope 1/(1−ρ), not a truncated
+series. Truncating would need a sign on the remainder; the envelope does
 not.
 
-ρ
-is
-assembled
-from
-three
-block
-norms
-(near,
-coupling,
-far).
-If
-any
-block
-has
-norm
-≥1
-the
-series
-diverges
-as
-a
-bound,
-even
-if
-the
-true
-T^{-1}
-exists
-(T
-may
-still
-be
-invertible
-on
-ℓ²).
-That
-is
-a
-defect
-of
-the
-majorant,
-the
-same
-class
-as
-Frob/qmin
-eating
-λ_H.
+ρ is assembled from three block norms (near, coupling, far). If any
+block has norm ≥1 the series diverges as a bound, even if the true
+T^{-1} exists (T may still be invertible on ℓ²). That is a defect of the
+majorant, the same class as Frob/qmin eating λ_H.
 
-Convergence
-in
-L
-is
-the
-wrong
-question
-for
-this
-series:
-A
-depends
-on
-L
-through
-every
-Q_nm.
-If
-ρ(L)
-crosses
-1
-the
-windowed
-bound
-stops.
-It
-does
-not
-mean
-Q̂_L
-ceased
-to
-be
-positive.
+Convergence in L is the wrong question for this series: A depends on L
+through every Q_nm. If ρ(L) crosses 1 the windowed bound stops. It does
+not mean Q̂_L ceased to be positive.
 
-Not
-Weil.
-Not
-RH.
+Not Weil. Not RH.

@@ -1,96 +1,13 @@
 # Stieltjes polynomials
 
-E_{n+1}
-is
-orthogonal
-to
-P_n
-against
-the
-moments
-1,x,…,x^n
-(`kronrod-weights.md`).
-For
-Legendre
-weight
-on
-[−1,1]
-the
-zeros
-of
-E_{n+1}
-interlace
-the
-Gauss
-nodes
-and
-lie
-in
-(−1,1)
-for
-every
-n
-that
-has
-been
-checked;
-a
-uniform
-proof
-for
-all
-n
-is
-classical
-for
-this
-weight
-(not
-for
-every
-weight:
-Kronrod
-extensions
-can
-fail
-to
-exist
-in
-the
-real
+E_{n+1} is orthogonal to P_n against the moments 1,x,…,x^n
+(`kronrod-weights.md`). For Legendre weight on [−1,1] the zeros of
+E_{n+1} interlace the Gauss nodes and lie in (−1,1) for every n that has
+been checked; a uniform proof for all n is classical for this weight
+(not for every weight: Kronrod extensions can fail to exist in the real
 interval).
 
-That
-is
-why
-G7–K15
-is
-safe
-to
-write
-down
-once
-and
-for
-all.
-It
-has
-no
-bearing
-on
-m_i
-or
-on
-leftover.
+That is why G7–K15 is safe to write down once and for all. It has no
+bearing on m_i or on leftover.
 
-Not
-a
-campaign.
-The
-lab
-does
-not
-need
-an
-E_n
-table.
+Not a campaign. The lab does not need an E_n table.
