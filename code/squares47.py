@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Prime-side vs zero-side identity on V at mu=11.
 # Q^pr from pole + archimedean - towers; Q^z = sum_gamma hat(eta_n)(g) hat(eta_m)(g).
 # Usage: python3 squares47.py [N0]     N0 = last basis index (default 6; 46 = full 47-dim)

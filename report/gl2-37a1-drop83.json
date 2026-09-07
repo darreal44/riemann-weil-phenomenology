@@ -1,0 +1,44 @@
+{
+  "label": "37a1",
+  "NB": 80,
+  "dps": 50,
+  "seconds": 211.2,
+  "rows": [
+    {
+      "mu": 82,
+      "full_lam0": 5.418710045365072e-09,
+      "full_ell": 19.033408048831248,
+      "full_necessary": false,
+      "drop3_lam0": 0.08660648179097347,
+      "drop3_ell": 2.4463806187438544,
+      "drop3_necessary": false,
+      "drop83_lam0": 5.418710045365072e-09,
+      "drop83_ell": 19.033408048831248,
+      "drop83_necessary": false
+    },
+    {
+      "mu": 84,
+      "full_lam0": 3.58021759510591e-09,
+      "full_ell": 19.447842257625037,
+      "full_necessary": false,
+      "drop3_lam0": 0.04814961259111051,
+      "drop3_ell": 3.033442186645542,
+      "drop3_necessary": false,
+      "drop83_lam0": 3.293819964120377e-09,
+      "drop83_ell": 19.5312178623858,
+      "drop83_necessary": false
+    },
+    {
+      "mu": 100,
+      "full_lam0": 2.758697022422327e-10,
+      "full_ell": 22.01109245500778,
+      "full_necessary": false,
+      "drop3_lam0": -0.4184825830427477,
+      "drop3_ell": 0.8711200074986958,
+      "drop3_necessary": true,
+      "drop83_lam0": -0.08033524704896937,
+      "drop83_ell": 2.521546812256995,
+      "drop83_necessary": true
+    }
+  ]
+}

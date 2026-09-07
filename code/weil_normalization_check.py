@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Verification publique de l'identification Weil-Bombieri des composantes certifiees.
 # Identites testees (g = correlation de eta_0, le premier vecteur de base) :
 #   (1) POLE  : int_0^L Theta(y)(e^{y/2}+e^{-y/2}) dy  =  ghat(i/2) + ghat(-i/2)      [exacte]

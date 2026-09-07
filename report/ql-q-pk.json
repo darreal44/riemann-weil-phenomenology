@@ -1,0 +1,20 @@
+{
+  "ns3": [
+    2
+  ],
+  "ns35": [
+    2,
+    3
+  ],
+  "ns5": [
+    2,
+    3,
+    4
+  ],
+  "w4": 0.34657359027997264,
+  "mu3_matches_qnm": true,
+  "mu35_matches_window": true,
+  "H00_shift_mu5": -0.09610269663627741,
+  "step_taken": false,
+  "verdict": "SURVIVE"
+}

@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # chi7 is still climbing, not a second chi3 (notebook 30).
 CHI7_MU30 = 16.23
 CHI7_MU38 = 17.34

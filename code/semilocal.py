@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Espace semi-local {inf, 2} sur la tranche ord_2 = 0 : fonctions g sur [0, inf), base de cellules.
 # Fourier semi-local : Fg(rho) = 1/2 [ sum_{n>=0} ghat(2^n rho) - ghat(rho/2) ],  ghat(xi) = 2 int_0^inf g cos(2 pi r xi) dr
 # Fourier archimedien (controle) : Fg(rho) = ghat(rho).

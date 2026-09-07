@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # 5x5 after scaled C/G (notebook 50).
 REMS = {('00', 500): -2.56e-6, ('01', 500): -3.61e-6, ('11', 500): -5.10e-6}
 G = 811.18

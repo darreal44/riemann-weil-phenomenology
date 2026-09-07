@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Certified 5x5 block of Q^pr - Q^z at mu=11, even window.
 # Qpr in Arb balls (same engine as positivite_certifiee.py).
 # Qz = sum_{|gamma|<=G} 2 hat_n(gamma) hat_m(gamma), zeros as Arb

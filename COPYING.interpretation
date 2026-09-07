@@ -1,0 +1,13 @@
+Joubert Formal License — binding interpretation
+Copyright © 2026 Denis Joubert.
+
+For the purposes of the GNU GPL, an article, file, or module A
+that uses an article, file, or module B (imports, definitions,
+theorems, lemmas, notations, schemes, axioms, or formal citations)
+is deemed "linked to" and "combined with" B.
+
+For the purposes of the CC-BY-SA license, an article, file, or
+module A that uses an article, file, or module B in the same
+manner is deemed an adaptation of B.
+
+Strictly private, non-redistributed use creates no duty to publish.

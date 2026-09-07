@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Endpoint law C = |vhat_0(gamma1)| / lambda_0 on the zeta mu=11 block.
 # Also a finite-zero check of Prop A: G.vhat vs (lambda/2).vhat.
 # Usage: python3 endpoint_C.py [N0]

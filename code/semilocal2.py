@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Operateur P1 F P1 sur la tranche en base de cellules, avec MOYENNE EXACTE sur les cellules (Si),
 # pas d'evaluation au point milieu : tue le repliement des termes lacunaires.
 import numpy as np

@@ -1,18 +1,168 @@
-# Li coefficients (ζ)
+# Li coefficients
 
-λ_1 = 1 + γ/2 − ½ log(4π) = 0.023095708966
+    λ_n
+      = (1/(n−1)!)
+        (d/ds)^n
+        [ s^{n−1} log ξ(s) ]
+        |_{s=1}
 
-150 zeros T≈319 + Weyl tail, scale 0.554
-fitted on λ1.
+Equivalently
 
-| n | zeros | tail | scaled |
-|---|-------|------|--------|
-| 1 | 0.02064 | 0.00443 | 0.02310 |
-| 2 | 0.0825 | 0.0177 | 0.0924 |
-| 4 | 0.3295 | 0.0709 | 0.3688 |
-| 8 | 1.3087 | 0.2835 | 1.4658 |
+    λ_n
+      = ∑_ρ
+        [ 1 − (1 − 1/ρ)^n ]
 
-Scale 0.55 is the same 2-convention as the
-Gram tail (s≈0.65). All λ_n>0. Not RH.
+sum over
+non-trivial
+zeros
+(with
+multiplicity).
+Also
+a
+sum
+over
+primes
+plus
+an
+archimedean
+term
+(explicit
+formula
+at
+a
+specific
+test).
 
-    python code/li_lambda.py --n 8
+Bombieri–
+Lagarias:
+RH
+⇔
+λ_n ≥ 0
+for
+all
+n ≥ 1.
+A
+finite
+list
+of
+positive
+λ_n
+is
+compatible
+with
+a
+late
+failure.
+
+This
+is
+not
+λ_min(Q̂_L).
+Li
+is
+a
+sequence
+indexed
+by
+n,
+one
+number
+per
+degree,
+from
+ξ
+on
+the
+whole
+plane.
+Q̂_L
+is
+one
+operator
+on
+one
+window.
+Positivity
+of
+all
+λ_n
+is
+RH;
+positivity
+of
+Q̂_L
+for
+all
+L
+is
+also
+RH
+(Weil).
+Two
+encodings
+of
+the
+same
+statement,
+not
+two
+proofs.
+
+A
+ξ
+track
+in
+this
+repo
+that
+computed
+λ_n
+would
+be
+a
+different
+script
+from
+Schur
+on
+W_{log 3}.
+The
+journal
+already
+named
+Li
+as
+an
+unconditional
+positivity
+class
+(alongside
+a
+hat
+supported
+in
+(−L,L)
+with
+Q>0
+a
+priori).
+No
+new
+λ_n
+here.
+
+λ_1
+= ½(γ+2−log 4π)
+> 0
+is
+classical
+and
+tiny.
+The
+growth
+of
+λ_n
+is
+~ (1/2)(log n)^2
+under
+RH.

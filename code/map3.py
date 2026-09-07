@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Successor map: log s = a + b log g1 + c log gap + d log D.
 # No parity. Fit on TRAIN, LOO, then three held-out characters.
 # Usage: python3 map3.py

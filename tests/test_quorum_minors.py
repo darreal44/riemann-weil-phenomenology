@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # B1/B2 at zeta mu=16: 6/6 negative 2x2 once R=12 (notebook 20).
 # Frozen dets from lemma_B_mu16.py N=29 R=12. Do not re-assemble Q.
 import os

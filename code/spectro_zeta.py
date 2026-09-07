@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 import mpmath as mp, time, sys
 import numpy.polynomial.legendre as NL
 
@@ -47,7 +52,11 @@ def run(mu, NB, dps, DEG, K=8):
         return 2*(n*mp.sin(om[n]*y)-m*mp.sin(om[m]*y))/(mp.pi*(m*m-n*n))
 
     # tours par premier
-    primes = [p for p in [2,3,5,7,11,13,17,19,23,29,31,37] if p <= int(mp.e**L+1e-9)]
+    cap = int(mp.e**L + 1e-9); sv = [True]*(cap+1)
+    for i in range(2, int(cap**0.5)+1):
+        if sv[i]:
+            for j in range(i*i, cap+1, i): sv[j] = False
+    primes = [p for p in range(2, cap+1) if sv[p]]   # all primes <= mu (was hardcoded to 37: a hole above mu=41)
     towers = {p: [] for p in primes}
     for p in primes:
         n = p
@@ -84,6 +93,9 @@ def run(mu, NB, dps, DEG, K=8):
             vals.append(mp.fsum(v[i]*Cv[i] for i in range(NP)))
         tot = mp.fsum(vals)
         print(f"{k:2d} {mp.nstr(E[k],3):>11s} | " + " ".join(f"{float(x):+9.3f}" for x in vals) + f" | {mp.nstr(tot/E[k],4)}")
+    lam0 = float(E[0])
+    ell = [float(-mp.log(abs(E[k]))) if E[k] != 0 else float("inf") for k in range(min(8, NP))]
+    return lam0, ell
 
 if __name__ == '__main__':
     run(mp.mpf(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))

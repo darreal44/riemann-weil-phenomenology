@@ -1,0 +1,162 @@
+# Iwasawa theory (why it is not this Q)
+
+Iwasawa
+studies
+modules
+over
+Z_p[[Γ]]
+as
+one
+climbs
+the
+cyclotomic
+Z_p-extension
+of
+a
+number
+field
+(or
+a
+p-adic
+Lie
+extension).
+The
+main
+conjecture
+(now
+theorems
+in
+many
+cases:
+Mazur–Wiles,
+Kato,
+… )
+identifies
+the
+characteristic
+ideal
+of
+a
+Selmer
+or
+class
+group
+module
+with
+a
+p-adic
+L-function.
+
+Objects:
+μ- and
+λ-invariants,
+p-adic
+L_p(s,χ),
+Iwasawa
+algebra,
+not
+W_L
+and
+not
+Γ_R(s).
+
+Contact
+points
+that
+look
+verbal
+only:
+
+- “μ”
+  in
+  Iwasawa
+  is
+  the
+  p-power
+  growth
+  of
+  class
+  numbers,
+  not
+  the
+  window
+  length
+  e^μ
+  of
+  this
+  repo.
+- “λ”
+  is
+  the
+  number
+  of
+  zeros
+  of
+  L_p,
+  not
+  λ_min(H_n).
+- The
+  place
+  p
+  (especially
+  2)
+  appears
+  in
+  both.
+  Here
+  it
+  is
+  a
+  lag
+  log p^k
+  in
+  an
+  archimedean
+  explicit
+  formula.
+  There
+  it
+  is
+  the
+  prime
+  at
+  which
+  one
+  completes.
+
+A
+p-adic
+positivity
+(e.g.
+of
+a
+measure
+on
+Z_p^*)
+is
+a
+different
+theorem
+and
+does
+not
+imply
+Q̂_L≥0.
+Monsky /
+Dwork
+were
+already
+the
+char-p
+cousins;
+Iwasawa
+is
+the
+cyclotomic
+cousin.
+Neither
+is
+a
+campaign
+on
+S_lo.
