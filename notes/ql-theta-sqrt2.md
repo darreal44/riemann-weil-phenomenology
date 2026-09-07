@@ -70,6 +70,9 @@ S_lo(16) grows vs cap 2 and stays >0.
 ## Verdict: SURVIVE
 
 The cap √2 is the lemma on the band.
+The three coverings that feed the
+simplex are identified
+(`notes/ql-theta-overlap.md`).
 It does not take χ₃ at h=8. Not
 Weil-positive. Not (∀ L). Not RH.
 

@@ -5,31 +5,62 @@ or the Creative Commons Attribution-ShareAlike 4.0 International
 License, subject to the binding interpretation in
 LICENSE.md (section 3).
 -->
-# Overlap count, numerical
+# Three coverings of #72
 
-`python code/ql_theta_overlap.py`
+Preregistered (`report/prereg-ql-theta-overlap.md`).
+The simplex 2√(αβ)+2√(αμ₂)+μ₁ ≤ √2
+is already a theorem. This sitting
+identifies that majorant as the
+overlap count. Without it the χ₃
+μ=5 take is retroactive. Not Weil.
+Not RH.
 
-y=log 2, L=log 5 (in the mid-band).
-40 random heads N=16. Masses of
-h=√2 f|_{[0,L/2]} on A, C, and M
-split at its midpoint (a proxy for
-M₁∪M₂, not the fold named in #72).
+## Count
 
-    mass sum     1.000
-    bad_cap      0 / 40
-    bad_maj      0 / 40
-    max |ray|    0.807
-    max majorant 1.313 ≤ √2
+Even f, θ=2⟨f, T_y f⟩, h=√2 f on
+[0, L/2]. For L/3 ≤ y < L/2 the
+integrand lives on [y−L/2, L/2]
+and splits into five x-intervals,
+three covering types:
 
-The cap and the *proxy* majorant
-held on the sample. This is not
-the three-pair identification
-A↔C, A↔M₂, M₁. The fold of A
-is still the geometry to write.
-Finite sections that saturate √2
-were not in this sample (N=16
-random is not the extremiser
-α=1/2, β=μ₂=1/4).
+    AC  A ↔ C by the shift y
+        (two copies, + and −)
+    AM2 A ↔ M₂ by the even fold
+        (two copies)
+    M1  M₁ against itself
 
-Not RH. Not a proof of #72.
-LICENSE.md
+A=[0, L/2−y], C=[y, L/2],
+M₂=[2y−L/2, y], M₁=[L/2−y, 2y−L/2].
+Disjoint, union [0, L/2]. Lengths
+of the five x-intervals sum to L−y.
+Cauchy–Schwarz on each type gives
+2√(αβ)+2√(αμ₂)+μ₁.
+
+At μ=5, y=log 2, y/L=0.4307 ∈ (1/3, 1/2).
+L/4 ≤ y < L/3 is a degeneration
+(M₁ empty, reverse(A) meets A); the
+take does not use it.
+
+## Execution
+
+`python code/ql_theta_overlap.py`.
+`report/ql-theta-overlap.json`.
+
+Partition and covering hold on a
+grid in [L/3, L/2). Pair integrals
+sum to ⟨f, T_y f⟩. Constant mode:
+θ = 2(L−y)/L = theta_hat₀₀, and
+equals the majorant (saturates).
+Cosine: |θ| < majorant. Both ≤ √2.
+
+## Verdict: SURVIVE
+
+The overlap count is the missing
+geometry of #72. The simplex was
+already closed. The √2 cap on the
+band is no longer a finite-section
+check read backwards. One L (the
+take still dies at μ=5.1). Not
+(∀ L) Q_L ≥ 0. Not Weil. Not RH.
+
+Judge: `tests/test_ql_theta_overlap.py`.
