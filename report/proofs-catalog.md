@@ -31,6 +31,9 @@ Judges live in `tests/`.
 - Bochner α_line ≥ 0
   on W_{log 3}: −0.418
   on χ₅ (`ql-operator-bound`).
+- Schur tail takes χ₅:
+  T₂ eats δ; takes χ₈
+  (`ql-schur-tail`).
 - 37a1 drop-3 → − at
   μ=62 (#41), μ=74, μ=80
   (#44). Linear μ≈70
