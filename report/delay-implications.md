@@ -20,18 +20,16 @@ narrower:
     dispensable at p⁺
     and necessary later.
 
-Only 83 has that
-(among the primes
-we dropped). 3
-arrived at 3, long
-before the plateau.
-89 and 97 are
-dispensable at
-their first
-measured point
-(100); they may
-join the same
-class later.
+#56: drop-83 is
+already necessary
+at 86. delayed-on-
+arrival for 83 is
+Δμ ∈ (0,2], same
+bin as 3 after the
+dent. 3 arrived at
+3. 89 and 97 are
+dispensable at 100.
+
 
 Implications:
 
@@ -49,11 +47,10 @@ Implications:
    a time-to-vote
    formula.
    Δμ(83 own vote)
-   ∈ (16,16+] from
-   84 to 100, not
-   pinned. Δμ(3
-   after the dent)
    ∈ (0,2].
+   Δμ(3 after the
+   dent) ∈ (0,2].
+   Same bin (#56).
 
 3. A delayed vote
    does not weaken
