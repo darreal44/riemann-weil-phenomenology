@@ -265,25 +265,24 @@ One vector, three hats, no eigensolver.
 Index: `report/witness-status.md`.
 
 **Even (s₀=1/4).** Same integrand for all a=0.
-G₃ + 8+8 + Leibniz |a''|. a^{(6)} Markov
-M≤1370 from verified c_n (`report/a6-markov.md`).
-χ₅ Q ∈ [0.00334, 0.00717] after that remainder.
-Eight even characters: `code/av_enclose_even.py`,
-all Qlo>0, χ₅ tightest.
+Gauss+Cauchy on [0,1] and [1,L]
+(`notes/av-enclose-cauchy-tail.md`): χ₅
+Q ∈ [0.00516, 0.00587]. Trap path still
+in `av_enclose.py`. Eight even characters:
+`code/av_enclose_even.py`, all Qlo>0, χ₅
+tightest.
 
-**Odd (s₀=3/4).** a^{(6)} does not freeze
-in Chebyshev. Cauchy two-panel
-(`notes/av-cauchy-odd.md`): rem
-2.01×10^{-4}, χ₃ Q ∈ [0.00469, 0.00743].
-a^{(4)} still used for G₂∘G₂ (M₄=60).
-χ₃ is the tight odd window.
+**Odd (s₀=3/4).** Gauss+Cauchy on [0,1]
+and [1,L]: χ₃ Q ∈ [0.00570, 0.00610]
+(`notes/av-enclose-cauchy-tail.md`).
+Chebyshev a^{(6)} still does not freeze.
 
-**Not RH.** Finite μ, one v. Even I_{[0,1]}
-is now Gauss two-panel plus a Cauchy
-majorant of |a^{(6)}| (`notes/av-cauchy-a6.md`).
-The chord comparison of the integrand is
-still open. (∀ L) Q_L ≥ 0 is still the
-covering lemma.
+**Not RH.** Finite μ, one v. A(v) even and
+odd are Gauss+Cauchy on [0,1] and [1,L]
+(`notes/av-enclose-cauchy-tail.md`). The
+chord comparison of I_{[0,1]} is still
+open. (∀ L) Q_L ≥ 0 is still the covering
+lemma.
 
 ---
 

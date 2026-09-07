@@ -35,9 +35,9 @@ panels beat 10⁻³;
 eight beat the
 [0,1] room.
 
-Not a replacement
-of the trap tail
-until that room is
-written. Not RH.
+Executed: enclose rewritten
+(`notes/av-enclose-cauchy-tail.md`).
+8-panel rem is the tail.
+Not RH.
 
     python code/av_cauchy_tail.py
