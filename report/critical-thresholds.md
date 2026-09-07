@@ -11,7 +11,7 @@ contains one.
 
     object              window           notes
     drop-3 >0           μ≤84             +0.087 at 82, +0.048 at 84
-    drop-3 =0           μ* ∈ (84, 100]   not sampled
+    drop-3 =0           μ* ∈ (84, 86]    sampled (`gl2-37a1-mu-star.md`)
     drop-3 <0           μ≥100            −0.42 … −1.02 at 250
     drop-83 mute        μ≤82             83 not in the sum
     drop-83 dispensable μ=84             +3×10⁻⁹
@@ -46,11 +46,5 @@ y/L of 3 (0.25→0.24).
 
 A line through two
 μ. #44, #47, κ(Λ).
-The next useful
-threshold would be
-μ* for drop-3 on
-a 2-unit grid in
-(84,100], if anyone
-still wants the
-digit. It will not
-change the taxonomy.
+The digit is in: μ* ∈ (84, 86].
+It does not change the taxonomy.

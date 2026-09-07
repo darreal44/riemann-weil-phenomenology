@@ -26,7 +26,8 @@ kill did not fire.
 
 **83's arrival does not isolate the join of 3.**
 Drop-3 is still +0.048 at μ=84. The sign change
-is on (84, 100], where 83 drifts in. 89 and 97
+is on (84, 86]
+(`notes/gl2-37a1-mu-star.md`), where 83 drifts in. 89 and 97
 arrive too but do not vote
 (`notes/gl2-37a1-drop89-97.md`). Arrival of 83
 already moved the plateau
@@ -47,6 +48,6 @@ Judge: `tests/test_gl2_37a1_drop83.py`.
 | drop-3 still + at μ=82 | judged (+0.087) |
 | drop-3 < 0 at μ=84 (arrival) | **false** (+0.048) |
 | drop-83 < 0 at μ=100 | judged (−0.080) |
-| 83 isolates the join of 3 | **false** (join on (84,100]) |
+| 83 isolates the join of 3 | **false** (join on (84, 86]) |
 | 83 is necessary at μ=100 | judged |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
