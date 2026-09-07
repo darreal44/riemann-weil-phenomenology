@@ -76,3 +76,18 @@ h. χ₃ still
 has (2), so
 h alone may
 not copy.
+
+Judged
+(`ql-chi3-rhofar.md`):
+larger N_NEAR
+through 80 and
+a 3-layer split
+leave ρ≥0.51
+and S_lo≤−0.004.
+ρ_N climbs.
+ρ_far(80)=0.415
+still ≥0.41.
+Hilbert π/2
+does not drop.
+(3) is not the
+take.
