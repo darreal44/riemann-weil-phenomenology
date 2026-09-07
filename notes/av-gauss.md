@@ -55,5 +55,5 @@ check; Q(v)>0 is not closed as a hand proof by this remainder.
 | integrand regular at 0 | identity (`kernel_limit_0`) |
 | 3-point Gauss of a on [0,1] | arithmetic check, agrees with ∫ a |
 | rigorous |a^{(6)}| majorant | Cauchy, two panels (`notes/av-cauchy-a6.md`) |
-| comparison bound of I_{[0,1]} | still open (quad 0.047; N=4 mesh 0.0053) |
+| comparison bound of I_{[0,1]} | still open (N=4 mesh 0.0053; rise 0.00315) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |

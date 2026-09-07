@@ -75,6 +75,6 @@ there is secondary once [0,1] is enclosed.
 | θ_v, P | elementary finite sum (origin + `theta_vec`) |
 | I_{[0,1]}, I_{[1,L]}, A, Q | Arb balls, Q>0 (this note) |
 | Cauchy |a^{(6)}| on [0,1], two panels | judged (`notes/av-cauchy-a6.md`) |
-| comparison estimate of I_{[0,1]} | open (quad 0.047; N=4 mesh 0.0053) |
+| comparison estimate of I_{[0,1]} | open (N=4 mesh 0.0053; rise mesh 0.00315) |
 | det(A−P) by max-norm rest | fails (`det-hand-chi5-mu16.md`) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
