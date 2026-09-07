@@ -147,3 +147,26 @@ A note,
 not a
 harvest
 of γ.
+
+**Judged
+(ql-arch-weil).**
+p^k is
+in Q.
+CST+Gauss
+on W_L
+equals
+the
+digamma
+writing.
+The
+4-plane
+λ_min
++10^{-5}
+is still
+not the
+operator.
+Neither
+Weil+
+nor
+Weil−.
+Not RH.
