@@ -16,8 +16,9 @@ HS / compact. Finite near-band H^{(K)} has
 
 Θ lags do not die in n (B₁). A window [N,N+L) never
 sees H_ess=π/2 (Hartman lives across dyadic scales).
-Dyadic blocks test whether Off is local like Θ or
-coherent like Hankel.
+Long unions [32,M) with A_arch replaced by ½/(n+m)
+(identified) test whether Off stays ~0.5 while H
+climbs, or tracks H toward π/2.
 
     python code/ql_off_tail.py
 
@@ -159,6 +160,57 @@ def section_norms(
     }
 
 
+def section_fast(n0: int, n1: int, w2: float, k_split: int = 8) -> dict:
+    """Off = ½/(n+m) − w₂ Θ(log 2), closed form. n0≥1.
+
+    S_k identifies A_arch as Hankel; skip Gauss.
+    """
+    if n0 < 1:
+        raise ValueError("section_fast needs n0≥1")
+    ns = np.arange(n0, n1, dtype=float)
+    dim = n1 - n0
+    n = ns[:, None]
+    m = ns[None, :]
+    diff = m - n
+    nz = diff != 0
+    hank = np.divide(0.5, n + m, out=np.zeros((dim, dim)), where=nz)
+    s = np.sin((2.0 * PI / LOG3) * ns * LOG2)
+    num = n * s[:, None] - m * s[None, :]
+    den = PI * (m * m - n * n)
+    th = np.divide(2.0 * num, den, out=np.zeros((dim, dim)), where=nz)
+    off = hank - w2 * th
+    kabs = np.abs(diff)
+    near = np.where((kabs > 0) & (kabs < k_split), off, 0.0)
+    far = np.where(kabs >= k_split, off, 0.0)
+    hank_near = np.where((kabs > 0) & (kabs < k_split), hank, 0.0)
+    hank_far = np.where(kabs >= k_split, hank, 0.0)
+    b1 = np.where(kabs == 1, off, 0.0)
+    hs_cap = hankel_near_hs_bound(n0, k_split - 1)
+    return {
+        "n0": n0,
+        "n1": n1,
+        "dim": dim,
+        "k_split": k_split,
+        "method": "hankel-id",
+        "off": float(np.linalg.norm(off, 2)),
+        "arch": float(np.linalg.norm(hank, 2)),
+        "hankel": float(np.linalg.norm(hank, 2)),
+        "theta": float(np.linalg.norm(th, 2)),
+        "B1": float(np.linalg.norm(b1, 2)),
+        "off_near": float(np.linalg.norm(near, 2)),
+        "off_far": float(np.linalg.norm(far, 2)),
+        "hank_near": float(np.linalg.norm(hank_near, 2)),
+        "hank_far": float(np.linalg.norm(hank_far, 2)),
+        "hank_near_hs_cap": hs_cap,
+        "w2": float(w2),
+        "half_pi": HALF_PI,
+        "rev_tri": float(
+            abs(np.linalg.norm(hank, 2) - abs(w2) * np.linalg.norm(th, 2))
+        ),
+        "tri": float(np.linalg.norm(hank, 2) + abs(w2) * np.linalg.norm(th, 2)),
+    }
+
+
 def b1_caps() -> dict:
     """Closed 2/π vs the quasi-periodic cap 2|sin(π α)|/π."""
     crude = 2.0 / PI
@@ -250,10 +302,18 @@ def main() -> int:
     ys, ws, d2 = _nodes(s0)
     caps = b1_caps()
     samples = hankel_id_samples(ys, ws, d2)
+    chk = section_norms(32, 48, w2, ys, ws, d2)
+    chk_f = section_fast(32, 48, w2)
+    print(
+        f"cross [32,48) Gauss Off={chk['off']:.6f}  "
+        f"fast={chk_f['off']:.6f}  d={abs(chk['off']-chk_f['off']):.2e}",
+        flush=True,
+    )
     rows = []
     dyadic = []
+    longu = []
     for n0, n1 in ((32, 48), (32, 64), (32, 80), (32, 96)):
-        r = section_norms(n0, n1, w2, ys, ws, d2)
+        r = section_fast(n0, n1, w2)
         rows.append(r)
         print(
             f"[{r['n0']},{r['n1']}) dim={r['dim']}  "
@@ -263,8 +323,14 @@ def main() -> int:
             f"Hnear={r['hank_near']:.3f}≤{r['hank_near_hs_cap']:.3f}",
             flush=True,
         )
-    for n0, n1 in ((32, 64), (64, 128), (96, 160)):
-        r = section_norms(n0, n1, w2, ys, ws, d2)
+    for n0, n1 in (
+        (32, 64),
+        (64, 128),
+        (96, 160),
+        (128, 256),
+        (256, 512),
+    ):
+        r = section_fast(n0, n1, w2)
         dyadic.append(r)
         print(
             f"dyadic [{r['n0']},{r['n1']})  "
@@ -272,13 +338,19 @@ def main() -> int:
             f"‖Θ‖={r['theta']:.3f}  ‖B1‖={r['B1']:.3f}",
             flush=True,
         )
-    union = section_norms(32, 128, w2, ys, ws, d2)
-    print(
-        f"union [{union['n0']},{union['n1']}) dim={union['dim']}  "
-        f"‖Off‖={union['off']:.3f}  ‖H‖={union['hankel']:.3f}  "
-        f"‖Θ‖={union['theta']:.3f}",
-        flush=True,
-    )
+    union = None
+    for n1 in (128, 192, 256, 384, 512):
+        r = section_fast(32, n1, w2)
+        longu.append(r)
+        print(
+            f"union [32,{n1}) dim={r['dim']}  "
+            f"‖Off‖={r['off']:.3f}  ‖H‖={r['hankel']:.3f}  "
+            f"‖Θ‖={r['theta']:.3f}  tri={r['tri']:.3f}  "
+            f"rev={r['rev_tri']:.3f}",
+            flush=True,
+        )
+        if n1 == 128:
+            union = r
     print(
         f"w2={w2:.3f} (<0 ⇒ Off=H+|w2|Θ)  "
         f"B1 thm={caps['B1_thm']:.3f}  sin-cap={caps['B1_sin']:.3f}  "
@@ -294,14 +366,20 @@ def main() -> int:
         )
     trial = slo_with_off_far(rows[-1]["off"])
     trial_u = slo_with_off_far(union["off"])
+    trial_long = slo_with_off_far(longu[-1]["off"])
     print(
         f"trial Off_far={trial['off_far']:.3f}  ρ={trial['rho']:.3f}  "
         f"Slo={trial['s_lo']:+.4f}  (section substitute, not a take)",
         flush=True,
     )
     print(
-        f"trial union Off_far={trial_u['off_far']:.3f}  ρ={trial_u['rho']:.3f}  "
+        f"trial union128 Off_far={trial_u['off_far']:.3f}  ρ={trial_u['rho']:.3f}  "
         f"Slo={trial_u['s_lo']:+.4f}",
+        flush=True,
+    )
+    print(
+        f"trial union{longu[-1]['n1']} Off_far={trial_long['off_far']:.3f}  "
+        f"ρ={trial_long['rho']:.3f}  Slo={trial_long['s_lo']:+.4f}",
         flush=True,
     )
     data = {
@@ -309,17 +387,24 @@ def main() -> int:
         "verdict": "KILL",
         "why": (
             "S_k identifies A_arch as Hankel ½/(n+m); "
-            "w2<0 so Off=H+|w2|Θ; windows are not the tail; "
-            "not s1(Q_tail)≤0.6 on ℓ²(n≥32)"
+            "w2<0 so Off=H+|w2|Θ; long unions [32,M) are "
+            "truncated tails, not s1(Q_tail) on ℓ²(n≥32)"
         ),
         "w2_sign": "negative",
         "caps": caps,
         "hankel_id": samples,
+        "cross_check": {
+            "gauss_off": chk["off"],
+            "fast_off": chk_f["off"],
+            "abs_diff": abs(chk["off"] - chk_f["off"]),
+        },
         "sections": rows,
         "dyadic": dyadic,
         "union": union,
+        "long": longu,
         "trial_slo": trial,
         "trial_slo_union": trial_u,
+        "trial_slo_long": trial_long,
         "half_pi": HALF_PI,
         "hankel_near_hs": {
             "n0": 32,
