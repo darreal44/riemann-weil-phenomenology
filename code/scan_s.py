@@ -48,6 +48,15 @@ def assemble(name, mu, NB, dps, DEG=12):
             "zeta has a pole: use  python3 code/spectro_zeta.py MU NB DPS DEG"
             "   e.g. python3 code/spectro_zeta.py 22 36 50 12"
         )
+    from maass_table1 import is_maass_name
+
+    maass = is_maass_name(name)
+    if maass:
+        raise SystemExit(
+            f"{name} is Maass {maass}: scan_s is Dirichlet Q (wrong Gamma).\n"
+            f"  Q:   python code/scan_q_maass.py {maass} 6 12 25\n"
+            f"  Gram needs L-zeros; LMFDB did not compute L(s) for rigor GL2."
+        )
     cf = CHARS[name]
     q, a = cf['q'], cf['a']
     tab = chi_tab(cf['d'], q)

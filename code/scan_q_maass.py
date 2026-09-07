@@ -12,10 +12,10 @@ with Satake alpha*beta = p. Maass is
     Gamma_R(s + iR) Gamma_R(s - iR)    on Re s = 1/2
     alpha + beta = a_p,  alpha*beta = 1.
 
-Coefficients from Zenodo JSONs written by harvest_maass_zenodo.py.
+Coefficients from the rigor pkl (load_an) or a local Zenodo JSON.
 
     python code/scan_q_maass.py maass1 6 12 25
-    python code/scan_q_maass.py 1.0.1.1.1 6 12 25
+    python code/scan_q_maass.py 11.0.1.1.1 6 12 25
 
 Experimental: the archimedean kernel is the GL2 panel with
 complex s0 = 1/4 ± i R/2, summed as a conjugate pair (real Q).
@@ -40,9 +40,19 @@ from maass_table1 import ALIAS, resolve  # noqa: E402
 def load_form(name: str) -> dict:
     slug = resolve(name)
     path = os.path.join(HERE, f"maass_an_{slug}.json")
-    rec = json.load(open(path))
+    if os.path.exists(path):
+        rec = json.load(open(path))
+        rec["slug"] = slug
+        rec["an"] = {i + 1: float(a) for i, a in enumerate(rec["a_n"])}
+        return rec
+    from lmfdb_encode import by_label_gl2, load_an
+
+    cat = by_label_gl2()[slug]
+    vec = load_an(slug)
+    rec = dict(cat)
     rec["slug"] = slug
-    rec["an"] = {i + 1: float(a) for i, a in enumerate(rec["a_n"])}
+    rec["a_n"] = [float(x) for x in vec]
+    rec["an"] = {i + 1: float(a) for i, a in enumerate(vec)}
     return rec
 
 

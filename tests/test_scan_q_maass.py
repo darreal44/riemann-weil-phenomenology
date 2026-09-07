@@ -31,3 +31,23 @@ def test_alias_is_table1_not_lexicographic():
     # 1.0.1.10.1 is a real form and must not be maass2
     ten = m.load_form("1.0.1.10.1")
     assert ten["R"] > 19.0
+
+
+def test_load_form_11_from_pkl():
+    rec = m.load_form("11.0.1.1.1")
+    assert rec["N"] == 11
+    assert abs(rec["R"] - 2.03309) < 1e-4
+    assert rec["an"][1] == 1.0
+    assert len(rec["an"]) >= 100
+
+
+def test_scan_s_sends_maass_to_q():
+    import scan_s
+    import pytest
+
+    with pytest.raises(SystemExit) as e:
+        scan_s.assemble("11.0.1.1.1", 6, 12, 25)
+    msg = str(e.value)
+    assert "scan_q_maass" in msg
+    assert "11.0.1.1.1" in msg
+    assert "harvest_gl2" not in msg

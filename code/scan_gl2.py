@@ -100,9 +100,23 @@ def gram(name, mu, NB):
 
 def main():
     name = sys.argv[1] if len(sys.argv) > 1 else "11a1"
-    if name not in CURVES:
+    from maass_table1 import is_maass_name
+    from lmfdb_encode import load_zeros
+
+    maass = is_maass_name(name)
+    if maass:
+        z = load_zeros(maass)
+        if getattr(z, "size", 0):
+            name = maass
+        else:
+            sys.exit(
+                f"{name} is Maass {maass}: no L-zeros (LMFDB: not computed).\n"
+                f"  harvest_gl2 is elliptic (11a1), not Maass.\n"
+                f"  Q: python code/scan_q_maass.py {maass} 6 12 25"
+            )
+    elif name not in CURVES:
         sys.exit(f"unknown curve {name}, have {CURVES}")
-    if not os.path.exists(os.path.join(HERE, f"zeros_{name}_weyl.pkl")):
+    elif not os.path.exists(os.path.join(HERE, f"zeros_{name}_weyl.pkl")):
         sys.exit(f"missing zeros_{name}_weyl.pkl — harvest_gl2 first")
     if len(sys.argv) >= 5:
         windows = [(float(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))]
