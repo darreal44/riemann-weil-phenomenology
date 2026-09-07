@@ -37,6 +37,9 @@ Judges live in `tests/`.
 - ‖Θ(log 2)‖≤2: false,
   ≤1 (`ql-theta-tail`);
   χ₅ still δ<0.
+- Schur χ₄ at h≤16:
+  β<0; takes at h=20
+  (`ql-schur-chi4-h`).
 - 37a1 drop-3 → − at
   μ=62 (#41), μ=74, μ=80
   (#44). Linear μ≈70
