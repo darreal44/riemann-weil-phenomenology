@@ -298,7 +298,7 @@ def test_mpf_keep_full_replica_digits():
 
     import sqlite3
 
-    from lmfdb_encode import _sqlite_path
+    from lmfdb_encode import _sqlite_path, load_an_hp
 
     dbp = _sqlite_path()
     if os.path.exists(dbp):
@@ -315,3 +315,20 @@ def test_mpf_keep_full_replica_digits():
                 assert len(a105) == 1000
                 assert abs(float(a105[0]) - 1.0) < 1e-20
         db.close()
+
+
+def test_dirichlet_minima_match_table1_g1():
+    """|S| minima find Table 1 γ₁ within ~0.03 (not 1e-6)."""
+    from lmfdb_encode import load_an, load_zeros
+    from maass_table1 import TABLE1
+    from maass_zeros_an import _form_params, find_zeros_grid
+
+    an_all = load_an()
+    by = by_label_gl2()
+    for name, meta in TABLE1.items():
+        rec = by[meta["label"]]
+        N, R, delta, eps, an = _form_params(rec, an_all[meta["label"]])
+        known = load_zeros(name)
+        z = find_zeros_grid(an, N, R, delta, eps, tmax=float(known[6]) + 1.0)
+        assert z.size >= 5, name
+        assert abs(float(z[0]) - float(known[0])) < 0.04, name
