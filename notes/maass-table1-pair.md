@@ -40,12 +40,17 @@ gitignored `data/lmfdb_mirror.sqlite`. Dirichlet orbits with modulus
 ≤ 1000: `lmfdb_dirichlet.pkl`. Replica dumps use at most 2 connections
 on indexed `type` / `url` / `Lhash` / `level` (no `ILIKE` on
 `lfunc_lfunctions`). L-function zeros and conjugate orbits:
-One GL2 catalog: `lmfdb_maass_gl2.pkl`. Table 1 γ sit on the rigor
-row (`load_zeros("1.0.1.1.1")` or `"maass1"`). `11.0.1.1.1` has
-`a_n` (`load_an`) and `lfunc is None`: the LMFDB page says
-"L-function not computed" (not an empty join on `type=MaassGL2`).
-MaassGL3/DIR/CMF L-functions stay in `lmfdb_lfunc_*.pkl`.
-`python code/lmfdb_encode.py --reconcile`.
+One GL2 catalog: `lmfdb_maass_gl2.pkl`. Each row has the L-search
+columns (`α, A, d, N, χ, μ, ν, w, prim, arith, ℚ, self-dual,
+Arg(ε), r, z1, origin`) on `rec["lfunc"]`. LMFDB does not *store*
+GL2 rigor L-functions (`lfunc_search` is empty at N=1 and N=11 for
+degree 2, w=0; the form page says “L-function not computed”;
+completeness lists 15659 *dynamic* GL2 Maass L). Those columns are
+rebuilt from `maass_rigor`. `A` is LMFDB’s analytic conductor
+(checked on the GL3 CSV). Table 1 γ and `z1` come from
+Booker–Then (`load_zeros("maass1")`). `11.0.1.1.1` has `a_n` and a
+reconstructed L-row with no `z1`. GL3/DIR/CMF stay in
+`lmfdb_lfunc_*.pkl`. `python code/lmfdb_encode.py --reconcile`.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 
