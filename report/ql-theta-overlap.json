@@ -1,0 +1,13 @@
+{
+  "y": 0.6931471805599453,
+  "L": 1.6094379124341003,
+  "in_band": true,
+  "n_samp": 40,
+  "bad_maj": 0,
+  "bad_cap": 0,
+  "max_abs_ray": 0.8074272002444163,
+  "max_maj": 1.3132839979424853,
+  "mean_mass_sum": 0.9999656023433385,
+  "step_taken": false,
+  "verdict": "SURVIVE"
+}
