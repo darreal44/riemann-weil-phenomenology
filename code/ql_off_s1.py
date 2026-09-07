@@ -75,9 +75,15 @@ def main() -> int:
         f"split={split:.4f}  ½π={HALF_PI:.4f}",
         flush=True,
     )
+    flip_need = up - HALF_PI
     print(
         f"s1≤0.6 dead: 0.6 < lower={lo:.3f}  "
         f"s1≤0.8 false  s1≤1.0 false  (drop-half-pi.md)",
+        flush=True,
+    )
+    print(
+        f"S_lo flip needs Off_far≲{flip_need:.3f} < lower={lo:.3f}  "
+        f"no proved s1 can flip χ₃",
         flush=True,
     )
     data = {
@@ -100,6 +106,8 @@ def main() -> int:
         "cran_08_below_lower": 0.8 < lo,
         "cran_10_below_lower": 1.0 < lo,
         "upper_equals_split": abs(up - split) < 1e-15,
+        "flip_need": up - HALF_PI,
+        "flip_below_lower": (up - HALF_PI) < lo,
     }
     out = os.path.join(
         os.path.dirname(os.path.dirname(os.path.abspath(__file__))),

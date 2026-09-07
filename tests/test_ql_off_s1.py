@@ -43,6 +43,8 @@ def test_lower_kills_crans_08_and_10():
     assert data["cran_06_below_lower"] is True
     assert data["cran_08_below_lower"] is True
     assert data["cran_10_below_lower"] is True
+    assert data["flip_below_lower"] is True
+    assert data["flip_need"] < data["s1_lower"]
     assert data["verdict"] == "KILL"
     assert data["step_taken"] is False
     assert data["upper_equals_split"] is True

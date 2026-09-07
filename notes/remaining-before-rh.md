@@ -573,7 +573,9 @@ split by a certified \(s_1(\mathrm{Off}_Q)\). That split
 unchanged. \(s_1\le 0.6\), \(0.8\), \(1.0\) lie *below*
 the essential lower bound, hence false. Dropping \(\tfrac\pi2\)
 flips \(S_{\mathrm{lo}}\) by \(+0.0005\) and is false.
-\(\tfrac\pi2\) stays. Not taken. Not RH.
+The flip needs Off_far \(\lesssim 0.539 < 1.081\): no
+proved \(s_1(\mathrm{Off}_Q)\) can replace Off_far and
+flip χ₃. \(\tfrac\pi2\) stays. Not taken. Not RH.
 
 ---
 

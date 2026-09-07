@@ -14,5 +14,7 @@
   "cran_06_below_lower": true,
   "cran_08_below_lower": true,
   "cran_10_below_lower": true,
-  "upper_equals_split": true
+  "upper_equals_split": true,
+  "flip_need": 0.5394196395234907,
+  "flip_below_lower": true
 }
