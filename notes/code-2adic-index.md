@@ -18,26 +18,21 @@
     semilocal.py          notes/semilocal-step (pdf/md)
     finite_part_HS.py     report/finite-part-HS.md
 
-Thin relative to the
-code (cited, no
-function list):
+File cards added:
 
-    semilocal2.py
-    finite_part_HS.py internals
-    campaign_2adic_large job table
-    harvest_* (have usage in README-ish
-               notes, not a file card)
+    semilocal.py          notes/semilocal.md
+    semilocal2.py         notes/semilocal2.md
+    subshells.py          notes/subshells.md
+    av_split23.py         notes/av-split23.md
+    harvest/scan cluster  notes/harvest-and-scan.md
+    tau2_pairing.py       notes/tau2-pairing-logic.md
+    tau2_local.py         notes/tau2-local.md
 
-The pattern: a
-script ships, lemmas
-land in a thematic
-note, the *file*
-never gets a card.
-tau2_local was the
-clearest case.
-Same risk on
-`assemble_AP`
-(now named, no
-file card) and
-`gl2_drop83.py`
-(has notes/gl2-37a1-drop83.md).
+Still thematic-only
+(no extra card):
+finite_part_HS internals,
+campaign job table,
+every av_enclose_*.
+Those are one-off
+certificates; the
+docstring is the card.
