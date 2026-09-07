@@ -70,4 +70,8 @@ admissible class, all lags, all
 tests, all L). Not (∀ L) Q_L ≥ 0.
 Not RH.
 
+A later two-piece quadratic misses
+0.024 (`notes/av-I01-quad2.md`).
+Still not Weil.
+
 Judge: `tests/test_av_I01_quad.py`.

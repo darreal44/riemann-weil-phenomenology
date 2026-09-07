@@ -304,9 +304,12 @@ misses by 0.068, Q_lo=−0.062
 (`notes/av-I01-envelope.md`). A quadratic
 support near 0 (m=g''(y_min), named in
 `report/g-convexity.md`) misses by 0.047,
-Q_lo=−0.042 (`notes/av-I01-quad.md`).
-Still one v, not Weil. (∀ L) Q_L ≥ 0
-is still the covering lemma.
+Q_lo=−0.042 (`notes/av-I01-quad.md`). A
+two-piece quadratic (split at y_min/2)
+misses by 0.024, Q_lo=−0.019
+(`notes/av-I01-quad2.md`). Still one v,
+not Weil. (∀ L) Q_L ≥ 0 is still the
+covering lemma.
 
 ---
 
