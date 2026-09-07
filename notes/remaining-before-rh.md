@@ -508,6 +508,36 @@ the same divergence as the tower walk
 via D₂. There is no P_∞ to subtract
 from A_∞. Not (∀ μ).
 
+## 8e. Off tail (χ₃): S_k is Hankel; windows are not the tail
+
+S_k with \(n S_n-m S_m \approx k S_\infty\) identifies
+the archimedean off-diagonal as \(\tfrac12/(n+m)\), not
+\(1/(k(n+m))\). The extra \(1/k\) in the Pólya skeleton
+is a cancelled factor. Ratio \(A_{\mathrm{arch}}/(½(n+m))=1.000\)
+on three pairs (`notes/ql-off-tail.md`,
+`code/ql_off_tail.py`). \(w_2(\chi_3)<0\), so Off \(=H+|w_2|\Theta\)
+(same sign). Hilbert \(\pi\) stays the essential-norm
+majorant of \(H\). Nehari does not apply to Off_Q
+(`report/hankel-symbol.md`).
+
+Each Hankel lag is HS: \(\|H^{(K)}\|_2\le\sqrt{K/(8(N-1))}\)
+on \(\ell^2(n\ge N)\) (cap 0.168 at \(N=32\), \(K=7\);
+measured \(H_{\mathrm{near}}=0.075\)). \(\Theta\) lags do not
+die (\(B_1=0.397\) on every dyadic). A window \([N,N+L)\)
+has no lags \(\ge L\), so it never sees Hartman \(\pi/2\).
+
+Dyadic Off is uniform: \(0.467,0.465,0.466\) on
+\([32,64)\), \([64,128)\), \([96,160)\). Union \([32,128)\):
+Off \(=0.502\), \(H=0.332\) (H doubles, Off does not).
+A numerical substitute Off_far\(=0.474\) drops \(\rho\)
+\(0.590\to 0.382\) and gives \(S_{\mathrm{lo}}=+0.0007\).
+That is the cran of `report/true-tail-s1.md` on a window,
+not \(s_1(P_{n\ge32}\mathrm{Off}\,P_{n\ge32})\le 0.6\).
+Not taken. B₁ theorem still \(4|w_2|/\pi\approx 0.624\);
+limsup cap \(0.572\) is not \(0.45\). Not RH.
+
+---
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
