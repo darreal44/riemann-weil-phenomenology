@@ -58,8 +58,10 @@ the full well (μ=80: ℓ 17.37 → 18.62) but drop-3 stays
 the cap at 67. 3 is still dispensable at μ=80.
 
 The cliff is (80, 100]. New interior primes: 83, 89, 97.
-a_83 = −15 (relative 0.82), a_89 = a_97 = 4. This run does
-not isolate 83 from 89 and 97.
+a_83 = −15 (relative 0.82), a_89 = a_97 = 4. Isolated
+(`notes/gl2-37a1-drop83.md`): drop-3 still +0.048 at
+μ=84 (83 just arrived); drop-83 < 0 at μ=100. 83 is a
+voter on the cliff window, not the sign change of 3.
 
 ## Verdict: KILL (the plateau)
 

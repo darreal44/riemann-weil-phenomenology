@@ -68,3 +68,15 @@ did it” is the
 leading candidate
 by |w|, not a
 decomposition.
+
+Executed
+(`notes/gl2-37a1-drop83.md`):
+drop-3 +0.087 at 82,
++0.048 at 84, −0.418
+at 100. Drop-83 mute
+at 82, dispensable at
+84, **necessary at 100**
+(−0.080). 83 is a voter
+on the cliff window.
+Its arrival is not the
+sign change of 3.

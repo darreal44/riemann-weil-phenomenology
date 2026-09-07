@@ -204,6 +204,12 @@ complete. SURVIVE. 22 processes, 219 s. Judge:
 windows (full ℓ = 16.82 and 17.37). Plateau, not a delay.
 KILL. Judge: `tests/test_gl2_37a1_mu74.py`.
 
+**Drop 3 at μ=100..250, then isolate 83.** Executed
+(`notes/gl2-37a1-drop3-hi.md`, `notes/gl2-37a1-drop83.md`):
+drop-3 is −0.418 at μ=100, still +0.048 at μ=84. Drop-83
+is necessary at μ=100 (−0.080) and mute at μ=82. 83 is a
+voter on the cliff, not the sign change of 3. Not RH.
+
 ---
 
 ## 7. Maass Q
