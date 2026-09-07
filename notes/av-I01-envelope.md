@@ -66,4 +66,8 @@ admissible class, all lags, all
 tests, all L). Not (∀ L) Q_L ≥ 0.
 Not RH.
 
+A later quadratic support near 0
+misses 0.047 (`notes/av-I01-quad.md`).
+Still not Weil.
+
 Judge: `tests/test_av_I01_envelope.py`.
