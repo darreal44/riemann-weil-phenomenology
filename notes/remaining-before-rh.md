@@ -207,8 +207,9 @@ KILL. Judge: `tests/test_gl2_37a1_mu74.py`.
 **Drop 3 at μ=100..250, then isolate 83.** Executed
 (`notes/gl2-37a1-drop3-hi.md`, `notes/gl2-37a1-drop83.md`):
 drop-3 is −0.418 at μ=100, still +0.048 at μ=84. Drop-83
-is necessary at μ=100 (−0.080) and mute at μ=82. 83 is a
-voter on the cliff, not the sign change of 3. Not RH.
+is necessary at μ=100 (−0.080) and mute at μ=82. Drop-89
+and drop-97 stay positive. 83 is the only new voter on
+(80,100], not the sign change of 3. Not RH.
 
 ---
 

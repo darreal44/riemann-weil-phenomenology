@@ -71,11 +71,13 @@ matters is the
 arrival of 83, not
 the 5% of y/L.
 
-Not isolated:
-this run did not
-drop 83 alone, nor
-scan μ=82 vs 84.
-That cut would
-confirm the cliff
-is 83 and not
-89+97.
+Isolated
+(`gl2-37a1-drop83.md`,
+`gl2-37a1-drop89-97.md`):
+drop-3 still + at 84;
+drop-83 < 0 at 100;
+drop-89 and drop-97
+> 0. 83 votes, 89 and
+97 do not. The join of
+3 is on (84, 100], not
+at 83's arrival.
