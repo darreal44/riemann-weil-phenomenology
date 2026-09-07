@@ -78,5 +78,6 @@ there is secondary once [0,1] is enclosed.
 | comparison estimate of I_{[0,1]} | open (chord 0.22; envelope 0.068; quad 0.047; quad2 0.024) |
 | comparison estimate of I_{[0,1]} | open (quad 0.047; N=4 mesh 0.0053) |
 | comparison estimate of I_{[0,1]} | adaptive leftover mesh gap 0.000433 (one v; not Weil) |
+| comparison estimate of I_{[0,1]} | N=8 uniform gap 0.000405 (one v; not Weil) |
 | det(A−P) by max-norm rest | fails (`det-hand-chi5-mu16.md`) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |

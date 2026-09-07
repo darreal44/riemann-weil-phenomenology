@@ -325,6 +325,12 @@ bisections on well+rise) has gap
 (`notes/av-I01-adapt.md`). Still one v,
 not Weil. (∀ L) Q_L ≥ 0 is still the
 covering lemma.
+(`notes/av-I01-rise.md`). Uniform N=8
+well+rise (the named rate test) has
+gap 0.000405, leftover cap ratio
+0.123 (`notes/av-I01-n8.md`). Still
+one v, not Weil. (∀ L) Q_L ≥ 0 is
+still the covering lemma.
 
 ---
 

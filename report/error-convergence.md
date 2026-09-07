@@ -13,6 +13,7 @@ cap:
     N=4 well         0.0053
     N=4 + rise       0.00315
     + tailq          0.00279  0.00151
+    N=8 well+rise    0.000405 0.000186
 
 The
 score

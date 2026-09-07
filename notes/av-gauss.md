@@ -58,4 +58,5 @@ check; Q(v)>0 is not closed as a hand proof by this remainder.
 | comparison bound of I_{[0,1]} | still open (chord 0.22; quad 0.047; quad2 0.024) |
 | comparison bound of I_{[0,1]} | still open (quad 0.047; N=4 mesh 0.0053) |
 | comparison bound of I_{[0,1]} | leftover-adaptive gap 0.000433 (one v; not Weil) |
+| comparison bound of I_{[0,1]} | N=8 uniform gap 0.000405 (one v; not Weil) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
