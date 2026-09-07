@@ -8,6 +8,9 @@ __pycache__/
 venv/
 MaassForms.txt
 lmfdb_*.csv
+data/
+*.sqlite
+*.sqlite3
 gp_history.txt
 run.sh
 run2.sh
