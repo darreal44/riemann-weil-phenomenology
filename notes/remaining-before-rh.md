@@ -315,6 +315,10 @@ Neumann T^{-1} takes χ₅ (S_lo=+0.029);
 (`notes/ql-schur-chi17-h.md`).
 The six (s₀, χ(2)) cells each have
 one representative.
+μ=3.5, primes {2,3}: T₃ kills h=2 on
+χ₅ and χ₄; raise-h at h=4 restores
+(`notes/ql-schur-mu35.md`). One extra L,
+not (∀ L).
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
