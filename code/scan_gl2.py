@@ -32,6 +32,7 @@ CURVES = (
     "maass3",
     "maass4",
     "maass5",
+    "11.0.1.1.1",
 )
 
 
