@@ -65,4 +65,8 @@ by 0.088. One v, finite μ. Not RH.
 (∀ L) Q_L ≥ 0 is the covering
 lemma; not this note.
 
+A later three-tangent envelope
+misses 0.068 (`notes/av-I01-envelope.md`).
+Still not Weil.
+
 Judge: `tests/test_av_I01_switch.py`.
