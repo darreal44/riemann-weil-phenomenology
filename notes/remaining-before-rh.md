@@ -337,8 +337,17 @@ The 4-plane sign disagrees under
 Q_pk does not take χ₃ at h=2,4
 (`notes/ql-schur-pk-mu5.md`). T₅ at
 5.1 does not jump λ_min
-(`notes/ql-T5-H4.md`). Still not
-Weil. Not RH.
+(`notes/ql-T5-H4.md`). CST+Gauss on
+W_L is the classical Γ pairing
+(Frullani, Weierstrass; the
+digamma writing agrees to 10⁻¹⁴;
+`notes/ql-arch-weil.md`). Mixing
+(ψ(s₀)+γ)I is not that pairing.
+λ_min(Q_pk H₄)=+1.4×10⁻⁵ is a
+4-plane of the identified form,
+neither Weil-positive nor
+Weil-negative (Courant). Not (∀ L).
+Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
 by subtracting the sub-shells \(1+2^k\mathbb Z_2\) from
