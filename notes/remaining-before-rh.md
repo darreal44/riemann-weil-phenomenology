@@ -387,7 +387,15 @@ slivers at h=24
 (`notes/ql-schur-quorum-mu7.md`).
 ρ_far crosses 1 on (5.5, 6] after
 T₅ lifts t_atoms 1.04→1.76
-(`notes/ql-rhofar-mu.md`). Not (∀ L).
+(`notes/ql-rhofar-mu.md`). χ₃ take
+dies at T₅ arrival μ=5.1
+(`notes/ql-chi3-mu51.md`). χ₁₇ dies
+at μ=8 (prereg KILL); χ₈ still
+takes at h=24
+(`notes/ql-chi817-mu8.md`). χ₇ vs
+χ₁₇: same t_atoms, split is
+qmin_far / s₀, not T₇
+(`notes/ql-chi7-vs-chi17.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
