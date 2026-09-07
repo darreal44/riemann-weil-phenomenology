@@ -42,10 +42,15 @@ g(L)=1/2, g''(L)=1/8 exact.
 
 ## Still open on this vector
 
-- majorant of a^{(6)} on [0,1]
-  (even and odd)
+- majorant of a^{(6)} on [0,1], odd
 - comparison estimate of I_{[0,1]}
+  (chord misses by 0.22)
 - (∀ L) Q_L ≥ 0   (= RH)
+
+Even a^{(6)} on [0,1]: Cauchy
+two-panel majorant
+(`notes/av-cauchy-a6.md`).
+One panel is too crude.
 
 ## Tail of v (hats n=3,4,5)
 

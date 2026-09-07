@@ -91,7 +91,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - `notes/av-witness.md` — rational witness (4,−3,1)/√26 at χ₅ μ=16: Arb enclosure
   of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
 - `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
-  1/y cancelled; remainder estimate inside ±0.003 but not a majorant. Not RH.
+  1/y cancelled. Cauchy |a^{(6)}| two-panel majorant: `notes/av-cauchy-a6.md`.
+  Chord comparison still open. Not RH.
 - `notes/av-mu150.md` — one point at μ=150: A−P₂₃ went through 0, P_rest with
   it; they did not cross. Q=0.0041. Not a sixth slope. Not RH.
 - `notes/av-other-v-mu150.md` — the μ=16 pencil at μ=150: five of five Q>0,
