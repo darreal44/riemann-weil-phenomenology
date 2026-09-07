@@ -199,7 +199,12 @@ the
 overlap
 count
 in
-#72.
+#72,
+now
+the
+three
+coverings
+(`notes/ql-theta-overlap.md`).
 Finite
 sections
 saturating

@@ -391,7 +391,10 @@ digamma writing agrees to 10⁻¹⁴;
 neither Weil-positive nor
 Weil-negative (Courant).
 ‖Θ(y)‖≤√2 on L/4≤y<L/2
-(`notes/ql-theta-sqrt2.md`); at
+(`notes/ql-theta-sqrt2.md`); the
+simplex is a theorem and the three
+coverings are identified
+(`notes/ql-theta-overlap.md`). At
 μ=5 this is log 2, t_atoms
 1.33→1.04. S_lo of identified
 Q_pk takes W_{log 5} for χ₃ at
