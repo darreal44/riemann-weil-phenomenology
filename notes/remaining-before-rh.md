@@ -395,7 +395,13 @@ takes at h=24
 (`notes/ql-chi817-mu8.md`). χ₇ vs
 χ₁₇: same t_atoms, split is
 qmin_far / s₀, not T₇
-(`notes/ql-chi7-vs-chi17.md`). Not (∀ L).
+(`notes/ql-chi7-vs-chi17.md`). χ₈ take
+dies at 2³ μ=8.1 (`notes/ql-chi8-mu81.md`).
+χ₄/χ₅ slivers die at μ=8
+(`notes/ql-chi45-mu8.md`). χ₇ survives
+T₅ as a sliver, dead by μ=7
+(`notes/ql-chi7-mu.md`). No tracked
+quorum take past 8. Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
