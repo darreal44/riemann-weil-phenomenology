@@ -37,19 +37,21 @@ drop-3 moves”
 is true on this
 curve.
 
-The later joint
-negative at 100
-has no order
-inside (84,100].
-We cannot say
-3 flipped first
-or 83 did. That
-is the missing
-grid, not a
-hidden cause.
+The joint negative
+is at 86, same
+bin (#56). Order
+*inside* (84,86]
+is still unknown:
+two units, two
+zeros. Finer grid
+would date them;
+it would not make
+83⇒3 an instant
+implication at 84.
 
-No Granger, no
-do-calculus: two
+No Granger: four
 observed times
-and one dark
-interval.
+(80,84,86,100),
+one 2-unit dark
+bin. μ is not
+stationary time.
