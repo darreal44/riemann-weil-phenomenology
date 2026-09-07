@@ -559,6 +559,19 @@ tail. Not taken. Not RH.
 
 ---
 
+## 8g. Hankel only: strip \(B_1^\Theta\) (\(w_2=0\))
+
+Forced \(w_2=0\) rebuilds \(H,C,T\) from the archimedean
+piece alone and drops \(|w_2|\|\Theta\|\) from Off_far
+(`code/ql_schur_hankel_only.py`). χ₈ and χ₄ are unchanged
+(already \(w_2=0\)). χ₅ and χ₃ share \(w_2=-\log2/\sqrt2\):
+λ_H of the head goes to \(-0.21\), \(S_{\mathrm{lo}}\) to
+\(-0.24\). The 2-tower *carries* λ_H through zero; it is
+not what kills χ₃ in the far envelope. Hankel-only is not
+the form of χ₃. Not taken. Not RH.
+
+---
+
 ## 9. What this list is not
 
 None of the items above is the covering lemma, Weil's criterion
