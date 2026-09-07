@@ -370,7 +370,11 @@ and 8=2³; the sliver collapses
 μ=7 and μ=8: ρ≥1 except (7, h=24)
 where S_lo=−0.45. The W_log5 take
 does not extend
-(`notes/ql-schur-mu78.md`). Not (∀ L).
+(`notes/ql-schur-mu78.md`).
+H_n at μ=7 and μ=8 through n=48 stays +;
+H₄₈/H₁₆≈0.7, so the well is L
+not missing modes
+(`notes/ql-Hn-mu78.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
