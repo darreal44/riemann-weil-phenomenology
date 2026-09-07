@@ -48,8 +48,8 @@ def test_driver_is_local():
 
 def test_note_does_not_claim_rh_or_infinite_S():
     text = open(NOTE, encoding="utf-8").read()
-    assert "Not\nRH." in text or "Not RH" in text
+    assert "Not RH" in text
     assert "infinite" in text.lower() or "tail" in text.lower()
-    assert "Not\ntaken" in text or "not a take" in text.lower()
+    assert "not a take" in text.lower() or "Not taken" in text
     assert "+0.0097" in text or "0.0097" in text
     assert "far" in text.lower()

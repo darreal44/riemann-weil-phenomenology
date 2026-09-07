@@ -9,52 +9,8 @@
     I1L rem               1.25e-5   far integral
     observed gap          0.00279   integral, not pointwise
 
-The
-only
-constant
-that
-has
-moved
-the
-gap
-is
-leftover/2
-together
-with
-h.
-1/384
-looks
-small
-until
-it
-is
-multiplied
-by
-g^{(4)}.
-WINDOW
-is
-a
-lab
-threshold
-for
-one
-witness,
-not
-a
-theorem
-constant.
+The only constant that has moved the gap is leftover/2 together with h.
+1/384 looks small until it is multiplied by g^{(4)}. WINDOW is a lab
+threshold for one witness, not a theorem constant.
 
-No
-new
-constant
-is
-missing
-from
-the
-mesh.
-N
-and
-leftover
-are
-the
-knobs.
+No new constant is missing from the mesh. N and leftover are the knobs.

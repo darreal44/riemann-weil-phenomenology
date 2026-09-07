@@ -1,141 +1,19 @@
 # Gutzwiller trace formula
 
-Gutzwiller:
-the
-density
-of
-states
-of
-a
-quantum
-Hamiltonian
-is
-the
-mean
-Weyl
-term
-plus
-a
-sum
-over
-classical
-periodic
-orbits
-(action,
-period,
-stability
-amplitude).
-It
-is
-a
-semi-classical
-trace
-formula
-for
-−Δ+V
-or
-a
-billiard,
-not
-a
-theorem
-for
-Q̂_L.
+Gutzwiller: the density of states of a quantum Hamiltonian is the mean
+Weyl term plus a sum over classical periodic orbits (action, period,
+stability amplitude). It is a semi-classical trace formula for −Δ+V or a
+billiard, not a theorem for Q̂_L.
 
-Selberg
-is
-the
-rigorous
-cousin
-on
-a
-hyperbolic
-surface
-(orbits
-= closed
-geodesics,
-spectrum
-= Laplace
-/ Maass).
-Weil
-is
-the
-arithmetic
-cousin
-(orbits
-= primes,
-spectrum
-= zeros).
-The
-formal
-shape
-“Tr
-= mean
-+ periodic
-sum”
-is
-the
-same
-slogan.
+Selberg is the rigorous cousin on a hyperbolic surface (orbits = closed
+geodesics, spectrum = Laplace / Maass). Weil is the arithmetic cousin
+(orbits = primes, spectrum = zeros). The formal shape “Tr = mean +
+periodic sum” is the same slogan.
 
-Berry–Keating
-and
-the
-Hilbert–Pólya
-dream
-want
-a
-Hamiltonian
-whose
-Gutzwiller
-sum
-*is*
-the
-explicit
-formula
-(primes
-as
-orbits).
-That
-Hamiltonian
-is
-not
-Q̂_L
-(Q̂
-is
-already
-the
-quadratic
-form
-built
-from
-the
-explicit
-formula,
-not
-a
-−Δ+V
-whose
-trace
-would
-reproduce
-it).
+Berry–Keating and the Hilbert–Pólya dream want a Hamiltonian whose
+Gutzwiller sum *is* the explicit formula (primes as orbits). That
+Hamiltonian is not Q̂_L (Q̂ is already the quadratic form built from the
+explicit formula, not a −Δ+V whose trace would reproduce it).
 
-No
-periodic-orbit
-sum
-is
-computed
-here.
-Primes
-in
-P
-are
-the
-orbits
-of
-Weil,
-already
-in
-the
-matrix.
+No periodic-orbit sum is computed here. Primes in P are the orbits of
+Weil, already in the matrix.

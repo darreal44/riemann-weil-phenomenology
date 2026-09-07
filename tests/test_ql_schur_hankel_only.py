@@ -40,7 +40,7 @@ def test_driver_and_note():
     assert "ProcessPool" not in src
     assert "w2=0" in src or "0.0" in src
     text = open(NOTE, encoding="utf-8").read()
-    assert "Not\nRH." in text or "Not RH" in text
-    assert "Not\ntaken" in text or "not a take" in text.lower()
+    assert "Not RH" in text
+    assert "not a take" in text.lower() or "Not taken" in text
     assert "Hankel" in text
     assert "-0.21" in text or "−0.21" in text or "-0.2037" in text

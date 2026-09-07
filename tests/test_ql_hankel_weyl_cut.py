@@ -81,8 +81,8 @@ def test_driver_and_note():
     assert ".csv" not in src
     assert "lmfdb" not in src.lower()
     text = open(NOTE, encoding="utf-8").read()
-    assert "Not\nRH." in text or "Not RH" in text
-    assert "Not\ntaken" in text or "not a take" in text.lower()
+    assert "Not RH" in text
+    assert "not a take" in text.lower() or "Not taken" in text
     assert "Hartman" in text
     assert "0.707" in text
     assert "1.081" in text

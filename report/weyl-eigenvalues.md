@@ -1,173 +1,25 @@
 # Weyl law for eigenvalues of Q̂_L
 
-If
-Q̂_L
-were
-a
-nice
-pseudodifferential
-operator
-on
-a
-space
-of
-dimension
-~ c L
-(Nyquist:
-number
-of
-cosines
-up
-to
-the
-band
-is
-~ L · Ω / π),
-Weyl
-would
-say
+If Q̂_L were a nice pseudodifferential operator on a space of dimension
+~ c L (Nyquist: number of cosines up to the band is ~ L · Ω / π), Weyl
+would say
 
-    #{k : λ_k(Q̂_L) ≤ λ}
-      ∼
-    (phase-space
-    volume
-    where
-    symbol
-    ≤ λ).
+    #{k : λ_k(Q̂_L) ≤ λ} ∼
+    (phase-space volume where symbol ≤ λ).
 
-The
-symbol
-on
-the
-Fourier
-side
-is
-m_Q(ω)
-(#70):
-C_A^{lo}
-plus
-lags
-cos(ω log n).
-The
-counting
-function
-would
-then
-be
-the
-measure
-of
-{ω : m_Q(ω) ≤ λ}
-times
-L/π.
+The symbol on the Fourier side is m_Q(ω) (#70): C_A^{lo} plus lags cos(ω
+log n). The counting function would then be the measure of {ω : m_Q(ω) ≤
+λ} times L/π.
 
-We
-did
-not
-compute
-that
-measure.
-We
-tabulated
-λ_1(H_n)
-only.
-The
-diagonal
-Q_nn
-stays
-O(1)
-on
-W_log3
-while
-λ_1
-sinks
-with
-L
-(`eigenvalue-convergence.md`).
-That
-is
-compatible
-with
-a
-symbol
-that
-dips
-below
-0
-on
-a
-small
-set
-of
-ω
-whose
-measure
-grows
-slowly
-— or
-with
-a
-discrete
-well
-orthogonal
-to
-the
-bulk.
-Neither
-picture
-is
-proven.
+We did not compute that measure. We tabulated λ_1(H_n) only. The
+diagonal Q_nn stays O(1) on W_log3 while λ_1 sinks with L
+(`eigenvalue-convergence.md`). That is compatible with a symbol that
+dips below 0 on a small set of ω whose measure grows slowly — or with a
+discrete well orthogonal to the bulk. Neither picture is proven.
 
-A
-Weyl
-law
-for
-λ_1
-alone
-does
-not
-exist
-(one
-eigenvalue
-is
-not
-a
-counting
-function).
-The
-sink
-10⁻⁵→10⁻¹¹
-from
-μ=5
-to
-8
-is
-not
-Weyl;
-it
-is
-the
-ground
-state
-versus
-L.
+A Weyl law for λ_1 alone does not exist (one eigenvalue is not a
+counting function). The sink 10⁻⁵→10⁻¹¹ from μ=5 to 8 is not Weyl; it is
+the ground state versus L.
 
-No
-campaign
-to
-histogram
-eig(H_n)
-is
-required
-to
-know
-that
-the
-take
-died.
-It
-would
-only
-draw
-the
-bulk.
+No campaign to histogram eig(H_n) is required to know that the take
+died. It would only draw the bulk.

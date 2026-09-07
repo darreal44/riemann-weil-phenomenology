@@ -1,117 +1,18 @@
 # Impact of the masses
 
-CS
-sees
-(α,β,μ₁,μ₂),
-not
-the
-lengths.
-Two
-consequences
-already
-used:
+CS sees (α,β,μ₁,μ₂), not the lengths. Two consequences already used:
 
-    constant
-    mode
-    masses
-    =
-    length
-    fractions
-    (μ₁≈0.58
-    at
-    the
-    take)
-    and
-    saturates
-    CS
-    at
-    θ≈1.14.
-    simplex
-    vertex
-    μ₁=0,
-    α=1/2,
-    β=μ₂=1/4
-    needs
-    a
-    different
-    h
-    and
-    is
-    the
-    only
-    point
-    that
-    reaches
-    √2.
+    constant mode masses = length fractions (μ₁≈0.58 at the take) and
+    saturates CS at θ≈1.14. simplex vertex μ₁=0, α=1/2, β=μ₂=1/4 needs a
+    different h and is the only point that reaches √2.
 
-If
-one
-replaced
-masses
-by
-lengths,
-the
-majorant
-at
-the
-take
-would
-be
-2√(0.139²)+2√(0.139²)+0.584
-=1.14
-same
-as
-constant
-mode
-(because
-that
-mode
-*does*
-identify
-mass
-and
-length).
-The
-danger
-is
-the
-other
-way:
-using
-lengths
-for
-a
-non-constant
-h
-can
-either
-overshoot
-(illegal)
-or
-undershoot
-(weaker).
-#89
-never
-did
-that.
+If one replaced masses by lengths, the majorant at the take would be
+2√(0.139²)+2√(0.139²)+0.584 =1.14 same as constant mode (because that
+mode *does* identify mass and length). The danger is the other way:
+using lengths for a non-constant h can either overshoot (illegal) or
+undershoot (weaker). #89 never did that.
 
-No
-impact
-on
-Q_lo
-or
-on
-g_lo.
-Those
-live
-on
-a
-different
-v
-and
-a
-different
-integral.
+No impact on Q_lo or on g_lo. Those live on a different v and a
+different integral.
 
-Not
-(∀ L).
+Not (∀ L).

@@ -1,141 +1,18 @@
 # Hermite convergence (why we do not use it)
 
-Hermite
-of
-order
-1
-on
-each
-I_i
-(match
-g
-and
-g'
-at
-both
-ends)
-is
-a
-cubic
-per
-piece.
-Unsigned
-error
-O(h^4)
-per
-piece,
-O(h^3)
-integrated
-on
-a
-fixed
-interval
-if
-g^{(4)}
-is
-bounded.
-Faster
-than
-the
-one-sided
-quadratic
-mesh
-O(h²)
-pointwise.
+Hermite of order 1 on each I_i (match g and g' at both ends) is a cubic
+per piece. Unsigned error O(h^4) per piece, O(h^3) integrated on a fixed
+interval if g^{(4)} is bounded. Faster than the one-sided quadratic mesh
+O(h²) pointwise.
 
-It
-does
-not
-converge
-*from
-below*.
-The
-cubic
-oscillates
-around
-g.
-Half
-the
-nodes
-the
-error
-has
-the
-wrong
-sign
-for
-Q_lo.
-To
-turn
-Hermite
-into
-a
-lower
-bound
-one
-subtracts
-the
-worst-case
-remainder
-M₄ h^4/384,
-which
-puts
-back
-a
-safe
-gap
-of
-the
-same
-kind
-as
-m_i
-and
-cancels
-most
-of
-the
-order
-gain
-unless
-M₄
-is
-proved
-small.
+It does not converge *from below*. The cubic oscillates around g. Half
+the nodes the error has the wrong sign for Q_lo. To turn Hermite into a
+lower bound one subtracts the worst-case remainder M₄ h^4/384, which
+puts back a safe gap of the same kind as m_i and cancels most of the
+order gain unless M₄ is proved small.
 
-So
-“Hermite
-converges
-faster”
-is
-true
-for
-the
-machine
-value
-I_true
-(already
-known)
-and
-false
-as
-a
-strategy
-for
-a
-hand
-Q_lo>0.
-The
-mesh
-of
-supporting
-parabolas
-converges
-slower
-and
-stays
-legal.
+So “Hermite converges faster” is true for the machine value I_true
+(already known) and false as a strategy for a hand Q_lo>0. The mesh of
+supporting parabolas converges slower and stays legal.
 
-Not
-a
-campaign.
+Not a campaign.

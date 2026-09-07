@@ -1,102 +1,14 @@
 # Finite volumes
 
-FVM
-balances
-fluxes
-through
-cell
-faces
-for
-a
-conservation
-law
-∂_t u + ∂_x F(u)=0
-(or
-a
-divergence
-form
-PDE).
-g
-on
-[0,1]
-is
-not
-an
-unknown
-conserved
-density.
-There
-is
-no
-flux
-to
-reconstruct,
-no
-Riemann
-solver,
-no
-CFL.
+FVM balances fluxes through cell faces for a conservation law ∂_t u +
+∂_x F(u)=0 (or a divergence form PDE). g on [0,1] is not an unknown
+conserved density. There is no flux to reconstruct, no Riemann solver,
+no CFL.
 
-A
-1D
-finite-volume
-average
-of
-g
-on
-a
-slab
-is
-just
-the
-cell
-mean,
-which
-is
-weaker
-than
-the
-pointwise
-g_lo ≤ g
-already
-in
-hand.
-Reconstructing
-a
-linear
-or
-quadratic
-profile
-from
-cell
-means
-(MUSCL,
-PPM)
-returns
-the
-same
-signed
-problem
-as
-P1/P2
-FEM:
-the
-reconstructed
-profile
-is
-not
-automatically
-below
-g.
+A 1D finite-volume average of g on a slab is just the cell mean, which
+is weaker than the pointwise g_lo ≤ g already in hand. Reconstructing a
+linear or quadratic profile from cell means (MUSCL, PPM) returns the
+same signed problem as P1/P2 FEM: the reconstructed profile is not
+automatically below g.
 
-Not
-a
-campaign.
-H_n
-is
-not
-an
-FVM
-for
-Q̂
-either.
+Not a campaign. H_n is not an FVM for Q̂ either.

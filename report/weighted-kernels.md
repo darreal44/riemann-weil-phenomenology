@@ -1,120 +1,17 @@
 # Weighted kernels
 
-A
-weight
-n^α
-in
-the
-Hilbert
-inequality
-changes
-C
-(HLP
-§9.3):
-∑ a_n a_m /(n+m) n^α m^α
-has
-its
-own
-best
-constant,
-sometimes
-smaller
-than
-π
-in
-a
-rescaled
-norm.
-That
-helps
-ρ_far
-only
-if
-Off_T
-is
-dominated
-*in
-that
-weighted
-norm*
-and
-the
-head–tail
-coupling
-is
-rewritten
-in
-the
-same
+A weight n^α in the Hilbert inequality changes C (HLP §9.3): ∑ a_n a_m
+/(n+m) n^α m^α has its own best constant, sometimes smaller than π in a
+rescaled norm. That helps ρ_far only if Off_T is dominated *in that
+weighted norm* and the head–tail coupling is rewritten in the same
 weight.
 
-Q_nm
-is
-not
-1/(n+m).
-It
-is
-arch
-+
-χ(p) θ_nm(log p)
-+
-Hankel-like
-remainders.
-θ_nm
-decays
-as
-1/|n−m|
-or
-1/n
-on
-the
-diagonal
-oscillation.
-A
-weight
-that
-kills
-1/(n+m)
-can
-miss
-θ.
+Q_nm is not 1/(n+m). It is arch + χ(p) θ_nm(log p) + Hankel-like
+remainders. θ_nm decays as 1/|n−m| or 1/n on the diagonal oscillation. A
+weight that kills 1/(n+m) can miss θ.
 
-Until
-a
-weighted
-norm
-is
-shown
-to
-majorise
-the
-actual
-row
-(Q_n·)_{m≥N}
-and
-to
-keep
-ρ<1,
-this
-is
-a
-name,
-not
-a
-lever.
-The
-fold
-(#89)
-already
-replaced
-one
-unweighted
-kernel
-(the
-difference)
-without
-weights.
+Until a weighted norm is shown to majorise the actual row (Q_n·)_{m≥N}
+and to keep ρ<1, this is a name, not a lever. The fold (#89) already
+replaced one unweighted kernel (the difference) without weights.
 
-Not
-a
-campaign.
+Not a campaign.

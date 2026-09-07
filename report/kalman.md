@@ -1,46 +1,8 @@
 # Kalman filter
 
-The
-Kalman
-update
-is
-a
-Schur
-complement
-of
-a
-joint
-covariance.
-It
-needs
-a
-state-space
-model
-and
-a
-noise
-covariance.
-Q̂_L
-is
-not
-that
-model.
-There
-is
-no
-filter
-gain
-that
-replaces
-1/(1−ρ)
-and
-no
-measurement
-of
-the
-tail
-hats.
+The Kalman update is a Schur complement of a joint covariance. It needs
+a state-space model and a noise covariance. Q̂_L is not that model.
+There is no filter gain that replaces 1/(1−ρ) and no measurement of the
+tail hats.
 
-Not
-a
-campaign.
+Not a campaign.
