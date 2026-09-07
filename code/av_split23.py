@@ -32,12 +32,12 @@ def _primes(n: int) -> list[int]:
     return [i for i in range(2, n + 1) if sv[i]]
 
 
-def assemble_AP(mu: float, dps: int = 40, DEG: int = 12):
-    """A, P23, Prest as 3×3 on χ₅, three hats. Unconditional pairing.
+def assemble_AP(mu: float, dps: int = 40, DEG: int = 12, name: str = "chi5"):
+    """A, P23, Prest as 3×3, three hats. Unconditional pairing.
 
     P23 is n=2 and n=3 only. One assemble serves every v.
     """
-    cf = CHARS["chi5"]
+    cf = CHARS[name]
     q, a = cf["q"], cf["a"]
     tab = chi_tab(cf["d"], q)
     mp.mp.dps = dps

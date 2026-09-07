@@ -42,7 +42,8 @@ def _unit(raw) -> np.ndarray:
 
 def eval_mu(mu: float, dps: int = 40) -> dict:
     t0 = time.time()
-    A, P23, Prest = assemble_AP(mu, dps=dps)
+    name = os.environ.get("AV_CHAR", "chi5")
+    A, P23, Prest = assemble_AP(mu, dps=dps, name=name)
     H = A - P23 - Prest
     evals, evecs = np.linalg.eigh(H)
     vmin = evecs[:, 0]
@@ -76,6 +77,7 @@ def eval_mu(mu: float, dps: int = 40) -> dict:
     lam0 = float(evals[0])
     Qmin = float(vmin @ H @ vmin)
     return {
+        "name": os.environ.get("AV_CHAR", "chi5"),
         "mu": float(mu),
         "seconds": round(time.time() - t0, 2),
         "lam_min": lam0,
@@ -128,7 +130,7 @@ def main() -> None:
         os.path.dirname(os.path.abspath(__file__)),
         "..",
         "report",
-        "av-other-v-mu150.json",
+        f"av-other-v-{os.environ.get('AV_CHAR', 'chi5')}-mu150.json",
     )
     payload = {
         "seconds": round(time.time() - t0, 1),
