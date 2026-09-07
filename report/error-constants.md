@@ -18,41 +18,7 @@
     Hermite 1/384           0.00260      remainder prefactor
     osc g'' / 2             ≈2.7         quadratic-mesh prefactor
 
-The
-ratio
-gap / A-window
-is
-still
-∼16
-after
-#83.
-Constants
-in
-the
-mesh
-(osc g''/2,
-y_min³)
-explain
-why
-N=4
-is
-a
-factor
-2
-not
-a
-factor
-16.
-No
-hidden
-10⁻³
-prefactor
-is
-sitting
-unused
-in
-Hermite’s
-1/384:
-ω₂^4
-cancels
+The ratio gap / A-window is still ∼16 after #83. Constants in the mesh
+(osc g''/2, y_min³) explain why N=4 is a factor 2 not a factor 16. No
+hidden 10⁻³ prefactor is sitting unused in Hermite’s 1/384: ω₂^4 cancels
 it.

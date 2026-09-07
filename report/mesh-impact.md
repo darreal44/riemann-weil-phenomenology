@@ -1,130 +1,21 @@
 # Impact of the quadratic mesh
 
-N=1
-is
-#83
-(gap
-0.047,
-Q_lo=−0.042).
-Raising
-N
-does
-three
-things:
+N=1 is #83 (gap 0.047, Q_lo=−0.042). Raising N does three things:
 
 1. Raises
-   local
-   m_i
-   toward
-   g''(y_i)
-   (the
-   9.64→4.22
-   drop
-   is
-   split).
+   local m_i toward g''(y_i) (the 9.64→4.22 drop is split).
 2. Shortens
-   each
-   (y−y_i)
-   so
-   the
-   unused
-   curvature
-   integrates
-   as
-   h³
-   not
-   y_min³.
+   each (y−y_i) so the unused curvature integrates as h³ not y_min³.
 3. Does
-   not
-   touch
-   the
+   not touch the
    floor / t_inf / chord
-   after
-   y_min
-   unless
-   one
-   meshes
-   that
-   tail
-   too
-   (concave:
-   chords,
-   not
+   after y_min unless one meshes that tail too (concave: chords, not
    parabolas).
 
-Expected
-impact
-on
-the
-well
-only:
-a
-factor
-∼2
-at
-N=4,
-maybe
-∼3–4
-at
-N=8,
-on
-the
-part
-of
-the
-0.047
-that
-lives
-in
-[0,y_min].
-If
-that
-part
-is
-most
-of
-the
-gap,
-Q_lo
-moves
-from
-−0.042
-to
-about
-−0.02
-or
-−0.01,
-not
-across
-0
-and
-not
-into
-the
-+0.003
-window.
+Expected impact on the well only: a factor ∼2 at N=4, maybe ∼3–4 at N=8,
+on the part of the 0.047 that lives in [0,y_min]. If that part is most
+of the gap, Q_lo moves from −0.042 to about −0.02 or −0.01, not across 0
+and not into the +0.003 window.
 
-The
-mesh
-is
-worth
-running
-as
-a
-locked
-campaign
-only
-to
-measure
-that
-split
-(well
-versus
-tail).
-It
-is
-not
-a
-path
-to
-Weil.
+The mesh is worth running as a locked campaign only to measure that
+split (well versus tail). It is not a path to Weil.

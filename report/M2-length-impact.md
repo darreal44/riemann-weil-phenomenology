@@ -1,72 +1,11 @@
 # Impact of the |M₂| slip
 
-Wrong
-formula
-|M₂|=L−2y
-appeared
-only
-on
-the
-fold
-page
-(fixed
-`31cb45d`)
-and
-in
-the
-first
-draft
-of
-`M1-measure.md`.
-No
-script
-uses
-that
-length.
-The
-CS
-majorant
-depends
-on
-masses,
-not
-on
-|M₂|.
+Wrong formula |M₂|=L−2y appeared only on the fold page (fixed `31cb45d`)
+and in the first draft of `M1-measure.md`. No script uses that length.
+The CS majorant depends on masses, not on |M₂|.
 
-`ql-theta-overlap.md`
-never
-wrote
-|M₂|=L−2y;
-it
-only
-said
-five
-lengths
-sum
-to
-L−y
-(true
-once
-|M₂|=L/2−y).
-`simplex-geometry.md`
-uses
-2y−L/2
-as
-|M₁∪M₂|,
-which
-is
-correct
-and
-is
-not
-|M₂|.
+`ql-theta-overlap.md` never wrote |M₂|=L−2y; it only said five lengths
+sum to L−y (true once |M₂|=L/2−y). `simplex-geometry.md` uses 2y−L/2 as
+|M₁∪M₂|, which is correct and is not |M₂|.
 
-No
-rerun.
-No
-change
-to
-#89
-or
-to
-Q_lo.
+No rerun. No change to #89 or to Q_lo.

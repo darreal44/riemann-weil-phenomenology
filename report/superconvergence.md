@@ -1,108 +1,15 @@
 # Superconvergence — not here
 
-In
-FEM,
-superconvergence
-means
-the
-error
-at
-special
-points
-(nodes,
-Gauss
-points)
-is
-O(h^{p+2})
-while
-the
-global
-max
-is
-O(h^{p+1}).
+In FEM, superconvergence means the error at special points (nodes, Gauss
+points) is O(h^{p+2}) while the global max is O(h^{p+1}).
 
-q_i
-is
-exact
-at
-the
-*left*
-node
-by
-construction
-(e=e'=0),
-not
-by
-a
-hidden
-order.
-At
-the
-right
-node
-the
-error
-is
-the
-global
-max
-on
-that
-slab
-(0.00567
-at
-y_min).
-There
-is
-no
-interior
-point
-where
-the
-order
-jumps.
+q_i is exact at the *left* node by construction (e=e'=0), not by a
+hidden order. At the right node the error is the global max on that slab
+(0.00567 at y_min). There is no interior point where the order jumps.
 
-Gauss
-points
-of
-the
-integrator
-do
-not
-see
-a
-higher
-order
-in
-g−g_lo:
-the
-error
-function
-is
-a
-convex
-hump
-starting
-at
-0,
-not
-an
-oscillatory
-bubble
-that
-vanishes
-at
-Legendre
-nodes.
+Gauss points of the integrator do not see a higher order in g−g_lo: the
+error function is a convex hump starting at 0, not an oscillatory bubble
+that vanishes at Legendre nodes.
 
-Claiming
-superconvergence
-would
-be
-a
-misread
-of
-e(y_i)=0.
-Not
-a
+Claiming superconvergence would be a misread of e(y_i)=0. Not a
 campaign.

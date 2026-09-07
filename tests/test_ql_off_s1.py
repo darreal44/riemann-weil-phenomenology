@@ -56,8 +56,8 @@ def test_neumann_uses_s1_upper():
 
 def test_note_does_not_claim_take():
     text = open(NOTE, encoding="utf-8").read()
-    assert "Not\nRH." in text or "Not RH" in text
-    assert "Not\ntaken" in text or "not a take" in text.lower()
+    assert "Not RH" in text
+    assert "not a take" in text.lower() or "Not taken" in text
     assert "1.081" in text or "π/2" in text
     assert "false" in text.lower()
     src = open(SRC, encoding="utf-8").read()

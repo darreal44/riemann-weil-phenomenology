@@ -1,110 +1,16 @@
 # Leftover versus the observed rate
 
-Uniform
-N=4:
-leftover
-O(1)
-on
-every
-well
-slab
-(0.95–1.62),
-gap
-0.00279.
-#87
-spent
-eight
-bisections
-on
-the
-largest
-leftover
-slabs:
-n_convex=16,
-gap
-0.000433
-(factor
-6.4
-from
-the
-parent,
-better
-than
-a
-uniform
-N=8
-prediction
-of
-~4).
+Uniform N=4: leftover O(1) on every well slab (0.95–1.62), gap 0.00279.
+#87 spent eight bisections on the largest leftover slabs: n_convex=16,
+gap 0.000433 (factor 6.4 from the parent, better than a uniform N=8
+prediction of ~4).
 
-That
-is
-the
-impact:
-the
-rate
-is
-not
-a
-function
-of
-N
-alone
-but
-of
-max leftover × h².
-Killing
-the
-1.62
-slab
-first
-moves
-the
-pointwise
-max
-off
-y_min
-and
-drops
-the
-integral
-faster
-than
-uniform
-refinement.
+That is the impact: the rate is not a function of N alone but of max
+leftover × h². Killing the 1.62 slab first moves the pointwise max off
+y_min and drops the integral faster than uniform refinement.
 
-Once
-every
-slab
-has
-leftover
-= O(h),
-further
-splits
-earn
-only
-O(h³)
-globally.
-#87
-is
-still
-in
-the
-O(h²)
-cleanup
-of
-O(1)
-leftovers.
-Another
-eight
-bisections
-should
-be
-slower
-(diminishing
-max leftover).
+Once every slab has leftover = O(h), further splits earn only O(h³)
+globally. #87 is still in the O(h²) cleanup of O(1) leftovers. Another
+eight bisections should be slower (diminishing max leftover).
 
-Not
-Weil.
-One
-v.
+Not Weil. One v.
