@@ -378,7 +378,16 @@ not missing modes
 (5, 7]: T₅ Δλ=−2.2×10⁻⁶, then
 5 drifts and L cut λ_min by ~10
 per 0.5 in μ; H₀₀ rises
-(`notes/ql-H16-mu57.md`). Not (∀ L).
+(`notes/ql-H16-mu57.md`). χ₃ Neumann
+take on (5, 7] is **only μ=5**;
+dead at 5.5 (`notes/ql-schur-chi3-mu57.md`).
+Quorum at μ=7: χ₈ and χ₁₇ still
+take, χ₃ and χ₇ do not, χ₄/χ₅
+slivers at h=24
+(`notes/ql-schur-quorum-mu7.md`).
+ρ_far crosses 1 on (5.5, 6] after
+T₅ lifts t_atoms 1.04→1.76
+(`notes/ql-rhofar-mu.md`). Not (∀ L).
 Not RH.
 Bernstein vs Â is infinite for χ(2)=−1 (A(constant)<0).
 Operator-level \(\int'\)
