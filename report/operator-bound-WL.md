@@ -89,7 +89,12 @@ vs Â: A(constant)<0
 on χ₅, χ₃, so C_*=∞.
 The cosine family in
 W_L stays positive.
-Class not taken.
+Schur tail at h=2
+(`ql-schur-tail.md`)
+takes χ₈ (β=+0.055)
+and not χ₅ (T₂).
+Class not taken for
+every χ.
 
 A matrix bound
 on S_N is not
