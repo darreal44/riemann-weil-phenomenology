@@ -44,7 +44,9 @@ The whole remainder of A(v) is now Cauchy
 (cosh / |sinh| on r=2). The |g''| catalogue
 is not used. Trap n=8 is obsolete for this
 enclose. Chord comparison of I_{[0,1]} is
-still open. One v, finite μ. Not RH.
+still open; the tangent/floor switch
+misses 0.088 (`notes/av-I01-switch.md`).
+One v, finite μ. Not RH.
 
 Judge: `tests/test_av_enclose_cauchy.py`.
 `av_enclose.py` keeps the trap path.

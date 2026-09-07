@@ -52,7 +52,9 @@ cosh(ω r), |w|=e^{Re z/2}/|sinh z|,
 the caps (floor attained at ±ri).
 One panel is too crude. Two panels
 fit. The chord comparison of I_{[0,1]}
-is still dead (misses 0.22). The tail
+is still dead (misses 0.22); the
+tangent/floor switch misses 0.088
+(`notes/av-I01-switch.md`). The tail
 still uses catalogued |g''|. One v,
 finite μ. Not RH.
 
@@ -68,4 +70,5 @@ Judge: `tests/test_av_cauchy.py`.
 | A-ball inside the Q-window | judged |
 | Qlo>0 with this remainder | judged (0.00354) |
 | chord comparison of I_{[0,1]} | still open (misses 0.22) |
+| tangent/floor switch of I_{[0,1]} | still open (misses 0.088) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |

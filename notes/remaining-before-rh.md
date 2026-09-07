@@ -295,8 +295,11 @@ odd are Gauss+Cauchy on [0,1] and [1,L]
 chord comparison of I_{[0,1]} is still
 open: Gauss-3 = −0.700661; a 3-piece
 bound of g misses by 0.224 and Q_lo<0
-(`notes/av-I01-compare.md`). (∀ L) Q_L ≥ 0
-is still the covering lemma.
+(`notes/av-I01-compare.md`). A tangent/floor
+switch at y_sw=g_min/g'(0)=0.1786 misses
+by 0.088, Q_lo=−0.082, still outside
+±0.003 (`notes/av-I01-switch.md`).
+(∀ L) Q_L ≥ 0 is still the covering lemma.
 
 ---
 
