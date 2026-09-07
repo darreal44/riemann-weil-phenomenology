@@ -1,0 +1,80 @@
+# Hilbert kernel, three objects
+
+    1/(x−y)
+      continuous
+      p.v.
+      on
+      L²(ℝ):
+      ‖H‖=π
+      (or
+      1
+      after
+      the
+      1/π
+      convention).
+    1/(n−m)
+      discrete
+      Hilbert
+      transform,
+      Toeplitz,
+      ‖·‖≤π.
+      Bound
+      on
+      Θ
+      via
+      |θ|≤2/(π|n−m|)
+      used
+      to
+      give
+      ‖Θ‖≤2;
+      mid-band
+      is
+      √2
+      / lab
+      cap
+      1.
+    1/(n+m)
+      Hankel
+      Hilbert
+      inequality,
+      ‖·‖=π,
+      tail
+      ess=π
+      (Hartman).
+      In
+      Q:
+      ½/(n+m),
+      hence
+      ½π
+      in
+      Off_far.
+
+The
+kernel
+that
+enters
+the
+essential
+lower
+bound
+is
+the
+third.
+The
+first
+is
+not
+used.
+The
+second
+is
+Θ,
+already
+capped.
+
+Not
+a
+fourth
+kernel.
+Not
+RH.
