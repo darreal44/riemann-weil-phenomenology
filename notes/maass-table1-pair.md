@@ -67,7 +67,11 @@ mpf at the digit count: R is ~100 decimals, a_n ~70). γ are IEEE
 float64 (computing more is expensive); Table 1 also stores the
 Booker–Then decimal strings as `zeros_hp` because those digits
 are already on disk. `python code/maass_zeros_an.py --fetch-R`
-and `--fetch` (gitignored sqlite for a_n). Not Weil.
+and `--fetch` (gitignored sqlite: all 35416 a_n as
+numeric text + float64, ~1.6 GB). AFE zeros are **not**
+filled in: `--check` misses Table 1 even-form γ₁
+(maass2 finds ~17.7 instead of 5.105). Table 1 stays
+Booker–Then. Not Weil.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 

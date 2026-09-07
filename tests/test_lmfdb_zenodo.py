@@ -295,3 +295,23 @@ def test_mpf_keep_full_replica_digits():
     assert str(ghp[0]).startswith("17.0249420759926")
     rec = by_label_gl2()["1.0.1.1.1"]
     assert rec["zeros_hp"][0] == "17.0249420759926"
+
+    import sqlite3
+
+    from lmfdb_encode import _sqlite_path
+
+    dbp = _sqlite_path()
+    if os.path.exists(dbp):
+        db = sqlite3.connect(dbp)
+        tables = {
+            r[0]
+            for r in db.execute("SELECT name FROM sqlite_master WHERE type='table'")
+        }
+        if "maass_an_prec" in tables:
+            nprec = db.execute("SELECT COUNT(*) FROM maass_an_prec").fetchone()[0]
+            if nprec:
+                assert nprec == 35416
+                a105 = load_an_hp("105.0.1.1.1")
+                assert len(a105) == 1000
+                assert abs(float(a105[0]) - 1.0) < 1e-20
+        db.close()
