@@ -72,4 +72,5 @@ Judge: `tests/test_av_cauchy.py`.
 | chord comparison of I_{[0,1]} | still open (misses 0.22) |
 | tangent/floor switch of I_{[0,1]} | still open (misses 0.088) |
 | three-tangent envelope of I_{[0,1]} | still open (misses 0.068) |
+| quadratic support of I_{[0,1]} | still open (misses 0.047) |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
