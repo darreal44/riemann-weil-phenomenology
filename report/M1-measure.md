@@ -1,84 +1,68 @@
 # Measure of M₁
 
 Lebesgue:
-|M₁|=(2y−L/2)−(L/2−y)=3y−L.
+|M₁|=3y−L,
+|A|=|C|=|M₂|=L/2−y.
 At
-the
-χ₃
-μ=5
-point,
 y=log 2,
-L=log 5,
+L=log 5
+(y/L≈0.4307):
 
-    |M₁|/ (L/2)
-      = 2(3 log 2 / log 5 − 1)
-      ≈ 0.290.
+    |M₁| / (L/2) ≈ 0.584
+    |A| / (L/2)  ≈ 0.139
 
-So
-almost
-30 %
-of
-the
-half-window
-by
-length.
-The
-mass
-μ₁
-is
-not
-the
-length:
-constant
+Constant
 mode
-has
-μ₁=|M₁|/(L/2)≈0.290,
-but
-the
-simplex
-maximum
-is
-at
-μ₁=0.
-The
-extremiser
 puts
-no
 mass
-on
-M₁
-even
-though
-M₁
-is
-long.
-That
-is
-allowed
-because
-h
-is
-free
-in
-L².
-
-CS
-uses
-μ₁,
+equal
+to
+length,
+so
+μ₁≈0.584,
 not
-|M₁|.
-Replacing
-μ₁
-by
-the
-length
-would
-worsen
+0.
+It
+saturates
+CS
+(f=f∘ρ)
+and
+gives
+θ=2(L−y)/L≈1.139,
+equal
+to
 the
 majorant
-and
+at
+that
+mass
+vector,
+below
+√2.
+
+The
+simplex
+vertex
+μ₁=0,
+α=1/2,
+β=μ₂=1/4
 is
-illegal.
+a
+different
+h
+(no
+mass
+on
+the
+long
+M₁).
+Length
+is
+not
+mass.
+CS
+uses
+μ₁.
 
 Not
 a
