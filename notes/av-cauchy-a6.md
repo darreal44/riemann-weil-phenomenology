@@ -76,4 +76,5 @@ Judge: `tests/test_av_cauchy.py`.
 | two-piece quadratic of I_{[0,1]} | still open (misses 0.024) |
 | N=4 quadratic mesh of I_{[0,1]} | still open (misses 0.0053) |
 | rise mesh of I_{[0,1]} | still open (misses 0.00315) |
+| N=8 well+rise mesh of I_{[0,1]} | gap 0.000405, in ±0.003; not Weil |
 | (∀ L) Q_L ≥ 0 | RH; not this note |
