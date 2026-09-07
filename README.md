@@ -84,6 +84,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   cosine family stays positive; C_*=∞ for χ(2)=−1. Class not taken. Not RH.
 - `notes/ql-schur-tail.md` — Schur tail h=2 on \(W_{\log 3}\): β=+0.055
   takes χ₈ (no T₂); T₂ eats δ on χ₅/χ₃. Not (∀ χ). Not RH.
+- `notes/ql-theta-tail.md` — ‖Θ(log 2)‖≤1 because y≥L/2, not Hilbert 2;
+  t2 halved; χ₅ still δ<0. Not RH.
 - `notes/gl2-37a1-drop3.md` — 37a1 μ=62, retrait de 3: preregistered
   negative, executed positive (+0.093). KILL. Not RH.
 - `notes/gl2-67a1-mu74.md` — 67a1 μ=74: quorum stays complete (2, 5, 13
