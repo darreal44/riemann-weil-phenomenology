@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=2.6cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{corollary}[lemma]{Corollary}
+\theoremstyle{remark}\newtheorem*{remark}{Remark}
+\title{The discrete Landau count on a cosine window\\
+\large kernel dimension of evaluation, and $\pi^2$ as the leading rung}
+\author{D.\ Joubert}
+\date{6 September 2026 --- companion to \texttt{the-well} v3, notebook \S133--135}
+\begin{document}
+\maketitle
+\begin{abstract}
+\noindent
+On the $N{+}1$ cosine hats of $[0,L]$, the number of exponentially small
+eigenvalues of the zero Gram is the maximal lead of the Nyquist count
+over the node count,
+$D_{\max}=\max_\gamma(\gamma L/2\pi-N_\Gamma(\gamma))$.
+The lower bound is linear algebra, for an arbitrary node set: at every
+spectral cut $\omega$ the evaluation map on hats of frequency ${<}\omega$
+has kernel dimension at least $n(\omega)-N_\Gamma(\omega)$.
+Those kernel vectors vanish on all nodes below $\omega$, so under RH
+their Rayleigh quotients see only the leakage past $\omega$ and are
+exponentially small.
+The matching upper bound up to the $O(\log c)$ Slepian plunge is the
+usual Landau--Widom width, not re-proved here; empirically
+$\#\{\ell_k>2\}=\mathrm{round}(D_{\max})$.
+The one-set Slepian inequality already in the repository, fed with a
+set of measure $D_{\max}$ Nyquist cells, gives $\ell\le \pi^2 D_{\max}+\log(1/A)$.
+The measured mean rung $11.0$ sits $10$--$15\%$ above $\pi^2\approx 9.87$;
+that remainder is $\log(1/A)/D$ plus the hat-versus-PW discrepancy, not a
+new constant. Nothing here bears on RH.
+\end{abstract}
+
+\section{The count}
+Fix $L=\log\mu$ and the cosine window $V_N=\mathrm{span}\{\eta_n\}_{n=0}^{N}$
+on $[0,L]$, frequencies $\omega_n=2\pi n/L$, band edge
+$\omega_{\max}=2\pi N/L$. Let $\Gamma=\{\gamma_k\}_{k\ge 1}$ be any
+increasing sequence of nodes (zeros, under RH; anything, for the Gram).
+Write $N_\Gamma(\omega)=\#\{\gamma\in\Gamma:\gamma<\omega\}$ and
+\[
+n(\omega)=\#\{n=0,\ldots,N:\ \omega_n<\omega\}.
+\]
+The repository's
+\[
+D_{\max}
+=\max\Bigl(\max_k\bigl(\gamma_k\tfrac{L}{2\pi}-k\bigr),\
+N-N_\Gamma(\omega_{\max})\Bigr)
+\]
+is the continuous interpolation of $\max_\omega\bigl(n(\omega)-N_\Gamma(\omega)\bigr)$,
+up to $O(1)$ (the constant hat $\eta_0$ is in every $V(\omega)$, so the
+integer kernel lower bound is typically $D_{\max}+1$).
+
+\begin{lemma}[evaluation kernel]
+\label{lem:ker}
+Let $\mathrm{Eval}_\omega:V(\omega)\to\mathbb C^{N_\Gamma(\omega)}$ send
+$f\in V(\omega):=\mathrm{span}\{\eta_n:\omega_n<\omega\}$ to
+$(\hat f(\gamma))_{\gamma<\omega}$. Then
+\[
+\dim\ker\mathrm{Eval}_\omega
+\;\ge\;
+n(\omega)-N_\Gamma(\omega).
+\]
+\end{lemma}
+\begin{proof}
+$V(\omega)$ has dimension $n(\omega)$. Point evaluations of entire
+functions of exponential type are linear. The rank of $\mathrm{Eval}_\omega$
+is at most the number of targets, $N_\Gamma(\omega)$. Rank-nullity gives
+the claim. No property of $\Gamma$ is used.
+\end{proof}
+
+\begin{corollary}[arbitrary nodes]
+\label{cor:D}
+There is a subspace $K\subset V_N$ of dimension at least
+$\max_\omega\bigl(n(\omega)-N_\Gamma(\omega)\bigr)$ consisting of
+functions that vanish at every node in some $[0,\omega_\star]$.
+\end{corollary}
+
+That is (A) of \texttt{the-well}, as a lower bound, for any nodes on any
+finite cosine window. The zeros of an $L$-function are a special case.
+
+\section{Small eigenvalues}
+Assume RH, so $Q_L(f)=\sum_\gamma\hat f(\gamma)^2$ on $W_L$. For
+$f\in\ker\mathrm{Eval}_{\omega_\star}$,
+\[
+Q_L(f)
+=\sum_{\gamma\ge\omega_\star}\hat f(\gamma)^2.
+\]
+A trigonometric polynomial of frequencies ${<}\omega_\star$ has Fourier
+mass concentrated on $[0,\omega_\star]$ (Dirichlet kernel of the cosine
+basis; the leakage past $\omega_\star$ is the tail of $\mathrm{sinc}$
+sidelobes). Hence $Q_L(f)/\|f\|^2$ is exponentially small in the
+time-bandwidth distance from $\omega_\star$ to the next nodes --- the
+same desert/gap mechanism as \texttt{sampling-floor}, Proposition~2.
+Those $\dim K$ directions are therefore exponentially small eigenvalues
+of the Gram (and of $Q_N$ once the hat space resolves them).
+
+The matching upper bound --- no more than $D_{\max}+O(\log c)$ small
+eigenvalues --- is the Landau--Widom plunge: the concentration operator
+on a set of measure $|E|$ has $O(\log(\tau|E|))$ eigenvalues in
+$(e^{-C},1-e^{-C})$. Thresholding at $\ell>2$ nats (as in
+\texttt{test\_depth\_law.py}) sits past that plunge on every window
+measured. We do not redo Widom's analysis for the hat Gram; the
+equality $\#\{\ell_k>2\}=\mathrm{round}(D_{\max})$ remains the
+empirical closing of the $O(\log)$ gap.
+
+\section{The leading rung is $\pi^2$}
+The one-set Slepian bound already recorded in \texttt{FREEZE.md} and
+\texttt{one-set-minorant.md} says that if $I^c$ samples $PW_\tau$,
+\[
+\ell
+\;\le\;
+\pi\,\tau\,|I|+\log(1/A)+o(\tau|I|),
+\qquad \tau=L/2.
+\]
+Feed this with a set $I$ of $D_{\max}$ Nyquist cells,
+$|I|=D_{\max}\cdot(2\pi/L)$. Then
+\[
+\pi\tau|I|
+=\pi\cdot\frac L2\cdot D_{\max}\cdot\frac{2\pi}L
+=\pi^2 D_{\max}.
+\]
+So
+\begin{equation}
+\label{eq:pi2}
+\ell
+\;\le\;
+\pi^2 D_{\max}+\log(1/A)+o(D_{\max}),
+\qquad
+\pi^2\approx 9.87.
+\end{equation}
+The measured mean rung $\bar r=11.0$ is this leading term plus
+$\log(1/A)/D_{\max}$. On the stored edge-value windows
+(\texttt{report/discrete-landau.md}):
+
+\begin{center}\small
+\begin{tabular}{lrrrr}\toprule
+window & $D_{\max}$ & $\ell/D$ & $\pi^2$ & $(\ell-\pi^2 D)/D$\\
+\midrule
+$\zeta$ 11 & 9.89 & 10.82 & 9.87 & $+0.95$\\
+$\chi_3$ 16 / 38 & 4.96 / 12.32 & 11.21 / 11.32 & 9.87 & $+1.3$\\
+$\chi_5$ 16 / 38 & 3.08 / 7.58 & 11.00 / 11.65 & 9.87 & $+1.1$ / $+1.8$\\
+$\chi_8$ 16 & 1.77 & 11.22 & 9.87 & $+1.3$\\
+$\chi_{29}$ 38 & 1.08 & 11.02 & 9.87 & $+1.1$\\
+$\zeta$ 16$^\dagger$ & 15.00 & 9.31 & 9.87 & $-0.56$\\
+$\chi_{13}$, $\chi_{31}$$^\ddagger$ & 1.19 / 0.90 & 9.13 / 9.47 & 9.87 & $-0.7$\\
+\bottomrule
+\end{tabular}\\[2pt]
+{\footnotesize $\dagger$ sub-Nyquist at the edge: $D_{\max}$ still grows with $N$, $\ell$ saturates.
+$\ddagger$ $D_{\max}\approx 1$: a single rung is not the mean rung.}
+\end{center}
+
+On the resolved degree-1 windows the remainder is $+1.0$ to $+1.8$ nats
+per mode, i.e.\ $10$--$18\%$ above $\pi^2$. That is $\log(1/A)$ of size
+$5$--$15$ nats spread over $D=3$--$12$, plus the cosine hats not being
+exact prolates. It is not a second universal constant. Degree 2
+($\bar r=8.7$--$9.4$ on 11a1) sits \emph{on} $\pi^2$, as the one-set
+bound predicts once $A$ is not tiny.
+
+The first rung $\sim 16$ and the last $\sim 5$ are the two ends of the
+Slepian plunge of the longest piece (the desert): the most concentrated
+mode pays $\sim 2c=L\gamma_1$ reduced by sampling, the last free mode
+pays $O(1)$. Their average is the mean rung. The $N$-drift
+$10.3\to 11.5$ from $N=41$ to $67$ is $\log(1/A)/D$ shrinking as $D$
+grows, slowly, because $A$ itself depends on $N$ through $\omega_{\max}$.
+
+\section{What is proved, what is not}
+\begin{itemize}
+\item \textbf{Proved.} Lemma~\ref{lem:ker} and Corollary~\ref{cor:D}:
+the count from below, any nodes, no RH.
+\item \textbf{Proved under RH, up to leakage estimates already in
+\texttt{sampling-floor}.} Those kernel directions are exponentially
+small eigenvalues of the Gram.
+\item \textbf{Identified, not derived to the digit.} $\bar r=11$ is
+$\pi^2$ plus a $1$~nat/mode remainder. Equation~\eqref{eq:pi2} is the
+one-set bound of the repository applied to $D_{\max}$ cells; it is an
+upper bound in the large-$c$ regime and sits $10$--$15\%$ low on the
+windows we have.
+\item \textbf{Not proved.} A threshold-free equality
+$\#\{\lambda_k<e^{-C}\}=D_{\max}$ with an absolute $C$; a closed form
+for $\log(1/A)$; transfer to unsaturated Galerkin windows
+($\chi_3$ $\mu=80$: $D_{\max}$ counts dimensions $Q_N$ has not paid
+for yet, \texttt{Dmax-vs-Q.md}).
+\end{itemize}
+Under RH, Lemma~\ref{lem:ker} plus the one-set bound \emph{is} the depth
+law up to the remainder $\log(1/A)$. Without RH the same statements
+hold for the Gram of whatever the nodes are. No prime enters.
+
+\section*{Status}
+Scripts: \texttt{code/dmax.py}, tests in \texttt{tests/test\_depth\_law.py}
+(including a synthetic node set). Table: \texttt{report/discrete-landau.md}.
+This note does not replace \texttt{the-well}; it answers (A) from below
+and names the constant in (B).
+\end{document}

@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Quorum by mechanism (notebook §69). Q_S = Q + T_M with T_M the towers of the MISSING primes.
 # Lemma (unconditional, linear algebra): for any unit v and u = P_perp(T_M v)/||.||,
 #   Q_S is indefinite as soon as (v^T Q v + v^T T_M v) * (u^T Q_S u) < ||P_perp T_M v||^2

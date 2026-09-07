@@ -3,6 +3,18 @@
 [![DOI](https://zenodo.org/badge/1351526407.svg)](https://doi.org/10.5281/zenodo.22215278)
 
 
+## License
+
+Dual license **GPL-3.0-or-later** or **CC-BY-SA-4.0**, with the binding
+interpretation of the [Joubert Formal License](https://github.com/djoubertthot/joubert-formal-license)
+(`LICENSE.md`, `COPYING.interpretation`).
+
+Copyright © 2026 Denis Joubert.
+
+Private use does not require publication. Redistribution of a work that
+imports these files is copyleft plus attribution. GitHub may show the
+license as *Other*.
+
 ## Tests
 
 ```
@@ -50,6 +62,8 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   hat f(rho) hat f(1-rho), measured on V_9 at µ=11 (crosses at γ_1, invisible at
   height 80). PW-de Branges is not the ξ-space. No RH claim.
 
+- `notes/discrete-landau.tex` — discrete Landau on the cosine window: evaluation kernel $\ge D_{\max}$ for any nodes; mean rung $11=\pi^2+\log(1/A)/D$. Companion to `the-well`.
+
 - `notes/the-well.pdf` (v3) — *The well, and the depth law.* The ground state of the windowed Weil
   form as one object seen from five sides (desert, hyper-nullity and edge budget, spectral mass in the
   desert, super-exponential collapse of the autocorrelation — the "silence at the primes", not about
@@ -59,7 +73,55 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   of the window's Nyquist count over the zero count (discrete Landau: 10/10, 5/5, 3/3, 1/1) — hence
   **ℓ ≈ 11.0·D_max**: within 3% on eight of twelve degree-1 windows, 10% on GL₂, no fitted parameter but
   the mean rung. Marginal weight of each zero w(γ) ≈ 11(1 − γ/γ_c), γ_c the Nyquist crossing (fourteen
-  windows). Open: the proof of the count and the origin of the constant 11. Nothing here bears on RH.
+  windows). Open: the $O(\log c)$ matching of the count, and the $1$~nat/mode remainder above $\pi^2$. Lower bound of the count and the identification $11=\pi^2+\log(1/A)/D$ are in `notes/discrete-landau.tex`. Nothing here bears on RH.
+
+- `notes/remaining-before-rh.md` — judged status of Landau matching, the edge lemma,
+  det(A−P) by estimates, Schur T⁻¹, χ₃ μ=80 assemblies, 37a1 Q vs Gram, Maass Q,
+  CC sub-shells, the 2-adic mass, and the (log 2, log 3] step. Not RH. Read before any covering lemma.
+- `notes/landau-depth.md` — discrete Landau count (any nodes, no RH) and the identity
+  that linear rungs 16→5 average to 11. Not RH.
+- `notes/2adic-shells.md` — exact Connes Thm 4 shell masses (1/√2 vs √2 vs
+  (log 2)/√2) and the semi-local Fourier as a sum of 2-adic sub-shells. Not RH.
+- `notes/2adic-peak-lamge16.md` — Fmat peak at Λ=24 and 32 still climbs
+  through 0.49 toward √2. Same Gibbs, not a Dirac. Not RH.
+- `notes/log2-log3-step.md` — the (log 2, log 3] step: CC remainder at Λ=1 does
+  not transport; the other mechanism is Connes 1999 (subtract 2h(1)log'Λ first).
+  Identity orbit vanishes at Λ=1; two logarithms (Λ vs 1/h); interior primes {2}.
+  The Paley–Wiener step is not taken. Not RH.
+- `notes/pw-log3.md` — Paley–Wiener of type log 3: Galerkin \(V_N\) is Courant
+  the wrong way for the class \(W_L\); prime-side ladder at \(\mu=3\) nested and
+  \(>0\). \(c_L^*\ge0\) not taken. Not RH.
+- `notes/ql-operator-bound.md` — Bochner multiplier of \(\hat Q_L\) on
+  \(W_{\log 3}\): α_line < 0 on χ₅, χ₈, χ₄, χ₃ (sufficient bound fails);
+  cosine family stays positive; C_*=∞ for χ(2)=−1. Class not taken. Not RH.
+- `notes/ql-schur-tail.md` — Schur tail h=2 on \(W_{\log 3}\): β=+0.055
+  takes χ₈ (no T₂); T₂ eats δ on χ₅/χ₃. Not (∀ χ). Not RH.
+- `notes/ql-theta-tail.md` — ‖Θ(log 2)‖≤1 because y≥L/2, not Hilbert 2;
+  t2 halved; χ₅ still δ<0. Not RH.
+- `notes/ql-schur-chi4-h.md` — Schur χ₄ at h=2..24: β>0 at h=20
+  (+0.004). χ(2)=0 taken (χ₈ and χ₄). Not χ(2)=−1. Not RH.
+- `notes/ql-schur-neumann.md` — Neumann T^{-1}: S_lo(χ₅)=+0.029 takes
+  even χ(2)=−1; χ₃ still negative. Not (∀ χ). Not RH.
+- `notes/gl2-37a1-drop3.md` — 37a1 μ=62, retrait de 3: preregistered
+  negative, executed positive (+0.093). KILL. Not RH.
+- `notes/gl2-67a1-mu74.md` — 67a1 μ=74: quorum stays complete (2, 5, 13
+  necessary). SURVIVE. Not RH.
+- `notes/gl2-37a1-mu74.md` — 37a1 drop 3 at μ=74 and 80: still +0.09,
+  plateau. Linear μ≈70 killed. Not RH.
+- `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
+  sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
+  \(\hat\psi=\) jump \(+\,r\). Not RH.
+- `notes/av-witness.md` — rational witness (4,−3,1)/√26 at χ₅ μ=16: Arb enclosure
+  of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
+- `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
+  1/y cancelled. Cauchy |a^{(6)}| two-panel majorant: `notes/av-cauchy-a6.md`.
+  Chord comparison still open. Not RH.
+- `notes/av-mu150.md` — one point at μ=150: A−P₂₃ went through 0, P_rest with
+  it; they did not cross. Q=0.0041. Not a sixth slope. Not RH.
+- `notes/av-other-v-mu150.md` — the μ=16 pencil at μ=150: five of five Q>0,
+  v_min still on the pencil. Not (∀ μ). Not RH.
+- `report/Q-v-ball.md` — flint-free ball Q(v)∈[0.00402, 0.00649] via
+  `code/av_enclose.py`. Comparison estimate still open. Not RH.
 
 **Frontier — non-transfers and documented obstructions. Read after the theorems, not in their place.**
 

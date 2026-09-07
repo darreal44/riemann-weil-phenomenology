@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Semi-local {infinity, 2} Fourier transform on the ord_2 = 0 slice (notebook 82).
 # These tests RECOMPUTE the operator; they do not replay frozen numbers, except for the
 # archimedean calibration of code/cc_arch.py against Connes-Consani (Selecta 2021).

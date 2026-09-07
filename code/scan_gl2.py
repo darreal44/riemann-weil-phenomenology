@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """Zero-side Gram slope for GL(2) lists (elliptic curves).
 
 Prime-side Q for these L-functions is not the Dirichlet assemble()
@@ -32,6 +37,7 @@ CURVES = (
     "maass3",
     "maass4",
     "maass5",
+    "11.0.1.1.1",
 )
 
 

@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Coherence des artefacts de certification a mu=11 : tables lisibles, temoins JSON valides,
 # bornes negatives sur tout sous-ensemble propre, complet non certifie, table <-> JSON coherents.
 # Usage : python3 tests/test_cert_mu11.py   (stdlib seule, <1 s)

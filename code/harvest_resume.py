@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 import mpmath as mp, pickle, time, importlib.util, os, sys
 t0 = time.time(); mp.mp.dps = 15
 spec = importlib.util.spec_from_file_location("kr", "/home/claude/push/remote/code/kronecker.py"); kr = importlib.util.module_from_spec(spec); spec.loader.exec_module(kr)

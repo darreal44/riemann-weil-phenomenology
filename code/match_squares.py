@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # 1-1 assignment of top eigendirections of Q to zero evaluators.
 # Greedy: largest unused cosine, no reuse of eig or zero.
 # Usage: python3 match_squares.py [N0]

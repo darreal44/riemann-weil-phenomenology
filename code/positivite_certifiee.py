@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Positivite de Weil certifiee sur la fenetre mu=11 : Q > 0 par congruence + Gershgorin + Sylvester.
 # Methode : entrees de Q en boules Arb (dps 90, rayons <= 1e-55) ; V = vecteurs propres flottants
 # (mpmath dps 100, precision INDIFFERENTE a la rigueur) ; M = V^T Q V certifiee en boules ;

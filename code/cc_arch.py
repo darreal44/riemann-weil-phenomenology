@@ -1,3 +1,8 @@
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 # Reconstruction de la place archimedienne de Connes-Consani (Selecta 2021) : prolates c=2pi,
 # xi_n, epsilon'(1+), Q eps(rho) via (99), et l'operateur compact K_I (Toeplitz, q -> 1).
 import numpy as np

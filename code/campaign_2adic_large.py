@@ -1,4 +1,9 @@
 #!/usr/bin/env python3
+# Copyright © 2026 Denis Joubert.
+# This file may be distributed under the GNU GPL v3 or later,
+# or the Creative Commons Attribution-ShareAlike 4.0 International
+# License, subject to the binding interpretation in
+# LICENSE.md (section 3).
 """2-adic peak campaign for a multicore box.
 
 Resolves tau_S - tau_arch at Lambda >= 16. The mass at lambda=2 is
@@ -77,6 +82,13 @@ JOBS = {
     ],
     "smoke": [(16, 32), (16, 48)],
     "taper16": [(16, 80), (16, 112), (16, 160)],
+    # Λ≥16, coarser h than Λ=16/cpu=400. Same Gibbs climb, not a Dirac.
+    "lamge16": [
+        (24, 160),
+        (24, 200),
+        (32, 128),
+        (32, 160),
+    ],
 }
 
 
@@ -243,4 +255,7 @@ def main():
 
 
 if __name__ == "__main__":
+    from multiprocessing import freeze_support
+
+    freeze_support()
     main()

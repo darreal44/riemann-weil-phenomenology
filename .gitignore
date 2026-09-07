@@ -7,3 +7,8 @@ __pycache__/
 .venv/
 venv/
 MaassForms.txt
+gp_history.txt
+run.sh
+run2.sh
+# accidental Windows-path dumps (colon replaced)
+C*Usersadmin*
