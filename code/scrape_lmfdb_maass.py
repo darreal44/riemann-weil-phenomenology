@@ -11,7 +11,10 @@ bypass it. Not a harvest of Q. Not Weil.
 
     pip install playwright
     playwright install chromium
-    python code/scrape_lmfdb_maass.py 1.0.1.1.1 11.0.1.1.1
+    python code/scrape_lmfdb_maass.py 1.0.1.1.1 1.0.1.2.1 1.0.1.3.1
+    python code/scrape_lmfdb_maass.py 11.0.1.1.1
+
+Default labels are Booker–Then Table 1, not lexicographic 1.0.1.10.1.
 
 Writes code/zeros_<label>.txt for import_maass_zeros.py.
 """
@@ -52,7 +55,9 @@ def main() -> int:
     except ImportError:
         sys.exit("pip install playwright && playwright install chromium")
 
-    labels = sys.argv[1:] or ["1.0.1.1.1"]
+    from maass_table1 import ALIAS
+
+    labels = sys.argv[1:] or list(ALIAS.values())
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=False)
         page = browser.new_page()
