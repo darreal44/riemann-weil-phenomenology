@@ -193,7 +193,7 @@ the \(N\) we ran and slowly growing in \(N\). The statement
 | \(\det(A-P)>0\) by estimates keeping every \(n\le\mu\) | not proved |
 | edge remainder sum dominated by the jump, uniformly in \(v_0\) | not proved |
 | 3-point Gauss of A(v) on [0,1] | arithmetic check (`notes/av-gauss.md`); Cauchy |a^{(6)}| two-panel even (`notes/av-cauchy-a6.md`) and odd (`notes/av-cauchy-odd.md`) |
-| flint-free A(v), Q(v)>0 ball | judged (`code/av_enclose.py`, `report/Q-v-ball.md`); chord comparison still open |
+| flint-free A(v), Q(v)>0 ball | judged (`av_enclose.py` trap; `av_enclose_cauchy.py` Gauss+Cauchy tail); chord comparison still open |
 | identity orbit vanishes at \(\Lambda=1\); two logarithms | proved (`notes/log2-log3-step.md`) |
 | interior primes on \((\log 2,\log 3]\) = \(\{2\}\) | proved (`notes/log2-log3-step.md`) |
 | Galerkin \(V_N\) takes \(W_{\log 3}\) | false (Courant, `notes/pw-log3.md`) |
