@@ -408,6 +408,11 @@ Q on first 4 discrete Slepian projected into V_12^cos, μ=5:
 Avoids the pinched 2-plane direction; still inside V_12^cos.
 notes/session-route-B-slepian.md. Not W_L. Not RH.
 
+**Route 2b PSWF Nyström (2026-09-08).**
+True PSWF (λ_K=0.98,0.75,0.24,0.025 at c=π): Q μ=5 χ₃ λmin=−0.52
+same sign as the 401-grid (−0.42). Not a grid artifact.
+notes/session-route-2-pswf.md. Route 2 closed. Not W_L. Not RH.
+
 **Route 2 grid prolates (2026-09-08).**
 True shift θ on 401-point Slepians, μ=5: λmin(Q)=−0.42 (χ₃, c=2π)
 vs +1.4e-5 on cosine Q4. Integrator OK vs θ_hat (5e-3).
