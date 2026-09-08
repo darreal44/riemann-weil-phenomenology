@@ -16,3 +16,5 @@ run.sh
 run2.sh
 # accidental Windows-path dumps (colon replaced)
 C*Usersadmin*
+_tmp_*
+_split/
