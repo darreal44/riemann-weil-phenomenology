@@ -392,6 +392,16 @@ Q_h(χ₃) and G_h(χ₃) both crush to 0⁺ from μ=3 to 17
 dust. S(μ,χ₃) oscillates O(1). Zeros match Odlyzko / γ₁(χ₃).
 Not W_L. Not c_L*. Not RH.
 
+**Odd sector / Schur / mpmath (2026-09-08).**
+Q_- (sine hats) is *more* positive than Q_+ at μ=5
+(χ₃ 1.9e-3 vs 1.4e-5); ground state ≈ s₁, one node.
+Schur S=A−BC⁻¹Bᵀ carries the sign (C ≻ 0, Haynsworth);
+at μ=11, corr ≈ A and S is a 10⁻⁸ residual, still PD.
+mpmath dps=40 confirms S(χ₃,μ=11)=+1.38e-8; quadrature
+error ≪ 10⁻¹⁴. Drop-T₃ on χ₅ is the only ν₋=1 seen.
+Notes: session-q-odd-sector.md, session-q-schur-S.md,
+session-q-mpmath-quad.md. Not W_L. Not c_L*. Not RH.
+
 **HEAD=3 (2026-09-08).** The χ₃ sliver of Neumann
 S_lo at L=log 3 was the frozen 2-plane, not Off.
 Same majorant s1_up=π/2+|w2|+crumbs:
