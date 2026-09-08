@@ -376,6 +376,17 @@ replace the mesh. KILL. One v.
 
 ## 8b. What remains of the (log 2, log 3] step
 
+**HEAD=3 (2026-09-08).** The χ₃ sliver of Neumann
+S_lo at L=log 3 was the frozen 2-plane, not Off.
+Same majorant s1_up=π/2+|w2|+crumbs:
+S_lo(χ₃)=−0.008 at HEAD=2, +0.004 at HEAD=3,
++0.007 at HEAD=4 (`report/head3-chi3.md`).
+χ₅, χ₈, χ₄, χ₃ all pass at HEAD=4.
+`step_is_taken()` stays False: finite H at one L,
+not W_log3 and not (∀ L). N_NEAR, the joint Off
+norm, and the 1/n trough envelope do not reopen
+the 2-plane hole.
+
 The Paley–Wiener class of type \(\log 3\) is not certified
 for every χ. Every primitive χ already in `scan_s`
 takes at μ=3 by Neumann (`notes/ql-class-mu3.md`,
