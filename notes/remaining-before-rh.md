@@ -376,6 +376,14 @@ replace the mesh. KILL. One v.
 
 ## 8b. What remains of the (log 2, log 3] step
 
+**Prime powers in Q_window (2026-09-08).**
+`Q_window` now subtracts every n=p^k < μ, not only primes.
+μ=3 still matches Q_nm (only 2). At μ=5, n∈{2,3,4}.
+χ₃ L=log 5 HEAD=4: λmin(H) was −1.6e-4 (primes only),
+now +1.4e-5; s_exact +8e-6. The μ=5 "death" of H
+was the missing 2² atom. S_lo stays negative (ρ≈0.90:
+the majorant grows with T4). Not W_log5. Not RH.
+
 **HEAD=3 (2026-09-08).** The χ₃ sliver of Neumann
 S_lo at L=log 3 was the frozen 2-plane, not Off.
 Same majorant s1_up=π/2+|w2|+crumbs:
