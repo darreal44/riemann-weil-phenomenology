@@ -70,8 +70,14 @@ are already on disk. `python code/maass_zeros_an.py --fetch-R`
 and `--fetch` (gitignored sqlite: all 35416 a_n as
 numeric text + float64, ~1.6 GB). AFE zeros are **not**
 filled in: `--check` misses Table 1 even-form γ₁
-(maass2 finds ~17.7 instead of 5.105). Table 1 stays
-Booker–Then. Not Weil.
+(maass2 finds ~17.7 instead of 5.105). |S| of 1000 a_n is a
+0.02 locator, not Booker–Then's last digit.
+`code/maass_booker.py` uses the LMFDB/Zenodo encoding
+(symmetry 0 = even cosine, 1 = odd sine). 1.0.1.1.1 is odd:
+the sine series is automorphic, and the Booker ray Mellin at
+s=2 equals γ_θ L to 10^{-6}. The Booker split of that f
+isolates Table 1 γ₁ on a bracket of width ≤ 10^{-13}. Table 1
+digits stay Booker–Then. Not Weil.
 Every shipped `maass_an_*.json` matches the pkl on N, R, symmetry,
 Fricke (`tests/test_lmfdb_zenodo.py`).
 

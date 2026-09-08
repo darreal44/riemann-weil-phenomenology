@@ -26,82 +26,69 @@ the five Table 1 first zeros, but the tail is a slow bias of
 size about 0.02. That locator is not the bound. Those minima
 are not certified zeros.
 
-The Fourier series of an even Maass form is
-f(x+iy)=√y ∑ a_n K_{iR}(2π n y) cos(2π n x), with a_n the
-Hecke eigenvalues (a_1=1, Hecke relations hold on the replica
-coefficients). Flint's K_{iR} matches the integral
-∫ e^{-x cosh t} cos(R t) dt. Termwise Mellin then gives, for
-Re s>1,
+LMFDB/Zenodo encode the Maass symmetry as 0 = even (cosine)
+and 1 = odd (sine). 1.0.1.1.1 has symmetry 1. The LMFDB page
+for 1.1 says odd. The Fourier series that is automorphic under
+z ↦ −1/z with the replica a_n is the sine expansion
 
-    4 ∫_0^∞ f(iy) y^{s-1/2} dy/y = Γ_R(s+iR) Γ_R(s-iR) L(s).
+    f(x+iy) = √y ∑_{n≥1} a_n K_{iR}(2π n y) sin(2π n x).
 
-On 1.0.1.1.1 at s=2 this identity holds to about 10^{-4}
-(`code/maass_booker.py`, `tests/test_maass_booker.py`). No
-Fricke is used there: the Dirichlet series converges, and the
-integral is taken on (0.05,10) with 250 coefficients.
+At four generic test points the ratio f(z)/f(−1/z) is 1 to a
+relative ball of size 10^{-9} through 10^{-11}. The cosine
+series with the same a_n is not automorphic: the axis identity
+y ∑ a_n K_{iR}(2π n y) = ∑ a_n K_{iR}(2π n /y) fails by a
+frozen factor of about 10.24 from n=12 through n=1000, and
+off-axis ratios are O(1) and not 1. Extra a_n cannot close
+that gap. 1.0.1.3.1 (symmetry 0) is the other way around:
+cosine is automorphic, sine is not. The catalog comment that
+treated symmetry>0 as even is the wrong encoding for the
+Fourier expansion; `code/maass_booker.py` uses the LMFDB
+integer as ε.
 
-On the critical line the same identity is true by continuation,
-but |γ(1/2+it)| is about 10^{-12} at t=17, while f(iy) for
-y≥1 is a decaying envelope of size 10^{-7}. A trapezoid of
-that envelope is size 10^{-8} and swamps Λ=γ L. That is why
-Booker rotates the ray (θ with cos θ ≲ (4+|t²-r²|)^{-1/2})
-and evaluates f only after moving the point into the
-fundamental domain, where the series is accurate, and works
-with Λ_θ which stays O(1). Prototypes of that rotation, with
-and without pullback, do not yet change sign at Table 1 γ₁.
-Until they do, we do not isolate new zeros and we do not
-replace Table 1.
+Booker (2.3) for odd ε=1 is the termwise sine of
+2π n u sin θ, which equals −f(i e^{iθ} u) because the
+geometric point has x = −u sin θ. The ray integrand in the
+evaluator is that termwise sum, equivalently (−1)^ε times
+the automorphic pullback. Then, for Re s>1,
+
+    c_θ(s) ∫_0^∞ f_ray(u) u^{s-1/2} du/u = γ_θ(s) L(s),
+
+with c_θ = 4 / (2π i tan θ) and γ_θ the odd Booker factor
+(i^{-1} (cos θ)^{1/2-s} Γ_R(s+1±iR) ₂F₁). On 1.0.1.1.1 at
+s=2, θ=0.25 this identity holds to about 4·10^{-6}
+(`check_s2_identity`). The same ratio holds for the Booker
+split at u≥1 of the automorphic sine series, because that
+series *is* f. (The cosine-in-FD-then-pullback function was
+automorphic by construction and was not γ_θ L: its s=2
+ratio depended on θ, about 1.75 at θ=0.25.)
 
 Flint's `hypgeom_2f1` is unusable for the Maass parameters
 (it returns ~10^5 where the Gauss series is 0.88). The series
-in `hyp2f1_series` is the right ₂F₁. With that, the rotated
-termwise identity at s=2, θ=0.25 holds to about 10^{-3}:
+in `hyp2f1_series` is the right ₂F₁, with Abramowitz 15.3.7
+when |z|≥0.72. At Booker's large θ (cos θ ≲ (4+|t²-r²|)^{-1/2}
+≈ 0.07 at t=17) the split needs a fine grid (nv ≳ 800,
+vmax ≳ 5, nmax ≳ 60) or the ratio at s=2 drops to ~0.74 from
+truncation, not from a wrong expansion. A moderate ray
+θ=1.0 is accurate at s=2 to 10^{-6} and |γ_θ| is large
+enough on the critical line that Λ_θ is O(10^{-9}), not
+swamped.
 
-    4 ∫ f(ie^{iθ} u) u^{s-1/2} du/u = γ_θ(s) L(s).
+On that ray, Re Λ_θ(1/2+it) is positive at 17.024941 and
+negative at 17.024943, and the evaluation ball at Table 1
+γ₁=17.0249420759926 contains 0 to 10^{-22} once dps=40.
+`isolate_maass1_g1` bisects until |b-a|≤10^{-13} with
+opposite rigorous signs and 0 outside both endpoint balls.
+The balls enclose rounding of the finite trapezoid and of
+the FD series. The omitted n-tail in the FD (n>48, y≳√3/2)
+and the u-tail (u>e^{4.5}) are exponentially smaller than
+10^{-13} in the location. The trapezoid remainder is not a
+complete MPFI enclosure of the infinite integral; it is the
+Booker–Then *rule* applied to this truncated Λ_θ, and it
+recovers their γ₁. Table 1 digits stay their MPFI list.
 
-That is Booker (2.3) without Fricke, integrating the Fourier
-series on the ray, not the pullback to the fundamental domain.
-
-The cosine series is the LMFDB knowl and Booker (n≥1, no extra
-2). In the fundamental domain it agrees with its S-pullback
-(`f_auto`). Off the FD the raw series is not equal to
-`f_auto(-1/z)`: at y=2 versus y=1/2 the ratio is about 10, with
-tight flint balls, so this is not a truncation or a working-precision
-loss. Extra a_n cannot close that gap (at y=1/2 the series has
-already converged). PARI `lfuncreate` cannot take imaginary
-Γ-shifts (`α_j` must be rational), so it is not this evaluator.
-
-Booker's Λ_θ is the Mellin of the *automorphic* f, with θ large
-enough that |γ_θ| stays O(1) (cos θ ≲ (4+|t²-r²|)^{-1/2}). The
-split at u≥1 of `f_auto` agrees with the unsplit Mellin of
-`f_auto` along the whole ray, and Λ_θ(1/2+it) is real, as in
-the paper. That function is not γ_θ L: at s=2 the ratio
-depends on θ (about 1.75 at θ=0.25, 1.12 at θ=1). The termwise
-Mellin of the raw series on the same ray is γ_θ L to 10^{-4}.
-Around Table 1 γ₁ the automorphic Λ_θ does not change sign.
-
-A Mellin–Barnes AFE built from γ and a_n, with even functional
-equation and a Gaussian e^{(z/A)²} on the contour, can be tuned
-so that Λ(2)/γ(2)L(2) is 1 to a few 10^{-3} (A≈2.6). That same
-width does not vanish at Table 1 γ₁ (|Z|≈1.13 at the first zero,
-and |Z| stays O(1) at the next four). A narrower Gaussian (A=1)
-does change sign about 0.003 above γ₁, but then Λ(2) is only
-0.46 γL — the same 0.02-class locator as |S|, not the bound.
-One real parameter cannot do both jobs. PARI `lfuncreate` still
-cannot take imaginary Γ-shifts.
-
-So the guarantee in force today is Booker–Then's own MPFI
-list for those five forms (`zeros_maass{1..5}.txt`, stored as
-`zeros_hp`). The isolation helper in `maass_booker.py` is the
-rule we will apply to any later computation; it refuses a
-bracket whose endpoint balls contain 0. Independent
-recertification of Table 1 waits on an exponentially convergent
-representation of the *termwise* Mellin (the one that equals
-γL at s=2) on Re s=1/2, not of the S-extension of the FD
-series, and not of a Gaussian AFE fitted at s=2. The remaining
-rewrite of the expansion is the identity
-y ∑ a_n K_{iR}(2π n y) = ∑ a_n K_{iR}(2π n /y), which fails
-by a factor of about 10 at y=2 with tight flint balls. Not Weil.
+A Mellin–Barnes AFE and the even-axis Fricke split with
+w=−1 are not this evaluator. PARI `lfuncreate` still cannot
+take imaginary Γ-shifts. Not Weil.
 
 Cite: Booker–Then 2018; LMFDB Collaboration 2026,
-`notes/lmfdb.bib`.
+`notes/lmfdb.bib`. Zenodo 15490636 (symmetry 0=even, 1=odd).
