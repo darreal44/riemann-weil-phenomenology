@@ -23,7 +23,9 @@ import sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-from maass_table1 import ALIAS, LABEL_TO_SHORT, resolve  # noqa: E402
+_PCG = os.path.join(os.path.dirname(HERE), "pre-compute-gamma", "code")
+if os.path.isdir(_PCG):
+    sys.path.insert(0, _PCG)
 
 CURVES = (
     "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
@@ -34,29 +36,20 @@ CURVES = (
     "11a1_chi5",
     "sym2_11a1",
     "sym2_delta",
-    "maass1",
-    "maass2",
-    "maass3",
-    "maass4",
-    "maass5",
-    *ALIAS.values(),
-    "11.0.1.1.1",
 )
 
 
 def zeros(name):
-    # Table 1 γ live on the rigor pkl (load_zeros). File fallback
-    # zeros_maass2_weyl.pkl, not zeros_1.0.1.2.1. 1.0.1.10.1 is another form.
-    try:
-        from lmfdb_encode import load_zeros
+    if os.path.isdir(_PCG):
+        try:
+            from tools import load_zeros
 
-        z = load_zeros(name)
-        if getattr(z, "size", 0):
-            return np.asarray(z, dtype=float)
-    except (KeyError, FileNotFoundError, OSError):
-        pass
-    short = LABEL_TO_SHORT.get(resolve(name), name)
-    p = os.path.join(HERE, f"zeros_{short}_weyl.pkl")
+            z = load_zeros(name)
+            if getattr(z, "size", 0):
+                return np.asarray(z, dtype=float)
+        except (ImportError, KeyError, FileNotFoundError, OSError):
+            pass
+    p = os.path.join(HERE, f"zeros_{name}_weyl.pkl")
     return np.array(sorted(float(x) for x in pickle.load(open(p, "rb"))))
 
 
@@ -100,20 +93,20 @@ def gram(name, mu, NB):
 
 def main():
     name = sys.argv[1] if len(sys.argv) > 1 else "11a1"
-    from maass_table1 import is_maass_name
-    from lmfdb_encode import load_zeros
+    try:
+        from maass_table1 import is_maass_name
+    except ImportError:
+        def is_maass_name(name):
+            return None
 
     maass = is_maass_name(name)
     if maass:
-        z = load_zeros(maass)
-        if getattr(z, "size", 0):
-            name = maass
-        else:
+        if not os.path.isdir(_PCG):
             sys.exit(
-                f"{name} is Maass {maass}: no L-zeros (LMFDB: not computed).\n"
-                f"  harvest_gl2 is elliptic (11a1), not Maass.\n"
-                f"  Q: python code/scan_q_maass.py {maass} 6 12 25"
+                f"{name} is Maass: init the private submodule\n"
+                f"  git submodule update --init pre-compute-gamma"
             )
+        name = maass
     elif name not in CURVES:
         sys.exit(f"unknown curve {name}, have {CURVES}")
     elif not os.path.exists(os.path.join(HERE, f"zeros_{name}_weyl.pkl")):

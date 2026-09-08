@@ -1,0 +1,3 @@
+[submodule "pre-compute-gamma"]
+	path = pre-compute-gamma
+	url = https://github.com/djoubertthot/pre-compute-gamma.git
