@@ -408,6 +408,12 @@ Q on first 4 discrete Slepian projected into V_12^cos, μ=5:
 Avoids the pinched 2-plane direction; still inside V_12^cos.
 notes/session-route-B-slepian.md. Not W_L. Not RH.
 
+**Two Grams after p^k (2026-09-08).**
+Writings identified: Q_window = prime-side Weil (p^k in,
+arch = digamma). Matrices Q_h = G_h still open (= RH
+on the window). notes/two-grams-after-pk.md.
+Not W_L. Not RH.
+
 **Route 2b PSWF Nyström (2026-09-08).**
 True PSWF (λ_K=0.98,0.75,0.24,0.025 at c=π): Q μ=5 χ₃ λmin=−0.52
 same sign as the 401-grid (−0.42). Not a grid artifact.
