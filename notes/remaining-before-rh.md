@@ -402,6 +402,12 @@ error ≪ 10⁻¹⁴. Drop-T₃ on χ₅ is the only ν₋=1 seen.
 Notes: session-q-odd-sector.md, session-q-schur-S.md,
 session-q-mpmath-quad.md. Not W_L. Not c_L*. Not RH.
 
+**Route B Slepian-in-cosine (2026-09-08).**
+Q on first 4 discrete Slepian projected into V_12^cos, μ=5:
+χ₃ λmin 1.43e-5 (cosine Q4) → 5.80e-3 at c=2π (×400).
+Avoids the pinched 2-plane direction; still inside V_12^cos.
+notes/session-route-B-slepian.md. Not W_L. Not RH.
+
 **Three Off tries (2026-09-08).**
 (1) no joint ess cap: tail keeps Hartman π/2.
 (2) M=1024 χ₃ |λ|=0.930, Δ=0.150, C=4.81 (C not settled).
