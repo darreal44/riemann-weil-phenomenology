@@ -54,14 +54,32 @@ def wp(d: int, p: int) -> float:
     return kronecker(d, p) * math.log(p) / math.sqrt(p)
 
 
+def interior_atoms(mu: float) -> list[tuple[int, int, int]]:
+    """Pairs (n, p, k) with n = p^k and 1 < n < μ. Includes primes."""
+    hi = int(math.floor(float(mu) - 1e-15))
+    out: list[tuple[int, int, int]] = []
+    for p in interior_primes(mu):
+        n, k = p, 1
+        while n <= hi:
+            out.append((n, p, k))
+            n *= p
+            k += 1
+    return out
+
+
+def wn(d: int, p: int, k: int) -> float:
+    """Λ(p^k) χ(p^k) / p^{k/2}."""
+    return (kronecker(d, p) ** k) * math.log(p) / (p ** (0.5 * k))
+
+
 def Q_window(
     n: int, m: int, q: int, s0: float, d: int, L: float, mu: float
 ) -> float:
-    """Arch minus every interior prime. μ=3 recovers Q_nm."""
+    """Arch minus every interior prime power. μ=3 recovers Q_nm (only 2)."""
     arch = Q_nm(n, m, q, s0, 0.0, L)
     acc = arch
-    for p in interior_primes(mu):
-        acc -= wp(d, p) * theta_hat(n, m, math.log(p), L)
+    for _n, p, k in interior_atoms(mu):
+        acc -= wn(d, p, k) * theta_hat(n, m, k * math.log(p), L)
     return acc
 
 
@@ -84,8 +102,8 @@ def m_c_of(h: int) -> int:
 
 def t_atoms(d: int, mu: float, L: float) -> float:
     s = 0.0
-    for p in interior_primes(mu):
-        s += abs(wp(d, p)) * theta_op_bound(math.log(p), L)
+    for _n, p, k in interior_atoms(mu):
+        s += abs(wn(d, p, k)) * theta_op_bound(k * math.log(p), L)
     return s
 
 
@@ -119,7 +137,7 @@ def row_at(name: str, h: int, mu: float = MU, L: float = L) -> dict:
     )
     rho_far = off_far / qmin_far
     b2 = 0.0
-    weights = [wp(d, p) for p in interior_primes(mu)]
+    weights = [wn(d, p, k) for _n, p, k in interior_atoms(mu)]
     for n in range(h, n_near):
         qnn = Q(name, n, n, mu, L)
         for m in range(n_near, m_c):
