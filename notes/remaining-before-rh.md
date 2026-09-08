@@ -408,6 +408,12 @@ Q on first 4 discrete Slepian projected into V_12^cos, μ=5:
 Avoids the pinched 2-plane direction; still inside V_12^cos.
 notes/session-route-B-slepian.md. Not W_L. Not RH.
 
+**Route 2 grid prolates (2026-09-08).**
+True shift θ on 401-point Slepians, μ=5: λmin(Q)=−0.42 (χ₃, c=2π)
+vs +1.4e-5 on cosine Q4. Integrator OK vs θ_hat (5e-3).
+The ×400 of Route B was the cosine shadow, not the prolates.
+notes/session-route-2-prolate.md. Not W_L. Not a hole. Not RH.
+
 **Route B closed (2026-09-08).** Method note, not a take. The
 fragile object was V_4^cos, not the Weil form. Further c or
 h stays in V_N^cos. A genuine continuous-prolate θ_nm is a
