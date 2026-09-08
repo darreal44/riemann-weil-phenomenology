@@ -11,7 +11,8 @@ of scan_s.py (wrong Gamma, wrong a_p). This script uses only the
 harvested zeros — the same Gram as report/gram_mode_*.json.
 
     python3 code/scan_gl2.py 11a1 22 36 50
-    python3 code/scan_gl2.py 11a1 38 66 42
+    python3 code/scan_gl2.py maass1 6 12 25 --prec 1e-12
+    python3 code/scan_gl2.py 1.0.1.7.1 6 12 25 --prec 1e-12 --yes
 """
 from __future__ import annotations
 
@@ -39,12 +40,52 @@ CURVES = (
 )
 
 
-def zeros(name):
+def _pop_flag(argv, name, cast=float, default=None):
+    out = list(argv)
+    val = default
+    if name in out:
+        i = out.index(name)
+        val = cast(out[i + 1])
+        del out[i : i + 2]
+    return val, out
+
+
+def _pop_bool(argv, name):
+    out = list(argv)
+    present = name in out
+    if present:
+        out.remove(name)
+    return present, out
+
+
+_OPTS = {"yes": False, "complete_section": True}
+
+
+def zeros(name, prec=None, T=None):
     if os.path.isdir(_PCG):
         try:
-            from tools import load_zeros
+            from tools import load_zeros, zeros_at
 
-            z = load_zeros(name)
+            if prec is not None:
+                z, meta = zeros_at(
+                    name,
+                    prec=float(prec),
+                    T=T,
+                    yes=_OPTS["yes"],
+                    persist=True,
+                    complete_section=_OPTS["complete_section"],
+                )
+                if meta.get("refused"):
+                    sys.exit(
+                        "zeros_at refused (pass --yes after reading the estimate)"
+                    )
+                print(
+                    f"  zeros source={meta.get('source')} asked={meta.get('prec_asked'):g} "
+                    f"got={meta.get('prec_got'):g} computed={meta.get('computed')} n={meta.get('n')}",
+                    flush=True,
+                )
+            else:
+                z = load_zeros(name)
             if getattr(z, "size", 0):
                 return np.asarray(z, dtype=float)
         except (ImportError, KeyError, FileNotFoundError, OSError):
@@ -61,9 +102,10 @@ def hat(g, L, om):
     return v
 
 
-def gram(name, mu, NB):
-    z = zeros(name)
+def gram(name, mu, NB, prec=None):
     L = math.log(mu)
+    Tneed = 2.0 * math.pi * NB / L * 1.1
+    z = zeros(name, prec=prec, T=Tneed)
     om = np.array([2 * math.pi * n / L for n in range(NB + 1)])
     zz = z[z < om[-1] * 1.1]
     Ph = np.array([hat(g, L, om) for g in zz])
@@ -92,7 +134,15 @@ def gram(name, mu, NB):
 
 
 def main():
-    name = sys.argv[1] if len(sys.argv) > 1 else "11a1"
+    argv = sys.argv[1:]
+    prec, argv = _pop_flag(argv, "--prec")
+    yes, argv = _pop_bool(argv, "--yes")
+    if not yes:
+        yes, argv = _pop_bool(argv, "-y")
+    no_complete, argv = _pop_bool(argv, "--no-complete")
+    _OPTS["yes"] = yes
+    _OPTS["complete_section"] = not no_complete
+    name = argv[0] if argv else "11a1"
     try:
         from maass_table1 import is_maass_name
     except ImportError:
@@ -111,13 +161,13 @@ def main():
         sys.exit(f"unknown curve {name}, have {CURVES}")
     elif not os.path.exists(os.path.join(HERE, f"zeros_{name}_weyl.pkl")):
         sys.exit(f"missing zeros_{name}_weyl.pkl — harvest_gl2 first")
-    if len(sys.argv) >= 5:
-        windows = [(float(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))]
+    if len(argv) >= 4:
+        windows = [(float(argv[1]), int(argv[2]), int(argv[3]))]
     else:
         windows = [(22.0, 36, 50), (38.0, 66, 42)]
     rows = []
     for mu, NB, _dps in windows:
-        lam0, ell = gram(name, mu, NB)
+        lam0, ell = gram(name, mu, NB, prec=prec)
         rows.append((mu, ell[0], lam0))
     if len(rows) >= 2:
         s = (rows[1][1] - rows[0][1]) / (rows[1][0] - rows[0][0])

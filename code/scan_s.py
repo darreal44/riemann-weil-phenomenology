@@ -172,10 +172,19 @@ def assemble(name, mu, NB, dps, DEG=12):
 
 
 if __name__ == '__main__':
-    name = sys.argv[1]
+    argv = list(sys.argv[1:])
+    if "--prec" in argv:
+        i = argv.index("--prec")
+        print(
+            f"note: scan_s is Dirichlet Q; --prec={argv[i+1]} does not apply. "
+            "Maass Gram: python code/scan_gl2.py ... --prec ...",
+            flush=True,
+        )
+        del argv[i : i + 2]
+    name = argv[0]
     windows = [(5.5, 24, 40), (11.0, 32, 45)]
-    if len(sys.argv) >= 5:
-        windows = [(float(sys.argv[2]), int(sys.argv[3]), int(sys.argv[4]))]
+    if len(argv) >= 4:
+        windows = [(float(argv[1]), int(argv[2]), int(argv[3]))]
     rows = []
     for mu, NB, dps in windows:
         lam0, ell, dt = assemble(name, mu, NB, dps)
