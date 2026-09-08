@@ -130,6 +130,36 @@ def test_isolate_maass1_g1_table1():
     assert float(rem.mid()) < 1e-20, rem
 
 
+def test_harvest_maass1_first_two_match_table1():
+    """Enclosed harvest finds Table 1 γ1 and γ2 of maass1, |b-a|≤1e-13."""
+    from lmfdb_encode import load_zeros
+
+    z = load_zeros("maass1")
+    out = mb.harvest_form("maass1", T=20.0, tmin=16.0, dt=0.15, theta=1.0)
+    ok = [r for r in out["zeros"] if r.get("certified")]
+    assert len(ok) >= 2, out["n_certified"]
+    assert abs(ok[0]["mid"] - float(z[0])) < 1e-12
+    assert abs(ok[1]["mid"] - float(z[1])) < 1e-12
+    assert ok[0]["width"] <= 1e-13 and ok[1]["width"] <= 1e-13
+
+
+def test_enclosed_g1_matches_table1():
+    """Harvested enclosed lists start at Booker–Then γ₁ (L-zeros, not gamma-dips)."""
+    from lmfdb_encode import load_zeros
+
+    root = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "code")
+    for name in ("maass1", "maass2", "maass3", "maass4", "maass5"):
+        path = os.path.join(root, f"zeros_{name}_enclosed.txt")
+        assert os.path.exists(path), path
+        mids = [
+            float(ln)
+            for ln in open(path, encoding="utf-8")
+            if ln.strip() and ln.strip()[0].isdigit()
+        ]
+        z = load_zeros(name)
+        assert abs(mids[0] - float(z[0])) < 1e-10, (name, mids[0], float(z[0]))
+
+
 def test_remainder_tails_are_below_last_digit():
     """n-tail in the FD and u-tail at vmax=4.5, θ=1 are far below 10^{-13}."""
     from flint import acb

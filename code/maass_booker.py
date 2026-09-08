@@ -490,17 +490,25 @@ def check_s2_rotated(theta: float = 0.25, dps: int = 16, eps: int | None = None)
     }
 
 
-def load_maass1(dps: int = 18):
-    """1.0.1.1.1 with replica digits (mpf nstr, not str() at dps=15)."""
+def load_maass(label: str = "1.0.1.1.1", dps: int = 18):
+    """Replica R, a_n as balls, and LMFDB ε (0 even / 1 odd)."""
     import mpmath as mp
 
     from lmfdb_encode import load_an_hp, load_R_hp
+    from maass_table1 import is_maass_name, resolve
 
     ctx.dps = dps
-    Rmpf = load_R_hp("1.0.1.1.1")
-    anmpf = load_an_hp("1.0.1.1.1")
+    lab = resolve(label) if is_maass_name(label) else label
+    Rmpf = load_R_hp(lab)
+    anmpf = load_an_hp(lab)
     R = _widen(acb(mp.nstr(Rmpf, 80, strip_zeros=False)), arb("1e-79"))
     an = [_widen(acb(mp.nstr(a, 40, strip_zeros=False)), arb("1e-39")) for a in anmpf]
+    return R, an, form_eps(lab)
+
+
+def load_maass1(dps: int = 18):
+    """1.0.1.1.1 with replica digits (mpf nstr, not str() at dps=15)."""
+    R, an, _ = load_maass("1.0.1.1.1", dps=dps)
     return R, an
 
 
@@ -590,16 +598,20 @@ def _k_euler_polys(m: int, nu: acb):
     return UW
 
 
-def _sin_euler_polys(m: int):
-    """D^j sin = α_j(ph) sin + β_j(ph) cos, D ph = ph."""
+def _trig_euler_polys(m: int, eps: int = 1):
+    """D^j trig = α_j(ph) sin + β_j(ph) cos, D ph = ph. ε=1 sine, ε=0 cosine."""
     X = [acb(0), acb(1)]
-    AB = [([acb(1)], [acb(0)])]
+    AB = [([acb(0)], [acb(1)])] if eps == 0 else [([acb(1)], [acb(0)])]
     for _ in range(m):
         a, b = AB[-1]
         an = _poly_add(_poly_euler(a), _poly_mul([-c for c in b], X))
         bn = _poly_add(_poly_mul(a, X), _poly_euler(b))
         AB.append((an, bn))
     return AB
+
+
+def _sin_euler_polys(m: int):
+    return _trig_euler_polys(m, eps=1)
 
 
 def _k0_bound(x: acb) -> arb:
@@ -652,11 +664,12 @@ def _psi_deriv_bounds(v: arb, order: int, an, R: acb, theta: float, nmax: int, U
     return bounds
 
 
-def max_psi_derivs(theta: float, an, R: acb, vmax: float, order: int, nmax: int, npts: int = 80) -> list[arb]:
+def max_psi_derivs(theta: float, an, R: acb, vmax: float, order: int, nmax: int,
+                   npts: int = 80, eps: int = 1) -> list[arb]:
     """Max of |D^j ψ| majorants on a covering of [0, vmax] by arb balls."""
     nu = R * acb(0, 1)
     UW = _k_euler_polys(order, nu)
-    AB = _sin_euler_polys(order)
+    AB = _trig_euler_polys(order, eps=eps)
     maxb = [arb(0)] * (order + 1)
     hv = vmax / npts / 2
     for i in range(npts + 1):
@@ -688,7 +701,7 @@ def em_integral_remainder(vmax: float, nv: int, m: int, gbound: arb) -> arb:
 
 
 def lambda_remainder_radius(t: float, theta: float, R: acb, vmax: float, nv: int,
-                            psi_max: list[arb], m: int = 6) -> arb:
+                            psi_max: list[arb], m: int = 6, eps: int = 1) -> arb:
     """Radius to add to Λ_θ(1/2+it) for EM remainder + u-tail (two dual copies).
 
     n-tail is already on each grid value of f. On the critical line |u^{±it}|=1.
@@ -699,7 +712,7 @@ def lambda_remainder_radius(t: float, theta: float, R: acb, vmax: float, nv: int
     Irem = em_integral_remainder(vmax, nv, m, gbound)
     utail = u_tail_integrand(vmax, theta)
     s = acb("0.5") + acb(0, 1) * acb(str(t))
-    cs = abs(c_theta(s, theta, eps=1)).real
+    cs = abs(c_theta(s, theta, eps=eps)).real
     return cs * arb(2) * (Irem + utail)
 
 
@@ -720,13 +733,13 @@ def isolate_maass1_g1(dps: int = 40, theta: float = 1.0, nmax: int = 80,
     F, U, dv = ray_auto_grid(
         theta, an, R, nmax=nmax, vmax=vmax, nv=nv, w_fricke=1.0, eps=1
     )
-    psi_max = max_psi_derivs(theta, an, R, vmax, order=12, nmax=nmax, npts=80)
-    rem0 = lambda_remainder_radius(g1, theta, R, vmax, nv, psi_max, m=6)
+    psi_max = max_psi_derivs(theta, an, R, vmax, order=12, nmax=nmax, npts=80, eps=1)
+    rem0 = lambda_remainder_radius(g1, theta, R, vmax, nv, psi_max, m=6, eps=1)
 
     def Z(t):
         s = acb("0.5") + acb(0, 1) * acb(str(t))
         Lam = Lambda_theta_booker(s, F, U, dv, theta, eps=1)
-        rad = lambda_remainder_radius(t, theta, R, vmax, nv, psi_max, m=6)
+        rad = lambda_remainder_radius(t, theta, R, vmax, nv, psi_max, m=6, eps=1)
         return _widen(Lam, rad).real
 
     rec = isolate_zero(Z, g1 - half_width, g1 + half_width, max_width=1e-13, steps=80)
@@ -741,6 +754,104 @@ def isolate_maass1_g1(dps: int = 40, theta: float = 1.0, nmax: int = 80,
     rec["n_tail_fd"] = series_n_tail(math.sqrt(3.0) / 2.0, 19)
     rec["u_tail"] = u_tail_integrand(vmax, theta)
     return rec
+
+
+def harvest_form(label: str = "maass1", T: float = 115.0, tmin: float = 0.4,
+                 dt: float = 0.1, theta: float = 1.0, dps: int = 40,
+                 vmax: float = 4.5, nmax: int = 80, nv: int | None = None) -> dict:
+    """Scan Re Λ_θ for sign changes, then isolate each zero with enclosed balls.
+
+    Does not overwrite Booker–Then zeros_maass*.txt. Not Weil.
+    """
+    from maass_table1 import is_maass_name, resolve
+
+    lab = resolve(label) if is_maass_name(label) else label
+    if nv is None:
+        nv = max(1200, int(90 * T))
+    ctx.dps = dps
+    R, an, eps = load_maass(lab, dps=dps)
+    print(f"{lab} eps={eps} nv={nv} theta={theta} T={T}", flush=True)
+    F, U, dv = ray_auto_grid(
+        theta, an, R, nmax=nmax, vmax=vmax, nv=nv, w_fricke=1.0, eps=eps
+    )
+    psi_max = max_psi_derivs(
+        theta, an, R, vmax, order=12, nmax=nmax, npts=60, eps=eps
+    )
+
+    def Z_raw(t):
+        s = acb("0.5") + acb(0, 1) * acb(str(t))
+        return Lambda_theta_booker(s, F, U, dv, theta, eps=eps).real
+
+    def Z_encl(t):
+        s = acb("0.5") + acb(0, 1) * acb(str(t))
+        Lam = Lambda_theta_booker(s, F, U, dv, theta, eps=eps)
+        rad = lambda_remainder_radius(t, theta, R, vmax, nv, psi_max, m=6, eps=eps)
+        return _widen(Lam, rad).real
+
+    def sign_of(Zt):
+        re = Zt.real if hasattr(Zt, "real") else Zt
+        if arb(0) in re:
+            return 0
+        return 1 if float(re.mid()) > 0 else -1
+
+    brackets = []
+    t = tmin
+    prev_t, prev_s = None, None
+    nscan = 0
+    while t <= T + 1e-12:
+        sg = sign_of(Z_raw(t))
+        nscan += 1
+        if sg == 0:
+            t += dt * 0.25
+            continue
+        if prev_s is not None and sg != prev_s:
+            brackets.append((prev_t, t))
+        prev_t, prev_s = t, sg
+        t += dt
+    print(f"  scan {nscan} evals, {len(brackets)} sign changes", flush=True)
+
+    rows = []
+    for i, (a, b) in enumerate(brackets):
+        rec = isolate_zero(Z_encl, a, b, max_width=1e-13, steps=80)
+        rec["label"] = lab
+        rec["eps"] = eps
+        rec["scan_a"] = a
+        rec["scan_b"] = b
+        rec["index"] = i + 1
+        mid = rec.get("mid", 0.5 * (a + b))
+        rec["mid"] = mid
+        s_mid = acb("0.5") + acb(0, 1) * acb(str(mid))
+        Lam_m = Lambda_theta_booker(s_mid, F, U, dv, theta, eps=eps)
+        gt_m = gamma_theta(s_mid, R, theta, eps=eps)
+        abs_L = float(abs(Lam_m / gt_m).mid()) if abs(gt_m) > 0 else float("inf")
+        rec["abs_L"] = abs_L
+        rec["abs_g"] = float(abs(gt_m).mid())
+        rec["is_L_zero"] = abs_L < 0.05
+        rows.append(rec)
+        st = "ok" if rec.get("certified") else rec.get("reason", "fail")
+        kind = "L" if rec["is_L_zero"] else "gamma-dip"
+        print(
+            f"  γ_{i+1} ({a:.3f},{b:.3f}) {kind} {st} mid={mid} |L|={abs_L:.3e}",
+            flush=True,
+        )
+
+    n_ok = sum(1 for r in rows if r.get("certified") and r.get("is_L_zero"))
+    n_L = sum(1 for r in rows if r.get("is_L_zero"))
+    return {
+        "label": lab,
+        "eps": eps,
+        "theta": theta,
+        "T": T,
+        "nv": nv,
+        "nmax": nmax,
+        "vmax": vmax,
+        "dps": dps,
+        "n_scan": nscan,
+        "n_brackets": len(brackets),
+        "n_certified": n_ok,
+        "n_L": n_L,
+        "zeros": rows,
+    }
 
 
 if __name__ == "__main__":
