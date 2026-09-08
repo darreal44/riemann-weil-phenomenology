@@ -384,6 +384,14 @@ now +1.4e-5; s_exact +8e-6. The μ=5 "death" of H
 was the missing 2² atom. S_lo stays negative (ρ≈0.90:
 the majorant grows with T4). Not W_log5. Not RH.
 
+**Session 2026-09-08 (notes/session-q-powers-and-spectra.md).**
+Θ(log 2) finite sections → ‖Θ‖₂=√2 at L=log 5, =1 at L=log 3;
+spectrum is atoms ±√2, ±1, 0 not a filled interval.
+Q_h(χ₃) and G_h(χ₃) both crush to 0⁺ from μ=3 to 17
+(h=4 and 8, p^k on); no sign flip. h=8 at μ=17 is float
+dust. S(μ,χ₃) oscillates O(1). Zeros match Odlyzko / γ₁(χ₃).
+Not W_L. Not c_L*. Not RH.
+
 **HEAD=3 (2026-09-08).** The χ₃ sliver of Neumann
 S_lo at L=log 3 was the frozen 2-plane, not Off.
 Same majorant s1_up=π/2+|w2|+crumbs:
