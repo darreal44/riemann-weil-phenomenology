@@ -38,3 +38,8 @@ Route B does not take W_L: U lives in 12 cosines.
 c is a bandwidth knob, not a proof parameter.
 
 Not RH. step_is_taken() unchanged.
+
+## Closed
+
+2026-09-08: Route B closed as a method. ×400 is Courant on a
+better 4-plane inside V_12^cos. Not W_L. Not RH.
