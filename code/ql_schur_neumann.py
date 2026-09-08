@@ -108,6 +108,8 @@ def row_of(name: str) -> dict:
 
 
 def step_is_taken() -> bool:
+    # HEAD=3 flips S_lo(χ₃) under the same majorant (report/head3-chi3.md).
+    # Still one L. Not a covering of W_log3. Keep False.
     return False
 
 
