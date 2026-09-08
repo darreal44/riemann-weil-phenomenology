@@ -66,7 +66,13 @@ def test_kernel_nonnegative_everywhere():
 def test_pi2_is_within_20pct_on_resolved_degree1():
     import json
     rows = {}
-    path = os.path.join(CODE, "..", "report", "edge-value-scan.jsonl")
+    root = os.path.join(CODE, "..")
+    path = os.path.join(root, "report", "edge-value-scan.jsonl")
+    if not os.path.isfile(path):
+        path = os.path.join(root, "weil-then-rh", "report", "edge-value-scan.jsonl")
+    if not os.path.isfile(path):
+        import pytest
+        pytest.skip("lab jsonl lives in weil-then-rh")
     for line in open(path, encoding="utf-8"):
         if line.strip():
             r = json.loads(line)

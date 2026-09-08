@@ -1,3 +1,6 @@
 [submodule "pre-compute-gamma"]
 	path = pre-compute-gamma
 	url = https://github.com/djoubertthot/pre-compute-gamma.git
+[submodule "weil-then-rh"]
+	path = weil-then-rh
+	url = https://github.com/djoubertthot/weil-then-rh.git
