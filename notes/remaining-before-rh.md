@@ -402,6 +402,13 @@ error ≪ 10⁻¹⁴. Drop-T₃ on χ₅ is the only ν₋=1 seen.
 Notes: session-q-odd-sector.md, session-q-schur-S.md,
 session-q-mpmath-quad.md. Not W_L. Not c_L*. Not RH.
 
+**Three Off tries (2026-09-08).**
+(1) no joint ess cap: tail keeps Hartman π/2.
+(2) M=1024 χ₃ |λ|=0.930, Δ=0.150, C=4.81 (C not settled).
+(3) S_lo already + at HEAD≥3, L=log 3 (head3-chi3.md);
+    Off_far was not the obstruction there — the 2-plane was.
+notes/ql-off-three-tries.md. Not W_L. Not RH.
+
 **Joint Off power iteration (2026-09-08).**
 Block [N,N+M) of H−w₂Θ (true θ_nm): χ₃ |λ|=0.57,0.65,0.75,0.84
 at M=64,128,256,512 (N=32, L=log 3). Grows toward ess 1.081,
