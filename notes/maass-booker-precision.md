@@ -80,6 +80,16 @@ depends on θ (about 1.75 at θ=0.25, 1.12 at θ=1). The termwise
 Mellin of the raw series on the same ray is γ_θ L to 10^{-4}.
 Around Table 1 γ₁ the automorphic Λ_θ does not change sign.
 
+A Mellin–Barnes AFE built from γ and a_n, with even functional
+equation and a Gaussian e^{(z/A)²} on the contour, can be tuned
+so that Λ(2)/γ(2)L(2) is 1 to a few 10^{-3} (A≈2.6). That same
+width does not vanish at Table 1 γ₁ (|Z|≈1.13 at the first zero,
+and |Z| stays O(1) at the next four). A narrower Gaussian (A=1)
+does change sign about 0.003 above γ₁, but then Λ(2) is only
+0.46 γL — the same 0.02-class locator as |S|, not the bound.
+One real parameter cannot do both jobs. PARI `lfuncreate` still
+cannot take imaginary Γ-shifts.
+
 So the guarantee in force today is Booker–Then's own MPFI
 list for those five forms (`zeros_maass{1..5}.txt`, stored as
 `zeros_hp`). The isolation helper in `maass_booker.py` is the
@@ -88,7 +98,10 @@ bracket whose endpoint balls contain 0. Independent
 recertification of Table 1 waits on an exponentially convergent
 representation of the *termwise* Mellin (the one that equals
 γL at s=2) on Re s=1/2, not of the S-extension of the FD
-series. Not Weil.
+series, and not of a Gaussian AFE fitted at s=2. The remaining
+rewrite of the expansion is the identity
+y ∑ a_n K_{iR}(2π n y) = ∑ a_n K_{iR}(2π n /y), which fails
+by a factor of about 10 at y=2 with tight flint balls. Not Weil.
 
 Cite: Booker–Then 2018; LMFDB Collaboration 2026,
 `notes/lmfdb.bib`.
