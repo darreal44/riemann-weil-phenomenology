@@ -4,6 +4,7 @@
 # License, subject to the binding interpretation in
 # LICENSE.md (section 3).
 """Booker Mellin identity at s=2, sine automorphy, isolation helper."""
+import math
 import os
 import sys
 
@@ -119,9 +120,25 @@ def test_s2_auto_split_matches_gamma_theta_L():
 
 
 def test_isolate_maass1_g1_table1():
-    """Truncated odd Λ_θ changes sign on a ≤1e-13 bracket around Table 1 γ₁."""
+    """Enclosed odd Λ_θ changes sign on a ≤1e-13 bracket around Table 1 γ₁."""
     rec = mb.isolate_maass1_g1()
     assert rec["certified"] is True, rec
     assert rec["width"] <= 1e-13
     assert rec["sa"] != rec["sb"] and rec["sa"] != 0 and rec["sb"] != 0
     assert abs(rec["mid"] - rec["g1_table1"]) < 1e-13
+    rem = rec["remainder_rad"]
+    assert float(rem.mid()) < 1e-20, rem
+
+
+def test_remainder_tails_are_below_last_digit():
+    """n-tail in the FD and u-tail at vmax=4.5, θ=1 are far below 10^{-13}."""
+    from flint import acb
+
+    ntail = mb.series_n_tail(math.sqrt(3.0) / 2.0, 19)
+    assert float(ntail.mid()) < 1e-40
+    utail = mb.u_tail_integrand(4.5, 1.0)
+    assert float(utail.mid()) < 1e-100
+    x = acb("6.0")
+    k0 = x.bessel_k(acb(0)).real
+    bnd = (acb.pi() / (acb(2) * x)).sqrt().real * (-x.real).exp()
+    assert float((bnd - k0).mid()) > 0.0

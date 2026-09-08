@@ -73,18 +73,27 @@ truncation, not from a wrong expansion. A moderate ray
 enough on the critical line that Λ_θ is O(10^{-9}), not
 swamped.
 
-On that ray, Re Λ_θ(1/2+it) is positive at 17.024941 and
-negative at 17.024943, and the evaluation ball at Table 1
-γ₁=17.0249420759926 contains 0 to 10^{-22} once dps=40.
-`isolate_maass1_g1` bisects until |b-a|≤10^{-13} with
-opposite rigorous signs and 0 outside both endpoint balls.
-The balls enclose rounding of the finite trapezoid and of
-the FD series. The omitted n-tail in the FD (n>48, y≳√3/2)
-and the u-tail (u>e^{4.5}) are exponentially smaller than
-10^{-13} in the location. The trapezoid remainder is not a
-complete MPFI enclosure of the infinite integral; it is the
-Booker–Then *rule* applied to this truncated Λ_θ, and it
-recovers their γ₁. Table 1 digits stay their MPFI list.
+On that ray, Re Λ_θ(1/2+it) is positive below Table 1 γ₁
+and negative above. `isolate_maass1_g1` bisects until
+|b-a|≤10^{-13} with opposite rigorous signs and 0 outside
+both endpoint balls. The balls enclose:
+
+- flint rounding of the FD series and of the trapezoid;
+- last stored digits of replica R and a_n (radii 10^{-79}
+  and 10^{-39});
+- the n-tail ∑_{n>M} e^{-2π n y}, from |K_{iR}|≤K_0≤
+  √(π/(2x)) e^{-x} and |a_n|≤2 n^{1/2} (about 10^{-48}
+  at y=√3/2, M=19);
+- the u-tail 2 E_1(2π e^{vmax} cosθ) (about 10^{-135} at
+  vmax=4.5, θ=1);
+- the Euler–Maclaurin trapezoid remainder of order 12,
+  with |g^{(12)}| majorized on a covering of [0,vmax]
+  (about 6·10^{-22} on Λ at t=17).
+
+The enclosed bracket has width 8.9·10^{-14} around
+17.0249420759926. Table 1 digits stay Booker–Then's MPFI
+list; this is an independent enclosure of that first zero
+of this L, not ∀L. Not Weil.
 
 A Mellin–Barnes AFE and the even-axis Fricke split with
 w=−1 are not this evaluator. PARI `lfuncreate` still cannot

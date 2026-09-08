@@ -15,8 +15,9 @@ is odd: the sine series is automorphic under z ↦ −1/z to a relative ball
 of size 10^{-9}; the cosine series is not (frozen ratio ~10 on the axis,
 O(1) off it). Termwise Mellin of Booker's ray (2.3) at Re s = 2 then
 equals γ_θ(s) L(s) with ε=1. The Booker split of that automorphic f
-isolates Table 1 γ₁ on a bracket of width ≤ 1e-13 (rounding balls of
-the truncated trapezoid; FD n-tail and u-tail are exp-small).
+isolates Table 1 γ₁ on a bracket of width ≤ 1e-13. Evaluation balls
+include the n-tail, the u-tail, and the order-12 Euler–Maclaurin
+trapezoid remainder, plus last replica digits of R and a_n.
 
 flint.hypgeom_2f1 is wrong for these (a,b); ₂F₁ is the Gauss series, with
 Abramowitz 15.3.7 when |z|≥0.72. Table 1 digits stay Booker–Then. Not Weil.
@@ -123,9 +124,49 @@ def form_eps(label: str = "1.0.1.1.1") -> int:
     return int(by_label_gl2()[lab]["symmetry"])
 
 
-def _ncut(y: float, R: acb, nmax: int, extra: float = 24.0) -> int:
+def _ncut(y: float, R: acb, nmax: int, extra: float = 24.0, min_decay: float = 80.0) -> int:
+    """n large enough that 2π n y ≳ min_decay (term ≤ e^{-min_decay}) and K has decayed."""
     Rf = abs(float(R.real))
-    return min(nmax, max(6, int((Rf + extra) / max(2 * math.pi * y, 0.3)) + 2))
+    ysafe = max(y, 1e-9)
+    n_decay = int(min_decay / max(2 * math.pi * ysafe, 1e-9)) + 2
+    n_bessel = int((Rf + extra) / max(2 * math.pi * ysafe, 0.3)) + 2
+    return min(nmax, max(6, n_decay, n_bessel))
+
+
+def _widen(z: acb, rad) -> acb:
+    """Enlarge an acb ball by a real radius."""
+    r = rad if isinstance(rad, arb) else arb(str(rad))
+    if float(r.mid()) <= 0.0:
+        return z
+    ru = r.abs_upper() if hasattr(r, "abs_upper") else r
+    return z + acb(arb(0, ru))
+
+
+def series_n_tail(y, M: int) -> arb:
+    """∑_{n>M} e^{-2π n y}. |a_n √y K_{iR}(2π n y) trig| ≤ e^{-2π n y}.
+
+    |K_{iR}(x)| ≤ K_0(x) ≤ √(π/(2x)) e^{-x} (cosh t ≥ 1+t²/2 in the integral),
+    |a_n| ≤ 2 n^{1/2} (Kim–Sarnak as in Booker), |trig| ≤ 1.
+    """
+    ya = y if isinstance(y, arb) else arb(str(y))
+    if M < 0 or float(ya.mid()) <= 0.0:
+        return arb("inf")
+    two_pi = arb(2) * arb.pi()
+    q = (-two_pi * ya).exp()
+    return (q ** (M + 1)) / (arb(1) - q)
+
+
+def u_tail_integrand(vmax: float, theta: float) -> arb:
+    """∫_{v>vmax} |f(ie^{iθ} e^v)| dv ≤ 2 E_1(2π e^{vmax} cosθ) for large vmax.
+
+    After T, y = e^v cosθ; S is off once y ≳ 1. |f| < 1/(e^{2π y}-1) ≤ 2 e^{-2π y}.
+    """
+    ct = abs(math.cos(theta))
+    U = math.exp(vmax)
+    y = arb(str(U * ct))
+    if y < arb(1):
+        return arb("inf")
+    return arb(2) * (arb(2) * arb.pi() * y).expint(1)
 
 
 def f_series(x: float, y: float, an: list[acb], R: acb, nmax: int, eps: int = 0) -> acb:
@@ -143,7 +184,7 @@ def f_series(x: float, y: float, an: list[acb], R: acb, nmax: int, eps: int = 0)
         ph = two_pi * acb(n) * xa
         trig = ph.sin() if eps else ph.cos()
         tot += an[n - 1] * (two_pi * acb(n) * ya).bessel_k(nu) * trig
-    return ya.sqrt() * tot
+    return _widen(ya.sqrt() * tot, series_n_tail(y, n_cut))
 
 
 def f_even(x: float, y: float, an: list[acb], R: acb, nmax: int) -> acb:
@@ -169,7 +210,7 @@ def f_iy_series(y: acb, an: list[acb], R: acb, nmax: int) -> acb:
     n_cut = _ncut(yf, R, nmax, extra=28.0)
     for n in range(1, n_cut + 1):
         tot += an[n - 1] * (two_pi * acb(n) * y).bessel_k(nu)
-    return y.sqrt() * tot
+    return _widen(y.sqrt() * tot, series_n_tail(yf, n_cut))
 
 
 def L_dirichlet(s: acb, an: list[acb], nmax: int) -> tuple[acb, arb]:
@@ -253,7 +294,7 @@ def f_ray_booker(u: float, theta: float, an: list[acb], R: acb, nmax: int,
         ph = two_pi * acb(n) * xa
         trig = ph.sin() if eps else ph.cos()
         tot += an[n - 1] * (two_pi * acb(n) * ya).bessel_k(nu) * trig
-    return ya.sqrt() * tot
+    return _widen(ya.sqrt() * tot, series_n_tail(y, n_cut))
 
 
 def f_ray_even(u: float, theta: float, an: list[acb], R: acb, nmax: int) -> acb:
@@ -349,9 +390,17 @@ def isolate_zero(F, a: float, b: float, max_width: float = 1e-13, steps: int = 8
         if sm == 0:
             if hi - lo <= max_width:
                 break
-            probe = lo + 0.49 * (hi - lo)
-            sp = sign_of(probe)
-            if sp == 0:
+            # Midpoint ball contains 0 (near the root). Step away from the
+            # centre; a 0.49-probe sits inside the dead zone once the
+            # bracket is only slightly wider than max_width.
+            sm = 0
+            for frac in (0.25, 0.125, 0.05, 0.02, 0.01, 0.75, 0.875):
+                probe = lo + frac * (hi - lo)
+                sp = sign_of(probe)
+                if sp != 0:
+                    mid, sm = probe, sp
+                    break
+            if sm == 0:
                 return {
                     "certified": False,
                     "reason": "evaluation ball contains 0 off the endpoints",
@@ -359,7 +408,6 @@ def isolate_zero(F, a: float, b: float, max_width: float = 1e-13, steps: int = 8
                     "b": hi,
                     "mid": mid,
                 }
-            mid, sm = probe, sp
         if sm == sa:
             lo, sa = mid, sm
         else:
@@ -451,8 +499,8 @@ def load_maass1(dps: int = 18):
     ctx.dps = dps
     Rmpf = load_R_hp("1.0.1.1.1")
     anmpf = load_an_hp("1.0.1.1.1")
-    R = acb(mp.nstr(Rmpf, 80, strip_zeros=False))
-    an = [acb(mp.nstr(a, 40, strip_zeros=False)) for a in anmpf]
+    R = _widen(acb(mp.nstr(Rmpf, 80, strip_zeros=False)), arb("1e-79"))
+    an = [_widen(acb(mp.nstr(a, 40, strip_zeros=False)), arb("1e-39")) for a in anmpf]
     return R, an
 
 
@@ -490,15 +538,179 @@ def Lambda_line(t: float, R: acb, an: list[acb], eps: int = 1, nmax: int = 24,
     return Lambda_theta_booker(s, F, U, dv, theta, eps=eps)
 
 
-def isolate_maass1_g1(dps: int = 40, theta: float = 1.0, nmax: int = 48,
-                      vmax: float = 4.5, nv: int = 1200, half_width: float = 1e-6) -> dict:
-    """Opposite signs of truncated Booker Λ_θ on a bracket of width ≤ 1e-13 around Table 1 γ₁.
+def _poly_add(a, b):
+    n = max(len(a), len(b))
+    out = [acb(0)] * n
+    for i, x in enumerate(a):
+        out[i] += x
+    for i, x in enumerate(b):
+        out[i] += x
+    return out
 
-    The grid of f is independent of t at fixed θ. Balls enclose rounding of the
-    finite trapezoid and the FD series, not a proven u-tail / n-tail / trapezoid
-    remainder. At these parameters those tails are far below the last Table 1
-    digit (FD n>48 and u>e^{4.5} are exp-small). Table 1 digits stay
-    Booker–Then. Not Weil.
+
+def _poly_mul(a, b):
+    if not a or not b:
+        return [acb(0)]
+    out = [acb(0)] * (len(a) + len(b) - 1)
+    for i, x in enumerate(a):
+        for j, y in enumerate(b):
+            out[i + j] += x * y
+    return out
+
+
+def _poly_euler(a):
+    return [acb(k) * a[k] for k in range(len(a))]
+
+
+def _poly_eval(a, x):
+    s = acb(0)
+    for c in reversed(a):
+        s = s * x + c
+    return s
+
+
+def _binom(n, k):
+    if k < 0 or k > n:
+        return 0
+    p = 1
+    for i in range(k):
+        p = p * (n - i) // (i + 1)
+    return p
+
+
+def _k_euler_polys(m: int, nu: acb):
+    """D^j K = U_j(arg) K + W_j(arg) (arg K'), with D arg = arg."""
+    P = [nu * nu, acb(0), acb(1)]
+    UW = [([acb(1)], [acb(0)]), ([acb(0)], [acb(1)])]
+    for _ in range(2, m + 1):
+        U, W = UW[-1]
+        Un = _poly_add(_poly_euler(U), _poly_mul(W, P))
+        Wn = _poly_add(U, _poly_euler(W))
+        UW.append((Un, Wn))
+    return UW
+
+
+def _sin_euler_polys(m: int):
+    """D^j sin = α_j(ph) sin + β_j(ph) cos, D ph = ph."""
+    X = [acb(0), acb(1)]
+    AB = [([acb(1)], [acb(0)])]
+    for _ in range(m):
+        a, b = AB[-1]
+        an = _poly_add(_poly_euler(a), _poly_mul([-c for c in b], X))
+        bn = _poly_add(_poly_mul(a, X), _poly_euler(b))
+        AB.append((an, bn))
+    return AB
+
+
+def _k0_bound(x: acb) -> arb:
+    """√(π/(2x)) e^{-x} ≥ K_0(x) ≥ |K_{iR}(x)|."""
+    return ((acb.pi() / (acb(2) * x)).sqrt() * (-x).exp()).real
+
+
+def _kp_bound(x: acb, R: acb) -> arb:
+    """|K'(x)| ≤ √(2π/x) exp(-x+1/(2x)) + |R|/x K_0-bound."""
+    xr = x.real
+    k1 = ((acb(2) * acb.pi() / x).sqrt() * (-xr + arb(1) / (arb(2) * xr)).exp()).real
+    return k1 + abs(R).real / xr * _k0_bound(x)
+
+
+def _psi_deriv_bounds(v: arb, order: int, an, R: acb, theta: float, nmax: int, UW, AB) -> list[arb]:
+    """Majorant of |D^j ψ| at v (point or ball). Geometric sine/cosine series."""
+    ct = arb(str(math.cos(theta)))
+    st = arb(str(math.sin(theta)))
+    u = v.exp()
+    y = u * abs(ct)
+    xabs = u * abs(st)
+    sy = y.sqrt()
+    two_pi = acb(2) * acb.pi()
+    bounds = [arb(0)] * (order + 1)
+    ymid = float(y.mid())
+    n_cut = min(nmax, max(8, int(80.0 / max(2 * math.pi * ymid, 0.2)) + 2), len(an))
+    for n in range(1, n_cut + 1):
+        arg = two_pi * acb(n) * acb(y)
+        ph = two_pi * acb(n) * acb(xabs)
+        k0 = _k0_bound(arg)
+        d1k = arg.real * _kp_bound(arg, R)
+        an_n = abs(an[n - 1]).real
+        for j in range(order + 1):
+            sm = arb(0)
+            for a in range(j + 1):
+                for b in range(j - a + 1):
+                    c = j - a - b
+                    da = (arb("0.5") ** a) * sy
+                    U, W = UW[b]
+                    db = abs(_poly_eval(U, arg)).real * k0 + abs(_poly_eval(W, arg)).real * d1k
+                    al, be = AB[c]
+                    dc = abs(_poly_eval(al, ph)).real + abs(_poly_eval(be, ph)).real
+                    coef = arb(str(_binom(j, a) * _binom(j - a, b)))
+                    sm += coef * da * db * dc
+            bounds[j] += an_n * sm
+    tail0 = series_n_tail(y, n_cut)
+    rho = two_pi.real * arb(n_cut + 1) * u + abs(R).real + arb(1)
+    for j in range(order + 1):
+        bounds[j] += (arb(3) ** j) * (rho ** j) * tail0
+    return bounds
+
+
+def max_psi_derivs(theta: float, an, R: acb, vmax: float, order: int, nmax: int, npts: int = 80) -> list[arb]:
+    """Max of |D^j ψ| majorants on a covering of [0, vmax] by arb balls."""
+    nu = R * acb(0, 1)
+    UW = _k_euler_polys(order, nu)
+    AB = _sin_euler_polys(order)
+    maxb = [arb(0)] * (order + 1)
+    hv = vmax / npts / 2
+    for i in range(npts + 1):
+        v0 = vmax * i / npts
+        v = arb(str(v0), str(hv)) if i not in (0, npts) else arb(str(v0))
+        b = _psi_deriv_bounds(v, order, an, R, theta, nmax, UW, AB)
+        for j in range(order + 1):
+            if b[j] > maxb[j]:
+                maxb[j] = b[j]
+    return maxb
+
+
+def _g_deriv_bound(t: arb, psi_max: list[arb], order: int) -> arb:
+    tot = arb(0)
+    for j in range(order + 1):
+        tot += arb(str(_binom(order, j))) * psi_max[j] * (t ** (order - j))
+    return tot
+
+
+def em_integral_remainder(vmax: float, nv: int, m: int, gbound: arb) -> arb:
+    """|∫g − trapezoid| ≤ V |B_{2m}|/(2m)! h^{2m} max|g^{(2m)}|."""
+    h = arb(str(vmax / nv))
+    V = arb(str(vmax))
+    B = abs(arb.bernoulli(2 * m))
+    fac = arb(1)
+    for i in range(2, 2 * m + 1):
+        fac *= arb(i)
+    return V * B / fac * (h ** (2 * m)) * gbound
+
+
+def lambda_remainder_radius(t: float, theta: float, R: acb, vmax: float, nv: int,
+                            psi_max: list[arb], m: int = 6) -> arb:
+    """Radius to add to Λ_θ(1/2+it) for EM remainder + u-tail (two dual copies).
+
+    n-tail is already on each grid value of f. On the critical line |u^{±it}|=1.
+    """
+    order = 2 * m
+    tb = arb(str(t))
+    gbound = _g_deriv_bound(tb, psi_max, order)
+    Irem = em_integral_remainder(vmax, nv, m, gbound)
+    utail = u_tail_integrand(vmax, theta)
+    s = acb("0.5") + acb(0, 1) * acb(str(t))
+    cs = abs(c_theta(s, theta, eps=1)).real
+    return cs * arb(2) * (Irem + utail)
+
+
+def isolate_maass1_g1(dps: int = 40, theta: float = 1.0, nmax: int = 80,
+                      vmax: float = 4.5, nv: int = 1200, half_width: float = 1e-6) -> dict:
+    """Opposite signs of enclosed Booker Λ_θ on a bracket of width ≤ 1e-13 around Table 1 γ₁.
+
+    Each f-value includes the n-tail ∑_{n>M} e^{-2π n y}. Λ includes the
+    u-tail 2 E_1(2π e^{vmax} cosθ) and the Euler–Maclaurin trapezoid
+    remainder of order 2m=12. Balls also include flint rounding and last
+    replica digits of R and a_n. Table 1 digits stay Booker–Then. Not Weil.
     """
     from lmfdb_encode import load_zeros
 
@@ -508,10 +720,14 @@ def isolate_maass1_g1(dps: int = 40, theta: float = 1.0, nmax: int = 48,
     F, U, dv = ray_auto_grid(
         theta, an, R, nmax=nmax, vmax=vmax, nv=nv, w_fricke=1.0, eps=1
     )
+    psi_max = max_psi_derivs(theta, an, R, vmax, order=12, nmax=nmax, npts=80)
+    rem0 = lambda_remainder_radius(g1, theta, R, vmax, nv, psi_max, m=6)
 
     def Z(t):
         s = acb("0.5") + acb(0, 1) * acb(str(t))
-        return Lambda_theta_booker(s, F, U, dv, theta, eps=1).real
+        Lam = Lambda_theta_booker(s, F, U, dv, theta, eps=1)
+        rad = lambda_remainder_radius(t, theta, R, vmax, nv, psi_max, m=6)
+        return _widen(Lam, rad).real
 
     rec = isolate_zero(Z, g1 - half_width, g1 + half_width, max_width=1e-13, steps=80)
     rec["g1_table1"] = g1
@@ -521,6 +737,9 @@ def isolate_maass1_g1(dps: int = 40, theta: float = 1.0, nmax: int = 48,
     rec["nmax"] = nmax
     rec["vmax"] = vmax
     rec["eps"] = 1
+    rec["remainder_rad"] = rem0
+    rec["n_tail_fd"] = series_n_tail(math.sqrt(3.0) / 2.0, 19)
+    rec["u_tail"] = u_tail_integrand(vmax, theta)
     return rec
 
 
