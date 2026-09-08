@@ -408,6 +408,12 @@ Q on first 4 discrete Slepian projected into V_12^cos, μ=5:
 Avoids the pinched 2-plane direction; still inside V_12^cos.
 notes/session-route-B-slepian.md. Not W_L. Not RH.
 
+**Lemma 2 hand det χ₅ μ=16 (2026-09-08).**
+det H = +1.27e-8 already certified (2plane-certified).
+Nine atoms, Σ|w|=4.25; drop any n≤11 flips the sign.
+Not a hand page. notes/lemma2-hand-det-chi5.md.
+Not W_L. Not RH.
+
 **Two Grams after p^k (2026-09-08).**
 Writings identified: Q_window = prime-side Weil (p^k in,
 arch = digamma). Matrices Q_h = G_h still open (= RH
