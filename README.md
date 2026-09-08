@@ -15,6 +15,20 @@ Private use does not require publication. Redistribution of a work that
 imports these files is copyleft plus attribution. GitHub may show the
 license as *Other*.
 
+## Maass precompute (private submodule)
+
+Maass \(a_n\), Booker \(\Lambda_\theta\), and the zero tools live in the private
+repo [djoubertthot/pre-compute-gamma](https://github.com/djoubertthot/pre-compute-gamma).
+They are not in this tree. Anyone with access at thot:
+
+```
+git submodule update --init pre-compute-gamma
+python pre-compute-gamma/code/run.py status
+```
+
+Tagged releases already published keep their historical blobs; this only
+changes the current tree. Not Weil.
+
 ## Tests
 
 ```
