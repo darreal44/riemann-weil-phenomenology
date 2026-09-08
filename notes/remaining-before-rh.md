@@ -408,6 +408,11 @@ Q on first 4 discrete Slepian projected into V_12^cos, μ=5:
 Avoids the pinched 2-plane direction; still inside V_12^cos.
 notes/session-route-B-slepian.md. Not W_L. Not RH.
 
+**Route B closed (2026-09-08).** Method note, not a take. The
+fragile object was V_4^cos, not the Weil form. Further c or
+h stays in V_N^cos. A genuine continuous-prolate θ_nm is a
+different experiment. step_is_taken() unchanged. Not W_L. Not RH.
+
 **Three Off tries (2026-09-08).**
 (1) no joint ess cap: tail keeps Hartman π/2.
 (2) M=1024 χ₃ |λ|=0.930, Δ=0.150, C=4.81 (C not settled).
