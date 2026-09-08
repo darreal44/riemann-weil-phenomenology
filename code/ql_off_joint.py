@@ -27,23 +27,17 @@ def pack(n0: int, n1: int, name: str = "chi3"):
     o2, oinf = nrm(Off)
     h2, _ = nrm(H)
     t2, _ = nrm(Th)
-    return {
-        "n0": n0, "n1": n1,
-        "off2": o2, "row": oinf, "H2": h2, "Th2": t2,
-        "tri_sec": h2 + abs(w2) * t2,
-        "s1_up": s1_off_q_upper(n0, w2),
-    }
+    return {"n0": n0, "n1": n1, "off2": o2, "row": oinf, "H2": h2, "Th2": t2,
+            "tri_sec": h2 + abs(w2) * t2}
 
 def main() -> int:
     w2 = w2_of(CHARS["chi3"]["d"])
     print(f"chi3 w2={w2:.3f} s1_up={s1_off_q_upper(32,w2):.4f} need<1.72")
     for n0, n1 in ((32, 48), (32, 64), (32, 96)):
         r = pack(n0, n1)
-        print(
-            f"[{n0},{n1}) Off2={r['off2']:.4f} row={r['row']:.4f} "
-            f"tri_sec={r['tri_sec']:.4f} Th2={r['Th2']:.3f}"
-        )
-    print("row-sum already >1.72 on finite pieces \u2192 not a majorant")
+        print(f"[{n0},{n1}) Off2={r['off2']:.4f} row={r['row']:.4f} "
+              f"tri_sec={r['tri_sec']:.4f} Th2={r['Th2']:.3f}")
+    print("row-sum already >1.72 on finite pieces -> not a majorant")
     return 0
 
 if __name__ == "__main__":
