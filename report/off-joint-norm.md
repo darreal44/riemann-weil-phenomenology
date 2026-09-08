@@ -16,15 +16,8 @@ Finite sections, χ3, w2=−0.490:
 
 KILL as a proof:
 - ||Θ||2 already ~0.95 on 32 modes; bound ||Θ||≤1 is sharp.
-  Cannot harvest 0.39 from ||Θ||.
-- corr(H,Θ) → 0 as the block grows. No joint Nehari gift.
-- row-sum of |Off| exceeds 1.72 on a FINITE piece
-  (n=48 already 1.87). Gershgorin / Schur row-col cannot
-  be the majorant.
-- section ||Off||~0.47 is not an operator-norm certificate
-  (Weyl intercept stays ~0.71).
-
-The lever is still a proved ∞-norm of H−w2Θ better than
-π/2+|w2|. This computation does not write it.
+- corr(H,Θ) → 0 as the block grows.
+- row-sum of |Off| exceeds 1.72 on a FINITE piece.
+- section ||Off||~0.47 is not an operator-norm certificate.
 
 Not a take. Not RH.
