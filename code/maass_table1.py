@@ -66,6 +66,17 @@ def parse_label(lab: str) -> dict:
     }
 
 
+def is_maass_name(name: str) -> str | None:
+    """Full N.k.a.m.d if this is a Maass label (maass1, 1.2, 11.0.1.1.1)."""
+    s = name.strip()
+    if s in ALIAS:
+        return ALIAS[s]
+    p = s.split(".")
+    if p and all(x.isdigit() for x in p) and len(p) in (2, 4, 5):
+        return resolve(s)
+    return None
+
+
 def resolve(name: str) -> str:
     """maass2 | 1.2 | 1.0.1.1 | 1.0.1.2.1 → full N.k.a.m.d."""
     s = name.strip()
