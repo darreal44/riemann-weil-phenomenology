@@ -402,6 +402,12 @@ error ≪ 10⁻¹⁴. Drop-T₃ on χ₅ is the only ν₋=1 seen.
 Notes: session-q-odd-sector.md, session-q-schur-S.md,
 session-q-mpmath-quad.md. Not W_L. Not c_L*. Not RH.
 
+**Joint Off power iteration (2026-09-08).**
+Block [N,N+M) of H−w₂Θ (true θ_nm): χ₃ |λ|=0.57,0.65,0.75,0.84
+at M=64,128,256,512 (N=32, L=log 3). Grows toward ess 1.081,
+not toward triangle 2.110. Power = eigvalsh. Not s₁(ℓ²).
+code/ql_off_power.py notes/ql-off-power.md. Not W_log3. Not RH.
+
 **HEAD=3 (2026-09-08).** The χ₃ sliver of Neumann
 S_lo at L=log 3 was the frozen 2-plane, not Off.
 Same majorant s1_up=π/2+|w2|+crumbs:
