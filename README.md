@@ -70,12 +70,16 @@ Seventeen notes, one lab notebook. They are not of equal standing; read them by 
   (python-flint): the seventeen real characters of $q\le31$ on $W_L$ through $\mu=11^+$, both parity
   sectors (272 runs), and on the $(\log2,\log3)$ step ($L=0.5493061443$) *every* primitive Dirichlet
   character, complex ones as one Hermitian form — so every Dirichlet $L$-function has a positive
-  window constant on that step. As a control and a by-product, Zhu's $\zeta$ certificate is
+  window constant on that step. Two matrix-free corollaries (no well, no deep precision): each
+  conductor $q$ is positive on a whole *interval* $L\le L^*(q)=\log\log q-\log4+o(1)$ of windows
+  (genuine covering over a continuum, with the deficit to $(\forall L)=$ GRH stated exactly); and,
+  in degree 2, every elliptic curve of conductor $\ge6319$ is Weil-positive on $W_{\frac12\log3}$.
+  As a control and a by-product, Zhu's $\zeta$ certificate is
   replicated and pushed past his support $1.6$: $Q\ge7.4\cdot10^{-18}\|f\|^2$ on $W_{0.8048}$ and
   $Q\ge5.2\cdot10^{-28}\|f\|^2$ on $W_{0.9729}$ (support $1.946$), the wells on the depth law
   $e^{-11.5\mu}$. Fixed $L$ only; nothing about $(\forall L)$. Code and certificates
   in `weil-then-rh/` (`notes/weil-envelope-chi.md`, `weil-envelope-t5/t7/t8/t9/t11.md`,
-  `weil-envelope-allchi.md`, `zhu-zeta-t5.md`, `zhu-replay.md`).
+  `weil-envelope-allchi.md`, `weil-uniform.md`, `zhu-zeta-t5.md`, `zhu-replay.md`).
 - `notes/quorum-theorem.pdf` — *Proper sub-Euler products violate Weil positivity on a fixed
   window: certified witnesses* (5 pp.). The theorem of the repository: 340 ball-arithmetic
   witnesses (exhaustively at µ = 11, 16, 22 for ζ; χ₃ at µ = 11), with the full derivations
