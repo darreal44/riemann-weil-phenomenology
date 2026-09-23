@@ -22,7 +22,7 @@ def th(n, m, y):
         j = max(n, m); return -2*(om[j]*y).sin()/(arb(2).sqrt()*arb.pi()*j)
     if n == m: return 2*((Larb - y)*(om[n]*y).cos()/Larb - (om[n]*y).sin()/(2*arb.pi()*n))
     return 2*(n*(om[n]*y).sin() - m*(om[m]*y).sin())/(arb.pi()*(m*m - n*n))
-euler = arb("0.5772156649015328606065120900824024310421593359399235988057672348848677267776646709369", 1e-86)
+euler = arb.const_euler()   # boule certifiee ; la chaine de 85 chiffres avait un rayon 1e-86 plus petit que son erreur (boule invalide)
 CR = euler + (4*arb.pi()*(Larb.exp()-1)/(Larb.exp()+1)).log()
 eps = arb("1e-60")
 # T_11 vanishes identically on V (Theta(L)=0 when L=log 11). Interior primes: {2,3,5,7}.

@@ -26,7 +26,7 @@ def run(mu, NB, dps, kind, mode='freeze'):
     towers = {p: [(arb(p**k).log(), chi(p**k)*arb(p).log()/arb(p**k).sqrt())
                   for k in range(1, 9) if p**k < mu - 1e-9] for p in primes}
     eps = arb("1e-15")
-    euler = arb("0.577215664901532860606512090082402431042159335939", 1e-45)
+    euler = arb.const_euler()   # boule certifiee ; la chaine de 48 chiffres etait TRONQUEE (milieu -9,2e-49)
     P = {}; A = {}; T = {p: {} for p in primes}
     if kind == 'zeta':
         CR = euler + (4*arb.pi()*(Larb.exp()-1)/(Larb.exp()+1)).log()

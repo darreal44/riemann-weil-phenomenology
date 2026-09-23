@@ -19,7 +19,7 @@ t0 = time.time()
 
 Larb = arb(11).log()
 om = [2 * arb.pi() * n / Larb for n in range(NP)]
-euler = arb("0.577215664901532860606512090082402431042159335939", 1e-45)
+euler = arb.const_euler()   # boule certifiee ; la chaine de 48 chiffres etait TRONQUEE (milieu -9,2e-49, boule valide)
 CR = euler + (4 * arb.pi() * (Larb.exp() - 1) / (Larb.exp() + 1)).log()
 eps = arb("1e-30")
 
