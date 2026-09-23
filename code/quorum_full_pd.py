@@ -142,10 +142,12 @@ def certify(Q, NP, Va, v1a):
     q += sum((2*v1a[n]*v1a[m]*g(Q,n,m) for n in range(NP) for m in range(n+1, NP)), arb(0))
     ray = q / sum((x*x for x in v1a), arb(0))
     lower = _down(float(ray.mid()) - float(ray.rad()))
+    upper = _up(float(ray.mid()) + float(ray.rad()))       # un quotient de Rayleigh MAJORE lambda_min : c'est la borne haute de l'encadrement
     radB = _up(max(float(B[i][j].rad()) for i in range(NP) for j in range(NP)))
     return {"gershgorin_margin_B": marge_B, "row_B": i_B, "gershgorin_margin_VtV": marge_V, "row_VtV": i_V,
             "lambda_max_VtV_upper": M_V, "lambda_min_Q_lower": lam_min_Q_lower,
-            "rayleigh_mid": float(ray.mid()), "rayleigh_rad": float(ray.rad()), "certified_lower": lower,
+            "rayleigh_mid": float(ray.mid()), "rayleigh_rad": float(ray.rad()),
+            "rayleigh_lower": lower, "lambda_min_Q_upper": upper,
             "rad_max_B": radB, "positive_definite": (marge_B > 0 and marge_V > 0)}
 
 def run(mode):
@@ -175,9 +177,10 @@ def run(mode):
     print(f"  Gershgorin(V^T Q V) marge min {res['gershgorin_margin_B']:+.4e} (ligne {res['row_B']}) ; rayon max de B {res['rad_max_B']:.3e}")
     print(f"  Gershgorin(V^T V)   marge min {res['gershgorin_margin_VtV']:+.4e} (ligne {res['row_VtV']}) ; lambda_max(V^T V) <= 1 + {res['lambda_max_VtV_upper']-1:.3e}")
     print(f"  => lambda_min(Q) >= m_B / M_V = {res['lambda_min_Q_lower']:+.6e}   (la congruence conserve la positivite, pas les valeurs propres)")
-    print(f"  Q(v_1)/|v_1|^2 : mid {res['rayleigh_mid']:+.6e} rad {res['rayleigh_rad']:.3e} -> borne INFERIEURE {res['certified_lower']:+.6e}")
+    print(f"  Q(v_1)/|v_1|^2 : mid {res['rayleigh_mid']:+.6e} rad {res['rayleigh_rad']:.3e} (v_1 dyadique exact, |v_1|^2 en boule) -> lambda_min(Q) <= {res['lambda_min_Q_upper']:+.6e}")
+    print(f"  ENCADREMENT : {res['lambda_min_Q_lower']:+.6e} <= lambda_min(Q_{{2,3,5,7}}) <= {res['lambda_min_Q_upper']:+.6e}   (bas : Gershgorin/congruence ; haut : le temoin, qui ne prouve pas la positivite)")
     verdict = "DEFINIE POSITIVE sur V (certifie)" if res['positive_definite'] else "NON CERTIFIEE"
-    print(f"  complet {{2,3,5,7}} : {verdict} ; borne inf du quotient {'> 0' if res['certified_lower'] > 0 else 'NON certifiee'} ; total {time.time()-t0:.0f}s")
+    print(f"  complet {{2,3,5,7}} : {verdict} ; total {time.time()-t0:.0f}s")
     if mode == 'freeze':
         json.dump({"kind": "zeta", "mu": MU, "NB": NB, "eps": EPS, "dps": DPS, "S": [2, 3, 5, 7],
                    "lambda_mid": lam, "v1_dyadic": v1d, "V_dyadic": Vd, **res}, open(WIT, 'w'))
@@ -185,7 +188,8 @@ def run(mode):
             f.write(f"# zeta, mu={MU}, NB={NB}, eps={EPS}, ctx.dps={DPS} ; rayon max des entrees certifiees = {radQ:.3e} ; rayon d'Euler = {euler_rad:.1e}" + NL)
             f.write("# jeu COMPLET : certificat par congruence (inertie de Sylvester) + Gershgorin en boules sur V^T Q V (V exacte dyadique, gelee) ; temoin v_1 dyadique" + NL)
             f.write(f"lambda_min(Q_{{2,3,5,7}}) >= m_B / M_V = {res['lambda_min_Q_lower']:+.6e}   (m_B = marge de Gershgorin sur B = {res['gershgorin_margin_B']:+.4e} ; M_V = borne haute de Gershgorin sur V^T V = 1 + {res['lambda_max_VtV_upper']-1:.2e})" + NL)
-            f.write(f"[2, 3, 5, 7] : borne INFERIEURE du quotient du temoin v_1 : {res['certified_lower']:+.6e}  (mid {res['rayleigh_mid']:+.6e}, rayon {res['rayleigh_rad']:.2e})" + NL)
+            f.write(f"lambda_min(Q_{{2,3,5,7}}) <= Q(v_1)/|v_1|^2 <= {res['lambda_min_Q_upper']:+.6e}   (temoin v_1 dyadique exact, |v_1|^2 en boule ; mid {res['rayleigh_mid']:+.6e}, rayon {res['rayleigh_rad']:.2e} ; un quotient de Rayleigh MAJORE lambda_min et ne prouve pas la positivite)" + NL)
+            f.write(f"ENCADREMENT : {res['lambda_min_Q_lower']:+.6e} <= lambda_min(Q_{{2,3,5,7}}) <= {res['lambda_min_Q_upper']:+.6e}" + NL)
             f.write(f"Gershgorin(V^T V) : marge basse {res['gershgorin_margin_VtV']:+.4e} (inversibilite) ; rayon max de B = {res['rad_max_B']:.3e}" + NL)
             f.write(f"VERDICT : Q_{{2,3,5,7}} {verdict} ; temoins : {os.path.basename(WIT)} ; rejeu : python3 quorum_full_pd.py verify" + NL)
         print(f"  ecrit : {CERT} ; {WIT}")

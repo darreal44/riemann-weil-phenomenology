@@ -1,6 +1,7 @@
 # zeta, mu=11, NB=46, eps=1e-58, ctx.dps=85 ; rayon max des entrees certifiees = 9.400e-54 ; rayon d'Euler = 4.0e-87
 # jeu COMPLET : certificat par congruence (inertie de Sylvester) + Gershgorin en boules sur V^T Q V (V exacte dyadique, gelee) ; temoin v_1 dyadique
 lambda_min(Q_{2,3,5,7}) >= m_B / M_V = +3.582317e-48   (m_B = marge de Gershgorin sur B = +3.5823e-48 ; M_V = borne haute de Gershgorin sur V^T V = 1 + 6.66e-16)
-[2, 3, 5, 7] : borne INFERIEURE du quotient du temoin v_1 : +3.583165e-48  (mid +3.583167e-48, rayon 1.68e-54)
+lambda_min(Q_{2,3,5,7}) <= Q(v_1)/|v_1|^2 <= +3.583169e-48   (temoin v_1 dyadique exact, |v_1|^2 en boule ; mid +3.583167e-48, rayon 1.68e-54 ; un quotient de Rayleigh MAJORE lambda_min et ne prouve pas la positivite)
+ENCADREMENT : +3.582317e-48 <= lambda_min(Q_{2,3,5,7}) <= +3.583169e-48
 Gershgorin(V^T V) : marge basse +1.0000e+00 (inversibilite) ; rayon max de B = 1.233e-52
 VERDICT : Q_{2,3,5,7} DEFINIE POSITIVE sur V (certifie) ; temoins : witnesses_zeta_mu11_full.json ; rejeu : python3 quorum_full_pd.py verify
