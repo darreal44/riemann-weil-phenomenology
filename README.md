@@ -138,6 +138,15 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
 - `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
   sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
   \(\hat\psi=\) jump \(+\,r\). Not RH.
+- `notes/carte-des-murs-2026-10-11.md` — *La carte des murs* (French): why every
+  class of finite methods tried on the windowed Weil form stops, with its constant.
+  Three reviewed ceilings — envelopes \(|\chi|\le1\) (threshold exact for the class,
+  equal to the pole of \(\zeta\): \(L^*(q)=\log\log q+o(1)\), constant 1, unconditional
+  both sides), pointwise-floor certificates (constant \(A_L\) shared by envelope and
+  exact floor, precision \(e^{-1.0974Le^L}\) under RH), positivity on a subclass (closure
+  dichotomy: target renamed or a continuous form of the same sign is negative) — plus
+  the degree-2 wall \(L^*(N)=\log\log N-\log2+o(1)\) and five classes with their
+  obstruction by citation. Reduction line unchanged. Not RH.
 - `weil-then-rh/notes/av-witness.md` — rational witness (4,−3,1)/√26 at χ₅ μ=16: Arb enclosure
   of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
 - `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
