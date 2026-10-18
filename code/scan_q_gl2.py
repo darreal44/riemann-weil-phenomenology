@@ -15,8 +15,9 @@ panel (two Gamma_R ~ Gamma(s)): treat as experimental.
     python code/scan_q_gl2.py 37a1 62 80 50 --drop 3
     python code/gl2_quorum_scan.py 37a1 62 80 50
 
-Needs gp on PATH for a_n. 11a1 has a built-in table for n<=30
-so a smoke runs without gp.
+Coefficients come from the stored Weierstrass models by point counting.
+Set GL2_USE_GP=1 to use gp on PATH instead. The short 11a1 table is used
+only when it covers the entire requested window.
 
 Default path is the validated conventions (Re s = 1, Λ_f
 power sums, ½ log N per panel, Frullani tail). The original
@@ -89,12 +90,10 @@ def hecke_an(ap: dict[int, int], Ncond: int, cap: int) -> dict[int, int]:
 
 def ellan(label: str, cap: int) -> dict[int, int]:
     use_gp = os.environ.get("GL2_USE_GP", "0") == "1"
-    if label == "11a1" and not use_gp:
-        return hecke_an(AP_11, 11, cap)
-    if not shutil.which("gp"):
-        if label == "11a1":
+    if not use_gp or not shutil.which("gp"):
+        if label == "11a1" and cap <= max(AP_11):
             return hecke_an(AP_11, 11, cap)
-        raise SystemExit("gp required for a_n")
+        return an_points(label, cap)
     script = f"""
 default(realprecision, 19);
 E = ellinit("{label}");
@@ -113,9 +112,13 @@ for(i=1, #v, print(i, " ", v[i]));
         if len(parts) != 2:
             continue
         try:
-            out[int(parts[0])] = int(float(parts[1]))
+            n, value = int(parts[0]), int(parts[1])
+            if n in out:
+                raise ValueError('duplicate GP coefficient')
+            out[n] = value
         except ValueError:
-            continue
+            raise ValueError(f'invalid GP coefficient: {line!r}') from None
+    validate_coefficients(out, cap)
     return out
 
 
@@ -154,11 +157,28 @@ def prime_power_prime(n: int) -> int | None:
     return x
 
 
+def validate_coefficients(an, cap):
+    """Require every active prime-power key, including coefficients equal to zero."""
+    required = [n for n in range(2, cap + 1) if prime_power_prime(n) is not None]
+    missing = [n for n in required if n not in an]
+    if missing:
+        raise ValueError(f'incomplete coefficient coverage through {cap}: missing {missing}')
+    if any(not mp.isfinite(a) or a != int(a) for a in an.values()):
+        raise ValueError('elliptic-curve coefficients must be finite exact integers')
+
+
 def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
     Ncond = CURVES[name]
     mp.mp.dps = dps
     t0 = time.time()
     L = mp.log(mp.mpf(mu))
+    cap_mul = float(os.environ.get("GL2_CAP_MUL", "1"))
+    if not math.isfinite(cap_mul) or cap_mul < 1:
+        raise ValueError('GL2_CAP_MUL must cover the whole requested window (>= 1)')
+    cap = int(float(mu) * cap_mul + 1e-9)
+    if an is None:
+        an = ellan(name, cap)
+    validate_coefficients(an, cap)
     # Gamma_C(s) = Gamma_R(s) Gamma_R(s+1): both Dirichlet panels.
     # Default = validated path. GL2_FIX=0 or GL2_LEGACY=1 restores the old conventions.
     if os.environ.get("GL2_LEGACY") == "1":
@@ -238,10 +258,6 @@ def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
             return 2 * ((L - y) * mp.cos(om[n] * y) / L - mp.sin(om[n] * y) / (2 * mp.pi * n))
         return 2 * (n * mp.sin(om[n] * y) - m * mp.sin(om[m] * y)) / (mp.pi * (m * m - n * n))
 
-    cap_mul = float(os.environ.get("GL2_CAP_MUL", "1"))
-    cap = int(float(mp.e ** L) * cap_mul + 1e-9)
-    if an is None:
-        an = ellan(name, cap)
     an_full = an
     an = _filter_drop(an_full, drop)
     print(
@@ -252,7 +268,7 @@ def assemble(name, mu, NB, dps, DEG=12, drop=None, an=None):
     def ppts_of(an_use):
         ppts = []
         for n, a in an_use.items():
-            if n < 2:
+            if n < 2 or mp.mpf(n) > mp.mpf(mu):
                 continue
             if a == 0 and not FIX:
                 continue          # original path keys on a_n; the FIX path keys on Lambda_f (a_8 = 0 but Lambda_f(8) = 4 log 2 for 11a1)
@@ -333,10 +349,7 @@ def assemble_drops(name, mu, NB, dps, drops, DEG=12, an=None, workers=None, incl
     Wall time is one assemble, not N, when workers ≥ 1+|drops|.
     """
     if an is None:
-        try:
-            an = an_points(name, int(float(mu)))
-        except Exception:
-            an = None
+        an = ellan(name, int(float(mu) * float(os.environ.get('GL2_CAP_MUL', '1')) + 1e-9))
     jobs = []
     if include_full:
         jobs.append((name, mu, NB, dps, None, DEG, an))

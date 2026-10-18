@@ -11,12 +11,12 @@ of scan_s.py (wrong Gamma, wrong a_p). This script uses only the
 harvested zeros — the same Gram as report/gram_mode_*.json.
 
     python3 code/scan_gl2.py 11a1 22 36 50
-    python3 code/scan_gl2.py maass1 6 12 25 --prec 1e-12
-    python3 code/scan_gl2.py 1.0.1.7.1 6 12 25 --prec 1e-12 --yes
+    # Maass and new precision requests: pre-compute-gamma/code/scan_gl2.py
 """
 from __future__ import annotations
 
 import math
+import hashlib
 import os
 import pickle
 import sys
@@ -24,9 +24,6 @@ import sys
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-_PCG = os.path.join(os.path.dirname(HERE), "pre-compute-gamma", "code")
-if os.path.isdir(_PCG):
-    sys.path.insert(0, _PCG)
 
 CURVES = (
     "11a1", "19a1", "32a1", "37a1", "43a1", "53a1", "61a1", "67a1",
@@ -40,58 +37,27 @@ CURVES = (
 )
 
 
-def _pop_flag(argv, name, cast=float, default=None):
-    out = list(argv)
-    val = default
-    if name in out:
-        i = out.index(name)
-        val = cast(out[i + 1])
-        del out[i : i + 2]
-    return val, out
+def zeros(name, prec=None, T=None, with_metadata=False):
+    """Read a measured snapshot. Its extent does not certify zero completeness.
 
-
-def _pop_bool(argv, name):
-    out = list(argv)
-    present = name in out
-    if present:
-        out.remove(name)
-    return present, out
-
-
-_OPTS = {"yes": False, "complete_section": True}
-
-
-def zeros(name, prec=None, T=None):
-    if os.path.isdir(_PCG):
-        try:
-            from tools import load_zeros, zeros_at
-
-            if prec is not None:
-                z, meta = zeros_at(
-                    name,
-                    prec=float(prec),
-                    T=T,
-                    yes=_OPTS["yes"],
-                    persist=True,
-                    complete_section=_OPTS["complete_section"],
-                )
-                if meta.get("refused"):
-                    sys.exit(
-                        "zeros_at refused (pass --yes after reading the estimate)"
-                    )
-                print(
-                    f"  zeros source={meta.get('source')} asked={meta.get('prec_asked'):g} "
-                    f"got={meta.get('prec_got'):g} computed={meta.get('computed')} n={meta.get('n')}",
-                    flush=True,
-                )
-            else:
-                z = load_zeros(name)
-            if getattr(z, "size", 0):
-                return np.asarray(z, dtype=float)
-        except (ImportError, KeyError, FileNotFoundError, OSError):
-            pass
+    T must not exceed the last stored ordinate; precision upgrades and new
+    coverage belong to PGC. Multiplicities in the stored list are preserved.
+    """
+    if prec is not None:
+        raise ValueError("precision requests belong to pre-compute-gamma/code/scan_gl2.py")
     p = os.path.join(HERE, f"zeros_{name}_weyl.pkl")
-    return np.array(sorted(float(x) for x in pickle.load(open(p, "rb"))))
+    with open(p, "rb") as handle:
+        raw = handle.read()
+    z = np.array(sorted(float(x) for x in pickle.loads(raw)))
+    if not len(z) or not np.all(np.isfinite(z)) or np.any(z <= 0):
+        raise ValueError('snapshot must contain finite positive ordinates; central zeros need a separate term')
+    if T is not None and (not math.isfinite(T) or T <= 0 or T > z[-1]):
+        raise ValueError(f'requested height {T} exceeds usable snapshot extent {z[-1]}; regenerate in PGC')
+    metadata = dict(source=os.path.abspath(p), sha256=hashlib.sha256(raw).hexdigest(),
+                    requested_height=T, last_ordinate=float(z[-1]), count=len(z),
+                    completeness_certified=False, precision='binary64 snapshot; source error unknown',
+                    central_zero='not included', multiplicity='as stored')
+    return (z, metadata) if with_metadata else z
 
 
 def hat(g, L, om):
@@ -135,39 +101,20 @@ def gram(name, mu, NB, prec=None):
 
 def main():
     argv = sys.argv[1:]
-    prec, argv = _pop_flag(argv, "--prec")
-    yes, argv = _pop_bool(argv, "--yes")
-    if not yes:
-        yes, argv = _pop_bool(argv, "-y")
-    no_complete, argv = _pop_bool(argv, "--no-complete")
-    _OPTS["yes"] = yes
-    _OPTS["complete_section"] = not no_complete
+    if any(arg.startswith("-") for arg in argv):
+        sys.exit("precompute options belong to pre-compute-gamma/code/scan_gl2.py")
     name = argv[0] if argv else "11a1"
-    try:
-        from maass_table1 import is_maass_name
-    except ImportError:
-        def is_maass_name(name):
-            return None
-
-    maass = is_maass_name(name)
-    if maass:
-        if not os.path.isdir(_PCG):
-            sys.exit(
-                f"{name} is Maass: init the private submodule\n"
-                f"  git submodule update --init pre-compute-gamma"
-            )
-        name = maass
-    elif name not in CURVES:
-        sys.exit(f"unknown curve {name}, have {CURVES}")
-    elif not os.path.exists(os.path.join(HERE, f"zeros_{name}_weyl.pkl")):
-        sys.exit(f"missing zeros_{name}_weyl.pkl — harvest_gl2 first")
+    if name not in CURVES:
+        sys.exit(f"unknown published curve {name}; Maass inputs belong to pre-compute-gamma")
+    if not os.path.exists(os.path.join(HERE, f"zeros_{name}_weyl.pkl")):
+        sys.exit(f"missing zeros_{name}_weyl.pkl; generate inputs in pre-compute-gamma")
     if len(argv) >= 4:
         windows = [(float(argv[1]), int(argv[2]), int(argv[3]))]
     else:
         windows = [(22.0, 36, 50), (38.0, 66, 42)]
     rows = []
     for mu, NB, _dps in windows:
-        lam0, ell = gram(name, mu, NB, prec=prec)
+        lam0, ell = gram(name, mu, NB)
         rows.append((mu, ell[0], lam0))
     if len(rows) >= 2:
         s = (rows[1][1] - rows[0][1]) / (rows[1][0] - rows[0][0])

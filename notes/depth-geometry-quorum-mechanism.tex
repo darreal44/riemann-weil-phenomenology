@@ -1,10 +1,11 @@
 \documentclass[11pt]{article}
 \usepackage[a4paper,margin=2.5cm]{geometry}
 \usepackage{amsmath,amssymb,amsthm,booktabs}
+\emergencystretch=3em
 \newtheorem{lemma}{Lemma}\newtheorem{conjecture}[lemma]{Conjecture}
 \title{Depth as sampling geometry, and the quorum as a $2\times2$ mechanism}
 \author{D. Joubert (with the assistance of two language models)}
-\date{1 September 2026, v3 of 5 September (status box: the two-term formula is dead; referee + \S86) --- consolidates notebook \S66--71, \S86 of \texttt{riemann-weil-phenomenology}}
+\date{1 September 2026; v4, 18 October 2026: corrected cross term and replayed $2\times2$ certificates}
 \begin{document}\maketitle
 \begin{abstract}
 Two results replace two earlier readings. (1) The depth law $-\ln\lambda_{\min}=s(\chi)\mu+b$ of the truncated Weil forms, previously described by a four-variable regression on fourteen Dirichlet characters that failed out of sample, is a \emph{geometric} property of the zero set: the floor $c_L$ of the form is the sampling constant of the zeros for the Paley--Wiener space of type $L/2$, made exponentially small by the desert $(-\gamma_1,\gamma_1)$ and by the gaps longer than the Nyquist step $2\pi/L$. A two-coefficient law, the coefficients fitted on four scales of $\zeta$ alone ($\mu=3,8,11,16$), predicts $s(\chi)$ out of sample with median ratio $0.89$ (10 of 14 characters within $20\%$), with no character-specific parameter. (2) The quorum theorem (every proper sub-Euler product violates positivity) has a mechanism: an unconditional $2\times2$ interlacing lemma, \emph{depth $\times$ coupling}, whose three quantities we certify at $\mu=11$ and measure at three scales; the coupling of the bottom vector to a missing prime decays in $p$ at half the rate of its silence, which is what makes the determinant negative. Both are statements about explicitly defined forms; nothing bears on RH.
@@ -47,15 +48,16 @@ The desert term is $-\ln\bigl(1-\lambda_0(\tfrac L2\gamma_1)\bigr)$, Slepian's c
 \section{The quorum as a mechanism}
 Write $Q_S=Q+T_M$, $T_M$ the towers of the missing primes $M$.
 \begin{lemma}[unconditional]
-Let $v$ be a unit vector, $w=T_Mv$, $\kappa=\|w-(v^{\!\top}w)v\|$, $u=(w-(v^{\!\top}w)v)/\kappa$, and $a=v^{\!\top}Qv+v^{\!\top}T_Mv$, $d=u^{\!\top}Q_Su$. If $a\,d<\kappa^2$ then $Q_S$ is indefinite.
+Let $Q,T_M$ be real symmetric matrices and $v$ a unit vector. Put $w=T_Mv$, $\kappa=\|w-(v^{\!\top}w)v\|>0$, $u=(w-(v^{\!\top}w)v)/\kappa$, $a=v^{\!\top}Q_Sv$, $d=u^{\!\top}Q_Su$, and $r=u^{\!\top}Qv$. If $a\,d<(\kappa+r)^2$ then $Q_S$ is indefinite.
 \end{lemma}
-\begin{proof} The $2\times2$ principal minor of $Q_S$ on $\{v,u\}$ is $\begin{pmatrix}a&\kappa\\\kappa&d\end{pmatrix}$ with negative determinant, hence a negative eigenvalue; Cauchy interlacing. \end{proof}
-No eigenvector exactness and no hypothesis on zeros is used. Taking $v$ the bottom vector of $Q$: $a\approx\varepsilon+\sum_{p\in M}\delta_p$ with $\varepsilon=\lambda_{\min}$ and $\delta_p=v^{\!\top}T_pv$ the \emph{silence} of $v$ to $p$; $\kappa$ is its \emph{coupling}. Depth $\times$ coupling: this is the content of the lemmas B1/B2 of the note \emph{lemma-quorum-scales}, in the form in which they are provable.
+\begin{proof} The compression of $Q_S$ to the orthonormal pair $\{v,u\}$ is $\begin{pmatrix}a&\kappa+r\\\kappa+r&d\end{pmatrix}$. Its negative determinant gives one negative and one positive eigenvalue. Their Rayleigh quotients are also attained in the ambient space, so $Q_S$ is indefinite. \end{proof}
+No eigenvector exactness and no hypothesis on zeros is used. Only for an \emph{exact} eigenvector of $Q$ does $r=0$. For an approximate bottom vector, the residual must be enclosed: a sufficient condition is $a d<(\kappa-|r|)^2$ with $|r|<\kappa$. Taking $v$ the exact bottom vector of $Q$ gives $a=\varepsilon+\sum_{p\in M}\delta_p$, with $\varepsilon=\lambda_{\min}$ and $\delta_p=v^{\!\top}T_pv$ the \emph{silence} of $v$ to $p$; $\kappa$ is its \emph{coupling}. The v3 statement omitted $r$ for arbitrary $v$ and was false; the corrected statement supplies the residual condition needed by numerical witnesses and by lemmas B1/B2 of \emph{lemma-quorum-scales}.
 
-\paragraph{Certified instance, $\mu=11$} (\texttt{code/quorum\_2x2.py}, $Q$ and $T_p$ in Arb balls). $\varepsilon=3.5832\times10^{-48}\pm3\times10^{-53}$. $T_{11}\equiv0$ ($\Theta(L)=0$ at the window edge), so the voting primes are $\{2,3,5,7\}$ --- the $2^4-1$ of the certified theorem. All fifteen proper sub-products are certified indefinite by $2\times2$ certificates built on the \emph{same} $v$; worst margin $M=\{7\}$: $\kappa^2=3.8\times10^{-9}$ against $a\,d=1.4\times10^{-16}$. This re-proves the $\mu=11$ theorem independently of its 340 witnesses.
+\paragraph{Certified instance, $\mu=11$} (\texttt{code/quorum\_2x2.py}, replay of 18 October 2026). $Q$ and $T_p$ are enclosed in Arb balls at 85 decimal digits, integration tolerance $10^{-58}$, on the 47-dimensional cosine space $V_{46}$. The witness is the exact frozen dyadic vector from \texttt{witnesses\_zeta\_mu11\_full.json}; it is not assumed to be an exact eigenvector. The implementation uses the unnormalized perpendicular vector and the full cross term, then divides the determinant by the product of the two squared norms. $T_{11}\equiv0$ ($\Theta(L)=0$), leaving voting primes $\{2,3,5,7\}$. All fifteen nonempty missing-prime sets give strictly negative determinant enclosures. The closest to zero, $M=\{7\}$, is $-3.80631029173742\times10^{-9}$ (enclosure radius below $4.33\times10^{-54}$ before decimal shortening). The complete enclosures, including the residual cross terms, are stored in \texttt{report/quorum-2x2-mu11.json}. This re-proves the fifteen $\mu=11$ cases using one vector instead of their individual negative witnesses; it shares the full-form assembly and integration bounds with the existing certificate.
 
-\paragraph{The $\mu$-content.} High-precision measurement at three scales, criterion checked on every proper subset:
-\begin{center}\small
+\paragraph{The $\mu$-content (historical measurements).} The following table records the earlier eigenvector-based measurements. Except for the corrected $\mu=11$ replay above, its margins have not been re-certified with the residual cross term:
+\begin{center}\scriptsize
+\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lccccc}\toprule
 $\mu$ & $\varepsilon$ & $\delta_p$ ($p=2,3,5,7,\ldots$) & $\kappa_p$ & subsets & rel.\ margin\\\midrule
 8 & $7.5\times10^{-33}$ & $0.052,\,3.1\text{e-}4,\,1.3\text{e-}10,\,9.4\text{e-}21$ & $0.70,\,0.53,\,3.6\text{e-}3,\,8.8\text{e-}9$ & 14/14 & 0.90\\

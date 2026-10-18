@@ -15,11 +15,11 @@ Private use does not require publication. Redistribution of a work that
 imports these files is copyleft plus attribution. GitHub may show the
 license as *Other*.
 
-## Maass precompute (private submodule)
+## Repository ownership
 
-Maass \(a_n\), Booker \(\Lambda_\theta\), and the zero tools live in the private
+All new precompute work (zero harvesting, coefficients, Maass inputs and precision upgrades) lives in the private
 repo [djoubertthot/pre-compute-gamma](https://github.com/djoubertthot/pre-compute-gamma).
-They are not in this tree. Anyone with access at thot:
+The public tree keeps the frozen inputs needed to reproduce published results. Generation tools and new outputs belong to PGC. Anyone with access at thot:
 
 ```
 git submodule update --init pre-compute-gamma
@@ -34,7 +34,7 @@ changes the current tree. Not Weil.
 The unfinished covering program (\(Q_L\), Off/Schur/\(A(v)\),
 remaining-before-RH) lives in the private repo
 [djoubertthot/weil-then-rh](https://github.com/djoubertthot/weil-then-rh).
-Published papers stay **here**. New publishable notes still go here.
+Published papers and their reproducibility inputs stay **here**. New research, proofs toward Weil/RH, campaigns, notes and issues go to **WTR by default**. Publication into this repository is a separate explicit decision.
 The workshop is not a Weil or RH claim.
 Notes listed below with a `weil-then-rh/` prefix live in that private
 submodule (moved on 2026-09-08); without access the link is dead.
@@ -46,10 +46,12 @@ git submodule update --init weil-then-rh
 ## Tests
 
 ```
-python3 -m pytest tests -q              # campagne + quorum artefacts (<15 s)
+python3 -m pip install -r requirements-dev.txt
+python3 -m pytest tests -q              # public regression suite (a few minutes)
 python3 tests/test_theta_endpoints.py   # identites de la table de correlation (App. A)
 python3 tests/test_cert_mu11.py         # coherence tables de certificats <-> temoins JSON
 python3 code/quorum_general.py 11 46 22 zeta verify   # rejeu certifie complet (python-flint requis)
+python3 code/quorum_2x2.py --output report/quorum-2x2-mu11.json  # 15 corrected compressions
 python3 code/positivite_certifiee.py    # Q>0 certifie a mu=11 (~150 s, python-flint)
 python3 code/music_zeros.py zeta 11 46 50 6   # MUSIC depuis le radical
 python3 code/music_zeros.py chi3 16 36 48 3   # cran Dirichlet : zéros de L(s,χ₃)
@@ -73,7 +75,7 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   are the bottom eigenvector of the zero Gram), zeros of ζ to 10⁻¹⁹ and γ₁(χ₃) to 4×10⁻⁵⁸
   from prime-built matrices, err ≈ e^(−sµ), the endpoint law |v̂₀(γ₁)| ≈ C_γ λ₀ and the
   leakage spectrum, and the certified positive definiteness of the complete form at µ = 11.
-- `notes/depth-geometry-quorum-mechanism.pdf` (v2) — §1 (under RH): the depth law as a
+- `notes/depth-geometry-quorum-mechanism.pdf` (v4, corrected 2026-10-18) — §1 (under RH): the depth law as a
   sampling constant of the zero set; the geometric structure — desert plus sub-Nyquist gaps —
   whose two-term formula a·L(γ₁−ν)₊ + b·L·Σ(gap−ν)₊ died at a common cutoff T₀ = 320 (§92–94:
   overprediction 0.57–0.93 on most L-functions, one underprediction ×2.2; the constant is the
@@ -111,11 +113,11 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   (log 2)/√2) and the semi-local Fourier as a sum of 2-adic sub-shells. Not RH.
 - `weil-then-rh/notes/2adic-peak-lamge16.md` — Fmat peak at Λ=24 and 32 still climbs
   through 0.49 toward √2. Same Gibbs, not a Dirac. Not RH.
-- `notes/log2-log3-step.md` — the (log 2, log 3] step: CC remainder at Λ=1 does
+- `weil-then-rh/notes/log2-log3-step.md` — the (log 2, log 3] step: CC remainder at Λ=1 does
   not transport; the other mechanism is Connes 1999 (subtract 2h(1)log'Λ first).
   Identity orbit vanishes at Λ=1; two logarithms (Λ vs 1/h); interior primes {2}.
   The Paley–Wiener step is not taken. Not RH.
-- `notes/pw-log3.md` — Paley–Wiener of type log 3: Galerkin \(V_N\) is Courant
+- `weil-then-rh/notes/pw-log3.md` — Paley–Wiener of type log 3: Galerkin \(V_N\) is Courant
   the wrong way for the class \(W_L\); prime-side ladder at \(\mu=3\) nested and
   \(>0\). \(c_L^*\ge0\) not taken. Not RH.
 - `weil-then-rh/notes/ql-operator-bound.md` — Bochner multiplier of \(\hat Q_L\) on
@@ -135,12 +137,12 @@ Sixteen notes, one lab notebook. They are not of equal standing; read them by ti
   necessary). SURVIVE. Not RH.
 - `weil-then-rh/notes/gl2-37a1-mu74.md` — 37a1 drop 3 at μ=74 and 80: still +0.09,
   plateau. Linear μ≈70 killed. Not RH.
-- `notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
+- `weil-then-rh/notes/demonstrations.md` — unconditional lemmas: Courant on the 2-plane, Schur
   sign \(Q>0\Leftrightarrow\Delta>0\), closed \(\theta_{f_1}\ge0\), exact edge split
   \(\hat\psi=\) jump \(+\,r\). Not RH.
 - `weil-then-rh/notes/av-witness.md` — rational witness (4,−3,1)/√26 at χ₅ μ=16: Arb enclosure
   of A(v) on [0,1] and of Q(v)>0. Comparison estimate still open. Not RH.
-- `notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
+- `weil-then-rh/notes/av-gauss.md` — 3-point Gauss of A(v) on [0,1] for the rational witness;
   1/y cancelled. Cauchy |a^{(6)}| two-panel majorant: `weil-then-rh/notes/av-cauchy-a6.md`.
   Chord comparison still open. Not RH.
 - `weil-then-rh/notes/av-mu150.md` — one point at μ=150: A−P₂₃ went through 0, P_rest with
@@ -287,8 +289,9 @@ as a structure; its two-term formula died at a common cutoff (§92–94) and is 
 **ℓ ≈ 11.0·D_max**, D_max the maximal lead of the window's Nyquist count over the zero count (§133–135,
 `notes/the-well.pdf`), within 3% on most degree-1 windows and 10% on GL₂, no fitted parameter;
 at µ = 3 / 11 / 16. *(No zeros)* the quorum has a mechanism: an unconditional 2×2
-interlacing lemma — Q_S = Q + T_M is indefinite as soon as (ε + vᵀT_Mv)·d < κ², depth ×
-coupling — whose three quantities are certified at µ = 11 (all 15 proper sub-products
+interlacing lemma — Q_S = Q + T_M is indefinite when a·d < (κ + uᵀQv)²,
+with a = vᵀQ_Sv; the residual term vanishes only for an exact eigenvector.
+The full compression is certified at µ = 11 (all 15 proper sub-products
 re-proved indefinite on the *same* bottom vector, `code/quorum_2x2.py`) and measured at
 µ = 8, 11, 16 (14/14, 14/14, 62/62; silence δ_p ~ e^(−7p), coupling κ_p ~ e^(−4p): the
 coupling decays at half the rate of the silence, which is what makes the determinant
@@ -326,35 +329,25 @@ projection estimates agreeing to ≤ 4×10⁻⁴ at µ = 16, six for six. Note:
 ## Reproduce
 
 ```bash
-pip install -r requirements.txt
-cd code
-
-# zeta zeros cache (~45 s; pickles are provided, so optional)
-python3 zeros_cache.py
-
-# regime matching & Slepian plunge (§9)                     ~1 min each
-python3 raccord.py
-python3 plunge.py
-
-# Suzuki shape test for zeta:  mu  N_basis  dps  GL_degree  (§10)
-python3 shape7.py 5.5 20 55 14        # ~5 s
-python3 shape7.py 11 46 85 16         # ~70 s ; lambda_min = 3.58e-48 (cf. CC's 2.389e-48)
-python3 shape8.py 11 46 85 16         # + theta-kernel overlap 0.99964  (§12)
-
-# conventions & c_inf identification (§12)                  ~10 s
-python3 denouage_A.py
-python3 phi_exact.py                  # exact ||Phi_chi|| , 12 digits (§13.4)
-
-# Dirichlet scan (§13): mu = 5.5 and 11 per character       ~1 min each
-python3 dirichlet_step1.py            # Frullani validation + L(chi3) zeros (~3 min)
-python3 dscan.py chi3
-python3 dscan.py chi4
-python3 dscan.py chi5
-python3 dscan.py chi7
-python3 dscan.py chi8
-# third ladder point, e.g.:
-python3 -c "import dscan, mpmath as mp; dscan.run('chi4', mp.mpf('16'), 46, 60)"
+pip install -r requirements-dev.txt
+python -m pytest tests -q
+python code/dscan.py chi3                 # reads published frozen zeros
+python code/scan_q_gl2.py 11a1 22 36 50   # published prime-side engine
 ```
+
+New zero harvesting belongs to PGC, with outputs under that repository:
+
+```bash
+cd pre-compute-gamma
+python code/harvest_weyl.py chi5 320
+```
+
+Exploratory drivers (`raccord.py`, `plunge.py`, `shape7.py`, `shape8.py`,
+`edge_value_scan.py`, `gram_mode.py`, `compute_T.py`) and campaign tests belong
+to WTR. Run their documented commands from `weil-then-rh/`. The public test
+suite does not require either private submodule; private suites run separately.
+The 2026-10-18 dependency audit and follow-up issues are tracked in WTR/PGC.
+
 
 Every pipeline is validated against independent anchors: closed-form identities
 (pole term, digamma/Frullani vs the spectral Q_∞, the 2.00963 coefficient of
