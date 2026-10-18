@@ -6,11 +6,57 @@
 # Certification Arb generalisee du quorum : zeta ou chi3, mu et base parametres.
 # Usage : python3 quorum_general.py <mu> <NB> <dps> <zeta|chi3>
 import numpy as np, sys, time, itertools, os
+import json
+import math
+from certified_bounds import decimal_bound, arb_float_bound
 BASE = os.path.dirname(os.path.abspath(__file__))
 from flint import arb, acb, ctx
 
+def load_witnesses(path, mu, NB, kind, primes):
+    """Read a complete frozen family; verification never supplies missing vectors."""
+    with open(path, encoding='utf-8') as f:
+        data = json.load(f)
+    if not isinstance(data, dict) or any(
+        data.get(key) != value for key, value in [('kind', kind), ('mu', mu), ('NB', NB)]
+    ):
+        raise ValueError('witness metadata must match kind, mu and NB')
+    entries = data.get('witnesses')
+    if not isinstance(entries, list):
+        raise ValueError('witnesses must be a list')
+    expected = {sub for r in range(len(primes)+1) for sub in itertools.combinations(primes, r)}
+    loaded = {}
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValueError('invalid witness entry')
+        sub, encoded = entry.get('S'), entry.get('w')
+        if (not isinstance(sub, list) or any(type(p) is not int for p in sub)
+                or len(set(sub)) != len(sub)):
+            raise ValueError('invalid witness subset')
+        key = tuple(sorted(sub))
+        if key not in expected or key in loaded:
+            raise ValueError('unknown or duplicate witness subset')
+        if not isinstance(encoded, list) or len(encoded) != NB + 1:
+            raise ValueError('witness dimension must equal NB + 1')
+        try:
+            if any(not isinstance(h, str) or not h.lower().lstrip('+-').startswith('0x')
+                   or 'p' not in h.lower() for h in encoded):
+                raise ValueError('expected hexadecimal dyadic coordinates')
+            vector = [float.fromhex(h) for h in encoded]
+        except (ValueError, OverflowError) as exc:
+            raise ValueError('invalid dyadic witness coordinates') from exc
+        if not all(math.isfinite(x) for x in vector) or not any(vector):
+            raise ValueError('witness must be finite and nonzero')
+        loaded[key] = np.array(vector)
+    if set(loaded) != expected:
+        raise ValueError('missing frozen witness subsets')
+    return loaded
+
+
 def run(mu, NB, dps, kind, mode='freeze'):
-    assert mu <= 22, 'liste de premiers codee jusque 19 : etendre primes[] pour mu > 22'
+    if kind not in ('zeta', 'chi3') or mode not in ('freeze', 'verify'):
+        raise ValueError('kind: zeta | chi3; mode: freeze | verify')
+    if not 2 < mu <= 22 or NB < 0 or dps < 15:
+        raise ValueError('require 2 < mu <= 22, NB >= 0, dps >= 15')
     t0 = time.time(); ctx.dps = dps
     NP = NB + 1
     Larb = arb(mu).log()
@@ -23,6 +69,9 @@ def run(mu, NB, dps, kind, mode='freeze'):
         return 2*(n*(om[n]*y).sin() - m*(om[m]*y).sin())/(arb.pi()*(m*m - n*n))
     chi = (lambda n: [0,1,-1][n % 3]) if kind == 'chi3' else (lambda n: 1)
     primes = [p for p in [2,3,5,7,11,13,17,19] if p < mu - 1e-9 and chi(p) != 0]
+    loaded = None
+    if mode == 'verify':
+        loaded = load_witnesses(os.path.join(BASE, f'witnesses_{kind}_mu{mu}.json'), mu, NB, kind, primes)
     towers = {p: [(arb(p**k).log(), chi(p**k)*arb(p).log()/arb(p**k).sqrt())
                   for k in range(1, 9) if p**k < mu - 1e-9] for p in primes}
     eps = arb("1e-15")
@@ -50,18 +99,15 @@ def run(mu, NB, dps, kind, mode='freeze'):
     g = lambda C,n,m: C[(n,m)] if n <= m else C[(m,n)]
     radmax = max(float(M[k].rad()) for M in [P, A] + list(T.values()) for k in M)
     print(f"[{kind} mu={mu}] {NP*(NP+1)//2} paires certifiees, premiers interieurs {primes}, {time.time()-t0:.0f}s")
-    Pf = np.array([[float(g(P,n,m).mid()) for m in range(NP)] for n in range(NP)])
-    Af = np.array([[float(g(A,n,m).mid()) for m in range(NP)] for n in range(NP)])
-    Tf = {p: np.array([[float(g(T[p],n,m).mid()) for m in range(NP)] for n in range(NP)]) for p in primes}
-    res = []; frozen = []
-    loaded = None
-    if mode == 'verify':
-        import json
-        loaded = {tuple(e['S']): e['w'] for e in json.load(open(os.path.join(BASE, f"witnesses_{kind}_mu{mu}.json")))['witnesses']}
+    if mode == 'freeze':
+        Pf = np.array([[float(g(P,n,m).mid()) for m in range(NP)] for n in range(NP)])
+        Af = np.array([[float(g(A,n,m).mid()) for m in range(NP)] for n in range(NP)])
+        Tf = {p: np.array([[float(g(T[p],n,m).mid()) for m in range(NP)] for n in range(NP)]) for p in primes}
+    res = []; frozen = []; certified = set()
     for r in range(len(primes)+1):
         for sub in itertools.combinations(primes, r):
-            if loaded is not None and tuple(sorted(sub)) in loaded:
-                w = np.array([float.fromhex(h) for h in loaded[tuple(sorted(sub))]])
+            if loaded is not None:
+                w = loaded[sub]
             else:
                 Sf = Pf + Af + sum((Tf[p] for p in sub), np.zeros((NP,NP)))
                 w = np.linalg.eigh(0.5*(Sf+Sf.T))[1][:,0]
@@ -76,26 +122,36 @@ def run(mu, NB, dps, kind, mode='freeze'):
                         s += 2*wa[n]*wa[m]*g(C,n,m)
                 return s
             q = quad(P) + quad(A) + sum((quad(T[p]) for p in sub), arb(0))
-            up = float(q.mid()) + float(q.rad())
-            res.append((set(sub), up, float(q.rad())))
+            q /= sum((x*x for x in wa), arb(0))
+            if not q.is_finite():
+                raise ValueError(f'nonfinite certificate for subset {sub}')
+            if q < 0:
+                certified.add(sub)
+            up = arb_float_bound(q, 'upper')
+            res.append((set(sub), up, arb_float_bound(q.rad(), 'upper')))
     proper = [x for x in res if x[0] != set(primes)]
-    ok = [x for x in proper if x[1] < 0]
+    ok = [x for x in proper if tuple(sorted(x[0])) in certified]
     qradmax = max(x[2] for x in res)
     print(f"  sous-ensembles propres : {len(proper)} ; CERTIFIES < 0 : {len(ok)}")
     worst = max(proper, key=lambda x: x[1]); best = min(proper, key=lambda x: x[1])
-    print(f"  pire (le plus proche de 0) : S={worst[0]} borne {worst[1]:+.4f} ; plus violent : S={best[0]} borne {best[1]:+.4f}")
+    print(f"  pire (le plus proche de 0) : S={worst[0]} borne {decimal_bound(worst[1], 'upper')} ; plus violent : S={best[0]} borne {decimal_bound(best[1], 'upper')}")
     full = [x for x in res if x[0] == set(primes)][0]
-    print(f"  complet : borne sup {full[1]:+.6f} (non certifiable attendu)")
+    print(f"  complet : borne sup {decimal_bound(full[1], 'upper')} (non certifiable attendu)")
+    if len(ok) != len(proper):
+        raise ValueError(f'certification failed: only {len(ok)}/{len(proper)} proper subsets are strictly negative')
+    if mode == 'verify':
+        print(f'  frozen witnesses verified; no artifacts written; total {time.time()-t0:.0f}s')
+        return res
     with open(os.path.join(BASE, f"quorum_cert_{kind}_mu{mu}.txt"), "w") as f:
         f.write(f"# {kind}, mu={mu}, NB={NB}, ctx.dps={dps} ; rayon max des entrees certifiees = {radmax:.3e} ; rayon max des quotients = {qradmax:.3e}\n")
-        f.write(f"# borne = mid + rad du quotient de Rayleigh certifie (Arb) ; temoins : witnesses_{kind}_mu{mu}.json (dyadiques exacts)\n")
-        for s, u, rr in res: f.write(f"{sorted(s)} : {u:+.6f}  (rayon {rr:.2e})\n")
+        f.write(f"# borne haute arrondie vers +inf du quotient de Rayleigh normalise (Arb) ; temoins : witnesses_{kind}_mu{mu}.json (dyadiques exacts)\n")
+        for s, u, rr in res: f.write(f"{sorted(s)} : {decimal_bound(u, 'upper')}  (rayon {rr:.2e})\n")
     if mode == 'freeze':
-        import json
         for e, (s, u, rr) in zip(frozen, res): e['certified_upper'] = u; e['radius'] = rr
         json.dump({'kind': kind, 'mu': mu, 'NB': NB, 'witnesses': frozen}, open(os.path.join(BASE, f"witnesses_{kind}_mu{mu}.json"), "w"))
         print(f"  temoins geles : witnesses_{kind}_mu{mu}.json")
     print(f"  table complete : quorum_cert_{kind}_mu{mu}.txt ; total {time.time()-t0:.0f}s")
+    return res
 
 if __name__ == '__main__':
     run(int(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]), sys.argv[4], sys.argv[5] if len(sys.argv) > 5 else 'freeze')

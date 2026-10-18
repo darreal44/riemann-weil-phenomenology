@@ -36,23 +36,20 @@ def Lam(t, q, tab, a):
     s = mp.mpf('0.5') + 1j*t
     return mp.re((mp.mpf(q)/mp.pi)**((s+a)/2)*mp.gamma((s+a)/2)*Lchi(s, q, tab))
 
-def harvest_zeros(name, q, tab, a, tmax=85):
-    fn = f'zeros_{name}.pkl'
-    if os.path.exists(fn): return pickle.load(open(fn,'rb'))
-    mp.mp.dps = 22
-    zs, step = [], mp.mpf('0.04')
-    t = mp.mpf('0.01'); prev = Lam(t, q, tab, a)
-    while t < tmax:
-        t2 = t + step; cur = Lam(t2, q, tab, a)
-        if prev*cur < 0:
-            zs.append(float(mp.findroot(lambda x: Lam(x, q, tab, a), (t, t2), solver='bisect')))
-        prev, t = cur, t2
-    pickle.dump(zs, open(fn,'wb'))
-    return zs
+def load_zeros(name):
+    """Read the frozen public input; new harvesting belongs to pre-compute-gamma."""
+    fn = os.path.join(BASE, f'zeros_{name}.pkl')
+    if not os.path.isfile(fn):
+        raise FileNotFoundError(
+            f'{fn}: missing frozen cache; generate and validate inputs in '
+            'pre-compute-gamma before publishing a new snapshot'
+        )
+    with open(fn, 'rb') as f:
+        return pickle.load(f)
 
 def run(name, mu, NB, dps, DEG=14):
     cf = CHARS[name]; q, tab, a = cf['q'], cf['tab'], cf['a']
-    zs = harvest_zeros(name, q, tab, a)
+    zs = load_zeros(name)
     mp.mp.dps = dps
     t0 = time.time()
     L = mp.log(mu); s0 = mp.mpf(1)/4 + mp.mpf(a)/2

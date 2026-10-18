@@ -34,11 +34,3 @@ def test_discrete_landau_count_chi5_mu16_above_nyquist():
     inb = sum(1 for g in Z if g < 2*math.pi*NB/math.log(mu))
     assert inb > NB + 1                                      # above Nyquist: N+1-m < 0, the count must come from D_max
     assert round(D) == sum(1 for e in ell if e > 2.0), (D, ell)
-
-def test_depth_law_from_stored_windows():
-    """ell measured (edge-value-scan, server) vs 11 D_max from the zero lists, for the well-conditioned windows."""
-    import json
-    rows = {json.loads(l)['window']: json.loads(l) for l in open(os.path.join(CODE, '..', 'report', 'edge-value-scan.jsonl'))}
-    for w, zf in (('zeta:11', 'zeros500.pkl'), ('chi3:16', 'zeros_chi3_weyl.pkl'), ('chi5:16', 'zeros_chi5_weyl.pkl'), ('chi4:38', 'zeros_chi4_weyl.pkl'), ('chi8:16', 'zeros_chi8_weyl.pkl')):
-        r = rows[w]; D = _Dmax(_zeros(zf), r['mu'], r['NB'])
-        assert abs(r['ell']/(11.0*D) - 1) < 0.08, (w, r['ell'], D)

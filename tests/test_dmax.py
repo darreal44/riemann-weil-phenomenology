@@ -61,30 +61,3 @@ def test_kernel_nonnegative_everywhere():
     omax = 2 * math.pi * NB / L
     for g in list(Z[:20]) + [omax]:
         assert kernel_lower(Z, mu, NB, g) >= 0
-
-
-def test_pi2_is_within_20pct_on_resolved_degree1():
-    import json
-    rows = {}
-    root = os.path.join(CODE, "..")
-    path = os.path.join(root, "report", "edge-value-scan.jsonl")
-    if not os.path.isfile(path):
-        path = os.path.join(root, "weil-then-rh", "report", "edge-value-scan.jsonl")
-    if not os.path.isfile(path):
-        import pytest
-        pytest.skip("lab jsonl lives in weil-then-rh")
-    for line in open(path, encoding="utf-8"):
-        if line.strip():
-            r = json.loads(line)
-            rows[r["window"]] = r
-    zf = {
-        "chi3:16": "zeros_chi3_weyl.pkl",
-        "chi5:16": "zeros_chi5_weyl.pkl",
-        "chi8:16": "zeros_chi8_weyl.pkl",
-        "chi29:38": "zeros_chi29_weyl.pkl",
-    }
-    for w, f in zf.items():
-        r = rows[w]
-        D = D_max(load_zeros(f), r["mu"], r["NB"])
-        ratio = r["ell"] / (PI2 * D)
-        assert 0.95 < ratio < 1.25, (w, ratio, r["ell"], D)

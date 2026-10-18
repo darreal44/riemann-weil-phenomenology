@@ -12,11 +12,10 @@ def _mat(lab, NP, mu, dps, drop=None):
     os.environ['GL2_FIX'] = '1'; mp.mp.dps = dps
     spec = importlib.util.spec_from_file_location('g', os.path.join(CODE, 'scan_q_gl2.py')); g = importlib.util.module_from_spec(spec); spec.loader.exec_module(g)
     a, N = CURVES[lab]; ap = dict(ap_table(lab, 80))
-    if drop is not None: ap[drop] = None
-    g.ellan = lambda label, cap: g.hecke_an({p: v for p, v in ap.items() if v is not None}, N, cap)
+    g.ellan = lambda label, cap: g.hecke_an(ap, N, cap)
     cap = {}; _e = mp.eigsy; mp.eigsy = lambda S, *a_, **k: (cap.setdefault('S', S), _e(S, *a_, **k))[1]
     try:
-        with contextlib.redirect_stdout(io.StringIO()): g.assemble(lab, mu, NP-1, dps)
+        with contextlib.redirect_stdout(io.StringIO()): g.assemble(lab, mu, NP-1, dps, drop=drop)
     finally: mp.eigsy = _e
     return np.array([[float(cap['S'][i, j]) for j in range(NP)] for i in range(NP)])
 

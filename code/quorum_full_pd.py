@@ -1,3 +1,4 @@
+from certified_bounds import decimal_bound, arb_float_bound
 # Copyright (c) 2026 Denis Joubert.
 # This file may be distributed under the GNU GPL v3 or later,
 # or the Creative Commons Attribution-ShareAlike 4.0 International
@@ -111,7 +112,7 @@ def gershgorin_lower(B, n):
             if j != i:
                 s += abs(B[i][j])
         m = lo - (s.mid() + s.rad())
-        margin = _down(float(m.mid()) - float(m.rad()))
+        margin = arb_float_bound(m, 'lower')
         if worst is None or margin < worst[0]:
             worst = (margin, i)
     return worst
@@ -124,7 +125,7 @@ def gershgorin_upper(A, n):
         for j in range(n):
             if j != i:
                 s += abs(A[i][j])
-        v = _up(float(s.mid()) + float(s.rad()))
+        v = arb_float_bound(s, 'upper')
         if best is None or v > best:
             best = v
     return best
@@ -137,12 +138,12 @@ def certify(Q, NP, Va, v1a):
     VtV = [[sum((Va[k][i] * Va[k][j] for k in range(NP)), arb(0)) for j in range(NP)] for i in range(NP)]
     marge_V, i_V = gershgorin_lower(VtV, NP)
     M_V = gershgorin_upper(VtV, NP)
-    lam_min_Q_lower = _down(marge_B / M_V) if (M_V > 0 and marge_B > 0) else float('-inf')
+    lam_min_Q_lower = arb_float_bound(arb(marge_B) / arb(M_V), 'lower') if (M_V > 0 and marge_B > 0) else float('-inf')
     q = sum((v1a[n]*v1a[n]*g(Q,n,n) for n in range(NP)), arb(0))
     q += sum((2*v1a[n]*v1a[m]*g(Q,n,m) for n in range(NP) for m in range(n+1, NP)), arb(0))
     ray = q / sum((x*x for x in v1a), arb(0))
-    lower = _down(float(ray.mid()) - float(ray.rad()))
-    upper = _up(float(ray.mid()) + float(ray.rad()))       # un quotient de Rayleigh MAJORE lambda_min : c'est la borne haute de l'encadrement
+    lower = arb_float_bound(ray, 'lower')
+    upper = arb_float_bound(ray, 'upper')       # un quotient de Rayleigh MAJORE lambda_min : c'est la borne haute de l'encadrement
     radB = _up(max(float(B[i][j].rad()) for i in range(NP) for j in range(NP)))
     return {"gershgorin_margin_B": marge_B, "row_B": i_B, "gershgorin_margin_VtV": marge_V, "row_VtV": i_V,
             "lambda_max_VtV_upper": M_V, "lambda_min_Q_lower": lam_min_Q_lower,
@@ -174,23 +175,25 @@ def run(mode):
     Va = [[arb_from_dyadic(Vd[r][c]) for c in range(NP)] for r in range(NP)]
     v1a = [arb_from_dyadic(s) for s in v1d]
     res = certify(Q, NP, Va, v1a)
-    print(f"  Gershgorin(V^T Q V) marge min {res['gershgorin_margin_B']:+.4e} (ligne {res['row_B']}) ; rayon max de B {res['rad_max_B']:.3e}")
-    print(f"  Gershgorin(V^T V)   marge min {res['gershgorin_margin_VtV']:+.4e} (ligne {res['row_VtV']}) ; lambda_max(V^T V) <= 1 + {res['lambda_max_VtV_upper']-1:.3e}")
-    print(f"  => lambda_min(Q) >= m_B / M_V = {res['lambda_min_Q_lower']:+.6e}   (la congruence conserve la positivite, pas les valeurs propres)")
-    print(f"  Q(v_1)/|v_1|^2 : mid {res['rayleigh_mid']:+.6e} rad {res['rayleigh_rad']:.3e} (v_1 dyadique exact, |v_1|^2 en boule) -> lambda_min(Q) <= {res['lambda_min_Q_upper']:+.6e}")
-    print(f"  ENCADREMENT : {res['lambda_min_Q_lower']:+.6e} <= lambda_min(Q_{{2,3,5,7}}) <= {res['lambda_min_Q_upper']:+.6e}   (bas : Gershgorin/congruence ; haut : le temoin, qui ne prouve pas la positivite)")
+    print(f"  Gershgorin(V^T Q V) marge min {decimal_bound(res['gershgorin_margin_B'], 'lower')} (ligne {res['row_B']}) ; rayon max de B {res['rad_max_B']:.3e}")
+    print(f"  Gershgorin(V^T V)   marge min {decimal_bound(res['gershgorin_margin_VtV'], 'lower')} (ligne {res['row_VtV']}) ; lambda_max(V^T V) <= {decimal_bound(res['lambda_max_VtV_upper'], 'upper', 18)}")
+    print(f"  => lambda_min(Q) >= m_B / M_V = {decimal_bound(res['lambda_min_Q_lower'], 'lower')}   (la congruence conserve la positivite, pas les valeurs propres)")
+    print(f"  Q(v_1)/|v_1|^2 : mid {res['rayleigh_mid']:+.6e} rad {res['rayleigh_rad']:.3e} (v_1 dyadique exact, |v_1|^2 en boule) -> lambda_min(Q) <= {decimal_bound(res['lambda_min_Q_upper'], 'upper')}")
+    print(f"  ENCADREMENT : {decimal_bound(res['lambda_min_Q_lower'], 'lower')} <= lambda_min(Q_{{2,3,5,7}}) <= {decimal_bound(res['lambda_min_Q_upper'], 'upper')}   (bas : Gershgorin/congruence ; haut : le temoin, qui ne prouve pas la positivite)")
     verdict = "DEFINIE POSITIVE sur V (certifie)" if res['positive_definite'] else "NON CERTIFIEE"
     print(f"  complet {{2,3,5,7}} : {verdict} ; total {time.time()-t0:.0f}s")
+    if not res['positive_definite']:
+        raise ValueError('full-form positivity not certified')
     if mode == 'freeze':
         json.dump({"kind": "zeta", "mu": MU, "NB": NB, "eps": EPS, "dps": DPS, "S": [2, 3, 5, 7],
                    "lambda_mid": lam, "v1_dyadic": v1d, "V_dyadic": Vd, **res}, open(WIT, 'w'))
         with open(CERT, 'w') as f:
             f.write(f"# zeta, mu={MU}, NB={NB}, eps={EPS}, ctx.dps={DPS} ; rayon max des entrees certifiees = {radQ:.3e} ; rayon d'Euler = {euler_rad:.1e}" + NL)
             f.write("# jeu COMPLET : certificat par congruence (inertie de Sylvester) + Gershgorin en boules sur V^T Q V (V exacte dyadique, gelee) ; temoin v_1 dyadique" + NL)
-            f.write(f"lambda_min(Q_{{2,3,5,7}}) >= m_B / M_V = {res['lambda_min_Q_lower']:+.6e}   (m_B = marge de Gershgorin sur B = {res['gershgorin_margin_B']:+.4e} ; M_V = borne haute de Gershgorin sur V^T V = 1 + {res['lambda_max_VtV_upper']-1:.2e})" + NL)
-            f.write(f"lambda_min(Q_{{2,3,5,7}}) <= Q(v_1)/|v_1|^2 <= {res['lambda_min_Q_upper']:+.6e}   (temoin v_1 dyadique exact, |v_1|^2 en boule ; mid {res['rayleigh_mid']:+.6e}, rayon {res['rayleigh_rad']:.2e} ; un quotient de Rayleigh MAJORE lambda_min et ne prouve pas la positivite)" + NL)
-            f.write(f"ENCADREMENT : {res['lambda_min_Q_lower']:+.6e} <= lambda_min(Q_{{2,3,5,7}}) <= {res['lambda_min_Q_upper']:+.6e}" + NL)
-            f.write(f"Gershgorin(V^T V) : marge basse {res['gershgorin_margin_VtV']:+.4e} (inversibilite) ; rayon max de B = {res['rad_max_B']:.3e}" + NL)
+            f.write(f"lambda_min(Q_{{2,3,5,7}}) >= m_B / M_V = {decimal_bound(res['lambda_min_Q_lower'], 'lower')}   (m_B = marge de Gershgorin sur B = {decimal_bound(res['gershgorin_margin_B'], 'lower')} ; M_V = borne haute de Gershgorin sur V^T V = {decimal_bound(res['lambda_max_VtV_upper'], 'upper', 18)})" + NL)
+            f.write(f"lambda_min(Q_{{2,3,5,7}}) <= Q(v_1)/|v_1|^2 <= {decimal_bound(res['lambda_min_Q_upper'], 'upper')}   (temoin v_1 dyadique exact, |v_1|^2 en boule ; mid {res['rayleigh_mid']:+.6e}, rayon {res['rayleigh_rad']:.2e} ; un quotient de Rayleigh MAJORE lambda_min et ne prouve pas la positivite)" + NL)
+            f.write(f"ENCADREMENT : {decimal_bound(res['lambda_min_Q_lower'], 'lower')} <= lambda_min(Q_{{2,3,5,7}}) <= {decimal_bound(res['lambda_min_Q_upper'], 'upper')}" + NL)
+            f.write(f"Gershgorin(V^T V) : marge basse {decimal_bound(res['gershgorin_margin_VtV'], 'lower')} (inversibilite) ; rayon max de B = {res['rad_max_B']:.3e}" + NL)
             f.write(f"VERDICT : Q_{{2,3,5,7}} {verdict} ; temoins : {os.path.basename(WIT)} ; rejeu : python3 quorum_full_pd.py verify" + NL)
         print(f"  ecrit : {CERT} ; {WIT}")
 

@@ -48,22 +48,8 @@ def assemble(name, mu, NB, dps, DEG=12):
             "zeta has a pole: use  python3 code/spectro_zeta.py MU NB DPS DEG"
             "   e.g. python3 code/spectro_zeta.py 22 36 50 12"
         )
-    _pcg = os.path.join(os.path.dirname(BASE), "pre-compute-gamma", "code")
-    if os.path.isdir(_pcg):
-        sys.path.insert(0, _pcg)
-    try:
-        from maass_table1 import is_maass_name
-    except ImportError:
-        def is_maass_name(name):
-            return None
-
-    maass = is_maass_name(name)
-    if maass:
-        raise SystemExit(
-            f"{name} is Maass {maass}: scan_s is Dirichlet Q (wrong Gamma).\n"
-            f"  Q:   python pre-compute-gamma/code/scan_q_maass.py {maass} 6 12 25\n"
-            f"  Init the submodule: git submodule update --init pre-compute-gamma"
-        )
+    if name not in CHARS:
+        raise SystemExit(f'{name} is not a supported Dirichlet character; Maass work belongs to pre-compute-gamma')
     cf = CHARS[name]
     q, a = cf['q'], cf['a']
     tab = chi_tab(cf['d'], q)
@@ -116,7 +102,13 @@ def assemble(name, mu, NB, dps, DEG=12):
     ppts = []
     x = 2
     cap = int(float(mp.e**L) + 1e-9)
-    small = [2,3,5,7,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83]
+    sieve = bytearray(b'\x01') * (cap + 1)
+    sieve[:2] = b'\x00\x00'
+    for p in range(2, int(cap**0.5) + 1):
+        if sieve[p]:
+            for multiple in range(p*p, cap + 1, p):
+                sieve[multiple] = 0
+    small = [p for p in range(2, cap + 1) if sieve[p]]
     while x <= cap:
         y2, p = x, None
         for qq in small:
